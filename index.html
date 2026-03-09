@@ -262,6 +262,20 @@
             margin-bottom: 2rem;
         }
 
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+                padding: 0 1rem;
+            }
+            .hero-buttons a {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+        }
+
         .btn-large {
             padding: 1.1rem 2.2rem;
             border-radius: 8px;
@@ -316,12 +330,11 @@
             line-height: 1.8;
         }
 
-        /* ===== STATS BAR ===== */
         .stats-bar {
             background: white;
             padding: 2.5rem 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: -2rem auto 0;
@@ -329,6 +342,16 @@
             z-index: 100;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             border-radius: 0 0 12px 12px;
+        }
+
+        @media (max-width: 860px) {
+            .stats-bar {
+                margin: 0 auto !important;
+                border-radius: 0 !important;
+                grid-template-columns: 1fr 1fr !important;
+                padding: 1.5rem 1.2rem !important;
+                gap: 1rem !important;
+            }
         }
 
         .stat {
@@ -619,6 +642,13 @@
             gap: 3rem;
         }
 
+        @media (max-width: 860px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
+
         .contact-form {
             background: white;
             padding: 2.5rem;
@@ -756,6 +786,22 @@
             text-align: left;
         }
 
+        @media (max-width: 860px) {
+            .quote-tool {
+                padding: 1.4rem 1.2rem !important;
+                margin: 1.5rem auto 0 !important;
+                border-radius: 8px !important;
+            }
+            .quote-product-btn {
+                font-size: 0.8rem !important;
+                padding: 0.6rem 0.6rem !important;
+            }
+            .quote-sub-link {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 0.8rem !important;
+            }
+        }
+
         .quote-tool h3 {
             color: var(--primary);
             font-size: 1.1rem;
@@ -768,6 +814,12 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 0.8rem;
             margin-bottom: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .quote-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .quote-product-btn {
@@ -958,6 +1010,18 @@
             grid-template-columns: auto 1fr;
             gap: 3rem;
             align-items: center;
+        }
+
+        @media (max-width: 860px) {
+            .about-strip-inner {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+            }
+            .advisor-photo {
+                width: 160px !important;
+                height: 160px !important;
+                margin: 0 auto 1rem !important;
+            }
         }
 
         .advisor-photo {
@@ -1289,7 +1353,7 @@
             }
 
             .hamburger { display: flex !important; margin-left: auto; }
-            nav, .cta-btns { display: none !important; }
+            nav, .cta-btns, .cta-buttons { display: none !important; }
             .mobile-nav { display: flex; }
 
             .logo, .logo a { font-size: 1rem !important; }
@@ -1299,18 +1363,19 @@
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
             .hero h1, .page-hero h1 { font-size: 1.7rem !important; line-height: 1.25 !important; }
             .hero p, .page-hero p { font-size: 0.9rem !important; }
-            .hero-actions { flex-direction: column !important; gap: 0.6rem !important; }
-            .hero-actions a { width: 100% !important; text-align: center !important; box-sizing: border-box; }
+            .hero-actions, .hero-buttons { flex-direction: column !important; gap: 0.6rem !important; align-items: stretch !important; padding: 0 !important; }
+            .hero-actions a, .hero-buttons a { width: 100% !important; text-align: center !important; box-sizing: border-box !important; }
             .credential-badges-bar { flex-wrap: wrap !important; gap: 0.35rem !important; padding: 0.5rem 1rem !important; }
             .credential-badge { font-size: 0.68rem !important; padding: 0.2rem 0.55rem !important; }
 
             /* Layout */
             .page-body { padding: 2rem 1.1rem !important; }
             .two-col, .three-col, .four-col,
-            .about-grid, .contact-wrapper { grid-template-columns: 1fr !important; }
-            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+            .about-grid { grid-template-columns: 1fr !important; }
 
             /* Sections */
+            .foundation-section, .coverage-section { padding: 2.5rem 1.2rem !important; }
+            .foundation-title, .coverage-title { font-size: 1.5rem !important; }
             .section-head h2 { font-size: 1.45rem !important; }
             .cta-band h2, .cta-section h2 { font-size: 1.45rem !important; }
             .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
@@ -1318,13 +1383,16 @@
             .cta-actions a { text-align: center !important; }
 
             /* About strip */
-            .about-strip { flex-direction: column !important; align-items: center !important; }
-            .about-strip-img { width: 120px !important; height: 120px !important; margin: 0 auto 1rem !important; }
-            .about-strip-text { text-align: center !important; }
+            .about-strip { padding: 2.5rem 1.2rem !important; }
 
             /* Partners */
             .partner-strip { flex-direction: column !important; gap: 1rem !important; }
             .partner-link { width: 100% !important; justify-content: center !important; }
+
+            /* Contact */
+            .contact-section { padding: 2.5rem 1.2rem !important; }
+            .contact-title { font-size: 1.5rem !important; }
+            .contact-form, .contact-info { padding: 1.5rem !important; }
 
             /* Forms — prevent iOS zoom */
             input, select, textarea { font-size: 16px !important; }
@@ -1351,8 +1419,107 @@
 
         @media (max-width: 480px) {
             .hero h1, .page-hero h1 { font-size: 1.4rem !important; }
-            .stats-bar { grid-template-columns: 1fr !important; }
+            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+            .foundation-card, .coverage-card { padding: 1.5rem !important; }
+            .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .testimonial-card { flex: 0 0 280px !important; }
         }
+
+        /* ===== GLOBAL MOBILE FIXES (injected) ===== */
+        @media (max-width: 860px) {
+            /* Grids collapse */
+            [style*="grid-template-columns: repeat(3"], 
+            [style*="grid-template-columns:repeat(3"],
+            [style*="grid-template-columns: repeat(4"],
+            [style*="grid-template-columns:repeat(4"] {
+                grid-template-columns: 1fr !important;
+            }
+            /* Section padding */
+            .page-body { padding: 2rem 1.1rem !important; }
+            /* Hero actions */
+            .hero-actions, .hero-buttons {
+                flex-direction: column !important;
+                gap: 0.6rem !important;
+                align-items: stretch !important;
+            }
+            .hero-actions a, .hero-buttons a {
+                width: 100% !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+            }
+            /* About strip */
+            .about-strip-inner {
+                grid-template-columns: 1fr !important;
+                text-align: center !important;
+            }
+            .advisor-photo {
+                width: 160px !important;
+                height: 160px !important;
+                margin: 0 auto 1rem !important;
+            }
+            /* Contact */
+            .contact-wrapper { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+            .contact-form, .contact-info { padding: 1.5rem !important; }
+            /* Stats bar */
+            .stats-bar {
+                margin: 0 auto !important;
+                border-radius: 0 !important;
+                grid-template-columns: 1fr 1fr !important;
+                padding: 1.5rem 1.2rem !important;
+            }
+            /* Quote tool */
+            .quote-tool { padding: 1.4rem 1.2rem !important; margin: 1.5rem auto 0 !important; }
+            .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .quote-product-btn { font-size: 0.8rem !important; padding: 0.6rem !important; }
+            /* Category tabs on get-quotes */
+            .category-tabs { border-bottom: none !important; }
+            .cat-tab {
+                padding: 0.55rem 0.9rem !important;
+                font-size: 0.78rem !important;
+                border-radius: 20px !important;
+                border: 2px solid var(--border) !important;
+                bottom: 0 !important;
+            }
+            .cat-tab.active {
+                background: var(--accent) !important;
+                color: white !important;
+                border-color: var(--accent) !important;
+            }
+            /* Product buttons */
+            .product-actions { flex-direction: column !important; }
+            .btn-instant, .btn-call-sm {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 0.75rem !important;
+            }
+            /* Section headings */
+            .page-hero h1, .hero h1 { font-size: 1.7rem !important; line-height: 1.25 !important; }
+            h2 { font-size: 1.5rem !important; }
+            /* CTA section */
+            .cta-actions, .cta-buttons-row {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            /* Quotes container */
+            .quotes-container { padding: 2rem 1.2rem !important; }
+            /* Trust bar */
+            .trust-items { gap: 1rem !important; }
+            /* Cards padding */
+            .card, .info-card, .product-card, .coverage-card, .foundation-card {
+                padding: 1.4rem !important;
+            }
+            /* Hide desktop nav, show hamburger */
+            nav { display: none !important; }
+            .cta-buttons, .cta-btns { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1, .hero h1 { font-size: 1.35rem !important; }
+            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+            .three-col, .four-col { grid-template-columns: 1fr !important; }
+        }
+
 </style>
 </head>
 <body>

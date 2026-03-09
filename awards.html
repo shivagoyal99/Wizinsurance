@@ -305,6 +305,102 @@
             .hero h1, .page-hero h1 { font-size: 1.4rem !important; }
             .stats-bar { grid-template-columns: 1fr !important; }
         }
+
+        /* ===== GLOBAL MOBILE FIXES (injected) ===== */
+        @media (max-width: 860px) {
+            /* Grids collapse */
+            [style*="grid-template-columns: repeat(3"], 
+            [style*="grid-template-columns:repeat(3"],
+            [style*="grid-template-columns: repeat(4"],
+            [style*="grid-template-columns:repeat(4"] {
+                grid-template-columns: 1fr !important;
+            }
+            /* Section padding */
+            .page-body { padding: 2rem 1.1rem !important; }
+            /* Hero actions */
+            .hero-actions, .hero-buttons {
+                flex-direction: column !important;
+                gap: 0.6rem !important;
+                align-items: stretch !important;
+            }
+            .hero-actions a, .hero-buttons a {
+                width: 100% !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+            }
+            /* About strip */
+            .about-strip-inner {
+                grid-template-columns: 1fr !important;
+                text-align: center !important;
+            }
+            .advisor-photo {
+                width: 160px !important;
+                height: 160px !important;
+                margin: 0 auto 1rem !important;
+            }
+            /* Contact */
+            .contact-wrapper { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+            .contact-form, .contact-info { padding: 1.5rem !important; }
+            /* Stats bar */
+            .stats-bar {
+                margin: 0 auto !important;
+                border-radius: 0 !important;
+                grid-template-columns: 1fr 1fr !important;
+                padding: 1.5rem 1.2rem !important;
+            }
+            /* Quote tool */
+            .quote-tool { padding: 1.4rem 1.2rem !important; margin: 1.5rem auto 0 !important; }
+            .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .quote-product-btn { font-size: 0.8rem !important; padding: 0.6rem !important; }
+            /* Category tabs on get-quotes */
+            .category-tabs { border-bottom: none !important; }
+            .cat-tab {
+                padding: 0.55rem 0.9rem !important;
+                font-size: 0.78rem !important;
+                border-radius: 20px !important;
+                border: 2px solid var(--border) !important;
+                bottom: 0 !important;
+            }
+            .cat-tab.active {
+                background: var(--accent) !important;
+                color: white !important;
+                border-color: var(--accent) !important;
+            }
+            /* Product buttons */
+            .product-actions { flex-direction: column !important; }
+            .btn-instant, .btn-call-sm {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 0.75rem !important;
+            }
+            /* Section headings */
+            .page-hero h1, .hero h1 { font-size: 1.7rem !important; line-height: 1.25 !important; }
+            h2 { font-size: 1.5rem !important; }
+            /* CTA section */
+            .cta-actions, .cta-buttons-row {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            /* Quotes container */
+            .quotes-container { padding: 2rem 1.2rem !important; }
+            /* Trust bar */
+            .trust-items { gap: 1rem !important; }
+            /* Cards padding */
+            .card, .info-card, .product-card, .coverage-card, .foundation-card {
+                padding: 1.4rem !important;
+            }
+            /* Hide desktop nav, show hamburger */
+            nav { display: none !important; }
+            .cta-buttons, .cta-btns { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1, .hero h1 { font-size: 1.35rem !important; }
+            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+            .three-col, .four-col { grid-template-columns: 1fr !important; }
+        }
+
 </style>
 </head>
 <body>
