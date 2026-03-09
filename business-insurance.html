@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Insurance | Shivang Goyal Insurance</title>
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary:#0F1F3C; --secondary:#1a3a5c; --accent:#E63946;
+            --light-bg:#F8F9FA; --text-dark:#1A1A1A; --text-light:#555; --border:#E0E0E0;
+        }
+        html { scroll-behavior:smooth; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--text-dark); line-height:1.6; background:#fff; }
+
+        /* HEADER */
+        header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .header-top { background:var(--primary); color:white; padding:0.8rem 2rem; font-size:0.85rem; display:flex; justify-content:space-between; align-items:center; }
+        .reviews-badge { background:var(--accent); color:white; padding:0.3rem 0.8rem; border-radius:20px; font-weight:600; font-size:0.8rem; }
+        .header-main { max-width:1400px; margin:0 auto; padding:0.9rem 2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .logo { font-size:1.1rem; font-weight:700; color:var(--primary); text-decoration:none; flex-shrink:0; }
+        .logo-sub { font-size:0.58rem; color:var(--accent); letter-spacing:1px; font-weight:600; }
+        nav { display:flex; gap:1.1rem; align-items:center; flex:1; flex-wrap:wrap; font-size:0.88rem; }
+        nav > a { color:var(--text-dark); text-decoration:none; font-weight:500; white-space:nowrap; }
+        nav > a:hover { color:var(--accent); }
+        /* ===== DROPDOWN ===== */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown > a {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            cursor: pointer; color: var(--text-dark); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; white-space: nowrap;
+        }
+        .dropdown > a:hover { color: var(--accent); }
+        .dropdown-arrow {
+            display: inline-block; width: 0; height: 0;
+            border-left: 4px solid transparent; border-right: 4px solid transparent;
+            border-top: 4px solid currentColor; transition: transform 0.2s;
+        }
+        .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 260px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: calc(100% + 10px);
+            left: 0;
+            border: 1px solid var(--border);
+            z-index: 9999;
+            /* NO overflow:hidden — it clips the shadow and causes issues */
+        }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-section { padding: 0.5rem 0; }
+        .dropdown-section:first-child { padding-top: 0.8rem; }
+        .dropdown-section-title {
+            padding: 0.3rem 1.2rem 0.2rem;
+            font-size: 0.68rem; font-weight: 700;
+            color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .dropdown-menu a {
+            display: block; padding: 0.6rem 1.2rem;
+            color: var(--text-dark); text-decoration: none;
+            font-size: 0.88rem; transition: all 0.15s;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-menu a:hover {
+            background: var(--light-bg); color: var(--accent);
+            border-left-color: var(--accent);
+        }
+        .dropdown-divider { height: 1px; background: var(--border); margin: 0.2rem 0; }
+        .cta-btns { display:flex; gap:0.5rem; flex-shrink:0; }
+        .btn-call { background:var(--accent); color:white; padding:0.65rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.88rem; white-space:nowrap; transition:all 0.2s; }
+        .btn-call:hover { background:#d32f3d; transform:translateY(-1px); }
+        .btn-quote { background:white; color:#000; padding:0.65rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:700; border:2px solid #000; font-size:0.88rem; white-space:nowrap; transition:all 0.2s; }
+        .btn-quote:hover { background:#f5f5f5; transform:translateY(-1px); }
+
+        /* PAGE HERO */
+        .page-hero { background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:white; padding:4rem 2rem; }
+        .page-hero-inner { max-width:900px; margin:0 auto; }
+        .page-hero .badge { background:var(--accent); display:inline-block; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.8rem; font-weight:600; margin-bottom:1rem; }
+        .page-hero h1 { font-size:2.6rem; font-weight:700; line-height:1.2; margin-bottom:1rem; }
+        .page-hero p { font-size:1.05rem; opacity:0.88; max-width:640px; line-height:1.8; margin-bottom:2rem; }
+        .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+        .btn-primary { background:var(--accent); color:white; padding:0.9rem 2rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; display:inline-block; }
+        .btn-primary:hover { background:#d32f3d; transform:translateY(-2px); }
+        .btn-white { background:white; color:var(--primary); padding:0.9rem 2rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; display:inline-block; }
+        .btn-white:hover { background:#f0f0f0; transform:translateY(-2px); }
+
+        /* PAGE BODY */
+        .page-body { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+        .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+        .four-col { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+        @media(max-width:768px) { .two-col,.three-col,.four-col { grid-template-columns:1fr; } .page-hero h1 { font-size:1.8rem; } }
+
+        /* CARDS */
+        .info-card { background:var(--light-bg); border-radius:10px; padding:2rem; border-top:4px solid var(--accent); }
+        .info-card h3 { color:var(--primary); font-size:1.05rem; margin-bottom:0.7rem; }
+        .info-card p, .info-card li { color:var(--text-light); font-size:0.92rem; line-height:1.7; }
+        .info-card ul { padding-left:1.2rem; }
+        .info-card ul li { margin-bottom:0.4rem; }
+        .highlight-card { background:var(--primary); color:white; border-radius:10px; padding:2rem; }
+        .highlight-card h3 { font-size:1.1rem; margin-bottom:0.7rem; }
+        .highlight-card p { opacity:0.8; font-size:0.92rem; line-height:1.7; }
+
+        /* SECTION TITLES */
+        .section-head { margin-bottom:2.5rem; }
+        .section-head h2 { font-size:1.9rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
+        .section-head p { color:var(--text-light); font-size:1rem; }
+        .divider { height:4px; width:50px; background:var(--accent); border-radius:2px; margin:0.6rem 0 1.2rem; }
+
+        /* FAQ */
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-q { font-weight:700; color:var(--primary); font-size:0.95rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+        .faq-q::after { content:'+'; font-size:1.2rem; color:var(--accent); flex-shrink:0; }
+        .faq-a { color:var(--text-light); font-size:0.92rem; line-height:1.7; padding-top:0.8rem; display:none; }
+        .faq-item.open .faq-a { display:block; }
+        .faq-item.open .faq-q::after { content:'−'; }
+
+        /* CTA BAND */
+        .cta-band { background:var(--accent); color:white; padding:3.5rem 2rem; text-align:center; }
+        .cta-band h2 { font-size:2rem; font-weight:700; margin-bottom:0.6rem; }
+        .cta-band p { opacity:0.9; margin-bottom:2rem; font-size:1rem; }
+        .btn-cta-white { background:white; color:var(--accent); padding:1rem 2.5rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:1rem; display:inline-block; margin:0.4rem; transition:all 0.2s; }
+        .btn-cta-white:hover { background:#f5f5f5; transform:translateY(-2px); }
+        .btn-cta-dark { background:var(--primary); color:white; padding:1rem 2.5rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:1rem; display:inline-block; margin:0.4rem; transition:all 0.2s; }
+        .btn-cta-dark:hover { background:#0a1628; transform:translateY(-2px); }
+
+        /* CHECKER LIST */
+        .check-list { list-style:none; padding:0; }
+        .check-list li { padding:0.5rem 0 0.5rem 1.8rem; position:relative; color:var(--text-light); font-size:0.93rem; line-height:1.6; border-bottom:1px solid var(--border); }
+        .check-list li:last-child { border-bottom:none; }
+        .check-list li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+
+        /* FOOTER */
+        footer { background:var(--primary); color:white; padding:2rem; text-align:center; font-size:0.85rem; }
+        footer a { color:rgba(255,255,255,0.7); text-decoration:none; }
+        footer a:hover { color:white; }
+
+        /* WHATSAPP FLOAT */
+        .wa-float { position:fixed; bottom:1.8rem; right:1.8rem; z-index:9999; background:#25D366; color:white; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 16px rgba(37,211,102,0.4); text-decoration:none; transition:transform 0.2s; }
+        .wa-float:hover { transform:scale(1.12); }
+    </style>
+
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <span>🇨🇦 Licensed across Canada · ON · BC · AB · MB · SK · NS · PEI · NB</span>
+    <div style="display:flex;gap:1.5rem;align-items:center;">
+      <span class="reviews-badge">⭐ 20+ Reviews</span>
+      <span>📞 (647) 995-5891</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="index.html" class="logo">Shivang Goyal<div class="logo-sub">STRUCTURAL PRECISION IN INSURANCE</div></a>
+    
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <div class="dropdown">
+                <a href="#">Insurance<span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Visitor &amp; Travel</div>
+                        <a href="visitors.html">🛂 Visitor to Canada</a>
+                        <a href="supervisa.html">📋 SuperVisa Insurance</a>
+                        <a href="travel.html">🌍 Travel Insurance</a>
+                        <a href="student-insurance.html">🎓 International Student</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Life Insurance</div>
+                        <a href="term-life.html">🛡️ Term Life Insurance</a>
+                        <a href="whole-life.html">🌿 Whole Life Insurance</a>
+                        <a href="universal-life.html">⚙️ Universal Life</a>
+                        <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Living Benefits</div>
+                        <a href="critical-illness.html">❤️ Critical Illness</a>
+                        <a href="disability.html">🦺 Disability Insurance</a>
+                        <a href="health-dental.html">💊 Drug &amp; Dental</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Planning</div>
+                        <a href="estate-planning.html">🏭 Estate Planning</a>
+                        <a href="business-insurance.html">💼 Business Insurance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Investments<span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <a href="rrsp.html">📈 RRSP</a>
+                    <a href="tfsa.html">💰 TFSA</a>
+                    <a href="fhsa.html">🏡 FHSA</a>
+                    <a href="resp.html">🎓 RESP</a>
+                    <a href="rdsp.html">♿ RDSP</a>
+                    <a href="non-registered.html">📊 Non-Registered</a>
+                    <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                </div>
+            </div>
+            <a href="credit-cards.html">Credit Cards</a>
+            <a href="get-quotes.html">Get Quotes</a>
+            <a href="awards.html">Credentials</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+    <div class="cta-btns">
+      <a href="tel:+16479955891" class="btn-call">📞 Call Now</a>
+      <a href="get-quotes.html" class="btn-quote">⚡ Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="badge">💼 Planning</span>
+    <h1>Business Insurance</h1>
+    <p>Protect your enterprise. Key person insurance, buy-sell agreements, group benefits, and corporate-owned life insurance for Canadian business owners.</p>
+        <div class="hero-actions">
+      <a href="tel:+16479955891" class="btn-primary">📞 Call (647) 995-5891</a>
+      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Business%20Insurance" target="_blank" class="btn-white">💬 WhatsApp</a>
+      <a href="index.html#contact" class="btn-white">📋 Send a Message</a>
+    </div>
+  </div>
+</div>
+<div class="page-body">
+  <div class="section-head"><h2>Business Insurance Solutions</h2><div class="divider"></div></div>
+  <div class="three-col" style="margin-bottom:3rem;">
+    <div class="info-card">
+      <h3>🔑 Key Person Insurance</h3>
+      <p>Protects the business if a key employee or owner dies or becomes disabled. The company receives the tax-free benefit to hire a replacement, pay off debts, or maintain operations.</p>
+    </div>
+    <div class="info-card">
+      <h3>🤝 Buy-Sell Agreement</h3>
+      <p>Life insurance funds a legally-binding agreement between business partners. If one partner dies, the surviving partner can buy out their share without financial strain or outside involvement.</p>
+    </div>
+    <div class="info-card">
+      <h3>👥 Group Benefits</h3>
+      <p>Health, dental, disability, and life insurance for your team. Attract and retain top talent with a benefits package designed around your budget and workforce.</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="highlight-card">
+      <h3>💰 Corporate Tax Advantages</h3>
+      <p style="margin-bottom:1rem;">Corporations often pay lower tax rates than individuals. Owning life insurance inside your corporation lets investment income grow at corporate rates — significantly more tax-efficient for business owners.</p>
+      <p>I'll model the exact numbers for your situation to show you the tax savings.</p>
+    </div>
+    <div class="info-card">
+      <h3>📋 Who This is For</h3>
+      <ul>
+        <li>Incorporated business owners</li>
+        <li>Professional corporations (dentists, doctors, lawyers)</li>
+        <li>Business partners needing succession planning</li>
+        <li>Companies with 3+ employees wanting group benefits</li>
+        <li>Sole proprietors protecting business income</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Ready to Get Protected?</h2>
+  <p>No pressure. No obligation. Just honest advice and the best coverage for your needs.</p>
+  <a href="get-quotes.html" class="btn-cta-white">⚡ Get a Free Quote</a>
+  <a href="tel:+16479955891" class="btn-cta-dark">📞 Call (647) 995-5891</a>
+</div>
+
+<footer style="background:#0F1F3C;color:white;padding:2.5rem 2rem 0;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2rem;padding-bottom:2rem;text-align:left;">
+    <div>
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.8rem;">Shivang Goyal</div>
+      <div style="color:rgba(255,255,255,0.7);font-size:0.83rem;line-height:2;">
+        Insurance Advisor · LLQP Certified<br>
+        MEng · Structural Engineer<br>
+        3× Government Service<br>
+        📞 <a href="tel:+16479955891" style="color:rgba(255,255,255,0.7)">(647) 995-5891</a><br>
+        ✉️ <a href="mailto:shivang.goyal.financial@gmail.com" style="color:rgba(255,255,255,0.7)">shivang.goyal.financial@gmail.com</a><br>
+        📍 Ontario · Licensed 8 Provinces
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Insurance</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="supervisa.html" style="color:rgba(255,255,255,0.7)">Super Visa Insurance</a>
+        <a href="visitors.html" style="color:rgba(255,255,255,0.7)">Visitors to Canada</a>
+        <a href="term-life.html" style="color:rgba(255,255,255,0.7)">Term Life Insurance</a>
+        <a href="critical-illness.html" style="color:rgba(255,255,255,0.7)">Critical Illness</a>
+        <a href="disability.html" style="color:rgba(255,255,255,0.7)">Disability Insurance</a>
+        <a href="health-dental.html" style="color:rgba(255,255,255,0.7)">Drug &amp; Dental</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Investments</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="rrsp.html" style="color:rgba(255,255,255,0.7)">RRSP</a>
+        <a href="tfsa.html" style="color:rgba(255,255,255,0.7)">TFSA</a>
+        <a href="fhsa.html" style="color:rgba(255,255,255,0.7)">FHSA</a>
+        <a href="resp.html" style="color:rgba(255,255,255,0.7)">RESP</a>
+        <a href="retirement-planning.html" style="color:rgba(255,255,255,0.7)">Retirement Planning</a>
+        <a href="credit-cards.html" style="color:rgba(255,255,255,0.7)">Credit Cards</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Company</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="index.html" style="color:rgba(255,255,255,0.7)">Home</a>
+        <a href="about.html" style="color:rgba(255,255,255,0.7)">About Shivang</a>
+        <a href="awards.html" style="color:rgba(255,255,255,0.7)">Credentials &amp; Reviews</a>
+        <a href="get-quotes.html" style="color:rgba(255,255,255,0.7)">Get a Quote</a>
+        <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" style="color:rgba(255,255,255,0.7)">📸 @thefinwiz.ca</a>
+        <a href="https://finwiz.finlywealth.com" target="_blank" style="color:rgba(255,255,255,0.7)">💳 FinlyWealth</a>
+        <a href="privacy-policy.html" style="color:rgba(255,255,255,0.7)">Privacy Policy</a>
+        <a href="terms-of-service.html" style="color:rgba(255,255,255,0.7)">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.12);padding:1rem 0;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.5);">
+    &copy; 2025 Shivang Goyal | Insurance &amp; Financial Solutions · Built with Structural Precision
+  </div>
+  <div style="padding:1rem 0 1.5rem;text-align:center;max-width:860px;margin:0 auto;font-size:0.7rem;color:rgba(255,255,255,0.35);line-height:1.75;">
+    <strong style="color:rgba(255,255,255,0.5);">DISCLAIMER:</strong> Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Insurance products are subject to underwriting approval and policy terms. Shivang Goyal is an independently licensed insurance advisor (LLQP) and is not an employee of any insurance carrier. Credit card content is informational only — always review cardholder agreements before applying. Past performance of investment products does not guarantee future results. &nbsp;
+    <a href="privacy-policy.html" style="color:rgba(255,255,255,0.4)">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="terms-of-service.html" style="color:rgba(255,255,255,0.4)">Terms of Service</a>
+  </div>
+</footer>
+<a href="https://wa.me/16479955891" target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
+
+
+    
+    
+
+    <script>
+        /* ── Robust dropdown: hover + 250ms close-delay ── */
+        (function() {
+            var timers = {};
+            function openDd(dd) {
+                // close all others
+                document.querySelectorAll('.dropdown.open').forEach(function(o) {
+                    if (o !== dd) { o.classList.remove('open'); }
+                });
+                if (timers[dd.id]) clearTimeout(timers[dd.id]);
+                dd.classList.add('open');
+            }
+            function closeDd(dd) {
+                timers[dd.id] = setTimeout(function() {
+                    dd.classList.remove('open');
+                }, 250);
+            }
+            function cancelClose(dd) {
+                if (timers[dd.id]) clearTimeout(timers[dd.id]);
+            }
+
+            // Assign unique IDs and attach events
+            document.querySelectorAll('.dropdown').forEach(function(dd, i) {
+                if (!dd.id) dd.id = 'dd-' + i;
+                var menu = dd.querySelector('.dropdown-menu');
+                if (!menu) return;
+                dd.addEventListener('mouseenter', function() { openDd(dd); });
+                dd.addEventListener('mouseleave', function() { closeDd(dd); });
+                menu.addEventListener('mouseenter', function() { cancelClose(dd); });
+                menu.addEventListener('mouseleave', function() { closeDd(dd); });
+            });
+
+            // Click outside closes all
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown.open').forEach(function(dd) {
+                        dd.classList.remove('open');
+                    });
+                }
+            });
+        })();
+
+        /* ── FAQ accordion ── */
+        document.querySelectorAll('.faq-q').forEach(function(q) {
+            q.addEventListener('click', function() {
+                q.parentElement.classList.toggle('open');
+            });
+        });
+    </script></body></html>

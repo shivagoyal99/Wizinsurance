@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Card Optimization | Shivang Goyal Insurance</title>
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary:#0F1F3C; --secondary:#1a3a5c; --accent:#E63946;
+            --light-bg:#F8F9FA; --text-dark:#1A1A1A; --text-light:#555; --border:#E0E0E0;
+        }
+        html { scroll-behavior:smooth; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--text-dark); line-height:1.6; background:#fff; }
+
+        /* HEADER */
+        header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .header-top { background:var(--primary); color:white; padding:0.8rem 2rem; font-size:0.85rem; display:flex; justify-content:space-between; align-items:center; }
+        .reviews-badge { background:var(--accent); color:white; padding:0.3rem 0.8rem; border-radius:20px; font-weight:600; font-size:0.8rem; }
+        .header-main { max-width:1400px; margin:0 auto; padding:0.9rem 2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .logo { font-size:1.1rem; font-weight:700; color:var(--primary); text-decoration:none; flex-shrink:0; }
+        .logo-sub { font-size:0.58rem; color:var(--accent); letter-spacing:1px; font-weight:600; }
+        nav { display:flex; gap:1.1rem; align-items:center; flex:1; flex-wrap:wrap; font-size:0.88rem; }
+        nav > a { color:var(--text-dark); text-decoration:none; font-weight:500; white-space:nowrap; }
+        nav > a:hover { color:var(--accent); }
+        /* ===== DROPDOWN ===== */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown > a {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            cursor: pointer; color: var(--text-dark); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; white-space: nowrap;
+        }
+        .dropdown > a:hover { color: var(--accent); }
+        .dropdown-arrow {
+            display: inline-block; width: 0; height: 0;
+            border-left: 4px solid transparent; border-right: 4px solid transparent;
+            border-top: 4px solid currentColor; transition: transform 0.2s;
+        }
+        .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 260px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: calc(100% + 10px);
+            left: 0;
+            border: 1px solid var(--border);
+            z-index: 9999;
+            /* NO overflow:hidden — it clips the shadow and causes issues */
+        }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-section { padding: 0.5rem 0; }
+        .dropdown-section:first-child { padding-top: 0.8rem; }
+        .dropdown-section-title {
+            padding: 0.3rem 1.2rem 0.2rem;
+            font-size: 0.68rem; font-weight: 700;
+            color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .dropdown-menu a {
+            display: block; padding: 0.6rem 1.2rem;
+            color: var(--text-dark); text-decoration: none;
+            font-size: 0.88rem; transition: all 0.15s;
+            border-left: 3px solid transparent;
+        }
+        .dropdown-menu a:hover {
+            background: var(--light-bg); color: var(--accent);
+            border-left-color: var(--accent);
+        }
+        .dropdown-divider { height: 1px; background: var(--border); margin: 0.2rem 0; }
+        .cta-btns { display:flex; gap:0.5rem; flex-shrink:0; }
+        .btn-call { background:var(--accent); color:white; padding:0.65rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.88rem; white-space:nowrap; transition:all 0.2s; }
+        .btn-call:hover { background:#d32f3d; transform:translateY(-1px); }
+        .btn-quote { background:white; color:#000; padding:0.65rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:700; border:2px solid #000; font-size:0.88rem; white-space:nowrap; transition:all 0.2s; }
+        .btn-quote:hover { background:#f5f5f5; transform:translateY(-1px); }
+
+        /* PAGE HERO */
+        .page-hero { background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color:white; padding:4rem 2rem; }
+        .page-hero-inner { max-width:900px; margin:0 auto; }
+        .page-hero .badge { background:var(--accent); display:inline-block; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.8rem; font-weight:600; margin-bottom:1rem; }
+        .page-hero h1 { font-size:2.6rem; font-weight:700; line-height:1.2; margin-bottom:1rem; }
+        .page-hero p { font-size:1.05rem; opacity:0.88; max-width:640px; line-height:1.8; margin-bottom:2rem; }
+        .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+        .btn-primary { background:var(--accent); color:white; padding:0.9rem 2rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; display:inline-block; }
+        .btn-primary:hover { background:#d32f3d; transform:translateY(-2px); }
+        .btn-white { background:white; color:var(--primary); padding:0.9rem 2rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; display:inline-block; }
+        .btn-white:hover { background:#f0f0f0; transform:translateY(-2px); }
+
+        /* PAGE BODY */
+        .page-body { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+        .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+        .four-col { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+        @media(max-width:768px) { .two-col,.three-col,.four-col { grid-template-columns:1fr; } .page-hero h1 { font-size:1.8rem; } }
+
+        /* CARDS */
+        .info-card { background:var(--light-bg); border-radius:10px; padding:2rem; border-top:4px solid var(--accent); }
+        .info-card h3 { color:var(--primary); font-size:1.05rem; margin-bottom:0.7rem; }
+        .info-card p, .info-card li { color:var(--text-light); font-size:0.92rem; line-height:1.7; }
+        .info-card ul { padding-left:1.2rem; }
+        .info-card ul li { margin-bottom:0.4rem; }
+        .highlight-card { background:var(--primary); color:white; border-radius:10px; padding:2rem; }
+        .highlight-card h3 { font-size:1.1rem; margin-bottom:0.7rem; }
+        .highlight-card p { opacity:0.8; font-size:0.92rem; line-height:1.7; }
+
+        /* SECTION TITLES */
+        .section-head { margin-bottom:2.5rem; }
+        .section-head h2 { font-size:1.9rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
+        .section-head p { color:var(--text-light); font-size:1rem; }
+        .divider { height:4px; width:50px; background:var(--accent); border-radius:2px; margin:0.6rem 0 1.2rem; }
+
+        /* FAQ */
+        .faq-item { border-bottom:1px solid var(--border); padding:1.2rem 0; }
+        .faq-q { font-weight:700; color:var(--primary); font-size:0.95rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+        .faq-q::after { content:'+'; font-size:1.2rem; color:var(--accent); flex-shrink:0; }
+        .faq-a { color:var(--text-light); font-size:0.92rem; line-height:1.7; padding-top:0.8rem; display:none; }
+        .faq-item.open .faq-a { display:block; }
+        .faq-item.open .faq-q::after { content:'−'; }
+
+        /* CTA BAND */
+        .cta-band { background:var(--accent); color:white; padding:3.5rem 2rem; text-align:center; }
+        .cta-band h2 { font-size:2rem; font-weight:700; margin-bottom:0.6rem; }
+        .cta-band p { opacity:0.9; margin-bottom:2rem; font-size:1rem; }
+        .btn-cta-white { background:white; color:var(--accent); padding:1rem 2.5rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:1rem; display:inline-block; margin:0.4rem; transition:all 0.2s; }
+        .btn-cta-white:hover { background:#f5f5f5; transform:translateY(-2px); }
+        .btn-cta-dark { background:var(--primary); color:white; padding:1rem 2.5rem; border-radius:8px; text-decoration:none; font-weight:700; font-size:1rem; display:inline-block; margin:0.4rem; transition:all 0.2s; }
+        .btn-cta-dark:hover { background:#0a1628; transform:translateY(-2px); }
+
+        /* CHECKER LIST */
+        .check-list { list-style:none; padding:0; }
+        .check-list li { padding:0.5rem 0 0.5rem 1.8rem; position:relative; color:var(--text-light); font-size:0.93rem; line-height:1.6; border-bottom:1px solid var(--border); }
+        .check-list li:last-child { border-bottom:none; }
+        .check-list li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+
+        /* FOOTER */
+        footer { background:var(--primary); color:white; padding:2rem; text-align:center; font-size:0.85rem; }
+        footer a { color:rgba(255,255,255,0.7); text-decoration:none; }
+        footer a:hover { color:white; }
+
+        /* WHATSAPP FLOAT */
+        .wa-float { position:fixed; bottom:1.8rem; right:1.8rem; z-index:9999; background:#25D366; color:white; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 16px rgba(37,211,102,0.4); text-decoration:none; transition:transform 0.2s; }
+        .wa-float:hover { transform:scale(1.12); }
+    </style>
+
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <span>🇨🇦 Licensed across Canada · ON · BC · AB · MB · SK · NS · PEI · NB</span>
+    <div style="display:flex;gap:1.5rem;align-items:center;">
+      <span class="reviews-badge">⭐ 20+ Reviews</span>
+      <span>📞 (647) 995-5891</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="index.html" class="logo">Shivang Goyal<div class="logo-sub">STRUCTURAL PRECISION IN INSURANCE</div></a>
+    
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <div class="dropdown">
+                <a href="#">Insurance<span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Visitor &amp; Travel</div>
+                        <a href="visitors.html">🛂 Visitor to Canada</a>
+                        <a href="supervisa.html">📋 SuperVisa Insurance</a>
+                        <a href="travel.html">🌍 Travel Insurance</a>
+                        <a href="student-insurance.html">🎓 International Student</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Life Insurance</div>
+                        <a href="term-life.html">🛡️ Term Life Insurance</a>
+                        <a href="whole-life.html">🌿 Whole Life Insurance</a>
+                        <a href="universal-life.html">⚙️ Universal Life</a>
+                        <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Living Benefits</div>
+                        <a href="critical-illness.html">❤️ Critical Illness</a>
+                        <a href="disability.html">🦺 Disability Insurance</a>
+                        <a href="health-dental.html">💊 Drug &amp; Dental</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Planning</div>
+                        <a href="estate-planning.html">🏭 Estate Planning</a>
+                        <a href="business-insurance.html">💼 Business Insurance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Investments<span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <a href="rrsp.html">📈 RRSP</a>
+                    <a href="tfsa.html">💰 TFSA</a>
+                    <a href="fhsa.html">🏡 FHSA</a>
+                    <a href="resp.html">🎓 RESP</a>
+                    <a href="rdsp.html">♿ RDSP</a>
+                    <a href="non-registered.html">📊 Non-Registered</a>
+                    <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                </div>
+            </div>
+            <a href="credit-cards.html">Credit Cards</a>
+            <a href="get-quotes.html">Get Quotes</a>
+            <a href="awards.html">Credentials</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+    <div class="cta-btns">
+      <a href="tel:+16479955891" class="btn-call">📞 Call Now</a>
+      <a href="get-quotes.html" class="btn-quote">⚡ Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="badge">💳 Credit Cards &amp; Banking</span>
+    <h1>Credit Card Optimization</h1>
+    <p>Maximize every dollar you spend. Through my partnership with FinlyWealth, I help Canadians find the best credit cards for their lifestyle, spending habits, and financial goals.</p>
+        <div class="hero-actions">
+      <a href="tel:+16479955891" class="btn-primary">📞 Call (647) 995-5891</a>
+      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Credit%20Card%20Optimization" target="_blank" class="btn-white">💬 WhatsApp</a>
+      <a href="index.html#contact" class="btn-white">📋 Send a Message</a>
+    </div>
+  </div>
+</div>
+<div class="page-body">
+  <div class="section-head"><h2>Why Credit Card Strategy Matters</h2><div class="divider"></div></div>
+  <p style="color:var(--text-light);line-height:1.8;margin-bottom:2.5rem;max-width:760px;">Most Canadians are leaving <strong>$1,000–$3,000+</strong> in rewards on the table every year by using the wrong credit card. The right combination earns you free flights, cashback, hotel stays — while providing travel insurance and purchase protection you'd otherwise pay for separately. Through my <strong>FinlyWealth partnership</strong>, I help match you to the perfect card stack for your lifestyle.</p>
+
+  <!-- FEATURED CARD EXAMPLES -->
+  <div class="section-head"><h2>🏆 Featured Card Highlights</h2><div class="divider"></div><p style="color:var(--text-light)">Real cards. Real value. These are some of the best offers available right now in Canada.</p></div>
+
+  <!-- Card 1: Scotia Momentum -->
+  <div style="background:white;border-radius:14px;border:1px solid var(--border);padding:2rem;margin-bottom:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+    <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
+      <div style="background:linear-gradient(135deg,#C8102E,#8B0000);border-radius:10px;width:80px;height:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:white;font-weight:800;font-size:0.7rem;text-align:center;line-height:1.3;">SCOTIA<br>BANK</span>
+      </div>
+      <div style="flex:1;min-width:240px;">
+        <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <h3 style="color:var(--primary);font-size:1.15rem;margin:0;">Scotia Momentum® Visa Infinite</h3>
+          <span style="background:#E8F5E9;color:#2E7D32;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:700;">💵 Best Cashback Card</span>
+        </div>
+        <p style="color:var(--text-light);font-size:0.92rem;line-height:1.7;margin-bottom:1rem;">The undisputed king of everyday cashback in Canada. If you spend heavily on groceries, gas, and recurring bills — this card is engineered for you.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.8rem;margin-bottom:1.2rem;">
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">4%</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Groceries &amp; Recurring Bills</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">4%</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Gas &amp; Daily Transit</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">2%</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Other Purchases</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#2E7D32;">$120</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Annual Fee</div>
+          </div>
+        </div>
+        <div style="background:#FFF8E1;border-left:4px solid #F9A825;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+          <strong style="color:#E65100;font-size:0.88rem;">💡 Shivang's Take:</strong>
+          <p style="margin:0.3rem 0 0;font-size:0.88rem;color:var(--text-light);">A family spending $1,500/month on groceries, $300 on gas, and $200 on subscriptions earns <strong>~$840 cashback/year</strong> — that's $720 net after the annual fee. This card also covers car rental insurance, which means you may not need to pay separately for that. Worth noting: "recurring bills" includes your Netflix, phone, car insurance pre-authorized payments — that 4% adds up fast.</p>
+        </div>
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+          <a href="https://finwiz.finlywealth.com" target="_blank" style="background:var(--accent);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">💳 Apply via FinlyWealth →</a>
+          <a href="tel:+16479955891" style="background:var(--primary);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">📞 Ask Shivang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: RBC Avion -->
+  <div style="background:white;border-radius:14px;border:1px solid var(--border);padding:2rem;margin-bottom:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+    <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
+      <div style="background:linear-gradient(135deg,#003168,#0051A5);border-radius:10px;width:80px;height:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:white;font-weight:800;font-size:0.7rem;text-align:center;line-height:1.3;">RBC<br>AVION</span>
+      </div>
+      <div style="flex:1;min-width:240px;">
+        <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <h3 style="color:var(--primary);font-size:1.15rem;margin:0;">RBC Avion Visa Infinite</h3>
+          <span style="background:#E3F2FD;color:#1565C0;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:700;">✈️ Best Travel Rewards</span>
+          <span style="background:#FCE4EC;color:#C62828;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:700;">🔥 Welcome Bonus Active</span>
+        </div>
+        <p style="color:var(--text-light);font-size:0.92rem;line-height:1.7;margin-bottom:1rem;">One of Canada's most flexible travel rewards cards. Avion points transfer to multiple airlines including British Airways, Cathay Pacific, and WestJet — opening doors to some of the world's most exclusive flight experiences.</p>
+
+        <div style="background:linear-gradient(135deg,#003168,#0051A5);border-radius:10px;padding:1.2rem;margin-bottom:1.2rem;color:white;">
+          <div style="font-size:0.8rem;opacity:0.8;margin-bottom:0.3rem;text-transform:uppercase;letter-spacing:0.5px;">Current Welcome Bonus</div>
+          <div style="font-size:2rem;font-weight:800;">55,000</div>
+          <div style="font-size:0.88rem;opacity:0.9;">Avion Points on approval + meeting minimum spend</div>
+        </div>
+
+        <div style="background:#E8F5E9;border-left:4px solid #2E7D32;border-radius:0 8px 8px 0;padding:1rem;margin-bottom:1rem;">
+          <strong style="color:#1B5E20;font-size:0.9rem;">🛩️ Real-World Example: Toronto → Doha in Qatar QSuite</strong>
+          <p style="margin:0.5rem 0 0;font-size:0.88rem;color:#2E7D32;line-height:1.7;">Transfer your <strong>55,000 Avion points → British Airways Avios</strong>, then use Avios to book a <strong>Qatar Airways QSuite Business Class</strong> seat from <strong>Toronto (YYZ) → Doha (DOH)</strong>. This redemption — one of the most luxurious business class products in the world with a private suite, fully flat bed, and gourmet dining — retails for <strong>~$7,500 CAD</strong> in cash. With points, you pay a fraction of that. The welcome bonus alone can cover this flight.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.8rem;margin-bottom:1.2rem;">
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--primary);">1.25x</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Points on All Purchases</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--primary);">55K</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Welcome Bonus Points</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--primary);">$120</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Annual Fee</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:#2E7D32;">✓</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Travel Medical Insurance</div>
+          </div>
+        </div>
+        <div style="background:#FFF8E1;border-left:4px solid #F9A825;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+          <strong style="color:#E65100;font-size:0.88rem;">💡 Shivang's Take:</strong>
+          <p style="margin:0.3rem 0 0;font-size:0.88rem;color:var(--text-light);">Avion's flexibility is its superpower — you're not locked into one airline program. The card's built-in travel insurance also means you may be able to skip buying a separate travel policy for shorter trips. I always review what your card covers before recommending additional travel insurance — that's the integrated approach I bring that most advisors miss.</p>
+        </div>
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+          <a href="https://finwiz.finlywealth.com" target="_blank" style="background:var(--accent);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">💳 Apply via FinlyWealth →</a>
+          <a href="tel:+16479955891" style="background:var(--primary);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">📞 Ask Shivang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: Amex Cobalt -->
+  <div style="background:white;border-radius:14px;border:1px solid var(--border);padding:2rem;margin-bottom:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+    <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
+      <div style="background:linear-gradient(135deg,#007BC0,#005A8E);border-radius:10px;width:80px;height:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:white;font-weight:800;font-size:0.7rem;text-align:center;line-height:1.3;">AMEX<br>COBALT</span>
+      </div>
+      <div style="flex:1;min-width:240px;">
+        <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <h3 style="color:var(--primary);font-size:1.15rem;margin:0;">American Express Cobalt® Card</h3>
+          <span style="background:#F3E5F5;color:#6A1B9A;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:700;">🍽️ Best for Food &amp; Dining</span>
+        </div>
+        <p style="color:var(--text-light);font-size:0.92rem;line-height:1.7;margin-bottom:1rem;">The best card in Canada for people who eat out, order food delivery, or cook at home. Earns Membership Rewards points that transfer to Aeroplan and other airline programs.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.8rem;margin-bottom:1.2rem;">
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">5x</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Dining &amp; Food Delivery</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">3x</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Streaming Services</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">2x</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Travel &amp; Transit</div>
+          </div>
+          <div style="background:var(--light-bg);border-radius:8px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#2E7D32;">$155.88</div>
+            <div style="font-size:0.78rem;color:var(--text-light);font-weight:600;">Annual Fee ($12.99/mo)</div>
+          </div>
+        </div>
+        <div style="background:#FFF8E1;border-left:4px solid #F9A825;padding:0.8rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;">
+          <strong style="color:#E65100;font-size:0.88rem;">💡 Shivang's Take:</strong>
+          <p style="margin:0.3rem 0 0;font-size:0.88rem;color:var(--text-light);">Pair the Cobalt with the Scotia Momentum and you've covered almost every spending category optimally — Cobalt for food and dining (5x), Scotia for groceries and gas (4%). This two-card combo is one of the most popular setups I recommend through FinlyWealth.</p>
+        </div>
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+          <a href="https://finwiz.finlywealth.com" target="_blank" style="background:var(--accent);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">💳 Apply via FinlyWealth →</a>
+          <a href="tel:+16479955891" style="background:var(--primary);color:white;padding:0.65rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.88rem;">📞 Ask Shivang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works + FinlyWealth CTA -->
+  <div style="background:var(--primary);border-radius:14px;padding:2.5rem;margin-bottom:2.5rem;color:white;">
+    <h2 style="margin-bottom:0.5rem;">🏗️ My Partnership with FinlyWealth</h2>
+    <p style="opacity:0.85;margin-bottom:1.5rem;line-height:1.7;">FinlyWealth is Canada's leading credit card optimization platform. As a partner advisor, I use their tools to analyze your exact spending and find the optimal card combination — then integrate that with your insurance coverage so you're never paying for duplicate protection.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">1️⃣</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Share Your Spending</div>
+        <div style="font-size:0.82rem;opacity:0.75;">Tell me your top categories — groceries, gas, dining, travel, subscriptions.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">2️⃣</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">I Run the Analysis</div>
+        <div style="font-size:0.82rem;opacity:0.75;">Using FinlyWealth's platform, I find the card combination that earns you the most value.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">3️⃣</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Review &amp; Apply</div>
+        <div style="font-size:0.82rem;opacity:0.75;">I walk you through the best options and help you apply with no pressure.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
+        <div style="font-size:1.3rem;margin-bottom:0.4rem;">4️⃣</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Check Your Coverage</div>
+        <div style="font-size:0.82rem;opacity:0.75;">I review your card's insurance so you don't pay twice for travel or rental coverage.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="https://finwiz.finlywealth.com" target="_blank" style="background:var(--accent);color:white;padding:0.9rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;display:inline-block;">💳 Find My Best Card on FinlyWealth →</a>
+      <a href="tel:+16479955891" style="background:white;color:var(--primary);padding:0.9rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;display:inline-block;">📞 Talk to Shivang First</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-head"><h2>Common Questions</h2><div class="divider"></div></div>
+  <div class="faq-item"><div class="faq-q">Does getting a new credit card hurt my credit score?</div><div class="faq-a">A hard inquiry typically drops your score by 5–10 points temporarily. With responsible use, your score usually recovers within 3–6 months and often improves long-term through higher available credit and positive payment history.</div></div>
+  <div class="faq-item"><div class="faq-q">How many credit cards should I have?</div><div class="faq-a">Most people benefit most from 2–3 cards: a strong everyday cashback card, a travel rewards card, and optionally a no-fee backup. More than that usually adds complexity without meaningful extra rewards.</div></div>
+  <div class="faq-item"><div class="faq-q">Does my credit card travel insurance replace standalone travel insurance?</div><div class="faq-a">Sometimes — but it depends heavily on the card, your age, trip cost, and whether you have pre-existing conditions. I review your card's policy document with you so you know exactly what's covered and what isn't before you travel.</div></div>
+  <div class="faq-item"><div class="faq-q">What's the best card setup for newcomers to Canada?</div><div class="faq-a">Several Canadian banks offer secured or newcomer-specific cards that don't require a Canadian credit history. I can point you to the best options through FinlyWealth to start building credit from day one.</div></div>
+  <div class="faq-item"><div class="faq-q">Can Avion points really book a Qatar QSuite?</div><div class="faq-a">Yes — and this is one of the best redemptions available to Canadians. You transfer RBC Avion points to British Airways Avios, then use Avios to book Qatar Airways flights (they're a BA partner). A Toronto–Doha QSuite Business Class ticket that retails for ~$7,500 CAD can be booked for ~35,000–55,000 Avios depending on availability. The 55,000-point welcome bonus on the RBC Avion Infinite can cover this entirely.</div></div>
+</div>
+
+
