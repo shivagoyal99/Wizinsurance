@@ -35,15 +35,165 @@ footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:1.6rem 2rem
 footer a{color:rgba(255,255,255,0.65);text-decoration:none}
 footer a:hover{color:white}
 .wa{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 16px rgba(37,211,102,0.4);text-decoration:none}
+
+        /* ═══════════════════════════════════════
+           MOBILE RESPONSIVE — all breakpoints
+           ═══════════════════════════════════════ */
+        .hamburger {
+            display: none; flex-direction: column;
+            justify-content: space-between;
+            width: 28px; height: 20px;
+            cursor: pointer; background: none;
+            border: none; padding: 0; flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block; height: 2.5px;
+            background: var(--primary); border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(8.75px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-8.75px) rotate(-45deg); }
+        .mobile-nav-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(15,31,60,0.45); z-index: 998;
+        }
+        .mobile-nav-overlay.active { display: block; }
+        .mobile-nav {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 82%; max-width: 320px; height: 100vh;
+            background: white; z-index: 999; overflow-y: auto;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+            transform: translateX(-100%); transition: transform 0.3s ease;
+            flex-direction: column;
+        }
+        .mobile-nav.active { transform: translateX(0); }
+        .mobile-nav-header {
+            background: var(--primary); color: white;
+            padding: 1.2rem 1.4rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .mobile-nav-header .logo-text { font-size: 1rem; font-weight: 700; }
+        .mobile-nav-header .logo-sub  { font-size: 0.5rem; color: #E63946; letter-spacing: 1px; display: block; margin-top: 2px; }
+        .mobile-nav-close { background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+        .mobile-nav-body { padding: 1rem 0; }
+        .mobile-nav-body a { display: block; padding: 0.85rem 1.4rem; color: var(--text-dark); text-decoration: none; font-size: 0.97rem; font-weight: 500; border-bottom: 1px solid #f0f0f0; }
+        .mobile-nav-body a:hover { background: #f8f9fa; color: var(--accent); }
+        .mobile-nav-section-label { padding: 0.9rem 1.4rem 0.3rem; font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.8px; background: #f8f9fa; }
+        .mobile-nav-cta { padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.8rem; border-top: 2px solid var(--accent); margin-top: 0.5rem; }
+        .mobile-nav-cta a { display: block; text-align: center; border-bottom: none !important; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.92rem; }
+        .mobile-nav-cta .m-call { background: var(--accent); color: white !important; }
+        .mobile-nav-cta .m-wa   { background: #25D366; color: white !important; }
+
+        @media (max-width: 820px) {
+            .header-top { display: none !important; }
+            .header-main, .header-inner {
+                padding: 0.75rem 1rem !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+            .hamburger { display: flex; }
+            nav, .cta-btns, .btn-call, .btn-quote { display: none !important; }
+            .mobile-nav { display: flex; }
+            .hero { padding: 2.5rem 1.2rem 2rem !important; }
+            .hero h1 { font-size: 1.65rem !important; line-height: 1.25; }
+            .hero p   { font-size: 0.92rem !important; }
+            .credential-badges-bar { flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 1rem; }
+            .credential-badge { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
+            .page-hero { padding: 2.2rem 1.2rem !important; }
+            .page-hero h1 { font-size: 1.7rem !important; }
+            .page-hero p  { font-size: 0.9rem !important; }
+            .hero-actions { flex-direction: column; gap: 0.7rem; }
+            .hero-actions a { width: 100%; text-align: center; }
+            .page-body { padding: 2rem 1.1rem !important; }
+            .two-col, .three-col, .four-col { grid-template-columns: 1fr !important; }
+            .about-grid { grid-template-columns: 1fr !important; }
+            .stats-bar  { grid-template-columns: 1fr 1fr !important; }
+            .info-card, .highlight-card, .value-card, .foundation-card { padding: 1.3rem !important; }
+            .section-head h2 { font-size: 1.5rem !important; }
+            .section-head { margin-bottom: 1.5rem !important; }
+            .about-strip { flex-direction: column; }
+            .about-strip-img { width: 140px; height: 140px; margin: 0 auto 1rem; }
+            .about-strip-text { text-align: center; }
+            .partner-strip { flex-direction: column; gap: 1rem; padding: 1.5rem 1rem; }
+            .partner-link { width: 100%; justify-content: center; }
+            .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
+            .cta-band h2, .cta-section h2 { font-size: 1.5rem !important; }
+            .cta-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+            .cta-actions a { text-align: center; width: 100%; }
+            .contact-wrapper { grid-template-columns: 1fr !important; }
+            .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px !important; }
+            .quote-categories { flex-wrap: wrap; gap: 0.5rem; }
+            .cat-btn { font-size: 0.82rem; padding: 0.5rem 0.9rem; }
+            .sub-options { flex-wrap: wrap; gap: 0.5rem; }
+            .faq-q { font-size: 0.93rem; padding: 1rem !important; }
+            .faq-a { font-size: 0.88rem; }
+            [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            [style*="grid-template-columns:repeat"] { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.4rem !important; }
+            .page-hero h1 { font-size: 1.4rem !important; }
+            .stats-bar { grid-template-columns: 1fr !important; }
+            [style*="grid-template-columns:repeat"] { grid-template-columns: 1fr !important; }
+        }
 </style>
 </head>
 <body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-header">
+        <div><div class="logo-text">Shivang Goyal</div><span class="logo-sub">STRUCTURAL PRECISION IN INSURANCE</span></div>
+        <button class="mobile-nav-close" id="mobileNavClose">&#x2715;</button>
+      </div>
+      <div class="mobile-nav-body">
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">👤 About Shivang</a>
+        <a href="awards.html">🏆 Credentials &amp; Reviews</a>
+        <a href="get-quotes.html">⚡ Get a Quote</a>
+        <div class="mobile-nav-section-label">Visitor &amp; Travel</div>
+        <a href="supervisa.html">🇨🇦 Super Visa Insurance</a>
+        <a href="visitors.html">✈️ Visitors to Canada</a>
+        <a href="travel.html">🌍 Travel Insurance</a>
+        <a href="student-insurance.html">🎓 Student Insurance</a>
+        <div class="mobile-nav-section-label">Life Insurance</div>
+        <a href="term-life.html">📋 Term Life</a>
+        <a href="whole-life.html">🏡 Whole Life</a>
+        <a href="universal-life.html">🔄 Universal Life</a>
+        <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+        <div class="mobile-nav-section-label">Living Benefits</div>
+        <a href="critical-illness.html">❤️ Critical Illness</a>
+        <a href="disability.html">🛡️ Disability Insurance</a>
+        <a href="health-dental.html">🦷 Drug &amp; Dental</a>
+        <a href="estate-planning.html">📜 Estate Planning</a>
+        <a href="business-insurance.html">💼 Business Insurance</a>
+        <div class="mobile-nav-section-label">Investments</div>
+        <a href="rrsp.html">📈 RRSP</a>
+        <a href="tfsa.html">💰 TFSA</a>
+        <a href="fhsa.html">🏠 FHSA</a>
+        <a href="resp.html">🎓 RESP</a>
+        <a href="rdsp.html">♿ RDSP</a>
+        <a href="non-registered.html">📊 Non-Registered</a>
+        <a href="retirement-planning.html">🌅 Retirement Planning</a>
+        <div class="mobile-nav-section-label">More</div>
+        <a href="credit-cards.html">💳 Credit Cards</a>
+        <a href="index.html#contact">📬 Contact</a>
+        <div class="mobile-nav-cta">
+          <a href="tel:+16479955891" class="m-call">📞 Call (647) 995-5891</a>
+          <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp Me</a>
+        </div>
+      </div>
+    </div>
+
 <div class="top-bar">
   <span>🇨🇦 Licensed: ON · BC · AB · MB · SK · NS · PEI · NB &nbsp;|&nbsp; MEng · Structural Engineer · LLQP Certified</span>
   <span>📞 <a href="tel:+16479955891">(647) 995-5891</a> &nbsp;|&nbsp; ✉️ <a href="mailto:shivang.goyal.financial@gmail.com">shivang.goyal.financial@gmail.com</a></span>
 </div>
 <header>
   <div class="header-inner">
+            <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     <a href="index.html" class="logo">Shivang Goyal <span>STRUCTURAL PRECISION IN INSURANCE</span></a>
     <nav>
       <a href="index.html">Home</a>
@@ -122,4 +272,10 @@ footer a:hover{color:white}
   </p>
 </footer>
 <a href="https://wa.me/16479955891" target="_blank" class="wa" title="WhatsApp">💬</a>
-</body></html>
+<script>
+/* Mobile hamburger */
+(function(){var btn=document.getElementById('hamburger');var nav=document.getElementById('mobileNav');var ov=document.getElementById('mobileOverlay');var cl=document.getElementById('mobileNavClose');if(!btn)return;function openNav(){btn.classList.add('active');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function closeNav(){btn.classList.remove('active');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',openNav);cl.addEventListener('click',closeNav);ov.addEventListener('click',closeNav);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav);});})();
+</script>
+
+</body>
+</html>
