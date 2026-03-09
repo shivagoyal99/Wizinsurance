@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Shivang Goyal Insurance</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0F1F3C;
+            --secondary: #1a3a5c;
+            --accent: #E63946;
+            --light-bg: #F8F9FA;
+            --text-dark: #1A1A1A;
+            --text-light: #555;
+            --border: #E0E0E0;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-dark); line-height: 1.6; background: #fff; }
+
+        header { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .header-top { background: var(--primary); color: white; padding: 0.8rem 2rem; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+        .reviews-badge { background: var(--accent); color: white; padding: 0.4rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
+        .header-main { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .logo-subtitle { font-size: 0.6rem; color: var(--accent); letter-spacing: 1px; font-weight: 600; }
+        nav { display: flex; gap: 1.2rem; align-items: center; font-size: 0.9rem; }
+        nav > a { color: var(--text-dark); text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; }
+        nav > a:hover { color: var(--accent); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown > a { display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--text-dark); text-decoration: none; font-size: 0.9rem; font-weight: 500; white-space: nowrap; }
+        .dropdown > a:hover { color: var(--accent); }
+        .dropdown-arrow { display: inline-block; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid currentColor; transition: transform 0.2s; }
+        .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+        .dropdown-menu { display: none; position: absolute; background: white; min-width: 260px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-radius: 6px; top: 100%; left: 0; margin-top: 0.8rem; border: 1px solid var(--border); z-index: 1001; overflow: hidden; }
+        .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-section { padding-top: 0.5rem; }
+        .dropdown-section:first-child { padding-top: 0.8rem; }
+        .dropdown-section-title { padding: 0.5rem 1.2rem 0.3rem; font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+        .dropdown-menu a { display: block; padding: 0.7rem 1.2rem; color: var(--text-dark); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; border-left: 3px solid transparent; }
+        .dropdown-menu a:hover { background: var(--light-bg); color: var(--accent); border-left-color: var(--accent); }
+        .dropdown-divider { height: 1px; background: var(--border); margin: 0.3rem 0; }
+        .btn-call { background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.9rem; white-space: nowrap; }
+
+        .page-hero { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 3.5rem 2rem; text-align: center; }
+        .page-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .page-hero p { opacity: 0.85; font-size: 1.05rem; }
+
+        /* QUOTE SECTION */
+        .quotes-container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+
+        @media (max-width: 860px) {
+            .quotes-container { padding: 2rem 1.2rem !important; }
+        }
+
+        .category-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0; }
+        .cat-tab { padding: 0.9rem 1.6rem; font-size: 0.9rem; font-weight: 600; border: 2px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; cursor: pointer; background: var(--light-bg); color: var(--text-dark); transition: all 0.2s; position: relative; bottom: -2px; }
+        .cat-tab.active { background: white; color: var(--accent); border-color: var(--border); border-bottom-color: white; }
+        .cat-tab:hover { color: var(--accent); }
+
+        @media (max-width: 860px) {
+            .category-tabs {
+                border-bottom: none !important;
+                gap: 0.4rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .cat-tab {
+                padding: 0.55rem 0.9rem !important;
+                font-size: 0.78rem !important;
+                border-radius: 20px !important;
+                border: 2px solid var(--border) !important;
+                bottom: 0 !important;
+            }
+            .cat-tab.active {
+                background: var(--accent) !important;
+                color: white !important;
+                border-color: var(--accent) !important;
+            }
+        }
+
+        .category-panel { display: none; }
+        .category-panel.active { display: block; }
+
+        .category-panel h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .category-panel .desc { color: var(--text-light); margin-bottom: 2rem; }
+
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+
+        @media (max-width: 600px) {
+            .products-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .product-card { padding: 1.4rem !important; }
+        }
+
+        .product-card { background: white; border: 2px solid var(--border); border-radius: 10px; padding: 1.8rem; transition: all 0.25s; }
+        .product-card:hover { border-color: var(--accent); box-shadow: 0 6px 20px rgba(230,57,70,0.1); transform: translateY(-2px); }
+        .product-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+        .product-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .product-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem; }
+
+        .product-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .btn-instant { background: var(--accent); color: white; padding: 0.6rem 1.1rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: background 0.2s; }
+        .btn-instant:hover { background: #d32f3d; }
+        .btn-call-sm { background: var(--primary); color: white; padding: 0.6rem 1.1rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 700; }
+        .btn-call-sm:hover { background: var(--secondary); }
+
+        .tag { display: inline-block; background: #e8f5e9; color: #2e7d32; border-radius: 20px; padding: 0.25rem 0.7rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.8rem; }
+        .tag.red { background: #fde8e9; color: var(--accent); }
+
+        /* CONTACT FORM */
+        .contact-fallback { background: var(--light-bg); padding: 4rem 2rem; }
+        .contact-inner { max-width: 700px; margin: 0 auto; }
+        .contact-inner h2 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .contact-inner p { color: var(--text-light); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; transition: border 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(230,57,70,0.1); }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        .btn-submit { background: var(--accent); color: white; padding: 1rem 2.5rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; transition: background 0.2s; }
+        .btn-submit:hover { background: #d32f3d; }
+
+        /* TRUST BAR */
+        .trust-bar { background: var(--primary); color: white; padding: 1.5rem 2rem; text-align: center; font-size: 0.9rem; }
+        .trust-items { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 0.5rem; }
+
+        @media (max-width: 860px) {
+            .trust-bar { padding: 1.2rem 1rem !important; font-size: 0.8rem !important; }
+            .trust-items { gap: 1rem !important; }
+        }
+
+        footer { background: var(--primary); color: white; padding: 1.5rem 2rem; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    
+        /* ══════════════════════════════════════════
+           MOBILE NAV — Rattan-style
+           ══════════════════════════════════════════ */
+
+        /* Hamburger — navy square, right side of header */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 42px; height: 42px;
+            cursor: pointer;
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            padding: 9px;
+            flex-shrink: 0;
+            margin-left: auto;   /* pushes to far right */
+        }
+        .hamburger span {
+            display: block; height: 2px;
+            background: white; border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Dim overlay */
+        .mobile-nav-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 998;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+        .mobile-nav-overlay.active { display: block; }
+
+        /* Drawer — slides in from RIGHT, dark navy */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 85%; max-width: 330px;
+            height: 100vh;
+            background: #0d1b33;
+            z-index: 999;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+        .mobile-nav.active { transform: translateX(0); }
+
+        /* Nav header */
+        .mobile-nav-header {
+            padding: 1.2rem 1.3rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: #0F1F3C;
+            position: sticky; top: 0; z-index: 2;
+        }
+        .mobile-nav-logo .mnav-name {
+            color: white; font-size: 1rem;
+            font-weight: 700; line-height: 1.2;
+        }
+        .mobile-nav-logo .mnav-sub {
+            color: #E63946; font-size: 0.52rem;
+            letter-spacing: 1.2px; text-transform: uppercase;
+            display: block; margin-top: 3px;
+        }
+        .mobile-nav-close {
+            background: rgba(255,255,255,0.08);
+            border: none; color: rgba(255,255,255,0.8);
+            width: 30px; height: 30px; border-radius: 50%;
+            cursor: pointer; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transition: background 0.2s;
+            margin-top: 2px;
+        }
+        .mobile-nav-close:hover { background: rgba(255,255,255,0.16); }
+
+        /* Section label */
+        .mnav-label {
+            padding: 1rem 1.3rem 0.25rem;
+            font-size: 0.6rem; font-weight: 700;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase; letter-spacing: 1.8px;
+        }
+
+        /* Nav links */
+        .mobile-nav-body { padding: 0.3rem 0 0.5rem; }
+        .mobile-nav-body a {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.68rem 1.3rem;
+            color: rgba(255,255,255,0.82);
+            text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            border-left: 2px solid transparent;
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .mobile-nav-body a:hover, .mobile-nav-body a:active {
+            background: rgba(255,255,255,0.06);
+            color: white; border-left-color: #E63946;
+        }
+        .mnav-icon { font-size: 0.95rem; width: 20px; text-align: center; flex-shrink: 0; }
+
+        /* Thin divider */
+        .mnav-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.25rem 0; }
+
+        /* CTA buttons at bottom */
+        .mobile-nav-cta {
+            padding: 1rem 1.1rem 1.3rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; flex-direction: column; gap: 0.6rem;
+            background: #0F1F3C;
+            position: sticky; bottom: 0;
+        }
+        .mobile-nav-cta a {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.5rem; padding: 0.82rem 1rem; border-radius: 10px;
+            font-weight: 700; font-size: 0.88rem;
+            text-decoration: none; text-align: center;
+            transition: opacity 0.2s; border: none;
+        }
+        .m-call  { background: #E63946; color: white !important; }
+        .m-wa    { background: #25D366; color: white !important; }
+        .m-quote { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9) !important; border: 1px solid rgba(255,255,255,0.18) !important; }
+        .mobile-nav-cta a:hover { opacity: 0.88; }
+
+        /* ── BREAKPOINTS ── */
+        @media (max-width: 860px) {
+            .header-top { display: none !important; }
+
+            /* Header: logo LEFT, hamburger RIGHT */
+            .header-main {
+                padding: 0.75rem 1.1rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                flex-wrap: nowrap !important;
+                gap: 0 !important;
+            }
+
+            .hamburger { display: flex !important; margin-left: auto; }
+            nav, .cta-btns { display: none !important; }
+            .mobile-nav { display: flex; }
+
+            .logo, .logo a { font-size: 1rem !important; }
+            .logo-sub, .logo-subtitle { font-size: 0.48rem !important; }
+
+            /* Hero */
+            .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
+            .hero h1, .page-hero h1 { font-size: 1.7rem !important; line-height: 1.25 !important; }
+            .hero p, .page-hero p { font-size: 0.9rem !important; }
+            .hero-actions { flex-direction: column !important; gap: 0.6rem !important; }
+            .hero-actions a { width: 100% !important; text-align: center !important; box-sizing: border-box; }
+            .credential-badges-bar { flex-wrap: wrap !important; gap: 0.35rem !important; padding: 0.5rem 1rem !important; }
+            .credential-badge { font-size: 0.68rem !important; padding: 0.2rem 0.55rem !important; }
+
+            /* Layout */
+            .page-body { padding: 2rem 1.1rem !important; }
+            .two-col, .three-col, .four-col,
+            .about-grid, .contact-wrapper { grid-template-columns: 1fr !important; }
+            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+
+            /* Contact form */
+            .contact-fallback { padding: 2rem 1.2rem !important; }
+            .contact-inner h2 { font-size: 1.4rem !important; }
+
+            /* Sections */
+            .section-head h2 { font-size: 1.45rem !important; }
+            .cta-band h2, .cta-section h2 { font-size: 1.45rem !important; }
+            .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
+            .cta-actions { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; }
+            .cta-actions a { text-align: center !important; }
+
+            /* About strip */
+            .about-strip { flex-direction: column !important; align-items: center !important; }
+            .about-strip-img { width: 120px !important; height: 120px !important; margin: 0 auto 1rem !important; }
+            .about-strip-text { text-align: center !important; }
+
+            /* Partners */
+            .partner-strip { flex-direction: column !important; gap: 1rem !important; }
+            .partner-link { width: 100% !important; justify-content: center !important; }
+
+            /* Forms — prevent iOS zoom */
+            input, select, textarea { font-size: 16px !important; }
+
+            /* Quote tool */
+            .quote-categories { flex-wrap: wrap !important; gap: 0.5rem !important; }
+            .cat-btn { font-size: 0.8rem !important; }
+            .sub-options { flex-wrap: wrap !important; }
+
+            /* Product actions - stack buttons */
+            .product-actions { flex-direction: column !important; }
+            .btn-instant, .btn-call-sm { width: 100% !important; text-align: center !important; padding: 0.75rem !important; }
+
+            /* FAQ */
+            .faq-q { font-size: 0.9rem !important; }
+
+            /* Footer */
+            footer > div { display: block !important; }
+            footer > div > div { margin-bottom: 1.5rem; }
+
+            /* WhatsApp float */
+            a[href*="wa.me"][style*="fixed"] {
+                bottom: 1rem !important; right: 1rem !important;
+                width: 50px !important; height: 50px !important;
+                font-size: 1.3rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1, .page-hero h1 { font-size: 1.4rem !important; }
+            .stats-bar { grid-template-columns: 1fr !important; }
+        }
+</style>
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">
+          <div class="mnav-name">Shivang Goyal</div>
+          <span class="mnav-sub">Structural Precision in Insurance</span>
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="mobile-nav-body">
+        <div class="mnav-label">Main</div>
+        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
+        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
+        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
+        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Visitor &amp; Travel</div>
+        <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+        <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+        <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+        <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Life Insurance</div>
+        <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+        <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+        <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+        <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Living Benefits</div>
+        <a href="critical-illness.html"><span class="mnav-icon">❤️</span>Critical Illness</a>
+        <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+        <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+        <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+        <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Investments</div>
+        <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+        <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+        <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+        <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+        <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+        <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+        <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">More</div>
+        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
+        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
+      </div>
+      <div class="mobile-nav-cta">
+        <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
+        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+      </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <span>🇨🇦 Licensed across Canada · ON · BC · AB · MB · SK · NS · PEI · NB</span>
+            <div style="display:flex;gap:1.5rem;align-items:center;">
+                <span class="reviews-badge">⭐ 400+ Reviews</span>
+                <span>📞 (647) 995-5891</span>
+            </div>
+        </div>
+        <div class="header-main">
+            <a href="index.html" class="logo">
+                Shivang Goyal
+                <div class="logo-subtitle">STRUCTURAL PRECISION IN INSURANCE</div>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <div class="dropdown">
+                    <a href="#">Insurance<span class="dropdown-arrow"></span></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Visitor & Travel</div>
+                            <a href="visitors.html">🛂 Visitor to Canada</a>
+                            <a href="supervisa.html">📋 SuperVisa Insurance</a>
+                            <a href="travel.html">🌍 Travel Insurance</a>
+                            <a href="student-insurance.html">🎓 International Student</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Life Insurance</div>
+                            <a href="term-life.html">🛡️ Term Life Insurance</a>
+                            <a href="whole-life.html">🌿 Whole Life Insurance</a>
+                            <a href="universal-life.html">⚙️ Universal Life</a>
+                            <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Living Benefits</div>
+                            <a href="critical-illness.html">❤️ Critical Illness</a>
+                            <a href="disability.html">🦺 Disability Insurance</a>
+                            <a href="health-dental.html">💊 Drug & Dental</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Planning</div>
+                            <a href="estate-planning.html">🏭 Estate Planning</a>
+                            <a href="business-insurance.html">💼 Business Insurance</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Investments<span class="dropdown-arrow"></span></a>
+                    <div class="dropdown-menu">
+                        <a href="rrsp.html">📈 RRSP</a>
+                        <a href="tfsa.html">💰 TFSA</a>
+                        <a href="fhsa.html">🏡 FHSA</a>
+                        <a href="resp.html">🎓 RESP</a>
+                        <a href="rdsp.html">♿ RDSP</a>
+                        <a href="non-registered.html">📊 Non-Registered</a>
+                        <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                    </div>
+                </div>
+                <a href="credit-cards.html">Credit Cards</a>
+                <a href="get-quotes.html" style="color:var(--accent)">Get Quotes</a>
+                <a href="awards.html">Credentials</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <a href="tel:+16479955891" class="btn-call">📞 Call Now</a>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>⚡ Get Your Free Quote</h1>
+        <p>Compare 25+ carriers · No pressure · Best rate guaranteed · Same-day approvals available</p>
+    </div>
+
+    <div class="trust-bar">
+        <div class="trust-items">
+            <div class="trust-item">🔒 Independent Advisor</div>
+            <div class="trust-item">⭐ 400+ Five-Star Reviews</div>
+            <div class="trust-item">💰 25+ Carriers Compared</div>
+            <div class="trust-item">⚡ Same-Day Approvals</div>
+            <div class="trust-item">📞 You Reach Me Directly</div>
+        </div>
+    </div>
+
+    <div class="quotes-container">
+        <div class="category-tabs">
+            <div class="cat-tab active" onclick="showCat('travel', this)">✈️ Visitor & Travel</div>
+            <div class="cat-tab" onclick="showCat('life', this)">🛡️ Life Insurance</div>
+            <div class="cat-tab" onclick="showCat('living', this)">❤️ Living Benefits</div>
+            <div class="cat-tab" onclick="showCat('invest', this)">📈 Investments</div>
+            <div class="cat-tab" onclick="showCat('estate', this)">🏭 Estate & Business</div>
+        </div>
+
+        <!-- VISITOR & TRAVEL -->
+        <div id="cat-travel" class="category-panel active">
+            <h2>✈️ Visitor & Travel Insurance</h2>
+            <p class="desc">Fast, affordable coverage for visitors, travellers, and students. Same-day approval in most cases.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">🛂</span>
+                    <span class="tag">Most Popular</span>
+                    <h3>Super Visa Insurance</h3>
+                    <p>Required for parents & grandparents visiting Canada on a Super Visa. $100,000+ medical coverage. Get approved today.</p>
+                    <div class="product-actions">
+                        <a href="supervisa.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">✈️</span>
+                    <h3>Visitors to Canada</h3>
+                    <p>Comprehensive medical insurance for visitors. Covers emergency hospital, doctor visits, and prescription drugs.</p>
+                    <div class="product-actions">
+                        <a href="visitors.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🌍</span>
+                    <h3>Travel Insurance</h3>
+                    <p>Coverage for Canadians travelling outside Canada. Trip cancellation, medical, and baggage protection.</p>
+                    <div class="product-actions">
+                        <a href="travel.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🎓</span>
+                    <h3>International Student</h3>
+                    <p>Medical coverage for international students studying in Canada. Meets most school and visa requirements.</p>
+                    <div class="product-actions">
+                        <a href="student-insurance.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIFE INSURANCE -->
+        <div id="cat-life" class="category-panel">
+            <h2>🛡️ Life Insurance</h2>
+            <p class="desc">Protect your family's financial future. I compare 25+ carriers to get you the best rate.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">🛡️</span>
+                    <span class="tag">Most Affordable</span>
+                    <h3>Term Life Insurance</h3>
+                    <p>Pure life coverage for 10–40 years. Best value for most families. Get a quote and see rates from top carriers.</p>
+                    <div class="product-actions">
+                        <a href="term-life.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🌿</span>
+                    <h3>Whole Life Insurance</h3>
+                    <p>Permanent coverage with guaranteed cash value growth. Builds wealth while protecting your family.</p>
+                    <div class="product-actions">
+                        <a href="whole-life.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">⚙️</span>
+                    <h3>Universal Life</h3>
+                    <p>Flexible permanent coverage with investment component. Customizable premiums and death benefit.</p>
+                    <div class="product-actions">
+                        <a href="universal-life.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🏠</span>
+                    <h3>Mortgage Insurance</h3>
+                    <p>Protect your home and family. Term life coverage sized to pay off your mortgage if you pass away.</p>
+                    <div class="product-actions">
+                        <a href="mortgage-insurance.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVING BENEFITS -->
+        <div id="cat-living" class="category-panel">
+            <h2>❤️ Living Benefits</h2>
+            <p class="desc">Coverage that pays out while you're alive — when you need it most.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">❤️</span>
+                    <h3>Critical Illness</h3>
+                    <p>Lump-sum payout on diagnosis of cancer, heart attack, stroke, or 25+ covered conditions. No strings attached.</p>
+                    <div class="product-actions">
+                        <a href="critical-illness.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🦺</span>
+                    <h3>Disability Insurance</h3>
+                    <p>Replace 60–85% of your income if you can't work due to illness or injury. Protect your most valuable asset.</p>
+                    <div class="product-actions">
+                        <a href="disability.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">💊</span>
+                    <h3>Drug & Dental</h3>
+                    <p>Affordable health benefits for self-employed Canadians and families without group coverage from an employer.</p>
+                    <div class="product-actions">
+                        <a href="health-dental.html" class="btn-instant">⚡ Get Quote →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INVESTMENTS -->
+        <div id="cat-invest" class="category-panel">
+            <h2>📈 Investments & Savings</h2>
+            <p class="desc">Grow your wealth and plan for retirement with tax-advantaged strategies.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">📈</span>
+                    <h3>RRSP</h3>
+                    <p>Registered Retirement Savings Plan. Reduce your tax bill today while saving for retirement tomorrow.</p>
+                    <div class="product-actions">
+                        <a href="rrsp.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">💰</span>
+                    <h3>TFSA</h3>
+                    <p>Tax-Free Savings Account. Grow your money tax-free and withdraw anytime without penalty.</p>
+                    <div class="product-actions">
+                        <a href="tfsa.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🏡</span>
+                    <h3>FHSA</h3>
+                    <p>First Home Savings Account. Save up to $40,000 tax-free toward your first home purchase.</p>
+                    <div class="product-actions">
+                        <a href="fhsa.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🎓</span>
+                    <h3>RESP</h3>
+                    <p>Registered Education Savings Plan. Save for your child's education and get Canada Education Savings Grants.</p>
+                    <div class="product-actions">
+                        <a href="resp.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">♿</span>
+                    <h3>RDSP</h3>
+                    <p>Registered Disability Savings Plan. Long-term savings for Canadians with disabilities, with government matching.</p>
+                    <div class="product-actions">
+                        <a href="rdsp.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🌞</span>
+                    <h3>Retirement Planning</h3>
+                    <p>Comprehensive retirement income strategy combining RRSP, TFSA, pension, and insurance solutions.</p>
+                    <div class="product-actions">
+                        <a href="retirement-planning.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTATE & BUSINESS -->
+        <div id="cat-estate" class="category-panel">
+            <h2>🏭 Estate & Business Planning</h2>
+            <p class="desc">Protect your legacy and your enterprise with precision planning.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">🏭</span>
+                    <h3>Estate Planning</h3>
+                    <p>Wills, powers of attorney, and life insurance structured together to protect and transfer your family's wealth.</p>
+                    <div class="product-actions">
+                        <a href="estate-planning.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">💼</span>
+                    <h3>Business Insurance</h3>
+                    <p>Key person insurance, buy-sell agreements, and group benefits for business owners. Protect your enterprise.</p>
+                    <div class="product-actions">
+                        <a href="business-insurance.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">💳</span>
+                    <h3>Credit Card Optimization</h3>
+                    <p>Strategic rewards maximization and partnership with FinlyWealth for integrated banking solutions.</p>
+                    <div class="product-actions">
+                        <a href="credit-cards.html" class="btn-instant">Learn More →</a>
+                        <a href="tel:+16479955891" class="btn-call-sm">📞 Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Fallback -->
+    <div class="contact-fallback" id="contact">
+        <div class="contact-inner">
+            <h2>Not Sure Where to Start?</h2>
+            <p>Send me a message and I'll reach out to walk you through your options — no pressure, no obligation.</p>
+            <form onsubmit="handleSubmit(event)" style="background:white;padding:2rem;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="name" required placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="(647) ...">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" required placeholder="you@email.com">
+                </div>
+                <div class="form-group">
+                    <label>What Are You Looking For?</label>
+                    <select id="interest">
+                        <option>Super Visa / Visitor Insurance</option>
+                        <option>Term Life Insurance</option>
+                        <option>Critical Illness Insurance</option>
+                        <option>Disability Insurance</option>
+                        <option>Drug & Dental Benefits</option>
+                        <option>Investments (RRSP/TFSA/RESP)</option>
+                        <option>Business Insurance</option>
+                        <option>Estate Planning</option>
+                        <option>Not sure — need advice</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message (optional)</label>
+                    <textarea placeholder="Tell me a bit about your situation..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send My Request →</button>
+            </form>
+        </div>
+    </div>
+
+    
+<footer style="background:#0F1F3C;color:white;padding:2.5rem 2rem 0;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2rem;padding-bottom:2rem;text-align:left;">
+    <div>
+      <div style="font-weight:700;font-size:1rem;margin-bottom:0.8rem;">Shivang Goyal</div>
+      <div style="color:rgba(255,255,255,0.7);font-size:0.83rem;line-height:2;">
+        Insurance Advisor · LLQP Certified<br>
+        MEng · Structural Engineer<br>
+        3× Government Service<br>
+        📞 <a href="tel:+16479955891" style="color:rgba(255,255,255,0.7)">(647) 995-5891</a><br>
+        ✉️ <a href="mailto:shivang.goyal.financial@gmail.com" style="color:rgba(255,255,255,0.7)">shivang.goyal.financial@gmail.com</a><br>
+        📍 Ontario · Licensed 8 Provinces
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Insurance</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="supervisa.html" style="color:rgba(255,255,255,0.7)">Super Visa Insurance</a>
+        <a href="visitors.html" style="color:rgba(255,255,255,0.7)">Visitors to Canada</a>
+        <a href="term-life.html" style="color:rgba(255,255,255,0.7)">Term Life Insurance</a>
+        <a href="critical-illness.html" style="color:rgba(255,255,255,0.7)">Critical Illness</a>
+        <a href="disability.html" style="color:rgba(255,255,255,0.7)">Disability Insurance</a>
+        <a href="health-dental.html" style="color:rgba(255,255,255,0.7)">Drug &amp; Dental</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Investments</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="rrsp.html" style="color:rgba(255,255,255,0.7)">RRSP</a>
+        <a href="tfsa.html" style="color:rgba(255,255,255,0.7)">TFSA</a>
+        <a href="fhsa.html" style="color:rgba(255,255,255,0.7)">FHSA</a>
+        <a href="resp.html" style="color:rgba(255,255,255,0.7)">RESP</a>
+        <a href="retirement-planning.html" style="color:rgba(255,255,255,0.7)">Retirement Planning</a>
+        <a href="credit-cards.html" style="color:rgba(255,255,255,0.7)">Credit Cards</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.9rem;">Company</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.83rem;">
+        <a href="index.html" style="color:rgba(255,255,255,0.7)">Home</a>
+        <a href="about.html" style="color:rgba(255,255,255,0.7)">About Shivang</a>
+        <a href="awards.html" style="color:rgba(255,255,255,0.7)">Credentials &amp; Reviews</a>
+        <a href="get-quotes.html" style="color:rgba(255,255,255,0.7)">Get a Quote</a>
+        <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" style="color:rgba(255,255,255,0.7)">📸 @thefinwiz.ca</a>
+        <a href="https://finwiz.finlywealth.com" target="_blank" style="color:rgba(255,255,255,0.7)">💳 FinlyWealth</a>
+        <a href="privacy-policy.html" style="color:rgba(255,255,255,0.7)">Privacy Policy</a>
+        <a href="terms-of-service.html" style="color:rgba(255,255,255,0.7)">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.12);padding:1rem 0;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.5);">
+    &copy; 2025 Shivang Goyal | Insurance &amp; Financial Solutions · Built with Structural Precision
+  </div>
+  <div style="padding:1rem 0 1.5rem;text-align:center;max-width:860px;margin:0 auto;font-size:0.7rem;color:rgba(255,255,255,0.35);line-height:1.75;">
+    <strong style="color:rgba(255,255,255,0.5);">DISCLAIMER:</strong> Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Insurance products are subject to underwriting approval and policy terms. Shivang Goyal is an independently licensed insurance advisor (LLQP) and is not an employee of any insurance carrier. Credit card content is informational only — always review cardholder agreements before applying. Past performance of investment products does not guarantee future results. &nbsp;
+    <a href="privacy-policy.html" style="color:rgba(255,255,255,0.4)">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="terms-of-service.html" style="color:rgba(255,255,255,0.4)">Terms of Service</a>
+  </div>
+</footer>
+
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/16479955891" target="_blank" title="Chat on WhatsApp"
+       style="position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;background:#25D366;color:white;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,0.4);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;"
+       onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 24px rgba(37,211,102,0.5)'"
+       onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(37,211,102,0.4)'">
+        💬
+    </a>
+
+    
+
+</body>
+<script>
+(function(){var t={};function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})})})();
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open')})});
+async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form.querySelector('button[type="submit"]');var orig=btn.textContent;btn.textContent='⏳ Sending...';btn.disabled=true;try{var r=await fetch('https://formspree.io/f/xbdzdgrn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.innerHTML='<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">✅</div><h3 style="color:#0F1F3C;font-size:1.4rem;margin-bottom:.7rem">Message Sent!</h3><p style="color:#555;line-height:1.7">Thanks! Shivang will reply within a few hours.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem"><a href="tel:+16479955891" style="background:#0F1F3C;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">📞 Call Shivang</a><a href="https://wa.me/16479955891" target="_blank" style="background:#25D366;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">💬 WhatsApp</a></div></div>'}else{throw new Error()}}catch(e){btn.textContent=orig;btn.disabled=false;alert('Something went wrong. Please call (647) 995-5891')}}
+(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+</script>
+
+</body>
+</html>
