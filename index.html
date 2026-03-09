@@ -1141,154 +1141,279 @@
             }
         }
     
-        /* ═══════════════════════════════════════
-           MOBILE RESPONSIVE — all breakpoints
-           ═══════════════════════════════════════ */
+        /* ══════════════════════════════════════════
+           MOBILE NAV — Rattan-style
+           ══════════════════════════════════════════ */
+
+        /* Hamburger — navy square, right side of header */
         .hamburger {
-            display: none; flex-direction: column;
-            justify-content: space-between;
-            width: 28px; height: 20px;
-            cursor: pointer; background: none;
-            border: none; padding: 0; flex-shrink: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 42px; height: 42px;
+            cursor: pointer;
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            padding: 9px;
+            flex-shrink: 0;
+            margin-left: auto;   /* pushes to far right */
         }
         .hamburger span {
-            display: block; height: 2.5px;
-            background: var(--primary); border-radius: 2px;
+            display: block; height: 2px;
+            background: white; border-radius: 2px;
             transition: all 0.3s ease;
+            transform-origin: center;
         }
-        .hamburger.active span:nth-child(1) { transform: translateY(8.75px) rotate(45deg); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: translateY(-8.75px) rotate(-45deg); }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Dim overlay */
         .mobile-nav-overlay {
             display: none; position: fixed; inset: 0;
-            background: rgba(15,31,60,0.45); z-index: 998;
+            background: rgba(0,0,0,0.55);
+            z-index: 998;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
         .mobile-nav-overlay.active { display: block; }
+
+        /* Drawer — slides in from RIGHT, dark navy */
         .mobile-nav {
-            display: none; position: fixed; top: 0; left: 0;
-            width: 82%; max-width: 320px; height: 100vh;
-            background: white; z-index: 999; overflow-y: auto;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
-            transform: translateX(-100%); transition: transform 0.3s ease;
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 85%; max-width: 330px;
+            height: 100vh;
+            background: #0d1b33;
+            z-index: 999;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
             flex-direction: column;
+            -webkit-overflow-scrolling: touch;
         }
         .mobile-nav.active { transform: translateX(0); }
-        .mobile-nav-header {
-            background: var(--primary); color: white;
-            padding: 1.2rem 1.4rem;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .mobile-nav-header .logo-text { font-size: 1rem; font-weight: 700; }
-        .mobile-nav-header .logo-sub  { font-size: 0.5rem; color: #E63946; letter-spacing: 1px; display: block; margin-top: 2px; }
-        .mobile-nav-close { background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-        .mobile-nav-body { padding: 1rem 0; }
-        .mobile-nav-body a { display: block; padding: 0.85rem 1.4rem; color: var(--text-dark); text-decoration: none; font-size: 0.97rem; font-weight: 500; border-bottom: 1px solid #f0f0f0; }
-        .mobile-nav-body a:hover { background: #f8f9fa; color: var(--accent); }
-        .mobile-nav-section-label { padding: 0.9rem 1.4rem 0.3rem; font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.8px; background: #f8f9fa; }
-        .mobile-nav-cta { padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.8rem; border-top: 2px solid var(--accent); margin-top: 0.5rem; }
-        .mobile-nav-cta a { display: block; text-align: center; border-bottom: none !important; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.92rem; }
-        .mobile-nav-cta .m-call { background: var(--accent); color: white !important; }
-        .mobile-nav-cta .m-wa   { background: #25D366; color: white !important; }
 
-        @media (max-width: 820px) {
-            .header-top { display: none !important; }
-            .header-main, .header-inner {
-                padding: 0.75rem 1rem !important;
-                flex-wrap: nowrap !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-            }
-            .hamburger { display: flex; }
-            nav, .cta-btns, .btn-call, .btn-quote { display: none !important; }
-            .mobile-nav { display: flex; }
-            .hero { padding: 2.5rem 1.2rem 2rem !important; }
-            .hero h1 { font-size: 1.65rem !important; line-height: 1.25; }
-            .hero p   { font-size: 0.92rem !important; }
-            .credential-badges-bar { flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 1rem; }
-            .credential-badge { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
-            .page-hero { padding: 2.2rem 1.2rem !important; }
-            .page-hero h1 { font-size: 1.7rem !important; }
-            .page-hero p  { font-size: 0.9rem !important; }
-            .hero-actions { flex-direction: column; gap: 0.7rem; }
-            .hero-actions a { width: 100%; text-align: center; }
-            .page-body { padding: 2rem 1.1rem !important; }
-            .two-col, .three-col, .four-col { grid-template-columns: 1fr !important; }
-            .about-grid { grid-template-columns: 1fr !important; }
-            .stats-bar  { grid-template-columns: 1fr 1fr !important; }
-            .info-card, .highlight-card, .value-card, .foundation-card { padding: 1.3rem !important; }
-            .section-head h2 { font-size: 1.5rem !important; }
-            .section-head { margin-bottom: 1.5rem !important; }
-            .about-strip { flex-direction: column; }
-            .about-strip-img { width: 140px; height: 140px; margin: 0 auto 1rem; }
-            .about-strip-text { text-align: center; }
-            .partner-strip { flex-direction: column; gap: 1rem; padding: 1.5rem 1rem; }
-            .partner-link { width: 100%; justify-content: center; }
-            .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
-            .cta-band h2, .cta-section h2 { font-size: 1.5rem !important; }
-            .cta-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
-            .cta-actions a { text-align: center; width: 100%; }
-            .contact-wrapper { grid-template-columns: 1fr !important; }
-            .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px !important; }
-            .quote-categories { flex-wrap: wrap; gap: 0.5rem; }
-            .cat-btn { font-size: 0.82rem; padding: 0.5rem 0.9rem; }
-            .sub-options { flex-wrap: wrap; gap: 0.5rem; }
-            .faq-q { font-size: 0.93rem; padding: 1rem !important; }
-            .faq-a { font-size: 0.88rem; }
-            [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-            [style*="grid-template-columns:repeat"] { grid-template-columns: 1fr 1fr !important; }
+        /* Nav header */
+        .mobile-nav-header {
+            padding: 1.2rem 1.3rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: #0F1F3C;
+            position: sticky; top: 0; z-index: 2;
         }
+        .mobile-nav-logo .mnav-name {
+            color: white; font-size: 1rem;
+            font-weight: 700; line-height: 1.2;
+        }
+        .mobile-nav-logo .mnav-sub {
+            color: #E63946; font-size: 0.52rem;
+            letter-spacing: 1.2px; text-transform: uppercase;
+            display: block; margin-top: 3px;
+        }
+        .mobile-nav-close {
+            background: rgba(255,255,255,0.08);
+            border: none; color: rgba(255,255,255,0.8);
+            width: 30px; height: 30px; border-radius: 50%;
+            cursor: pointer; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transition: background 0.2s;
+            margin-top: 2px;
+        }
+        .mobile-nav-close:hover { background: rgba(255,255,255,0.16); }
+
+        /* Section label */
+        .mnav-label {
+            padding: 1rem 1.3rem 0.25rem;
+            font-size: 0.6rem; font-weight: 700;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase; letter-spacing: 1.8px;
+        }
+
+        /* Nav links */
+        .mobile-nav-body { padding: 0.3rem 0 0.5rem; }
+        .mobile-nav-body a {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.68rem 1.3rem;
+            color: rgba(255,255,255,0.82);
+            text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            border-left: 2px solid transparent;
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .mobile-nav-body a:hover, .mobile-nav-body a:active {
+            background: rgba(255,255,255,0.06);
+            color: white; border-left-color: #E63946;
+        }
+        .mnav-icon { font-size: 0.95rem; width: 20px; text-align: center; flex-shrink: 0; }
+
+        /* Thin divider */
+        .mnav-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.25rem 0; }
+
+        /* CTA buttons at bottom */
+        .mobile-nav-cta {
+            padding: 1rem 1.1rem 1.3rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; flex-direction: column; gap: 0.6rem;
+            background: #0F1F3C;
+            position: sticky; bottom: 0;
+        }
+        .mobile-nav-cta a {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.5rem; padding: 0.82rem 1rem; border-radius: 10px;
+            font-weight: 700; font-size: 0.88rem;
+            text-decoration: none; text-align: center;
+            transition: opacity 0.2s; border: none;
+        }
+        .m-call  { background: #E63946; color: white !important; }
+        .m-wa    { background: #25D366; color: white !important; }
+        .m-quote { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9) !important; border: 1px solid rgba(255,255,255,0.18) !important; }
+        .mobile-nav-cta a:hover { opacity: 0.88; }
+
+        /* ── BREAKPOINTS ── */
+        @media (max-width: 860px) {
+            .header-top { display: none !important; }
+
+            /* Header: logo LEFT, hamburger RIGHT */
+            .header-main {
+                padding: 0.75rem 1.1rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                flex-wrap: nowrap !important;
+                gap: 0 !important;
+            }
+
+            .hamburger { display: flex !important; margin-left: auto; }
+            nav, .cta-btns { display: none !important; }
+            .mobile-nav { display: flex; }
+
+            .logo, .logo a { font-size: 1rem !important; }
+            .logo-sub, .logo-subtitle { font-size: 0.48rem !important; }
+
+            /* Hero */
+            .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
+            .hero h1, .page-hero h1 { font-size: 1.7rem !important; line-height: 1.25 !important; }
+            .hero p, .page-hero p { font-size: 0.9rem !important; }
+            .hero-actions { flex-direction: column !important; gap: 0.6rem !important; }
+            .hero-actions a { width: 100% !important; text-align: center !important; box-sizing: border-box; }
+            .credential-badges-bar { flex-wrap: wrap !important; gap: 0.35rem !important; padding: 0.5rem 1rem !important; }
+            .credential-badge { font-size: 0.68rem !important; padding: 0.2rem 0.55rem !important; }
+
+            /* Layout */
+            .page-body { padding: 2rem 1.1rem !important; }
+            .two-col, .three-col, .four-col,
+            .about-grid, .contact-wrapper { grid-template-columns: 1fr !important; }
+            .stats-bar { grid-template-columns: 1fr 1fr !important; }
+
+            /* Sections */
+            .section-head h2 { font-size: 1.45rem !important; }
+            .cta-band h2, .cta-section h2 { font-size: 1.45rem !important; }
+            .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
+            .cta-actions { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; }
+            .cta-actions a { text-align: center !important; }
+
+            /* About strip */
+            .about-strip { flex-direction: column !important; align-items: center !important; }
+            .about-strip-img { width: 120px !important; height: 120px !important; margin: 0 auto 1rem !important; }
+            .about-strip-text { text-align: center !important; }
+
+            /* Partners */
+            .partner-strip { flex-direction: column !important; gap: 1rem !important; }
+            .partner-link { width: 100% !important; justify-content: center !important; }
+
+            /* Forms — prevent iOS zoom */
+            input, select, textarea { font-size: 16px !important; }
+
+            /* Quote tool */
+            .quote-categories { flex-wrap: wrap !important; gap: 0.5rem !important; }
+            .cat-btn { font-size: 0.8rem !important; }
+            .sub-options { flex-wrap: wrap !important; }
+
+            /* FAQ */
+            .faq-q { font-size: 0.9rem !important; }
+
+            /* Footer */
+            footer > div { display: block !important; }
+            footer > div > div { margin-bottom: 1.5rem; }
+
+            /* WhatsApp float */
+            a[href*="wa.me"][style*="fixed"] {
+                bottom: 1rem !important; right: 1rem !important;
+                width: 50px !important; height: 50px !important;
+                font-size: 1.3rem !important;
+            }
+        }
+
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.4rem !important; }
-            .page-hero h1 { font-size: 1.4rem !important; }
+            .hero h1, .page-hero h1 { font-size: 1.4rem !important; }
             .stats-bar { grid-template-columns: 1fr !important; }
-            [style*="grid-template-columns:repeat"] { grid-template-columns: 1fr !important; }
         }
 </style>
 </head>
 <body>
 
     <div class="mobile-nav-overlay" id="mobileOverlay"></div>
-    <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-nav-header">
-        <div><div class="logo-text">Shivang Goyal</div><span class="logo-sub">STRUCTURAL PRECISION IN INSURANCE</span></div>
-        <button class="mobile-nav-close" id="mobileNavClose">&#x2715;</button>
+        <div class="mobile-nav-logo">
+          <div class="mnav-name">Shivang Goyal</div>
+          <span class="mnav-sub">Structural Precision in Insurance</span>
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
       <div class="mobile-nav-body">
-        <a href="index.html">🏠 Home</a>
-        <a href="about.html">👤 About Shivang</a>
-        <a href="awards.html">🏆 Credentials &amp; Reviews</a>
-        <a href="get-quotes.html">⚡ Get a Quote</a>
-        <div class="mobile-nav-section-label">Visitor &amp; Travel</div>
-        <a href="supervisa.html">🇨🇦 Super Visa Insurance</a>
-        <a href="visitors.html">✈️ Visitors to Canada</a>
-        <a href="travel.html">🌍 Travel Insurance</a>
-        <a href="student-insurance.html">🎓 Student Insurance</a>
-        <div class="mobile-nav-section-label">Life Insurance</div>
-        <a href="term-life.html">📋 Term Life</a>
-        <a href="whole-life.html">🏡 Whole Life</a>
-        <a href="universal-life.html">🔄 Universal Life</a>
-        <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
-        <div class="mobile-nav-section-label">Living Benefits</div>
-        <a href="critical-illness.html">❤️ Critical Illness</a>
-        <a href="disability.html">🛡️ Disability Insurance</a>
-        <a href="health-dental.html">🦷 Drug &amp; Dental</a>
-        <a href="estate-planning.html">📜 Estate Planning</a>
-        <a href="business-insurance.html">💼 Business Insurance</a>
-        <div class="mobile-nav-section-label">Investments</div>
-        <a href="rrsp.html">📈 RRSP</a>
-        <a href="tfsa.html">💰 TFSA</a>
-        <a href="fhsa.html">🏠 FHSA</a>
-        <a href="resp.html">🎓 RESP</a>
-        <a href="rdsp.html">♿ RDSP</a>
-        <a href="non-registered.html">📊 Non-Registered</a>
-        <a href="retirement-planning.html">🌅 Retirement Planning</a>
-        <div class="mobile-nav-section-label">More</div>
-        <a href="credit-cards.html">💳 Credit Cards</a>
-        <a href="index.html#contact">📬 Contact</a>
-        <div class="mobile-nav-cta">
-          <a href="tel:+16479955891" class="m-call">📞 Call (647) 995-5891</a>
-          <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp Me</a>
-        </div>
+        <div class="mnav-label">Main</div>
+        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
+        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
+        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
+        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Visitor &amp; Travel</div>
+        <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+        <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+        <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+        <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Life Insurance</div>
+        <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+        <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+        <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+        <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Living Benefits</div>
+        <a href="critical-illness.html"><span class="mnav-icon">❤️</span>Critical Illness</a>
+        <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+        <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+        <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+        <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">Investments</div>
+        <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+        <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+        <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+        <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+        <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+        <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+        <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+
+        <div class="mnav-divider"></div>
+        <div class="mnav-label">More</div>
+        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
+        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
+      </div>
+      <div class="mobile-nav-cta">
+        <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
+        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
       </div>
     </div>
 
@@ -1304,11 +1429,12 @@
             </div>
         </div>
         <div class="header-main">
-            <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
             <a href="index.html" class="logo">
                 Shivang Goyal
                 <div class="logo-subtitle">STRUCTURAL PRECISION IN INSURANCE</div>
             </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
             <nav>
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -1711,7 +1837,7 @@
             <h2 class="contact-title">Get Your Free Quote</h2>
             <div class="contact-wrapper">
                 <form class="contact-form" onsubmit="handleSubmit(event)">
-<input type="hidden" name="_subject" value="New enquiry — shivanggoyal.ca">
+<input type="hidden" name="_subject" value="New enquiry from shivanggoyal.ca">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
@@ -1838,17 +1964,19 @@
        onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(37,211,102,0.4)'">
         💬
     </a>
+
+    
+    
+
+    
+
+</body>
 <script>
-/* Dropdown */
 (function(){var t={};function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})})})();
-/* FAQ */
 document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open')})});
-/* Quote tool */
 function selectProduct(btn,key){document.querySelectorAll('.quote-product-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.quote-sub-options').forEach(function(d){d.classList.remove('visible')});btn.classList.add('active');var el=document.getElementById('sub-'+key);if(el)el.classList.add('visible')}
-/* Formspree */
-async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form.querySelector('button[type="submit"]');var orig=btn.textContent;btn.textContent='⏳ Sending...';btn.disabled=true;try{var r=await fetch('https://formspree.io/f/xbdzdgrn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.innerHTML='<div style="text-align:center;padding:2.5rem 1rem;"><div style="font-size:3rem;margin-bottom:1rem;">✅</div><h3 style="color:#0F1F3C;font-size:1.4rem;margin-bottom:0.7rem;">Message Sent!</h3><p style="color:#555;line-height:1.7;">Thanks for reaching out. Shivang will get back to you within a few hours.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;"><a href="tel:+16479955891" style="background:#0F1F3C;color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700;">📞 Call Shivang</a><a href="https://wa.me/16479955891" target="_blank" style="background:#25D366;color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700;">💬 WhatsApp</a></div></div>';}else{throw new Error('fail');}}catch(err){btn.textContent=orig;btn.disabled=false;alert('Something went wrong. Please call (647) 995-5891 or email shivang.goyal.financial@gmail.com');}}
-/* Mobile hamburger */
-(function(){var btn=document.getElementById('hamburger');var nav=document.getElementById('mobileNav');var ov=document.getElementById('mobileOverlay');var cl=document.getElementById('mobileNavClose');if(!btn)return;function openNav(){btn.classList.add('active');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function closeNav(){btn.classList.remove('active');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',openNav);cl.addEventListener('click',closeNav);ov.addEventListener('click',closeNav);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav);});})();
+async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form.querySelector('button[type="submit"]');var orig=btn.textContent;btn.textContent='⏳ Sending...';btn.disabled=true;try{var r=await fetch('https://formspree.io/f/xbdzdgrn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.innerHTML='<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">✅</div><h3 style="color:#0F1F3C;font-size:1.4rem;margin-bottom:.7rem">Message Sent!</h3><p style="color:#555;line-height:1.7">Thanks! Shivang will reply within a few hours.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem"><a href="tel:+16479955891" style="background:#0F1F3C;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">📞 Call Shivang</a><a href="https://wa.me/16479955891" target="_blank" style="background:#25D366;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">💬 WhatsApp</a></div></div>'}else{throw new Error()}}catch(e){btn.textContent=orig;btn.disabled=false;alert('Something went wrong. Please call (647) 995-5891')}}
+(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
 </script>
 
 </body>
