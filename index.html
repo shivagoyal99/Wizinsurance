@@ -945,21 +945,11 @@
         .testimonials-auto-track {
             display: flex;
             gap: 1.5rem;
-            animation: scroll-testimonials 35s linear infinite;
             width: max-content;
             will-change: transform;
             transform: translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-        }
-
-        .testimonials-auto-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-testimonials {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         /* ===== ABOUT STRIP ===== */
@@ -1236,7 +1226,7 @@
             .logo { font-size: 1rem !important; }
             .logo-subtitle, .logo-sub { font-size: 0.48rem !important; }
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
-            .hero h1, .page-hero h1 { font-size: 1.9rem !important; line-height: 1.2 !important; }
+            .hero h1, .page-hero h1 { font-size: 2.2rem !important; line-height: 1.2 !important; }
             .hero p, .page-hero p { font-size: 0.9rem !important; margin-bottom: 1.5rem !important; }
             .hero-actions, .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; padding: 0 !important; width: 100% !important; }
             .hero-actions > *, .hero-buttons > * { width: 100% !important; text-align: center !important; box-sizing: border-box !important; display: block !important; }
@@ -1270,7 +1260,7 @@
             .foundation-card, .coverage-card { padding: 1.5rem !important; }
             .partner-strip-inner { flex-direction: column !important; gap: 0.8rem !important; }
             input, select, textarea { font-size: 16px !important; }
-            footer > div[style*="grid"] { display: block !important; }
+            footer > div[style*="grid"] { display: flex !important; flex-direction: column !important; gap: 2rem !important; padding: 1.5rem 1.2rem !important; }
             [style*="grid-template-columns: 1fr 1fr"], [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
             a[href*="wa.me"][style*="fixed"] { bottom: 1rem !important; right: 1rem !important; width: 50px !important; height: 50px !important; font-size: 1.3rem !important; }
             .credential-badges { gap: 0.4rem !important; }
@@ -1280,7 +1270,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1, .page-hero h1 { font-size: 1.65rem !important; }
+            .hero h1, .page-hero h1 { font-size: 2.1rem !important; line-height: 1.15 !important; }
             .stat-number { font-size: 2rem !important; }
             .testimonial-card { flex: 0 0 270px !important; }
         }
@@ -1903,6 +1893,58 @@
     
 
 </body>
+<script>
+// Testimonials infinite scroll - JS-driven for reliable mobile support
+(function(){
+  var track = document.querySelector('.testimonials-auto-track');
+  if (!track) return;
+  var wrap = track.parentElement;
+  var speed = 0.5; // px per frame
+  var pos = 0;
+  var paused = false;
+  var halfWidth = 0;
+
+  function getHalfWidth() {
+    var cards = track.querySelectorAll('.testimonial-card');
+    var total = cards.length;
+    var half = Math.floor(total / 2);
+    var w = 0;
+    var gap = 24; // 1.5rem gap
+    for (var i = 0; i < half; i++) {
+      w += cards[i].offsetWidth + gap;
+    }
+    return w;
+  }
+
+  function init() {
+    halfWidth = getHalfWidth();
+    pos = 0;
+    track.style.transform = 'translateX(0px)';
+    animate();
+  }
+
+  function animate() {
+    if (!paused) {
+      pos += speed;
+      if (halfWidth > 0 && pos >= halfWidth) {
+        pos = 0;
+      }
+      track.style.transform = 'translateX(-' + pos + 'px)';
+    }
+    requestAnimationFrame(animate);
+  }
+
+  wrap.addEventListener('mouseenter', function(){ paused = true; });
+  wrap.addEventListener('mouseleave', function(){ paused = false; });
+  wrap.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
+  wrap.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 2000); }, {passive:true});
+
+  // Wait for layout
+  if (document.readyState === 'complete') { init(); }
+  else { window.addEventListener('load', init); }
+})();
+</script>
+
 <script>
 (function(){var t={};function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})})})();
 document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open')})});
