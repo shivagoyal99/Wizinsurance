@@ -231,7 +231,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: -1px;
@@ -947,6 +947,10 @@
             gap: 1.5rem;
             animation: scroll-testimonials 35s linear infinite;
             width: max-content;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .testimonials-auto-track:hover {
@@ -954,8 +958,8 @@
         }
 
         @keyframes scroll-testimonials {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         /* ===== ABOUT STRIP ===== */
@@ -1232,7 +1236,7 @@
             .logo { font-size: 1rem !important; }
             .logo-subtitle, .logo-sub { font-size: 0.48rem !important; }
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
-            .hero h1, .page-hero h1 { font-size: 1.65rem !important; line-height: 1.25 !important; }
+            .hero h1, .page-hero h1 { font-size: 1.9rem !important; line-height: 1.2 !important; }
             .hero p, .page-hero p { font-size: 0.9rem !important; margin-bottom: 1.5rem !important; }
             .hero-actions, .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; padding: 0 !important; width: 100% !important; }
             .hero-actions > *, .hero-buttons > * { width: 100% !important; text-align: center !important; box-sizing: border-box !important; display: block !important; }
@@ -1276,7 +1280,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1, .page-hero h1 { font-size: 1.35rem !important; }
+            .hero h1, .page-hero h1 { font-size: 1.65rem !important; }
             .stat-number { font-size: 2rem !important; }
             .testimonial-card { flex: 0 0 270px !important; }
         }
@@ -1349,7 +1353,7 @@
     <header>
         <div class="header-top">
             <div class="header-top-left">
-                🇨🇦 Licensed across Canada · ON · BC · AB · MB · SK · NS · PEI · NB
+                🇨🇦 Licensed in Ontario, Canada
             </div>
             <div class="header-top-right">
                 <span class="reviews-badge">⭐ 20+ Reviews</span>
@@ -1430,7 +1434,7 @@
     <section class="hero">
         <h1>Insurance Built on Solid Foundations</h1>
         <div class="hero-tagline">🏗️ Structural Precision In Every Policy</div>
-        <p>LLQP Certified. Structural Engineer. 400+ 5-star reviews. 25+ carriers compared. 50+ families protected.</p>
+        <p>LLQP Certified · Structural Engineer · Independent Advisor</p>
         <div class="hero-buttons">
             <a href="get-quotes.html" class="btn-large btn-primary">⚡ Get Instant Quotes</a>
             <a href="tel:+16479955891" class="btn-large btn-secondary">📞 Call Now</a>
@@ -1439,7 +1443,7 @@
         <div class="credential-badges">
             <span class="credential-badge">🎓 LLQP Certified</span>
             <span class="credential-badge">🏗️ Structural Engineer</span>
-            <span class="credential-badge">🇨🇦 Licensed 8 Provinces</span>
+            <span class="credential-badge">🇨🇦 Licensed in Ontario</span>
             <span class="credential-badge">⭐ 20+ Google Reviews</span>
             <span class="credential-badge">🔒 Independent Advisor</span>
         </div>
@@ -1460,8 +1464,8 @@
             <div class="stat-label">Carriers Compared</div>
         </div>
         <div class="stat">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Provinces Licensed</div>
+            <div class="stat-number">ON</div>
+            <div class="stat-label">Licensed Province</div>
         </div>
     </div>
 
@@ -1567,7 +1571,7 @@
                 <a href="rrsp.html" class="quote-sub-link">📈 RRSP / TFSA / FHSA →</a>
                 <a href="business-insurance.html" class="quote-sub-link">💼 Business Insurance →</a>
             </div>
-            <p style="text-align:center; margin-top:1.5rem; font-size:0.8rem; color:var(--text-light);">🔒 Independent · 25+ carriers compared · 8 provinces licensed</p>
+            <p style="text-align:center; margin-top:1.5rem; font-size:0.8rem; color:var(--text-light);">🔒 Independent · 25+ carriers compared · licensed in Ontario</p>
         </div>
     </section>
 
@@ -1581,7 +1585,7 @@
                 <h2>Shivang Goyal</h2>
                 <div class="tagline">MEng · Structural Engineer · Insurance Advisor · LLQP Certified</div>
                 <p>I hold a Master of Engineering and spent years as a structural engineer before entering financial services. Combined with 3 government positions — giving me thorough knowledge of Canadian benefit programs — I design protection plans with an engineer's rigour and a public servant's understanding of how the system works.</p>
-                <p>Independent advisor working with 25+ carriers across 8 provinces. You reach me directly — not a call centre.</p>
+                <p>Independent advisor working with 25+ carriers in Ontario. You reach me directly — not a call centre.</p>
                 <a href="about.html" class="about-cta">Read my full story →</a>
             </div>
         </div>
@@ -1810,7 +1814,7 @@
                     </div>
                     <div class="contact-item">
                         <strong>📍 Service Area</strong>
-                        <p>Ontario (Primary)<br>Licensed across Canada</p>
+                        <p>Ontario (Primary)<br>Licensed in Ontario</p>
                     </div>
                     <div class="contact-item">
                         <strong>⏰ Hours</strong>
@@ -1839,7 +1843,7 @@
           MEng · Structural Engineer<br>
           📞 <a href="tel:+16479955891" style="color:rgba(255,255,255,0.7)">(647) 995-5891</a><br>
                     ✉️ <a href="mailto:shivang.goyal.financial@gmail.com" style="color:rgba(255,255,255,0.7)">shivang.goyal.financial@gmail.com</a><br>
-                    📍 Ontario (Primary) · Licensed 8 Provinces
+                    📍 Ontario (Primary) · Licensed in Ontario
                 </div>
             </div>
             <div>
@@ -1877,7 +1881,7 @@
             </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6);font-size:0.8rem;">
-            <p>&copy; 2024 Shivang Goyal | Insurance & Financial Solutions | Built with Structural Precision</p>
+            <p>&copy; 2025 Shivang Goyal | Insurance & Financial Solutions | Built with Structural Precision</p>
             <p style="margin-top:0.3rem;"><a href="privacy-policy.html" style="color:rgba(255,255,255,0.6)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.6)">Terms of Service</a></p>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;margin-top:0.5rem;text-align:center;color:rgba(255,255,255,0.45);font-size:0.72rem;line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto;">
