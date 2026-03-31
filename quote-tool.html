@@ -1430,7 +1430,32 @@
   .vdm-btn-contact:hover { background: #f0f4ff; }
   footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
   footer a:hover { color: white; }
-</style>
+
+        /* ===== Mobile Nav Accordion ===== */
+        .mnav-accordion { border-left: 2px solid transparent; }
+        .mnav-acc-toggle {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 1.3rem; min-height: 44px;
+            color: rgba(255,255,255,0.82); cursor: pointer;
+            font-size: 0.9rem; font-weight: 500;
+            transition: background 0.12s, color 0.12s;
+            user-select: none;
+        }
+        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06); color: white; }
+        .mnav-acc-toggle.open { color: white; border-left-color: #E63946; background: rgba(255,255,255,0.04); }
+        .mnav-acc-arrow {
+            font-size: 1.1rem; color: rgba(255,255,255,0.4);
+            transition: transform 0.2s; display: inline-block;
+        }
+        .mnav-acc-toggle.open .mnav-acc-arrow { transform: rotate(90deg); color: #E63946; }
+        .mnav-acc-items { display: none; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items a {
+            padding-left: 2.2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .mnav-acc-items a:hover { color: white; }
+        </style>
     <style>
         /* === HEADER STYLES (synced from index.html) === */
         /* ===== HEADER ===== */
@@ -1827,36 +1852,70 @@
         <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
         <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
         <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
+
         <div class="mnav-divider"></div>
-        <div class="mnav-label">Visitor &amp; Travel</div>
-        <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
-        <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
-        <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
-        <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+
+        <!-- Accordion: Visitor & Travel -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">✈️</span>Visitor &amp; Travel</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+            <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+            <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+            <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Life Insurance -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">🛡️</span>Life Insurance</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+            <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+            <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+            <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Living Benefits -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">❤️</span>Living Benefits</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="critical-illness.html"><span class="mnav-icon">❤️</span>Critical Illness</a>
+            <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+            <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+            <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+            <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Investments -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">📈</span>Investments</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+            <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+            <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+            <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+            <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+            <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+            <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+          </div>
+        </div>
+
         <div class="mnav-divider"></div>
-        <div class="mnav-label">Life Insurance</div>
-        <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
-        <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
-        <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
-        <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
-        <div class="mnav-divider"></div>
-        <div class="mnav-label">Living Benefits</div>
-        <a href="critical-illness.html"><span class="mnav-icon">❤️</span>Critical Illness</a>
-        <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
-        <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
-        <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
-        <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
-        <div class="mnav-divider"></div>
-        <div class="mnav-label">Investments</div>
-        <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
-        <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
-        <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
-        <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
-        <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
-        <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
-        <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
-        <div class="mnav-divider"></div>
-        <div class="mnav-label">More</div>
         <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
         <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
       </div>
@@ -5441,6 +5500,25 @@ function showToast(msg) {
     const styles = Array.from(document.querySelectorAll('style')).map(s => s.outerHTML).join('\n');
     const linkTags = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.outerHTML).join('\n');
     const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${linkTags}${styles}<style>body{margin:0;}.cmp-back-btn,.cmp-header-actions,.compare-bar{display:none!important;}#compare-page{display:block!important;position:relative;overflow:visible;}</style></head><body>${cmpPage.outerHTML}
+  <script>
+  // Mobile nav accordion
+  document.querySelectorAll('.mnav-acc-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var items = this.nextElementSibling;
+      var isOpen = this.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) {
+        t.classList.remove('open');
+        t.nextElementSibling.style.display = 'none';
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        this.classList.add('open');
+        items.style.display = 'block';
+      }
+    });
+  });
+  </script>
 </body></html>`;
     const blob = new Blob([html], { type: 'text/html' });
     const blobUrl = URL.createObjectURL(blob);
