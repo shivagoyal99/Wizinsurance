@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Shivang Goyal is an LLQP-certified independent insurance advisor in Ontario with an MEng background. Serving clients across Ontario with life, visitor, and health insurance solutions.">
+    <meta name="keywords" content="Shivang Goyal insurance advisor, LLQP certified Ontario, independent insurance advisor Ontario, about insurance advisor, insurance broker Ontario">
+    <link rel="canonical" href="https://www.wizinsurance.ca/about.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wizinsurance.ca/about.html">
+    <meta property="og:title" content="About Shivang Goyal | LLQP-Certified Insurance Advisor Ontario">
+    <meta property="og:description" content="Shivang Goyal is an LLQP-certified independent insurance advisor in Ontario with an MEng background. Serving clients across Ontario with life, visitor, and health insurance solutions.">
+    <meta property="og:image" content="https://www.wizinsurance.ca/og-image.jpg">
+    <meta property="og:site_name" content="Shivang Goyal Insurance">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Shivang Goyal | LLQP-Certified Insurance Advisor Ontario">
+    <meta name="twitter:description" content="Shivang Goyal is an LLQP-certified independent insurance advisor in Ontario with an MEng background. Serving clients across Ontario with life, visitor, and health insurance solutions.">
+    <meta name="twitter:image" content="https://www.wizinsurance.ca/og-image.jpg">
     <title>About Shivang Goyal | Insurance Advisor & MEng Graduate</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,6 +51,7 @@
         .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
         .dropdown-menu { display: none; position: absolute; background: white; min-width: 260px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-radius: 6px; top: 100%; left: 0; margin-top: 0.8rem; border: 1px solid var(--border); z-index: 1001; overflow: hidden; }
         .dropdown.open .dropdown-menu { display: block; }
+        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-section { padding-top: 0.5rem; }
         .dropdown-section:first-child { padding-top: 0.8rem; }
         .dropdown-section-title { padding: 0.5rem 1.2rem 0.3rem; font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
@@ -400,9 +417,11 @@
             left: 0;
             border: 1px solid var(--border);
             z-index: 9999;
-            /* NO overflow:hidden — it clips the shadow and causes issues */
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
         .dropdown.open .dropdown-menu { display: block; }
+        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-section { padding: 0.5rem 0; }
         .dropdown-section:first-child { padding-top: 0.8rem; }
         .dropdown-section-title {
@@ -653,6 +672,34 @@
             .testimonial-card { flex: 0 0 270px !important; }
         }
     </style>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://www.wizinsurance.ca/about.html",
+  "name": "About Shivang Goyal",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Shivang Goyal",
+    "jobTitle": "Licensed Insurance Advisor",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "LLQP – Life License Qualification Program"
+    },
+    "url": "https://www.wizinsurance.ca",
+    "telephone": "+16479955891",
+    "email": "shivang.goyal.financial@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "ON",
+      "addressCountry": "CA"
+    },
+    "sameAs": [
+      "https://www.instagram.com/thefinwiz.ca"
+    ]
+  }
+}
+    </script>
 </head>
 <body>
 

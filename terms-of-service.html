@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Read the terms of service for wizinsurance.ca — the insurance advisor website of Shivang Goyal, LLQP-certified advisor in Ontario.">
+    <meta name="keywords" content="terms of service insurance website, Shivang Goyal terms">
+    <link rel="canonical" href="https://www.wizinsurance.ca/terms-of-service.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wizinsurance.ca/terms-of-service.html">
+    <meta property="og:title" content="Terms of Service | Shivang Goyal Insurance">
+    <meta property="og:description" content="Read the terms of service for wizinsurance.ca — the insurance advisor website of Shivang Goyal, LLQP-certified advisor in Ontario.">
+    <meta property="og:image" content="https://www.wizinsurance.ca/og-image.jpg">
+    <meta property="og:site_name" content="Shivang Goyal Insurance">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service | Shivang Goyal Insurance">
+    <meta name="twitter:description" content="Read the terms of service for wizinsurance.ca — the insurance advisor website of Shivang Goyal, LLQP-certified advisor in Ontario.">
+    <meta name="twitter:image" content="https://www.wizinsurance.ca/og-image.jpg">
 <title>Terms of Service | Shivang Goyal Insurance</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -346,9 +362,11 @@ footer a:hover{color:white}
             left: 0;
             border: 1px solid var(--border);
             z-index: 9999;
-            /* NO overflow:hidden — it clips the shadow and causes issues */
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
         .dropdown.open .dropdown-menu { display: block; }
+        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-section { padding: 0.5rem 0; }
         .dropdown-section:first-child { padding-top: 0.8rem; }
         .dropdown-section-title {

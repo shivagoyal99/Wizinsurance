@@ -6,7 +6,64 @@
     <title>Insurance & Financial Solutions Canada | Compare Quotes Online | Shivang Goyal</title>
     <meta name="description" content="Compare Life, Visitor, Travel & Health Insurance quotes from 25+ Canadian insurers. Shivang Goyal is an LLQP-certified independent advisor in Ontario. Fast approvals, best rates guaranteed.">
     <meta name="keywords" content="super visa insurance Canada, visitors to Canada insurance, life insurance Ontario, travel insurance Canada, LLQP advisor Ontario, independent insurance advisor">
-    <link rel="canonical" href="https://wizinsurance.ca/">
+    <link rel="canonical" href="https://www.wizinsurance.ca/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wizinsurance.ca/">
+    <meta property="og:title" content="Compare Insurance Quotes Online | Shivang Goyal">
+    <meta property="og:description" content="Compare Life, Visitor, Travel & Health Insurance quotes from 25+ Canadian insurers. LLQP-certified independent advisor in Ontario. Fast approvals, best rates.">
+    <meta property="og:image" content="https://www.wizinsurance.ca/og-image.jpg">
+    <meta property="og:site_name" content="Shivang Goyal Insurance">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.wizinsurance.ca/">
+    <meta name="twitter:title" content="Compare Insurance Quotes Online | Shivang Goyal">
+    <meta name="twitter:description" content="Compare Life, Visitor, Travel & Health Insurance from 25+ Canadian insurers. LLQP-certified advisor in Ontario.">
+    <meta name="twitter:image" content="https://www.wizinsurance.ca/og-image.jpg">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "InsuranceAgency",
+          "@id": "https://www.wizinsurance.ca/#business",
+          "name": "Shivang Goyal Insurance",
+          "url": "https://www.wizinsurance.ca/",
+          "logo": "https://www.wizinsurance.ca/og-image.jpg",
+          "description": "LLQP-certified independent insurance advisor in Ontario. Compare 25+ carriers for life, visitor, travel, and health insurance.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Ontario",
+            "addressCountry": "CA"
+          },
+          "areaServed": "Canada",
+          "serviceType": ["Life Insurance", "Visitor Insurance", "Travel Insurance", "Health Insurance", "Super Visa Insurance"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.wizinsurance.ca/#website",
+          "url": "https://www.wizinsurance.ca/",
+          "name": "Shivang Goyal Insurance",
+          "publisher": {"@id": "https://www.wizinsurance.ca/#business"},
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.wizinsurance.ca/get-quotes.html?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.wizinsurance.ca/#webpage",
+          "url": "https://www.wizinsurance.ca/",
+          "name": "Compare Insurance Quotes Online | Shivang Goyal",
+          "isPartOf": {"@id": "https://www.wizinsurance.ca/#website"},
+          "about": {"@id": "https://www.wizinsurance.ca/#business"},
+          "description": "Compare Life, Visitor, Travel & Health Insurance quotes from 25+ Canadian insurers."
+        }
+      ]
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -157,9 +214,11 @@
             left: 0;
             border: 1px solid var(--border);
             z-index: 9999;
-            /* NO overflow:hidden — it clips the shadow and causes issues */
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
         .dropdown.open .dropdown-menu { display: block; }
+        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-section { padding: 0.5rem 0; }
         .dropdown-section:first-child { padding-top: 0.8rem; }
         .dropdown-section-title {
@@ -717,7 +776,6 @@
         }
 
         /* ===== CARRIERS ===== */
-
 
         /* ===== CARRIERS SECTION ===== */
         .carriers-section {
@@ -1759,32 +1817,12 @@
         <div style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0.6rem 2rem;justify-content:center;align-items:center;">
             <span style="font-size:0.9rem;color:var(--text);"><span style="color:var(--accent);font-weight:700;">✓</span> Independent — your interests first</span>
             <span style="font-size:0.9rem;color:var(--text);"><span style="color:var(--accent);font-weight:700;">✓</span> One advisor, direct and accessible</span>
-            <span style="font-size:0.9rem;color:var(--text);"><span style="color:var(--accent);font-weight:700;">✓</span> Coverage matched to your life</span>
-            <span style="font-size:0.9rem;color:var(--text);"><span style="color:var(--accent);font-weight:700;">✓</span> Fast quotes and ongoing support</span>
+                        <span style="font-size:0.9rem;color:var(--text);"><span style="color:var(--accent);font-weight:700;">✓</span> Fast quotes and ongoing support</span>
         </div>
     </div>
 
     <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="stat">
-            <div class="stat-number">20+</div>
-            <div class="stat-label">★★★★★ Google Reviews</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Families Protected</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">25+</div>
-            <div class="stat-label">Carriers Compared</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">ON</div>
-            <div class="stat-label">Licensed Province</div>
-        </div>
-    </div>
-
-
+    
 
 
     <!-- Carriers Section -->
@@ -1868,55 +1906,27 @@
         </div>
     </section>
 
-    <!-- Coverage Section -->
-    <section class="coverage-section">
-        <h2 class="coverage-title">One Advisor. Every Protection Need.</h2>
-        <p class="coverage-subtitle">From visitor insurance to life & wealth planning — I compare 25+ carriers so you get the best coverage at the best price.</p>
-        <div class="coverage-grid">
-
-            <div class="coverage-card">
-                <div class="coverage-card-header">
-                    <span class="coverage-card-icon">✈️</span>
-                    <h3>Visitor & Travel</h3>
-                </div>
-                <p class="coverage-card-desc">Coverage for parents, visitors, students, and travellers coming to or leaving Canada. Fast approvals, competitive rates.</p>
-                <div class="coverage-card-links">
-                    <a href="supervisa.html">Super Visa Insurance</a>
-                    <a href="visitors.html">Visitors to Canada</a>
-                    <a href="travel.html">Travel Insurance</a>
-                    <a href="student-insurance.html">International Student</a>
-                </div>
-            </div>
-
-            <div class="coverage-card">
-                <div class="coverage-card-header">
-                    <span class="coverage-card-icon">🛡️</span>
-                    <h3>Life & Health</h3>
-                </div>
-                <p class="coverage-card-desc">Protect your income, your health, and your family. Tailored coverage for every stage of life.</p>
-                <div class="coverage-card-links">
-                    <a href="term-life.html">Term Life Insurance</a>
-                    <a href="critical-illness.html">Critical Illness</a>
-                    <a href="disability.html">Disability Insurance</a>
-                    <a href="health-dental.html">Drug & Dental</a>
-                </div>
-            </div>
-
-            <div class="coverage-card">
-                <div class="coverage-card-header">
-                    <span class="coverage-card-icon">📈</span>
-                    <h3>Wealth & Business</h3>
-                </div>
-                <p class="coverage-card-desc">Build and protect your wealth with smart investment strategies, estate planning, and business coverage.</p>
-                <div class="coverage-card-links">
-                    <a href="rrsp.html">Investments & RESP</a>
-                    <a href="estate-planning.html">Estate Planning</a>
-                    <a href="business-insurance.html">Business Insurance</a>
-                </div>
-            </div>
-
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">★★★★★ Google Reviews</div>
         </div>
-    </section>
+        <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Families Protected</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Carriers Compared</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">ON</div>
+            <div class="stat-label">Licensed Province</div>
+        </div>
+    </div>
+
+    
 
     <!-- Credit Card Strip -->
     <div style="background: linear-gradient(135deg, #1a3a5c 0%, #0F1F3C 100%); padding: 1.2rem 2rem;">
@@ -2210,7 +2220,6 @@
   else { window.addEventListener('load', init); }
 })();
 </script>
-
 
 <script>
 (function(){var t={};function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})})})();
