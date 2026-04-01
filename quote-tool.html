@@ -370,7 +370,7 @@
   }
   .tooltip-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 12.5px; }
   .tooltip-box a { color: var(--navy); font-weight: 700; text-decoration: underline; }
-  .tooltip-trigger:hover .tooltip-box { display: block; }
+  .tooltip-trigger:hover .tooltip-box, .tooltip-trigger.active .tooltip-box { display: block; }
   .pre-radio-group {
     display: flex;
     gap: 20px;
@@ -615,6 +615,18 @@
     margin: 2px 0;
   }
   .card-deductible strong { font-weight: 700; }
+  .card-assoc-badge {
+    font-size: 10px;
+    background: #fff7e6;
+    color: #b45309;
+    border: 1px solid #fcd34d;
+    border-radius: 20px;
+    padding: 3px 8px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1.4;
+    text-align: center;
+  }
   .card-rate-badge {
     display: inline-block;
     font-size: 9px;
@@ -1434,27 +1446,27 @@
         /* ===== Mobile Nav Accordion ===== */
         .mnav-accordion { border-left: 2px solid transparent; }
         .mnav-acc-toggle {
-            display: flex; align-items: center; justify-content: space-between;
+            display: flex !important; align-items: center; justify-content: space-between;
             padding: 0.75rem 1.3rem; min-height: 44px;
             color: rgba(255,255,255,0.82); cursor: pointer;
             font-size: 0.9rem; font-weight: 500;
             transition: background 0.12s, color 0.12s;
-            user-select: none;
+            user-select: none; border-left: 2px solid transparent;
         }
-        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06); color: white; }
-        .mnav-acc-toggle.open { color: white; border-left-color: #E63946; background: rgba(255,255,255,0.04); }
+        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06) !important; color: white !important; }
+        .mnav-acc-toggle.open { color: white !important; border-left-color: #E63946 !important; background: rgba(255,255,255,0.04) !important; }
         .mnav-acc-arrow {
             font-size: 1.1rem; color: rgba(255,255,255,0.4);
             transition: transform 0.2s; display: inline-block;
         }
         .mnav-acc-toggle.open .mnav-acc-arrow { transform: rotate(90deg); color: #E63946; }
-        .mnav-acc-items { display: none; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items { display: none !important; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items.open { display: block !important; }
         .mnav-acc-items a {
-            padding-left: 2.2rem;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
+            display: flex !important; padding-left: 2.2rem !important;
+            font-size: 0.85rem; color: rgba(255,255,255,0.7) !important;
         }
-        .mnav-acc-items a:hover { color: white; }
+        .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
         </style>
     <style>
         /* === HEADER STYLES (synced from index.html) === */
@@ -2541,18 +2553,18 @@
     '2visit-std':       [0, 100, 250, 500, 1000],
     '2visit-enh':       [0, 100, 250, 500, 1000],
     'jf-vtc':           [0, 100, 500, 1000, 2500, 3000],
-    '21c-basic':        [0, 100, 250, 500, 1000, 2500, 5000, 10000],
-    '21c-std':          [0, 100, 250, 500, 1000, 2500, 5000, 10000],
-    '21c-prem':         [0, 100, 250, 500, 1000, 2500, 5000, 10000],
+    '21c-basic':        [0, 100, 250, 500, 1000, 5000, 10000],
+    '21c-std':          [0, 100, 250, 500, 1000, 5000, 10000],
+    '21c-prem':         [0, 100, 250, 500, 1000, 5000, 10000],
     'travelshield-std': [0, 100, 250, 500, 1000],
-    'discover-std':     [0, 100, 250, 500, 1000],
-    'destination-std':  [0, 100, 250, 500, 1000],
+    'discover-std':     [0, 100, 250, 500, 1000, 3000, 5000, 10000, 25000],
+    'destination-std':  [0, 250, 500, 1000, 2500, 5000, 10000],
     'travelance-ess':   [0, 100, 250, 500, 1000],
     'travelance-pre':   [0, 100, 250, 500, 1000],
-    'gms-std':          [0, 100, 250, 500, 1000],
-    'manulife':         [0, 100, 250, 500, 1000],
+    'gms-std':          [0, 100, 500, 1000],
+    'manulife':         [0, 75, 500, 1000, 2500, 5000],
     'tugo-std':         [0, 100, 250, 500, 1000],
-    'allianz':          [0, 500, 1000],
+    'allianz':          [0, 500],
     'bluecross':        [0, 100, 250, 500, 1000],
   };
 
@@ -2575,7 +2587,7 @@
       { id: 'gms-std',        name: 'GMS',                plan: 'Visitors Plan',     mult: 1.10, dedDisc: true,  contracted: false, link: '' },
       { id: '21c-prem',       name: '21st Century',       plan: 'Enhanced Plan',     mult: 1.18, dedDisc: true,  contracted: true,  link: 'https://www.21stcenturytips.com?broker=IBR125-shgo' },
       { id: 'travelance-pre', name: 'Travelance',         plan: 'Premier Plan',      mult: 1.20, dedDisc: true,  contracted: false, link: '' },
-      { id: 'manulife',       name: 'Manulife',           plan: 'CoverMe Travel',    mult: 1.24, dedDisc: true,  contracted: false, link: '' },
+      { id: 'manulife',       name: 'Manulife',           plan: 'Visitors Plan',     mult: 1.24, dedDisc: true,  contracted: false, link: '' },
       { id: 'tugo-std',       name: 'TuGo',               plan: 'Standard Plan',     mult: 1.27, dedDisc: true,  contracted: false, link: '' },
       { id: 'allianz',        name: 'Allianz',            plan: 'Global Plan',       mult: 1.32, dedDisc: false, contracted: false, link: '' },
       { id: 'bluecross',      name: 'Blue Cross',         plan: 'Travel Plan',       mult: 1.33, dedDisc: true,  contracted: false, link: '' },
@@ -2598,7 +2610,7 @@
       { id: 'gms-std',        name: 'GMS',                plan: 'Visitors Plan',     mult: 1.10, dedDisc: true,  contracted: false, link: '' },
       { id: '21c-prem',       name: '21st Century',       plan: 'Enhanced Plan',     mult: 1.18, dedDisc: true,  contracted: true,  link: 'https://www.21stcenturytips.com?broker=IBR125-shgo' },
       { id: 'travelance-pre', name: 'Travelance',         plan: 'Premier Plan',      mult: 1.20, dedDisc: true,  contracted: false, link: '' },
-      { id: 'manulife',       name: 'Manulife',           plan: 'CoverMe Travel',    mult: 1.24, dedDisc: true,  contracted: false, link: '' },
+      { id: 'manulife',       name: 'Manulife',           plan: 'Visitors Plan',     mult: 1.24, dedDisc: true,  contracted: false, link: '' },
       { id: 'tugo-std',       name: 'TuGo',               plan: 'Standard Plan',     mult: 1.27, dedDisc: true,  contracted: false, link: '' },
       { id: 'allianz',        name: 'Allianz',            plan: 'Global Plan',       mult: 1.32, dedDisc: false, contracted: false, link: '' },
       { id: 'bluecross',      name: 'Blue Cross',         plan: 'Travel Plan',       mult: 1.33, dedDisc: true,  contracted: false, link: '' },
@@ -2677,6 +2689,277 @@
   };
   var TRUSTONE_COV_COLS = [10000, 25000, 50000, 100000, 150000, 200000];
   // Deductible savings: $100=5%, $250=10%, $500=15%, $1000=20%, $5000=30%, $10000=40%
+
+  // ── MANULIFE EXACT RATE TABLES ──────────────────────────────────────────────
+  // Daily rates per person (base deductible = $75)
+  // Columns: [maxAge, $15k, $25k, $50k, $100k, $150k]
+  var MANULIFE_DAILY = {
+    noPreEx: [
+      [25,  2.21, 2.28, 2.63, 3.35, 4.62],
+      [34,  2.25, 2.44, 2.82, 3.62, 4.93],
+      [39,  2.35, 2.57, 2.95, 3.79, 5.71],
+      [54,  2.70, 2.95, 3.26, 4.76, 6.67],
+      [59,  3.05, 3.10, 3.68, 5.14, 7.14],
+      [64,  3.50, 3.90, 4.57, 6.00, 7.62],
+      [69,  3.95, 4.76, 5.24, 6.82, 9.52],
+      [74,  5.60, 6.67, 7.90, 9.92, null],
+      [79,  6.67, 8.47, 10.14, 12.87, null],
+      [85,  8.95, 10.56, 11.43, 13.10, null],
+    ],
+    preEx: [
+      [25,  2.43, 2.51, 2.97, 3.69, 5.08],
+      [34,  2.48, 2.68, 3.10, 3.98, 5.42],
+      [39,  2.59, 2.83, 3.25, 4.17, 6.28],
+      [54,  2.97, 3.25, 3.59, 5.24, 7.34],
+      [59,  3.36, 3.41, 4.05, 5.65, 7.85],
+      [64,  3.85, 4.29, 5.03, 6.60, 8.38],
+      [69,  4.35, 5.24, 5.76, 7.50, 10.47],
+      [74,  6.16, 7.34, 8.69, 10.91, null],
+      [79,  7.34, 9.32, 11.15, 14.16, null],
+      [85,  9.85, 11.62, 12.57, 14.41, null],
+    ],
+  };
+  var MANULIFE_COV_COLS = [15000, 25000, 50000, 100000, 150000];
+  // Deductible adjustments relative to $75 base
+  // $0 = +5% surcharge, $75 = base, $500 = -15%, $1000 = -20%, $2500 = -25%, $5000 = -35%
+  var MANULIFE_DED_FACTOR = { 0: 1.05, 75: 1.00, 500: 0.85, 1000: 0.80, 2500: 0.75, 5000: 0.65 };
+
+  function manulifePrice(age, coverage, days, preexisting, deductible) {
+    if (age > 85) return null; // not available over 85
+    const table = (preexisting) ? MANULIFE_DAILY.preEx : MANULIFE_DAILY.noPreEx;
+    const row = table.find(r => age <= r[0]);
+    if (!row) return null;
+
+    // Find coverage columns to interpolate
+    const cols = MANULIFE_COV_COLS;
+    let dailyRate;
+    const colIdx = cols.findIndex(c => c === coverage);
+    if (colIdx !== -1) {
+      if (row[colIdx + 1] === null) return null; // not available
+      dailyRate = row[colIdx + 1];
+    } else {
+      // Interpolate between nearest available columns
+      const lower = cols.filter((c, i) => c <= coverage && row[i + 1] !== null).pop();
+      const upper = cols.filter((c, i) => c >= coverage && row[i + 1] !== null)[0];
+      if (lower === undefined || upper === undefined) return null;
+      if (lower === upper) {
+        const i = cols.indexOf(lower);
+        dailyRate = row[i + 1];
+      } else {
+        const lI = cols.indexOf(lower), uI = cols.indexOf(upper);
+        const frac = (coverage - lower) / (upper - lower);
+        dailyRate = row[lI + 1] + frac * (row[uI + 1] - row[lI + 1]);
+      }
+    }
+
+    // Apply deductible factor (default $75 if unknown)
+    const dedFactor = MANULIFE_DED_FACTOR[deductible] ?? MANULIFE_DED_FACTOR[75];
+    const effectiveDays = Math.min(days, 365);
+    return dailyRate * effectiveDays * dedFactor;
+  }
+
+
+  // ── ALLIANZ EXACT RATE TABLES ────────────────────────────────────────────────
+  // Single Plan Daily Rates – $0 deductible (ages 0-89)
+  // Columns: [maxAge, $25k, $50k, $100k, $500k]
+  var ALLIANZ_DAILY = [
+    [25,  2.34,  2.69,  3.41,  7.73],
+    [34,  2.52,  2.87,  3.76,  8.49],
+    [39,  2.69,  3.00,  3.90,  9.08],
+    [54,  3.01,  3.41,  4.97, 11.15],
+    [59,  3.72,  4.19,  6.05, 11.71],
+    [64,  4.92,  5.77,  7.14, 13.21],
+    [69,  7.07,  8.84, 10.71, 15.69],
+    [74, 12.46, 14.80, 18.59, 36.42],
+    [79, 16.62, 20.90, 25.26, 47.91],
+    [84, 22.60, 28.64, 36.24, 68.72],
+    [89, 63.72, 80.79,102.21,226.92],
+  ];
+  var ALLIANZ_COV_COLS = [25000, 50000, 100000, 500000];
+  // Only $0 (base) and $500 (15% off) deductibles
+  var ALLIANZ_DED_FACTOR = { 0: 1.00, 500: 0.85 };
+
+  function allianzPrice(age, coverage, days, preexisting, deductible) {
+    if (age > 89) return null;
+    const row = ALLIANZ_DAILY.find(r => age <= r[0]);
+    if (!row) return null;
+    const cols = ALLIANZ_COV_COLS;
+    let dailyRate;
+    const colIdx = cols.findIndex(c => c === coverage);
+    if (colIdx !== -1) {
+      dailyRate = row[colIdx + 1];
+    } else {
+      const avail = cols.filter(c => c >= 25000);
+      const lower = avail.filter(c => c <= coverage).pop() || avail[0];
+      const upper = avail.filter(c => c >= coverage)[0] || avail[avail.length - 1];
+      if (lower === upper) { dailyRate = row[cols.indexOf(lower) + 1]; }
+      else {
+        const lI = cols.indexOf(lower), uI = cols.indexOf(upper);
+        const frac = (coverage - lower) / (upper - lower);
+        dailyRate = row[lI + 1] + frac * (row[uI + 1] - row[lI + 1]);
+      }
+    }
+    const dedFactor = ALLIANZ_DED_FACTOR[deductible] ?? 1.00;
+    return dailyRate * Math.min(days, 365) * dedFactor;
+  }
+
+  // ── DESTINATION CANADA EXACT RATE TABLES ─────────────────────────────────────
+  // Option 1 = Pre-existing, Option 2 = No Pre-existing. Daily rates $0 deductible.
+  // Columns: [maxAge, $25k, $50k, $100k, $150k, $200k, $300k]
+  var DEST_DAILY = {
+    preEx: [
+      [25,  2.30, 2.64,  3.36,  4.12,  5.01,  6.78],
+      [40,  2.52, 2.74,  3.56,  4.62,  5.49,  7.24],
+      [60,  2.96, 3.15,  4.48,  6.05,  7.14,  9.32],
+      [64,  3.95, 4.45,  5.04,  7.04,  8.16, 10.38],
+      [69,  5.11, 5.68,  7.19,  9.08, 10.16, 12.30],
+      [74,  7.60, 9.06, 11.45, 14.08, 15.74, 19.06],
+      [79,  9.34,11.60, 14.20, 17.42, 20.34, 26.18],
+      // 80+ not available for Option 1
+    ],
+    noPreEx: [
+      [25,  1.74,  1.91,  2.57,  3.06,  3.69,  4.96],
+      [40,  2.03,  2.21,  3.16,  3.96,  4.69,  6.14],
+      [60,  2.44,  2.80,  3.98,  4.98,  5.80,  7.46],
+      [64,  3.10,  3.72,  4.45,  5.53,  6.34,  7.95],
+      [69,  3.47,  4.13,  5.70,  6.40,  7.41,  9.42],
+      [74,  4.83,  6.92,  7.84,  9.62, 11.03, 13.84],
+      [79,  5.70,  8.04,  9.73, 11.00, 12.67, 16.01],
+      [85, 10.35, 11.14,  null,  null,  null,  null],
+      [999,15.95,  null,  null,  null,  null,  null], // 86+ $500 ded required
+    ],
+  };
+  var DEST_COV_COLS = [25000, 50000, 100000, 150000, 200000, 300000];
+  var DEST_DED_FACTOR = { 0: 1.00, 250: 0.90, 500: 0.85, 1000: 0.80, 2500: 0.70, 5000: 0.65, 10000: 0.60 };
+
+  function destinationPrice(age, coverage, days, preexisting, deductible) {
+    const table = preexisting ? DEST_DAILY.preEx : DEST_DAILY.noPreEx;
+    const row = table.find(r => age <= r[0]);
+    if (!row) return null;
+    // Age 86+ requires $500 min deductible (no pre-ex only)
+    if (age >= 86 && !preexisting && deductible < 500) deductible = 500;
+    const cols = DEST_COV_COLS;
+    let dailyRate;
+    const colIdx = cols.findIndex(c => c === coverage);
+    if (colIdx !== -1) {
+      if (row[colIdx + 1] === null) return null;
+      dailyRate = row[colIdx + 1];
+    } else {
+      const avail = cols.filter((c, i) => row[i + 1] !== null);
+      const lower = avail.filter(c => c <= coverage).pop() || avail[0];
+      const upper = avail.filter(c => c >= coverage)[0] || avail[avail.length - 1];
+      if (!lower || !upper) return null;
+      if (lower === upper) { dailyRate = row[cols.indexOf(lower) + 1]; }
+      else {
+        const lI = cols.indexOf(lower), uI = cols.indexOf(upper);
+        if (row[lI+1] === null || row[uI+1] === null) return null;
+        const frac = (coverage - lower) / (upper - lower);
+        dailyRate = row[lI + 1] + frac * (row[uI + 1] - row[lI + 1]);
+      }
+    }
+    const dedFactor = DEST_DED_FACTOR[deductible] ?? 1.00;
+    return dailyRate * Math.min(days, 365) * dedFactor;
+  }
+
+  // ── DISCOVER CANADA EXACT RATE TABLES ────────────────────────────────────────
+  // MSH Americas Essential Option (2025). Columns: [$50k,$100k,$150k,$300k,$500k,$1M]
+  var DISC_DAILY = {
+    noPreEx: [
+      [25,  2.44, 3.17, 4.02,  4.18,  4.34,  4.91],
+      [35,  2.51, 3.26, 4.14,  4.31,  4.48,  5.06],
+      [40,  2.55, 3.32, 4.21,  4.38,  4.55,  5.14],
+      [55,  2.76, 3.58, 4.55,  4.73,  4.91,  5.54],
+      [60,  2.96, 3.84, 4.88,  5.07,  5.27,  5.95],
+      [65,  2.99, 3.87, 4.92,  5.12,  5.31,  6.01],
+      [70,  3.61, 4.69, 5.95,  6.19,  6.43,  7.26],
+      [75,  5.72, 7.43, 9.44,  9.82, 10.20, 11.52],
+      [80,  6.50, 8.45,10.73, 11.15, 11.58, 13.09],
+    ],
+    preEx: [
+      [25,  3.64,  4.27,  5.29,  5.70,  5.96,  6.12],
+      [35,  4.43,  5.10,  6.22,  6.66,  6.94,  7.11],
+      [40,  4.32,  5.00,  6.13,  6.58,  6.87,  7.05],
+      [55,  4.28,  5.10,  6.45,  6.99,  7.33,  7.54],
+      [60,  4.18,  5.14,  6.72,  7.36,  7.76,  8.00],
+      [65,  5.02,  6.19,  8.11,  8.88,  9.37,  9.67],
+      [70,  5.87,  7.25,  9.51, 10.41, 10.98, 11.33],
+      [75,  9.71, 12.02, 15.81, 17.31, 18.30, 18.65],
+      [80, 14.04, 17.42, 22.95, 25.17, 26.58, 27.20],
+    ],
+  };
+  var DISC_COV_COLS = [50000, 100000, 150000, 300000, 500000, 1000000];
+  // Age 0-70: $0 base; Age 71+: $500 base; Age 50+ requires min $500 deductible
+  var DISC_DED_YOUNG  = { 0:1.00, 100:0.95, 250:0.90, 500:0.85, 1000:0.80, 3000:0.70, 5000:0.65, 10000:0.60, 25000:0.55 };
+  var DISC_DED_SENIOR = { 500:1.00, 1000:0.85, 3000:0.75, 5000:0.70, 10000:0.65, 25000:0.60 };
+
+  function discoverPrice(age, coverage, days, preexisting, deductible) {
+    if (age > 80) return null;
+    // Age 50+ minimum $500 deductible
+    if (age >= 50 && deductible < 500) deductible = 500;
+    const table = preexisting ? DISC_DAILY.preEx : DISC_DAILY.noPreEx;
+    const row = table.find(r => age <= r[0]);
+    if (!row) return null;
+    const cols = DISC_COV_COLS;
+    let dailyRate;
+    const colIdx = cols.findIndex(c => c === coverage);
+    if (colIdx !== -1) {
+      dailyRate = row[colIdx + 1];
+    } else {
+      const lower = cols.filter(c => c <= coverage).pop() || cols[0];
+      const upper = cols.filter(c => c >= coverage)[0] || cols[cols.length - 1];
+      if (lower === upper) {
+        dailyRate = row[cols.indexOf(lower) + 1];
+      } else {
+        const lI = cols.indexOf(lower), uI = cols.indexOf(upper);
+        const frac = (coverage - lower) / (upper - lower);
+        dailyRate = row[lI + 1] + frac * (row[uI + 1] - row[lI + 1]);
+      }
+    }
+    const dedMap = (age >= 71) ? DISC_DED_SENIOR : DISC_DED_YOUNG;
+    const dedFactor = dedMap[deductible] ?? (age >= 71 ? DISC_DED_SENIOR[500] : 1.00);
+    return dailyRate * Math.min(days, 365) * dedFactor;
+  }
+
+  // ── GMS EXACT RATE TABLES ─────────────────────────────────────────────────────
+  // GMS Visitors to Canada. Rates effective April 15, 2025.
+  // Each row: [maxAge, [25k: d0,d100,d500,d1000], [50k:...], [100k:...], [150k:...]]
+  var GMS_DAILY = [
+    [17,  [2.44,2.09,1.79,1.64], [2.49,2.35,1.96,1.84], [3.25,3.01,2.49,2.39], [3.70,3.33,3.15,2.96]],
+    [34,  [2.63,2.36,1.96,1.77], [2.74,2.59,2.12,2.00], [3.55,3.18,2.78,2.61], [4.13,3.77,3.55,3.32]],
+    [54,  [3.03,2.73,2.30,2.08], [3.09,2.82,2.60,2.45], [4.37,4.02,3.26,3.34], [5.49,4.92,4.00,3.76]],
+    [59,  [3.09,2.94,2.29,2.10], [2.80,2.81,2.62,2.47], [4.39,4.00,3.56,3.35], [5.45,4.95,3.98,3.76]],
+    [64,  [4.12,3.94,3.17,2.89], [4.01,3.79,3.42,3.22], [4.93,4.52,4.00,3.73], [6.39,5.72,4.68,4.40]],
+    [69,  [5.15,4.61,3.80,3.59], [5.80,5.08,4.59,3.99], [6.59,6.39,5.00,4.69], [9.18,8.72,6.24,5.88]],
+    [74,  [9.06,7.47,6.12,5.58], [9.89,8.87,7.74,7.01], [11.77,10.96,8.57,8.06], [14.37,12.76,11.28,10.62]],
+    [79,  [10.72,9.52,7.43,6.73], [12.28,11.02,9.87,9.22], [15.16,13.89,12.06,11.08], [18.43,16.52,13.99,13.19]],
+  ];
+  var GMS_COV_COLS = [25000, 50000, 100000, 150000];
+  var GMS_DED_IDX  = { 0: 0, 100: 1, 500: 2, 1000: 3 };
+
+  function gmsPrice(age, coverage, days, deductible) {
+    if (age > 79) return null; // GMS max age 79
+    const row = GMS_DAILY.find(r => age <= r[0]);
+    if (!row) return null;
+    const cols = GMS_COV_COLS;
+    const dedIdx = GMS_DED_IDX[deductible] ?? 0;
+    const colIdx = cols.findIndex(c => c === coverage);
+    let dailyRate;
+    if (colIdx !== -1) {
+      dailyRate = row[colIdx + 1][dedIdx];
+    } else {
+      const lower = cols.filter(c => c <= coverage).pop() || cols[0];
+      const upper = cols.filter(c => c >= coverage)[0] || cols[cols.length - 1];
+      if (lower === upper) {
+        dailyRate = row[cols.indexOf(lower) + 1][dedIdx];
+      } else {
+        const lI = cols.indexOf(lower), uI = cols.indexOf(upper);
+        const frac = (coverage - lower) / (upper - lower);
+        dailyRate = row[lI+1][dedIdx] + frac * (row[uI+1][dedIdx] - row[lI+1][dedIdx]);
+      }
+    }
+    return dailyRate * Math.min(days, 365);
+  }
+
   var TRUSTONE_DED_DISC = { 0: 0, 100: 0.05, 250: 0.10, 500: 0.15, 1000: 0.20, 5000: 0.30, 10000: 0.40 };
 
   function truestonePrice(age, coverage, days, preexisting, deductible) {
@@ -3104,7 +3387,7 @@
   var C21_COV_COLS = [15000, 25000, 50000, 100000, 150000, 200000];
 
   // Deductible multipliers (applied to $0 base rate)
-  var C21_DED_MULT = { 0: 1.00, 100: 0.95, 250: 0.90, 500: 0.85, 1000: 0.80, 2500: 0.75, 3000: 0.70, 5000: 0.65, 10000: 0.60 };
+  var C21_DED_MULT = { 0: 1.00, 100: 0.95, 250: 0.90, 500: 0.85, 1000: 0.80, 5000: 0.65, 10000: 0.60 };
 
   function c21Price(age, coverage, days, plan, deductible) {
     // plan: 'enhanced' | 'standard' | 'basic'
@@ -3207,6 +3490,9 @@
     const carriers = ALL_CARRIERS[currentTab]
       .filter(c => {
         const supported = CARRIER_DEDUCTIBLES[c.id];
+        if (!supported && !supported) { /* skip */ }
+        // TuGo rate table only covers ages up to 59
+        if (c.id === 'tugo-std' && age1 > 59) return false;
         return !supported || supported.includes(deductible);
       });
     const results = carriers
@@ -3224,6 +3510,42 @@
             ts += ts2 !== null ? ts2 : base * c.mult;
           }
           annual = ts;
+        } else if (c.id === 'allianz') {
+          // Use exact Allianz rate table
+          let al = allianzPrice(age1, coverage, days, preexisting, deductible);
+          if (al === null) al = base * c.mult;
+          if (policyType === 'couple' || policyType === 'family') {
+            const age2 = parseInt(document.getElementById('age2').value) || age1;
+            const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
+            const pre2 = document.querySelector('input[name="pre2"]:checked')?.value === 'yes';
+            const al2 = allianzPrice(age2, cov2, days, pre2, deductible);
+            al += al2 !== null ? al2 : base * c.mult;
+          }
+          annual = al;
+        } else if (c.id === 'destination-std') {
+          // Use exact Destination Canada rate table
+          let dc = destinationPrice(age1, coverage, days, preexisting, deductible);
+          if (dc === null) dc = base * c.mult;
+          if (policyType === 'couple' || policyType === 'family') {
+            const age2 = parseInt(document.getElementById('age2').value) || age1;
+            const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
+            const pre2 = document.querySelector('input[name="pre2"]:checked')?.value === 'yes';
+            const dc2 = destinationPrice(age2, cov2, days, pre2, deductible);
+            dc += dc2 !== null ? dc2 : base * c.mult;
+          }
+          annual = dc;
+        } else if (c.id === 'manulife') {
+          // Use exact Manulife rate table
+          let ml = manulifePrice(age1, coverage, days, preexisting, deductible);
+          if (ml === null) ml = base * c.mult;
+          if (policyType === 'couple' || policyType === 'family') {
+            const age2 = parseInt(document.getElementById('age2').value) || age1;
+            const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
+            const pre2 = document.querySelector('input[name="pre2"]:checked')?.value === 'yes';
+            const ml2 = manulifePrice(age2, cov2, days, pre2, deductible);
+            ml += ml2 !== null ? ml2 : base * c.mult;
+          }
+          annual = ml;
         } else if (c.id === 'secure-std' || c.id === 'secure-enh') {
           // Use exact RIMI rate table for Secure Travel
           const isEnh = c.id === 'secure-enh';
@@ -3287,6 +3609,29 @@
             p21 += p21b !== null ? p21b : base * c.mult;
           }
           annual = p21;
+        } else if (c.id === 'discover-std') {
+          // Use exact Discover Canada rate table (MSH Americas 2025)
+          let disc = discoverPrice(age1, coverage, days, preexisting, deductible);
+          if (disc === null) disc = base * c.mult;
+          if (policyType === 'couple' || policyType === 'family') {
+            const age2 = parseInt(document.getElementById('age2').value) || age1;
+            const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
+            const pre2 = document.querySelector('input[name="pre2"]:checked')?.value === 'yes';
+            const disc2 = discoverPrice(age2, cov2, days, pre2, deductible);
+            disc += disc2 !== null ? disc2 : base * c.mult;
+          }
+          annual = disc;
+        } else if (c.id === 'gms-std') {
+          // Use exact GMS rate table (effective April 15, 2025)
+          let gms = gmsPrice(age1, coverage, days, deductible);
+          if (gms === null) gms = base * c.mult;
+          if (policyType === 'couple' || policyType === 'family') {
+            const age2 = parseInt(document.getElementById('age2').value) || age1;
+            const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
+            const gms2 = gmsPrice(age2, cov2, days, deductible);
+            gms += gms2 !== null ? gms2 : base * c.mult;
+          }
+          annual = gms;
         } else {
           annual = base * c.mult;
         }
@@ -3334,7 +3679,8 @@
           ${getLogoHTML(c.name)}
         </div>
         <div class="plan-badge">${c.plan}</div>
-        ${['trustone-std','secure-std','secure-enh','2visit-std','2visit-enh','insure-std','insure-enh','jf-vtc','21c-basic','21c-std','21c-prem'].includes(c.id)
+        ${c.id === 'trustone-std' ? '<div class="card-assoc-badge">🏷️ Extra 7% off — <a href="https://www.hmc-insurance.ca/association" target="_blank" style="color:inherit;font-weight:700;">Buy via Association Link</a></div>' : ''}
+        ${['trustone-std','secure-std','secure-enh','2visit-std','2visit-enh','insure-std','insure-enh','jf-vtc','21c-basic','21c-std','21c-prem','manulife','allianz','destination-std','discover-std','gms-std'].includes(c.id)
           ? '<div class="card-rate-badge exact">✓ Exact Rate</div>'
           : '<div class="card-rate-badge estimated">~ Estimated</div>'}
         ${showMonthly ? `
@@ -5500,25 +5846,6 @@ function showToast(msg) {
     const styles = Array.from(document.querySelectorAll('style')).map(s => s.outerHTML).join('\n');
     const linkTags = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.outerHTML).join('\n');
     const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${linkTags}${styles}<style>body{margin:0;}.cmp-back-btn,.cmp-header-actions,.compare-bar{display:none!important;}#compare-page{display:block!important;position:relative;overflow:visible;}</style></head><body>${cmpPage.outerHTML}
-  <script>
-  // Mobile nav accordion
-  document.querySelectorAll('.mnav-acc-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function() {
-      var items = this.nextElementSibling;
-      var isOpen = this.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) {
-        t.classList.remove('open');
-        t.nextElementSibling.style.display = 'none';
-      });
-      // Open clicked if it was closed
-      if (!isOpen) {
-        this.classList.add('open');
-        items.style.display = 'block';
-      }
-    });
-  });
-  </script>
 </body></html>`;
     const blob = new Blob([html], { type: 'text/html' });
     const blobUrl = URL.createObjectURL(blob);
@@ -5601,13 +5928,12 @@ function showToast(msg) {
                     <a href="index.html#contact" style="color:rgba(255,255,255,0.7)">Contact</a>
                     <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" style="color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:0.4rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig2)"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg> @thefinwiz.ca</a>
                     <a href="https://finwiz.finlywealth.com" target="_blank" style="color:rgba(255,255,255,0.7)">💳 FinlyWealth Partner</a>
-                    <a href="privacy-policy.html" style="color:rgba(255,255,255,0.7)">Privacy Policy</a>
                 </div>
             </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6);font-size:0.8rem;">
             <p>&copy; 2025 Shivang Goyal | Insurance & Financial Solutions | Ontario Licensed Advisor</p>
-            <p style="margin-top:0.3rem;"><a href="privacy-policy.html" style="color:rgba(255,255,255,0.6)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.6)">Terms of Service</a></p>
+
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;margin-top:0.5rem;text-align:center;color:rgba(255,255,255,0.45);font-size:0.72rem;line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto;">
             <strong style="color:rgba(255,255,255,0.6);">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Insurance products are subject to underwriting approval and policy terms. Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Credit card information is provided for informational purposes; always review cardholder agreements before applying. Past performance of investment products does not guarantee future results. Shivang Goyal operates as an independent advisor and is not an employee of any insurance carrier. <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.5)">Terms of Service</a>
@@ -5622,5 +5948,57 @@ function showToast(msg) {
 (function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
 </script>
 
+  <script>
+  // Tooltip tap support for mobile
+  document.querySelectorAll('.tooltip-trigger').forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isActive = trigger.classList.contains('active');
+      // Close all tooltips
+      document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      // Toggle this one
+      if (!isActive) trigger.classList.add('active');
+    });
+  });
+  // Tap outside closes tooltip
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
+      t.classList.remove('active');
+    });
+  });
+  </script>
+
+
+  <script>
+  // Mobile nav accordion — robust v2
+  (function() {
+    function initAccordion() {
+      document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
+        var toggle = acc.querySelector('.mnav-acc-toggle');
+        var items  = acc.querySelector('.mnav-acc-items');
+        if (!toggle || !items) return;
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = items.classList.contains('open');
+          // Close all
+          document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
+          document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
+          // Open this one if it was closed
+          if (!isOpen) {
+            items.classList.add('open');
+            toggle.classList.add('open');
+          }
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+      initAccordion();
+    }
+  })();
+  </script>
 </body>
 </html>

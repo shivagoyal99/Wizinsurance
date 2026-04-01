@@ -238,27 +238,27 @@ footer a:hover{color:white}
         /* ===== Mobile Nav Accordion ===== */
         .mnav-accordion { border-left: 2px solid transparent; }
         .mnav-acc-toggle {
-            display: flex; align-items: center; justify-content: space-between;
+            display: flex !important; align-items: center; justify-content: space-between;
             padding: 0.75rem 1.3rem; min-height: 44px;
             color: rgba(255,255,255,0.82); cursor: pointer;
             font-size: 0.9rem; font-weight: 500;
             transition: background 0.12s, color 0.12s;
-            user-select: none;
+            user-select: none; border-left: 2px solid transparent;
         }
-        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06); color: white; }
-        .mnav-acc-toggle.open { color: white; border-left-color: #E63946; background: rgba(255,255,255,0.04); }
+        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06) !important; color: white !important; }
+        .mnav-acc-toggle.open { color: white !important; border-left-color: #E63946 !important; background: rgba(255,255,255,0.04) !important; }
         .mnav-acc-arrow {
             font-size: 1.1rem; color: rgba(255,255,255,0.4);
             transition: transform 0.2s; display: inline-block;
         }
         .mnav-acc-toggle.open .mnav-acc-arrow { transform: rotate(90deg); color: #E63946; }
-        .mnav-acc-items { display: none; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items { display: none !important; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items.open { display: block !important; }
         .mnav-acc-items a {
-            padding-left: 2.2rem;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
+            display: flex !important; padding-left: 2.2rem !important;
+            font-size: 0.85rem; color: rgba(255,255,255,0.7) !important;
         }
-        .mnav-acc-items a:hover { color: white; }
+        .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
         </style>
     <style>
         /* === HEADER STYLES (synced from index.html) === */
@@ -929,13 +929,12 @@ footer a:hover{color:white}
                     <a href="index.html#contact" style="color:rgba(255,255,255,0.7)">Contact</a>
                     <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" style="color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:0.4rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig2)"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg> @thefinwiz.ca</a>
                     <a href="https://finwiz.finlywealth.com" target="_blank" style="color:rgba(255,255,255,0.7)">💳 FinlyWealth Partner</a>
-                    <a href="privacy-policy.html" style="color:rgba(255,255,255,0.7)">Privacy Policy</a>
                 </div>
             </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6);font-size:0.8rem;">
             <p>&copy; 2025 Shivang Goyal | Insurance & Financial Solutions | Ontario Licensed Advisor</p>
-            <p style="margin-top:0.3rem;"><a href="privacy-policy.html" style="color:rgba(255,255,255,0.6)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.6)">Terms of Service</a></p>
+
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;margin-top:0.5rem;text-align:center;color:rgba(255,255,255,0.45);font-size:0.72rem;line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto;">
             <strong style="color:rgba(255,255,255,0.6);">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Insurance products are subject to underwriting approval and policy terms. Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Credit card information is provided for informational purposes; always review cardholder agreements before applying. Past performance of investment products does not guarantee future results. Shivang Goyal operates as an independent advisor and is not an employee of any insurance carrier. <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.5)">Terms of Service</a>
@@ -948,23 +947,33 @@ footer a:hover{color:white}
 </script>
 
   <script>
-  // Mobile nav accordion
-  document.querySelectorAll('.mnav-acc-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function() {
-      var items = this.nextElementSibling;
-      var isOpen = this.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) {
-        t.classList.remove('open');
-        t.nextElementSibling.style.display = 'none';
+  // Mobile nav accordion — robust v2
+  (function() {
+    function initAccordion() {
+      document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
+        var toggle = acc.querySelector('.mnav-acc-toggle');
+        var items  = acc.querySelector('.mnav-acc-items');
+        if (!toggle || !items) return;
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = items.classList.contains('open');
+          // Close all
+          document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
+          document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
+          // Open this one if it was closed
+          if (!isOpen) {
+            items.classList.add('open');
+            toggle.classList.add('open');
+          }
+        });
       });
-      // Open clicked if it was closed
-      if (!isOpen) {
-        this.classList.add('open');
-        items.style.display = 'block';
-      }
-    });
-  });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+      initAccordion();
+    }
+  })();
   </script>
 </body>
 </html>
