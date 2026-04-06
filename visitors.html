@@ -770,6 +770,61 @@
             .stat-number { font-size: 2rem !important; }
             .testimonial-card { flex: 0 0 270px !important; }
         }
+
+        /* CARRIER STRIP */
+        .carrier-strip { background:white; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1rem 0; overflow:hidden; position:relative; }
+        .carrier-strip::before, .carrier-strip::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
+        .carrier-strip::before { left:0; background:linear-gradient(to right, white, transparent); }
+        .carrier-strip::after  { right:0; background:linear-gradient(to left, white, transparent); }
+        .carrier-strip-label { text-align:center; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-light); margin-bottom:0.7rem; }
+        .carrier-track-wrap { overflow:hidden; }
+        .carrier-track { display:flex; gap:0; width:max-content; animation:carrierScroll 28s linear infinite; }
+        .carrier-track:hover { animation-play-state:paused; }
+        @keyframes carrierScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .carrier-item { display:flex; align-items:center; justify-content:center; padding:0.4rem 2rem; white-space:nowrap; border-right:1px solid var(--border); }
+        .carrier-item span { font-size:0.92rem; font-weight:700; color:var(--primary); opacity:0.7; letter-spacing:0.3px; transition:opacity 0.2s; }
+        .carrier-item:hover span { opacity:1; }
+        .carrier-dot { width:6px; height:6px; background:var(--accent); border-radius:50%; margin-right:0.55rem; flex-shrink:0; opacity:0.5; }
+
+        /* PAGE BODY WITH SIDEBAR */
+        .page-body-outer { display:grid; grid-template-columns:1fr 310px; gap:0; max-width:1280px; margin:0 auto; align-items:start; }
+        .page-body-main { min-width:0; }
+        .page-body { padding:4rem 2.5rem 4rem 2rem; max-width:none; }
+
+        /* STICKY SIDEBAR */
+        .sticky-sidebar { position:sticky; top:120px; padding:2.5rem 1.5rem 2rem 2rem; align-self:start; border-left:1px solid var(--border); }
+        .sticky-sidebar-inner { display:flex; flex-direction:column; gap:1.2rem; }
+        .sidebar-product-switcher { background:white; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 20px rgba(0,0,0,0.07); overflow:hidden; }
+        .sidebar-switcher-label { background:var(--primary); color:rgba(255,255,255,0.75); font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; padding:0.65rem 1.1rem; }
+        .sidebar-product-card { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1.1rem; text-decoration:none; border-bottom:1px solid var(--border); transition:background 0.15s; position:relative; }
+        .sidebar-product-card:last-child { border-bottom:none; }
+        .sidebar-product-card:hover { background:var(--light-bg); }
+        .sidebar-product-card.active { background:#fff5f5; border-left:3px solid var(--accent); }
+        .sidebar-psc-icon { font-size:1.4rem; flex-shrink:0; }
+        .sidebar-psc-body { flex:1; min-width:0; }
+        .sidebar-psc-body h4 { color:var(--primary); font-size:0.88rem; font-weight:700; margin:0 0 0.1rem; }
+        .sidebar-psc-body p { color:var(--text-light); font-size:0.75rem; margin:0; line-height:1.4; }
+        .sidebar-psc-arrow { color:var(--accent); font-weight:700; font-size:1rem; flex-shrink:0; }
+        .sidebar-quote-cta { background:linear-gradient(135deg, var(--primary) 0%, #1a3a5c 100%); border-radius:14px; padding:1.5rem 1.4rem; color:white; box-shadow:0 6px 24px rgba(15,31,60,0.2); }
+        .sidebar-quote-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:rgba(255,255,255,0.65); margin-bottom:0.6rem; }
+        .sidebar-quote-cta h3 { font-size:1.2rem; font-weight:700; margin-bottom:0.4rem; color:white; line-height:1.25; }
+        .sidebar-quote-cta p { font-size:0.82rem; color:rgba(255,255,255,0.72); line-height:1.55; margin-bottom:1.1rem; }
+        .sidebar-quote-btn { display:block; background:var(--accent); color:white; text-align:center; padding:0.85rem 1rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.92rem; transition:background 0.2s, transform 0.2s; margin-bottom:0.8rem; }
+        .sidebar-quote-btn:hover { background:#d32f3d; transform:translateY(-1px); }
+        .sidebar-contact-alts { display:flex; flex-direction:column; gap:0.5rem; }
+        .sidebar-contact-alts a { display:flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.6rem 0.8rem; border-radius:8px; text-decoration:none; font-size:0.82rem; font-weight:600; transition:background 0.15s; }
+        .sidebar-contact-alts a.alt-phone { background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.2); }
+        .sidebar-contact-alts a.alt-wa { background:rgba(37,211,102,0.15); color:#4ade80; border:1px solid rgba(37,211,102,0.25); }
+        .sidebar-contact-alts a.alt-phone:hover { background:rgba(255,255,255,0.2); }
+        .sidebar-contact-alts a.alt-wa:hover { background:rgba(37,211,102,0.25); color:#86efac; }
+        .sidebar-trust { background:white; border-radius:14px; border:1px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.05); padding:1rem 1.1rem; display:flex; flex-direction:column; gap:0.5rem; }
+        .sidebar-trust-item { font-size:0.8rem; color:var(--text-dark); font-weight:600; padding:0.3rem 0; border-bottom:1px solid var(--border); }
+        .sidebar-trust-item:last-child { border-bottom:none; }
+
+        @media (max-width: 1024px) {
+            .page-body-outer { grid-template-columns: 1fr !important; }
+            .sticky-sidebar { display: none; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -928,7 +983,7 @@
       <div class="mobile-nav-cta">
         <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
         <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
-        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+        <a href="quote-tool.html#visitor" class="m-quote">⚡&nbsp; Get Instant Quote</a>
       </div>
     </div>
 
@@ -1029,8 +1084,44 @@
       <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Visitors%20to%20Canada%20Insurance" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
       <a href="index.html#contact" class="btn-white">📋 Send a Message</a>
     </div>
+</div>
+</div>
+
+<!-- CARRIER STRIP -->
+<div class="carrier-strip">
+  <p class="carrier-strip-label">Comparing 25+ top Canadian insurance carriers</p>
+  <div class="carrier-track-wrap">
+    <div class="carrier-track">
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Manulife</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Sun Life</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Blue Cross</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Tugo</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Allianz</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>GMS</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>TravelShield</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Industrial Alliance</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Destination Travel</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>MSH International</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>21st Century</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Secure Travel</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Manulife</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Sun Life</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Blue Cross</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Tugo</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Allianz</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>GMS</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>TravelShield</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Industrial Alliance</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Destination Travel</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>MSH International</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>21st Century</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Secure Travel</span></div>
+    </div>
   </div>
 </div>
+
+<div class="page-body-outer">
+<div class="page-body-main">
 <div class="page-body">
   <div class="two-col">
     <div>
@@ -1062,13 +1153,87 @@
       </div>
     </div>
   </div>
+
+  <!-- COST CARDS -->
   <div style="margin-top:3rem;">
-    <div class="section-head"><h2>FAQs</h2><div class="divider"></div></div>
-    <div class="faq-item"><div class="faq-q">How much coverage do I need?</div><div class="faq-a">Most advisors recommend a minimum of $100,000. For longer stays, $150,000–$300,000 gives better peace of mind and often isn't much more expensive.</div></div>
-    <div class="faq-item"><div class="faq-q">Can I buy coverage after arriving in Canada?</div><div class="faq-a">Yes, but there's usually a waiting period of 48–72 hours before coverage begins. It's always better to buy before departure.</div></div>
-    <div class="faq-item"><div class="faq-q">Are pre-existing conditions covered?</div><div class="faq-a">Some plans cover stable pre-existing conditions. I'll review your situation and find the right plan that covers your specific health history.</div></div>
+    <div class="section-head"><h2>How Much Does It Cost?</h2><div class="divider"></div></div>
+    <p style="color:var(--text-light);margin-bottom:1.5rem;font-size:0.93rem;">Premiums vary based on age, length of stay, coverage amount, and pre-existing conditions. Here are typical monthly ranges:</p>
+    <div class="three-col">
+      <div class="info-card">
+        <h3>Under 40</h3>
+        <p style="font-size:1.4rem;font-weight:700;color:var(--accent);margin:0.5rem 0;">~$30–$60<span style="font-size:0.85rem;font-weight:400;color:var(--text-light);">/mo</span></p>
+        <p>$100,000 coverage · healthy applicant</p>
+      </div>
+      <div class="info-card">
+        <h3>40–60 Years</h3>
+        <p style="font-size:1.4rem;font-weight:700;color:var(--accent);margin:0.5rem 0;">~$60–$120<span style="font-size:0.85rem;font-weight:400;color:var(--text-light);">/mo</span></p>
+        <p>$100,000 coverage · stable health</p>
+      </div>
+      <div class="info-card">
+        <h3>60+ Years</h3>
+        <p style="font-size:1.4rem;font-weight:700;color:var(--accent);margin:0.5rem 0;">~$120–$300+<span style="font-size:0.85rem;font-weight:400;color:var(--text-light);">/mo</span></p>
+        <p>Varies by health history &amp; coverage</p>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-size:0.82rem;color:var(--text-light);">These are estimates only. Contact me for an accurate quote based on your situation.</p>
   </div>
-</div>
+
+  <div style="margin-top:3rem;">
+    <div class="section-head"><h2>Frequently Asked Questions</h2><div class="divider"></div></div>
+    <div class="faq-item"><div class="faq-q">Do visitors to Canada need health insurance?</div><div class="faq-a">Yes. Visitors to Canada are not covered by any provincial health plan. Without insurance, a single emergency room visit can cost $3,000–$10,000 or more out of pocket.</div></div>
+    <div class="faq-item"><div class="faq-q">How much coverage do I need?</div><div class="faq-a">Most advisors recommend a minimum of $100,000. For longer stays or older visitors, $150,000–$300,000 gives better peace of mind and often isn't much more expensive.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I buy coverage after arriving in Canada?</div><div class="faq-a">Yes, but there's usually a waiting period of 48–72 hours before coverage begins. It's always better to buy before departure to ensure full coverage from day one.</div></div>
+    <div class="faq-item"><div class="faq-q">Are pre-existing conditions covered?</div><div class="faq-a">Some plans cover stable pre-existing conditions. The definition of "stable" varies by insurer — I'll review your situation and find the right plan that covers your specific health history.</div></div>
+    <div class="faq-item"><div class="faq-q">What does Visitors to Canada Insurance cover?</div><div class="faq-a">It typically covers emergency hospitalization, physician visits, ambulance, prescription drugs during emergencies, dental emergencies, and repatriation. Coverage limits and inclusions vary by plan.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I extend my visitors insurance policy?</div><div class="faq-a">Yes, most policies can be extended before they expire, as long as no claims have been made and the visitor hasn't left Canada. It's important to extend before the policy ends — not after.</div></div>
+    <div class="faq-item"><div class="faq-q">Is visitors insurance refundable if they leave early?</div><div class="faq-a">Most policies offer a pro-rated refund for unused days if the visitor returns home early and no claims have been made. Terms vary by insurer.</div></div>
+    <div class="faq-item"><div class="faq-q">How quickly can a policy be issued?</div><div class="faq-a">In most cases, same-day. I can get a policy issued and emailed to you within hours of your request.</div></div>
+  </div>
+</div><!-- /page-body -->
+</div><!-- /page-body-main -->
+
+<!-- STICKY SIDEBAR -->
+<aside class="sticky-sidebar">
+  <div class="sticky-sidebar-inner">
+    <div class="sidebar-product-switcher">
+      <div class="sidebar-switcher-label">Choose Insurance Type</div>
+      <a href="visitors.html" class="sidebar-product-card active">
+        <span class="sidebar-psc-icon">✈️</span>
+        <div class="sidebar-psc-body">
+          <h4>Visitor Insurance</h4>
+          <p>Protection for any visitor to Canada</p>
+        </div>
+        <span class="sidebar-psc-arrow">→</span>
+      </a>
+      <a href="supervisa.html" class="sidebar-product-card">
+        <span class="sidebar-psc-icon">🇨🇦</span>
+        <div class="sidebar-psc-body">
+          <h4>Super Visa Insurance</h4>
+          <p>For parents &amp; grandparents</p>
+        </div>
+        <span class="sidebar-psc-arrow">→</span>
+      </a>
+    </div>
+    <div class="sidebar-quote-cta">
+      <div class="sidebar-quote-label">⚡ Free · No Obligation</div>
+      <h3>Get Your Best Rate</h3>
+      <p>Compare 25+ carriers in minutes. Same-day approval available.</p>
+      <a href="quote-tool.html#visitor" class="sidebar-quote-btn">⚡ Get My Free Quote</a>
+      <div class="sidebar-contact-alts">
+        <a href="tel:+16479955891" class="alt-phone">📞 &nbsp;(647) 995-5891</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="alt-wa">💬 &nbsp;WhatsApp Me</a>
+      </div>
+    </div>
+    <div class="sidebar-trust">
+      <div class="sidebar-trust-item">✅ Emergency Medical Coverage</div>
+      <div class="sidebar-trust-item">🏆 25+ Carriers Compared</div>
+      <div class="sidebar-trust-item">⚡ Same-Day Approval</div>
+      <div class="sidebar-trust-item">🔒 No Obligation Quote</div>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /page-body-outer -->
 
 <div class="cta-band">
   <h2>Need Visitor Insurance?</h2>
@@ -1159,17 +1324,4 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
           // Open this one if it was closed
           if (!isOpen) {
             items.classList.add('open');
-            toggle.classList.add('open');
-          }
-        });
-      });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initAccordion);
-    } else {
-      initAccordion();
-    }
-  })();
-  </script>
-</body>
-</html>
+ 

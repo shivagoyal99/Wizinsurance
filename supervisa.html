@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -37,6 +36,7 @@
         .header-main { max-width:1400px; margin:0 auto; padding:0.9rem 2rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
         .logo { font-size:1.1rem; font-weight:700; color:var(--primary); text-decoration:none; flex-shrink:0; }
         .logo-sub { font-size:0.58rem; color:var(--accent); letter-spacing:1px; font-weight:600; }
+        .logo-subtitle { font-size:0.58rem; color:#555; letter-spacing:1px; font-weight:600; text-transform:uppercase; }
         nav { display:flex; gap:1.1rem; align-items:center; flex:1; flex-wrap:wrap; font-size:0.88rem; }
         nav > a { color:var(--text-dark); text-decoration:none; font-weight:500; white-space:nowrap; }
         nav > a:hover { color:var(--accent); }
@@ -108,9 +108,8 @@
         .btn-dark:hover { background:#0a1628; transform:translateY(-2px); }
         .btn-white:hover { background:#f0f0f0; transform:translateY(-2px); }
 
-        /* PAGE BODY */
-        .page-body { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
-        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+        /* PAGE BODY - layout handled by .page-body-outer grid */
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start; }
         .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
         .four-col { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
         
@@ -126,7 +125,7 @@
         .highlight-card p { opacity:0.8; font-size:0.92rem; line-height:1.7; }
 
         /* SECTION TITLES */
-        .section-head { margin-bottom:2.5rem; }
+        .section-head { margin-bottom:2rem; }
         .section-head h2 { font-size:1.9rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
         .section-head p { color:var(--text-light); font-size:1rem; }
         .divider { height:4px; width:50px; background:var(--accent); border-radius:2px; margin:0.6rem 0 1.2rem; }
@@ -162,6 +161,297 @@
         /* WHATSAPP FLOAT */
         .wa-float { position:fixed; bottom:1.8rem; right:1.8rem; z-index:9999; background:#25D366; color:white; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 16px rgba(37,211,102,0.4); text-decoration:none; transition:transform 0.2s; }
         .wa-float:hover { transform:scale(1.12); }
+
+        /* BENEFITS GRID */
+        .benefits-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; margin-top:2rem; }
+        .benefit-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.6rem; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.05); transition:transform 0.2s, box-shadow 0.2s; }
+        .benefit-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+        .benefit-icon { font-size:2.2rem; margin-bottom:0.8rem; display:block; }
+        .benefit-card h3 { color:var(--primary); font-size:1rem; font-weight:700; margin-bottom:0.5rem; }
+        .benefit-card p { color:var(--text-light); font-size:0.88rem; line-height:1.65; }
+
+        /* ELIGIBILITY SECTION */
+        .eligibility-section { background:var(--light-bg); border-radius:14px; padding:2.5rem; margin-top:3rem; }
+        .eligibility-section h2 { color:var(--primary); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem; }
+        .eligibility-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
+        .elig-box { background:white; border-radius:10px; padding:1.5rem; border-left:4px solid var(--accent); }
+        .elig-box h4 { color:var(--primary); font-size:0.95rem; font-weight:700; margin-bottom:0.8rem; }
+        .elig-box ul { list-style:none; padding:0; }
+        .elig-box ul li { padding:0.35rem 0 0.35rem 1.5rem; position:relative; color:var(--text-light); font-size:0.88rem; line-height:1.6; }
+        .elig-box ul li::before { content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+
+        /* LICO TABLE */
+        .lico-section { margin-top:3rem; }
+        .lico-section h2 { color:var(--primary); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem; }
+        .lico-section p { color:var(--text-light); margin-bottom:1.2rem; font-size:0.93rem; }
+        .lico-table-wrap { overflow-x:auto; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+        .lico-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+        .lico-table thead { background:var(--primary); color:white; }
+        .lico-table thead th { padding:1rem 1.3rem; text-align:left; font-weight:600; font-size:0.88rem; }
+        .lico-table tbody tr:nth-child(even) { background:#f7f9fc; }
+        .lico-table tbody tr:hover { background:#eef2f8; }
+        .lico-table tbody td { padding:0.85rem 1.3rem; border-bottom:1px solid var(--border); color:var(--text-dark); }
+        .lico-table tbody td:last-child { font-weight:700; color:var(--primary); }
+        .lico-note { margin-top:0.8rem; font-size:0.8rem; color:var(--text-light); }
+        .lico-note a { color:var(--accent); }
+
+        /* DOCUMENT CHECKLIST */
+        .doc-checklist-section { margin-top:3rem; }
+        .doc-checklist-section h2 { color:var(--primary); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem; }
+        .doc-checklist-section p { color:var(--text-light); margin-bottom:1.5rem; font-size:0.93rem; }
+        .doc-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+        .doc-col { background:var(--light-bg); border-radius:10px; padding:1.5rem; }
+        .doc-col ul { list-style:none; padding:0; }
+        .doc-col ul li { padding:0.45rem 0 0.45rem 1.6rem; position:relative; color:var(--text-light); font-size:0.88rem; line-height:1.55; border-bottom:1px solid var(--border); }
+        .doc-col ul li:last-child { border-bottom:none; }
+        .doc-col ul li::before { content:'📄'; position:absolute; left:0; font-size:0.8rem; top:0.5rem; }
+
+        /* MONTHLY PLAN BENEFITS */
+        .monthly-plan-section { background:linear-gradient(135deg, var(--primary) 0%, #1a3a5c 100%); color:white; border-radius:14px; padding:2.5rem; margin-top:3rem; }
+        .monthly-plan-section h2 { font-size:1.6rem; font-weight:700; margin-bottom:0.5rem; }
+        .monthly-plan-section .sub { opacity:0.75; font-size:0.93rem; margin-bottom:1.8rem; }
+        .monthly-benefits-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .monthly-benefit-item { background:rgba(255,255,255,0.08); border-radius:10px; padding:1.3rem; border:1px solid rgba(255,255,255,0.12); }
+        .monthly-benefit-item h4 { color:#fff; font-size:0.95rem; font-weight:700; margin-bottom:0.4rem; }
+        .monthly-benefit-item p { color:rgba(255,255,255,0.75); font-size:0.85rem; line-height:1.6; }
+
+        /* ===== CARRIER STRIP ===== */
+        .carrier-strip {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .carrier-strip::before, .carrier-strip::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            z-index: 2;
+        }
+        .carrier-strip::before { left: 0; background: linear-gradient(to right, white, transparent); }
+        .carrier-strip::after  { right: 0; background: linear-gradient(to left, white, transparent); }
+        .carrier-strip-label {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-bottom: 0.7rem;
+        }
+        .carrier-track-wrap { overflow: hidden; }
+        .carrier-track {
+            display: flex;
+            gap: 0;
+            width: max-content;
+            animation: carrierScroll 28s linear infinite;
+        }
+        .carrier-track:hover { animation-play-state: paused; }
+        @keyframes carrierScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .carrier-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 2rem;
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+        .carrier-item span {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.7;
+            letter-spacing: 0.3px;
+            transition: opacity 0.2s;
+        }
+        .carrier-item:hover span { opacity: 1; }
+        .carrier-dot {
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.55rem;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+
+        /* ===== PRODUCT SELECTOR (hero cards) ===== */
+        .product-selector-wrap {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3a5c 100%);
+            padding: 3rem 2rem 3.5rem;
+        }
+        .product-selector-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .product-selector-inner h2 {
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .product-selector-inner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.93rem;
+            margin-bottom: 1.8rem;
+        }
+        .product-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .product-sel-card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.5rem 1.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .product-sel-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.2); }
+        .product-sel-card.active { border: 2px solid var(--accent); }
+        .psc-icon { font-size: 2.2rem; flex-shrink: 0; line-height: 1; }
+        .psc-body h3 { color: var(--primary); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .psc-body p { color: var(--text-light); font-size: 0.85rem; line-height: 1.55; margin-bottom: 0.8rem; }
+        .psc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .psc-btn:hover { background: var(--accent); }
+        .psc-btn-arrow { font-size: 0.9rem; }
+
+        /* ===== INLINE QUOTE FORM ===== */
+        .quote-section {
+            background: var(--light-bg);
+            padding: 3.5rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .quote-section-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .quote-section-inner h2 { color: var(--primary); font-size: 1.7rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .quote-section-inner .sub { color: var(--text-light); font-size: 0.93rem; margin-bottom: 2rem; }
+        .qf-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        /* Progress bar */
+        .qf-progress { height: 4px; background: var(--border); }
+        .qf-progress-bar { height: 4px; background: var(--accent); transition: width 0.4s ease; border-radius: 2px; }
+        .qf-step-label { padding: 1rem 1.8rem 0; font-size: 0.72rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+        .qf-body { padding: 1.5rem 1.8rem 2rem; }
+        .qf-body h3 { color: var(--primary); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        /* Radio group */
+        .qf-radio-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+        .qf-radio { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+        .qf-radio input[type=radio] { display: none; }
+        .qf-radio-btn {
+            padding: 0.55rem 1.3rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.15s;
+            cursor: pointer;
+            background: white;
+            display: inline-block;
+        }
+        .qf-radio input:checked + .qf-radio-btn {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+        /* Field grid */
+        .qf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+        .qf-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .qf-field { display: flex; flex-direction: column; gap: 0.35rem; }
+        .qf-field label { font-size: 0.78rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px; }
+        .qf-field input, .qf-field select {
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.15s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .qf-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+        .qf-field input:focus, .qf-field select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15,31,60,0.08); }
+        .qf-divider { height: 1px; background: var(--border); margin: 1.3rem 0; }
+        /* Step panels */
+        .qf-step { display: none; }
+        .qf-step.active { display: block; }
+        /* Step 2 contact */
+        .qf-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+        /* Buttons */
+        .qf-actions { display: flex; gap: 0.8rem; align-items: center; margin-top: 1.5rem; }
+        .qf-btn-next {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.85rem 2.2rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        .qf-btn-next:hover { background: #d32f3d; transform: translateY(-1px); }
+        .qf-btn-back {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .qf-btn-back:hover { border-color: var(--primary); color: var(--primary); }
+        /* Success screen */
+        .qf-success { display: none; text-align: center; padding: 3rem 2rem; }
+        .qf-success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .qf-success h3 { color: var(--primary); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .qf-success p { color: var(--text-light); margin-bottom: 1.5rem; }
+        /* Pre-existing toggle */
+        .qf-preexist-label { font-size: 0.82rem; color: var(--text-light); display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem; }
+
+        @media(max-width:860px) {
+            .benefits-grid { grid-template-columns:1fr !important; }
+            .eligibility-grid { grid-template-columns:1fr !important; }
+            .doc-grid { grid-template-columns:1fr !important; }
+            .monthly-benefits-grid { grid-template-columns:1fr !important; }
+            .product-cards-row { grid-template-columns: 1fr !important; }
+            .qf-grid { grid-template-columns: 1fr !important; }
+            .qf-grid-3 { grid-template-columns: 1fr 1fr !important; }
+            .qf-contact-grid { grid-template-columns: 1fr !important; }
+            .qf-body { padding: 1.2rem 1.2rem 1.6rem; }
+        }
     
         /* ══════════════════════════════════════════
            MOBILE NAV — Rattan-style
@@ -303,7 +593,7 @@
             .hero p, .page-hero p { font-size: 0.9rem !important; margin-bottom: 1.5rem !important; }
             .hero-actions, .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; padding: 0 !important; width: 100% !important; }
             .hero-actions > *, .hero-buttons > * { width: 100% !important; text-align: center !important; box-sizing: border-box !important; display: block !important; }
-            .page-body { padding: 2rem 1.1rem !important; }
+            .page-body { padding: 2rem 1.2rem !important; }
             .two-col, .three-col, .four-col, .about-grid, .contact-wrapper, .coverage-grid, .foundation-grid, .steps-grid { grid-template-columns: 1fr !important; }
             .stats-bar { grid-template-columns: 1fr 1fr !important; margin: 0 auto !important; border-radius: 0 !important; padding: 1.5rem 1rem !important; }
             .about-strip-inner { grid-template-columns: 1fr !important; text-align: center !important; }
@@ -342,12 +632,197 @@
             .contact-inner h2 { font-size: 1.4rem !important; }
         }
 
-        @media (max-width: 480px) {
-            .hero h1, .page-hero h1 { font-size: 1.35rem !important; }
-            .stat-number { font-size: 2rem !important; }
-            .testimonial-card { flex: 0 0 270px !important; }
+
+        /* ===== PAGE BODY WITH STICKY SIDEBAR ===== */
+        .page-body-outer {
+            display: grid;
+            grid-template-columns: 1fr 310px;
+            gap: 0;
+            max-width: 1280px;
+            margin: 0 auto;
+            align-items: start;
+            padding: 0;
         }
-                .btn-whatsapp {
+        .page-body-main {
+            min-width: 0;
+        }
+        .page-body {
+            padding: 4rem 2.5rem 4rem 2rem;
+            max-width: none;
+        }
+
+        /* ===== STICKY SIDEBAR ===== */
+        .sticky-sidebar {
+            position: sticky;
+            top: 120px;
+            padding: 2.5rem 1.5rem 2rem 2rem;
+            align-self: start;
+            border-left: 1px solid var(--border);
+        }
+        .sticky-sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* Product Switcher */
+        .sidebar-product-switcher {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+        .sidebar-switcher-label {
+            background: var(--primary);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.65rem 1.1rem;
+        }
+        .sidebar-product-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1.1rem;
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+            position: relative;
+        }
+        .sidebar-product-card:last-child { border-bottom: none; }
+        .sidebar-product-card:hover { background: var(--light-bg); }
+        .sidebar-product-card.active {
+            background: #fff5f5;
+            border-left: 3px solid var(--accent);
+        }
+        .sidebar-psc-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .sidebar-psc-body { flex: 1; min-width: 0; }
+        .sidebar-psc-body h4 { color: var(--primary); font-size: 0.88rem; font-weight: 700; margin: 0 0 0.1rem; }
+        .sidebar-psc-body p { color: var(--text-light); font-size: 0.75rem; margin: 0; line-height: 1.4; }
+        .sidebar-psc-arrow { color: var(--accent); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+
+        /* Quote CTA */
+        .sidebar-quote-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a3a5c 100%);
+            border-radius: 14px;
+            padding: 1.5rem 1.4rem;
+            color: white;
+            box-shadow: 0 6px 24px rgba(15,31,60,0.2);
+        }
+        .sidebar-quote-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.6rem;
+        }
+        .sidebar-quote-cta h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: white;
+            line-height: 1.25;
+        }
+        .sidebar-quote-cta p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.55;
+            margin-bottom: 1.1rem;
+        }
+        .sidebar-quote-btn {
+            display: block;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: background 0.2s, transform 0.2s;
+            margin-bottom: 0.8rem;
+        }
+        .sidebar-quote-btn:hover { background: #d32f3d; transform: translateY(-1px); }
+        .sidebar-contact-alts {
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: column;
+        }
+        .sidebar-contact-alts a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.15s;
+        }
+        .sidebar-contact-alts a.alt-phone {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .sidebar-contact-alts a.alt-wa {
+            background: rgba(37,211,102,0.15);
+            color: #4ade80;
+            border: 1px solid rgba(37,211,102,0.25);
+        }
+        .sidebar-contact-alts a.alt-phone:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-contact-alts a.alt-wa:hover { background: rgba(37,211,102,0.25); color: #86efac; }
+
+        /* Trust badges */
+        .sidebar-trust {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            padding: 1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .sidebar-trust-item {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-trust-item:last-child { border-bottom: none; }
+
+        @media (max-width: 960px) {
+            .page-body-outer {
+                grid-template-columns: 1fr;
+                padding: 0;
+                border: none;
+            }
+            .page-body { padding: 2.5rem 1.4rem; }
+            .sticky-sidebar {
+                position: static;
+                padding: 1.5rem 1.4rem 2rem;
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+            .sticky-sidebar-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .sidebar-trust { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+        }
+        @media (max-width: 600px) {
+            .sticky-sidebar-inner { grid-template-columns: 1fr; }
+            .sidebar-trust { flex-direction: column; }
+        }
+    
+        .btn-whatsapp {
             background: #f0fdf4;
             color: #16a34a !important;
             border: 2px solid #16a34a;
@@ -392,385 +867,7 @@
         .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
         </style>
 
-    <style>
-        /* === HEADER STYLES (synced from index.html) === */
-        /* ===== HEADER ===== */
-        header {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
 
-        .header-top {
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .header-top-left {
-            flex: 1;
-        }
-
-        .header-top-right {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .reviews-badge {
-            background: var(--accent);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-            font-size: 0.8rem;
-        }
-
-        .phone-number {
-            white-space: nowrap;
-            font-weight: 500;
-        }
-
-        .header-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            flex-shrink: 0;
-        }
-
-        .logo-subtitle {
-            font-size: 0.72rem;
-            color: #555;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-        }
-
-        nav {
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-            flex: 1;
-            min-width: 0;
-            overflow: visible;
-            font-size: 0.9rem;
-        }
-
-        nav > a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-
-        nav > a:hover {
-            color: var(--accent);
-        }
-
-        /* ===== DROPDOWN ===== */
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown > a {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            cursor: pointer; color: var(--text-dark); text-decoration: none;
-            font-size: 0.9rem; font-weight: 500; white-space: nowrap;
-        }
-        .dropdown > a:hover { color: var(--accent); }
-        .dropdown-arrow {
-            display: inline-block; width: 0; height: 0;
-            border-left: 4px solid transparent; border-right: 4px solid transparent;
-            border-top: 4px solid currentColor; transition: transform 0.2s;
-        }
-        .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background: white;
-            min-width: 260px;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            top: calc(100% + 10px);
-            left: 0;
-            border: 1px solid var(--border);
-            z-index: 9999;
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-        }
-        .dropdown.open .dropdown-menu { display: block; }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-section { padding: 0.5rem 0; }
-        .dropdown-section:first-child { padding-top: 0.8rem; }
-        .dropdown-section-title {
-            padding: 0.3rem 1.2rem 0.2rem;
-            font-size: 0.68rem; font-weight: 700;
-            color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .dropdown-menu a {
-            display: block; padding: 0.6rem 1.2rem;
-            color: var(--text-dark); text-decoration: none;
-            font-size: 0.88rem; transition: all 0.15s;
-            border-left: 3px solid transparent;
-        }
-        .dropdown-menu a:hover {
-            background: var(--light-bg); color: var(--accent);
-            border-left-color: var(--accent);
-        }
-        .dropdown-divider { height: 1px; background: var(--border); margin: 0.2rem 0; }
-
-        .cta-buttons {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-        }
-
-        .btn-call {
-            background: #E63946;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.9rem;
-        }
-
-        .btn-call:hover {
-            background: #d32f3d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
-        }
-
-        .btn-quote {
-            background: white;
-            color: #000;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 2px solid #000;
-            transition: all 0.3s;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.9rem;
-        }
-
-        .btn-quote:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-
-        /* Hamburger — navy square, right side of header */
-        
-        
-        
-        
-        
-
-        /* Dim overlay */
-        
-        
-
-        /* Drawer — slides in from RIGHT, dark navy */
-        
-        
-
-        /* Nav header */
-        
-        
-        
-        
-        
-
-        /* Section label */
-        
-
-        /* Nav links */
-        
-        
-        
-        
-
-        /* Thin divider */
-        
-
-        /* CTA buttons at bottom */
-        
-        
-        
-        
-        
-        
-
-        /* ── BREAKPOINTS ── */
-        
-
-        
-
-        /* ══════════════════════════════════════════════════
-           DEFINITIVE MOBILE STYLES
-           ══════════════════════════════════════════════════ */
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 44px; height: 44px;
-            cursor: pointer;
-            background: var(--primary);
-            border: none;
-            border-radius: 8px;
-            padding: 9px;
-            flex-shrink: 0;
-        }
-        .hamburger span {
-            display: block; height: 2px;
-            background: white; border-radius: 2px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
-        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        .mobile-nav-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.55); z-index: 998;
-            backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
-        }
-        .mobile-nav-overlay.active { display: block; }
-
-        .mobile-nav {
-            display: none; position: fixed;
-            top: 0; right: 0;
-            width: 85%; max-width: 330px; height: 100vh;
-            background: #0d1b33; z-index: 9999;
-            overflow-y: auto; transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-            flex-direction: column; -webkit-overflow-scrolling: touch;
-        }
-        .mobile-nav.active { transform: translateX(0); display: flex; }
-
-        .mobile-nav-header {
-            padding: 1.2rem 1.3rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex; justify-content: space-between; align-items: flex-start;
-            background: #0F1F3C; position: sticky; top: 0; z-index: 2;
-        }
-        .mobile-nav-logo .mnav-name { color: white; font-size: 1rem; font-weight: 700; line-height: 1.2; }
-        .mobile-nav-logo .mnav-sub { color: #E63946; font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; display: block; margin-top: 3px; }
-        .mobile-nav-close {
-            background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.8);
-            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s;
-        }
-        .mobile-nav-close:hover { background: rgba(255,255,255,0.16); }
-        .mnav-label { padding: 1rem 1.3rem 0.25rem; font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1.8px; }
-        .mobile-nav-body { padding: 0.3rem 0 0.5rem; flex: 1; }
-        .mobile-nav-body a { display: flex; align-items: center; gap: 0.65rem; padding: 0.75rem 1.3rem; min-height: 44px; color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.9rem; font-weight: 500; border-left: 2px solid transparent; transition: background 0.12s, color 0.12s, border-color 0.12s; }
-        .mobile-nav-body a:hover, .mobile-nav-body a:active { background: rgba(255,255,255,0.06); color: white; border-left-color: #E63946; }
-        .mnav-icon { font-size: 0.95rem; width: 20px; text-align: center; flex-shrink: 0; }
-        .mnav-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.25rem 0; }
-        .mobile-nav-cta { padding: 1rem 1.1rem 1.3rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.6rem; background: #0F1F3C; position: sticky; bottom: 0; }
-        .mobile-nav-cta a { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.82rem 1rem; border-radius: 10px; font-weight: 700; font-size: 0.88rem; text-decoration: none; text-align: center; transition: opacity 0.2s; }
-        .m-call  { background: #E63946 !important; color: white !important; }
-        .m-wa    { background: #25D366 !important; color: white !important; }
-        .m-quote { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.9) !important; border: 1px solid rgba(255,255,255,0.18) !important; }
-        .mobile-nav-cta a:hover { opacity: 0.88; }
-
-        @media (max-width: 860px) {
-            .header-top { display: none !important; }
-            .header-main {
-                padding: 0.75rem 1rem !important;
-                display: flex !important; flex-direction: row !important;
-                align-items: center !important; justify-content: space-between !important;
-                flex-wrap: nowrap !important; gap: 0 !important;
-            }
-            .hamburger { display: flex !important; }
-            nav, .cta-btns, .cta-buttons { display: none !important; }
-            .logo { font-size: 1rem !important; }
-            .logo-subtitle, .logo-sub { font-size: 0.68rem !important; }
-            .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
-            .hero h1, .page-hero h1 { font-size: 2.2rem !important; line-height: 1.2 !important; }
-            .hero p, .page-hero p { font-size: 0.9rem !important; margin-bottom: 1.5rem !important; }
-            .hero-actions, .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; padding: 0 !important; width: 100% !important; }
-            .hero-actions > *, .hero-buttons > * { width: 100% !important; text-align: center !important; box-sizing: border-box !important; display: block !important; }
-            .page-body { padding: 2rem 1.1rem !important; }
-            .two-col, .three-col, .four-col, .about-grid, .contact-wrapper, .coverage-grid, .foundation-grid, .steps-grid { grid-template-columns: 1fr !important; }
-            .stats-bar { grid-template-columns: 1fr 1fr !important; margin: 0 auto !important; border-radius: 0 !important; padding: 1.5rem 1rem !important; }
-            .about-strip-inner { grid-template-columns: 1fr !important; text-align: center !important; }
-            .advisor-photo { width: 150px !important; height: 150px !important; margin: 0 auto 1rem !important; }
-            .about-strip { padding: 2.5rem 1.2rem !important; }
-            .quote-tool { padding: 1.4rem 1.1rem !important; margin: 1.5rem auto 0 !important; }
-            .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            .quote-product-btn { font-size: 0.8rem !important; padding: 0.6rem !important; }
-            .hero-quote-card { padding: 1.2rem 1rem !important; margin: 1.5rem 0 0 !important; border-radius: 10px !important; max-width: 100% !important; }
-            .hq-tabs-row { grid-template-columns: repeat(3, 1fr) !important; gap: 0.45rem !important; }
-            .hq-tab { padding: 0.6rem 0.3rem !important; font-size: 0.72rem !important; min-height: 60px !important; }
-            .hq-item { padding: 0.65rem 0.85rem !important; font-size: 0.82rem !important; }
-            .category-tabs { border-bottom: none !important; gap: 0.4rem !important; margin-bottom: 1.5rem !important; }
-            .cat-tab { padding: 0.5rem 0.85rem !important; font-size: 0.78rem !important; border-radius: 20px !important; border: 2px solid var(--border) !important; bottom: 0 !important; }
-            .cat-tab.active { background: var(--accent) !important; color: white !important; border-color: var(--accent) !important; }
-            .quotes-container { padding: 2rem 1.1rem !important; }
-            .products-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-            .product-card { padding: 1.4rem !important; }
-            .product-actions { flex-direction: column !important; }
-            .btn-instant, .btn-call-sm { width: 100% !important; text-align: center !important; padding: 0.75rem !important; }
-            .cta-actions, .cta-buttons-row { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; }
-            .cta-actions a, .cta-buttons-row a { text-align: center !important; }
-            .cta-band, .cta-section { padding: 2.5rem 1.2rem !important; }
-            .cta-band h2, .cta-section h2 { font-size: 1.45rem !important; }
-            .contact-form, .contact-info { padding: 1.5rem !important; }
-            .contact-section { padding: 2.5rem 1.2rem !important; }
-            .trust-bar { padding: 1.2rem 1rem !important; }
-            .trust-items { gap: 0.8rem !important; }
-            .faq-q { font-size: 0.9rem !important; }
-            .section-head h2, .foundation-title, .coverage-title, .contact-title, .testimonials-title { font-size: 1.45rem !important; }
-            .foundation-card, .coverage-card { padding: 1.5rem !important; }
-            .partner-strip-inner { flex-direction: column !important; gap: 0.8rem !important; }
-            input, select, textarea { font-size: 16px !important; }
-            footer > div[style*="grid"] { display: flex !important; flex-direction: column !important; gap: 2rem !important; padding: 1.5rem 1.2rem !important; }
-            [style*="grid-template-columns: 1fr 1fr"], [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-            a[href*="wa.me"][style*="fixed"] { bottom: 1rem !important; right: 1rem !important; width: 50px !important; height: 50px !important; font-size: 1.3rem !important; }
-            .credential-badges { gap: 0.4rem !important; }
-            .credential-badge { font-size: 0.7rem !important; padding: 0.25rem 0.6rem !important; }
-            .contact-fallback { padding: 2rem 1.2rem !important; }
-            .contact-inner h2 { font-size: 1.4rem !important; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1, .page-hero h1 { font-size: 2.1rem !important; line-height: 1.15 !important; }
-            .stat-number { font-size: 2rem !important; }
-            .testimonial-card { flex: 0 0 270px !important; }
-        }
-    </style>
     <script type="application/ld+json">
     {
   "@context": "https://schema.org",
@@ -928,7 +1025,7 @@
       <div class="mobile-nav-cta">
         <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
         <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
-        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+        <a href="quote-tool.html#supervisa" class="m-quote">⚡&nbsp; Get Instant Quote</a>
       </div>
     </div>
 
@@ -1031,7 +1128,138 @@
     </div>
   </div>
 </div>
+
+<!-- ===== CARRIER STRIP ===== -->
+<div class="carrier-strip">
+  <p class="carrier-strip-label">Comparing 25+ top Canadian insurance carriers</p>
+  <div class="carrier-track-wrap">
+    <div class="carrier-track" id="carrierTrack">
+      <!-- set 1 -->
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Manulife</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Sun Life</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Blue Cross</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Tugo</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Allianz</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>GMS</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>TravelShield</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Industrial Alliance</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Destination Travel</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>MSH International</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>21st Century</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Secure Travel</span></div>
+      <!-- set 2 (duplicate for seamless loop) -->
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Manulife</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Sun Life</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Blue Cross</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Tugo</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Allianz</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>GMS</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>TravelShield</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Industrial Alliance</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Destination Travel</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>MSH International</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>21st Century</span></div>
+      <div class="carrier-item"><div class="carrier-dot"></div><span>Secure Travel</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUOTE CTA BAND ===== -->
+<style>
+#get-quote {
+  background: var(--primary);
+  padding: 2.8rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+#get-quote::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(230,57,70,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 40% at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-pro-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.cta-pro-text { flex: 1; min-width: 220px; }
+.cta-pro-headline {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+.cta-pro-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+.cta-pro-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.cta-pro-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.6rem;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 3px 14px rgba(230,57,70,0.4);
+  white-space: nowrap;
+}
+.cta-pro-btn-primary:hover {
+  background: #cf2d3a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(230,57,70,0.5);
+}
+.cta-pro-contact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cta-pro-contact a {
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.cta-pro-contact .link-phone { color: rgba(255,255,255,0.6); }
+.cta-pro-contact .link-phone:hover { color: white; }
+.cta-pro-contact .link-wa { color: #4ade80; }
+.cta-pro-contact .link-wa:hover { color: #86efac; }
+.cta-pro-contact .contact-sep { width: 1px; height: 14px; background: rgba(255,255,255,0.15); }
+.icon-phone, .icon-wa { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+
+
+<div class="page-body-outer">
+<div class="page-body-main">
 <div class="page-body">
+
+  <!-- WHAT IS SUPER VISA + COST CARDS -->
   <div class="two-col">
     <div>
       <div class="section-head"><h2>What is Super Visa Insurance?</h2><div class="divider"></div></div>
@@ -1063,19 +1291,257 @@
       </div>
     </div>
   </div>
+
+  <!-- ===== BENEFITS GRID (new) ===== -->
+  <div style="margin-top:3.5rem;">
+    <div class="section-head">
+      <h2>Benefits of Super Visa Insurance</h2>
+      <div class="divider"></div>
+      <p>Comprehensive protection for your parents and grandparents during their stay in Canada.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">🏥</span>
+        <h3>Medical Coverage</h3>
+        <p>Emergency medical expenses, hospitalization, and other healthcare services during the visitor's stay in Canada — all covered.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🔧</span>
+        <h3>Policy Customization</h3>
+        <p>Choose coverage amounts, deductibles, and options to fit your specific needs and budget. Full flexibility to tailor the plan.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">😌</span>
+        <h3>Peace of Mind</h3>
+        <p>Both visitors and sponsors in Canada can relax knowing medical expenses are covered in case of unforeseen emergencies.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🛂</span>
+        <h3>Visa Compliant</h3>
+        <p>All plans meet or exceed IRCC's mandatory insurance requirement, giving you the proof of coverage needed for the Super Visa application.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">💵</span>
+        <h3>Financial Protection</h3>
+        <p>Protects your family from significant financial burdens associated with healthcare costs in Canada, which can be very expensive for non-residents.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🛡️</span>
+        <h3>Sufficient Coverage Limits</h3>
+        <p>Coverage limits from $100,000 up to $500,000 available — well above the government minimum requirement for Super Visa applicants.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MONTHLY PLAN BENEFITS (new) ===== -->
+  <div class="monthly-plan-section">
+    <h2>💳 Monthly Payment Plan — Key Benefits</h2>
+    <p class="sub">Pay for your Super Visa insurance monthly instead of one large upfront payment.</p>
+    <div class="monthly-benefits-grid">
+      <div class="monthly-benefit-item">
+        <h4>💰 Lower Upfront Cost</h4>
+        <p>Even installments spread throughout the year — no large lump sum required. Invest the difference for potential additional returns.</p>
+      </div>
+      <div class="monthly-benefit-item">
+        <h4>🔄 Flexible Terms</h4>
+        <p>Switching providers before renewal is more convenient. Full refunds available if the visa is not granted or your parent returns home early.</p>
+      </div>
+      <div class="monthly-benefit-item">
+        <h4>🏆 Best Providers</h4>
+        <p>Monthly plans available from top-tier Canadian insurance providers including Manulife, Sun Life, Tugo, Blue Cross, and more.</p>
+      </div>
+      <div class="monthly-benefit-item">
+        <h4>💳 Easy Billing</h4>
+        <p>Convenient credit card billing with no hidden fees. Select the plan that fits your family's monthly budget with total transparency.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ELIGIBILITY REQUIREMENTS (new) ===== -->
+  <div class="eligibility-section">
+    <h2>Super Visa Eligibility Requirements</h2>
+    <div class="divider"></div>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:0.5rem;">Secure a Super Visa by meeting all of the following criteria:</p>
+    <div class="eligibility-grid">
+      <div class="elig-box">
+        <h4>Sponsor Requirements</h4>
+        <ul>
+          <li>Must have a child or grandchild in Canada (sponsor) who is a Canadian citizen or permanent resident</li>
+          <li>Sponsor must be at least 18 years old and live in Canada</li>
+          <li>Sponsor must meet or exceed the minimum necessary income (LICO)</li>
+          <li>Sponsor must sign an invitation letter promising financial support</li>
+        </ul>
+      </div>
+      <div class="elig-box">
+        <h4>Applicant Requirements</h4>
+        <ul>
+          <li>Submit your Super Visa application from outside Canada</li>
+          <li>Have your visa printed by a visa office outside Canada</li>
+          <li>Ensure you are admissible to enter Canada</li>
+          <li>Complete an immigration medical exam</li>
+          <li>Provide proof of a Canadian health insurance policy ($100,000+ coverage)</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-light);">The eligibility information provided here is for general reference only. Visit the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/visitors/super-visa.html" target="_blank" style="color:var(--accent);">official Canada.ca page</a> for the most up-to-date requirements.</p>
+  </div>
+
+  <!-- ===== LICO TABLE (new) ===== -->
+  <div class="lico-section">
+    <div class="section-head">
+      <h2>LICO Income Requirements for Sponsor</h2>
+      <div class="divider"></div>
+      <p>Your child or grandchild must meet the following Low Income Cut-Off (LICO) thresholds to sponsor a Super Visa application.</p>
+    </div>
+    <div class="lico-table-wrap">
+      <table class="lico-table">
+        <thead>
+          <tr>
+            <th>Size of Family Unit</th>
+            <th>Minimum Gross Annual Income Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 person (your child or grandchild alone)</td><td>$29,380</td></tr>
+          <tr><td>2 persons</td><td>$36,576</td></tr>
+          <tr><td>3 persons</td><td>$44,966</td></tr>
+          <tr><td>4 persons</td><td>$54,594</td></tr>
+          <tr><td>5 persons</td><td>$61,920</td></tr>
+          <tr><td>6 persons</td><td>$69,834</td></tr>
+          <tr><td>7 persons</td><td>$77,750</td></tr>
+          <tr><td>Each additional person after 7th</td><td>+ $7,916</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lico-note">⚠️ These figures are periodically updated by the Government of Canada. Verify the latest numbers at <a href="https://www.canada.ca" target="_blank">canada.ca</a> before applying. Need help understanding if you qualify? <a href="tel:+16479955891">Call me directly</a>.</p>
+  </div>
+
+  <!-- ===== DOCUMENT CHECKLIST (new) ===== -->
+  <div class="doc-checklist-section">
+    <div class="section-head">
+      <h2>Document Checklist for Super Visa</h2>
+      <div class="divider"></div>
+      <p>To apply for a Super Visa from outside Canada, the following documents are required. I can help you confirm you have everything in order.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doc-col">
+        <ul>
+          <li>Application for Temporary Resident Visa (IMM 5257)</li>
+          <li>Family Information Form (IMM 5707)</li>
+          <li>Statutory Declaration of Common-Law Union (IMM 5409)</li>
+          <li>Use of Representative (IMM 5476)</li>
+          <li>Authority to Release Personal Information (IMM 5475)</li>
+          <li>Fee Payment</li>
+          <li>Two Passport-Style Photos</li>
+          <li>Valid Passport</li>
+          <li>Proof of Financial Support while in Canada</li>
+          <li>Marriage Certificate / License (if applicable)</li>
+        </ul>
+      </div>
+      <div class="doc-col">
+        <ul>
+          <li>Purpose of Travel letter</li>
+          <li>Current Immigration Status documents</li>
+          <li>Additional documents for responsible Visa Office</li>
+          <li>Letter of Invitation from Child or Grandchild</li>
+          <li>LICO Income Proof (NOA, pay stubs, T4)</li>
+          <li>Relationship Proof (birth certificate, etc.)</li>
+          <li>✅ Medical Travel Insurance Proof (from a Canadian insurer)</li>
+          <li>Document Checklist (IMM 5484)</li>
+          <li>Immigration Medical Exam Results</li>
+          <li>Completed biometrics (if required)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.4rem 1.6rem;background:var(--light-bg);border:1px solid var(--border);border-radius:10px;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.6rem;">From Each Applicant (Parents / Grandparents) — Financial Ties to Home Country</div>
+      <ul style="columns:2;column-gap:2rem;list-style:disc;padding-left:1.2rem;font-size:0.88rem;color:var(--text-dark);line-height:1.8;">
+        <li>Valid passport — front two and last two pages, plus any stamped pages</li>
+        <li>Bank statements — personal (showing INR 6–8 lacs combined)</li>
+        <li>Bank statement — business (if applicable)</li>
+        <li>Business registration / ownership certificate</li>
+        <li>Employment letter (if employed)</li>
+        <li>Income tax returns — last 3 years (personal &amp; business)</li>
+        <li>Fixed deposits, savings, investments — as available</li>
+        <li>Proof of property — agricultural, residential, or commercial<br><span style="font-size:0.8rem;color:var(--text-light);">Must be from a <strong>Certified Property Evaluator</strong>; CA report not acceptable</span></li>
+        <li>Marriage certificate</li>
+        <li>Any other documents showing ties to home country</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-light);">Document requirements may vary by visa office and individual circumstances. Visit <a href="https://www.canada.ca" target="_blank" style="color:var(--accent);">canada.ca</a> for the official and most current checklist.</p>
+  </div>
+
+  <!-- ===== FAQ (expanded) ===== -->
   <div style="margin-top:3rem;">
     <div class="section-head"><h2>Frequently Asked Questions</h2><div class="divider"></div></div>
     <div class="faq-item"><div class="faq-q">Can I buy Super Visa insurance before the visa is approved?</div><div class="faq-a">Yes — and it's recommended. You need proof of insurance to include in your Super Visa application. Many insurers offer refundable policies if the visa is denied.</div></div>
-    <div class="faq-item"><div class="faq-q">What if my parent has pre-existing conditions?</div><div class="faq-a">Several carriers offer coverage that includes stable pre-existing conditions. The definition of "stable" varies by provider — I'll help you find the right fit.</div></div>
+    <div class="faq-item"><div class="faq-q">What if my parent has pre-existing conditions?</div><div class="faq-a">Several carriers offer coverage that includes stable pre-existing conditions. The definition of "stable" varies by provider — I'll help you find the right fit for your parent's specific health history.</div></div>
     <div class="faq-item"><div class="faq-q">Can the policy be cancelled if they return home early?</div><div class="faq-a">Yes. Most policies offer a pro-rated refund if your parent returns home before the policy expires, as long as no claims have been made.</div></div>
     <div class="faq-item"><div class="faq-q">What does the insurance cover?</div><div class="faq-a">Emergency hospitalization, doctor visits, ambulance, prescription drugs during emergencies, and repatriation. Some plans also cover dental emergencies and vision care.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I pay for Super Visa insurance monthly?</div><div class="faq-a">Yes. Several top plan providers allow monthly payment for Super Visa Insurance, making it easier to manage your family's budget. Ask me which providers offer the best monthly plan terms.</div></div>
+    <div class="faq-item"><div class="faq-q">Is Super Visa insurance refundable if the visa is denied?</div><div class="faq-a">Super Visa insurance is typically fully refundable if the visa application is denied. Many providers also offer a refund for any unused portion if your parents return home early before the policy expires, provided no claims have been made.</div></div>
+    <div class="faq-item"><div class="faq-q">What is the new Super Visa rule about length of stay?</div><div class="faq-a">As of 2022, the Super Visa allows applicants to stay in Canada for up to five years per visit, extended from the previous two-year maximum. The visa itself can be valid for up to ten years with multiple entries.</div></div>
+    <div class="faq-item"><div class="faq-q">Can parents work on a Super Visa?</div><div class="faq-a">No. Parents and grandparents holding a Super Visa are not permitted to work in Canada. The Super Visa is specifically designed for extended family visits and does not grant any authorization for employment or business activities.</div></div>
+    <div class="faq-item"><div class="faq-q">Who needs Visitor to Canada Emergency Medical Insurance?</div><div class="faq-a">Any visitor not covered by the Canadian healthcare system — including tourists, family and friends of residents, business travelers, international students, and Super Visa applicants — should have emergency medical insurance while in Canada.</div></div>
+    <div class="faq-item"><div class="faq-q">What happens if I don't have insurance?</div><div class="faq-a">Without coverage, visitors are personally responsible for all medical costs in Canada, which can be extremely high for non-residents. For Super Visa applicants, proof of insurance is mandatory — the visa will not be issued without it.</div></div>
   </div>
-</div>
+</div><!-- /page-body -->
+</div><!-- /page-body-main -->
+
+<!-- ===== STICKY SIDEBAR ===== -->
+<aside class="sticky-sidebar">
+  <div class="sticky-sidebar-inner">
+    <!-- Product Switcher -->
+    <div class="sidebar-product-switcher">
+      <div class="sidebar-switcher-label">Choose Insurance Type</div>
+      <a href="visitors.html" class="sidebar-product-card">
+        <span class="sidebar-psc-icon">✈️</span>
+        <div class="sidebar-psc-body">
+          <h4>Visitor Insurance</h4>
+          <p>Protection for any visitor to Canada</p>
+        </div>
+        <span class="sidebar-psc-arrow">→</span>
+      </a>
+      <a href="supervisa.html" class="sidebar-product-card active">
+        <span class="sidebar-psc-icon">🇨🇦</span>
+        <div class="sidebar-psc-body">
+          <h4>Super Visa Insurance</h4>
+          <p>For parents &amp; grandparents</p>
+        </div>
+        <span class="sidebar-psc-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Quote CTA -->
+    <div class="sidebar-quote-cta">
+      <div class="sidebar-quote-label">⚡ Free · No Obligation</div>
+      <h3>Get Your Best Rate</h3>
+      <p>Compare 25+ carriers in minutes. Same-day approval available.</p>
+      <a href="quote-tool.html#supervisa" class="sidebar-quote-btn">⚡ Get My Free Quote</a>
+      <div class="sidebar-contact-alts">
+        <a href="tel:+16479955891" class="alt-phone">📞 &nbsp;(647) 995-5891</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="alt-wa">💬 &nbsp;WhatsApp Me</a>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="sidebar-trust">
+      <div class="sidebar-trust-item">✅ IRCC-Compliant Coverage</div>
+      <div class="sidebar-trust-item">🏆 25+ Carriers Compared</div>
+      <div class="sidebar-trust-item">⚡ Same-Day Approval</div>
+      <div class="sidebar-trust-item">🔒 No Obligation Quote</div>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /page-body-outer -->
 
 <div class="cta-band">
   <h2>Need Super Visa Insurance?</h2>
   <p>I can usually get a policy issued the same day. Reach out and I'll take care of it.</p>
-  <a href="quote-tool.html#supervisa" class="btn-cta-white">⚡ Get an Instant Quote</a>
+  <a href="quote-tool.html#supervisa" class="btn-cta-white">⚡ Get My Free Quote</a>
   <a href="tel:+16479955891" class="btn-cta-dark">📞 Call (647) 995-5891</a>
 </div>
 
@@ -1147,30 +1613,18 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
   <script>
   // Mobile nav accordion — robust v2
   (function() {
-    function initAccordion() {
-      document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
-        var toggle = acc.querySelector('.mnav-acc-toggle');
-        var items  = acc.querySelector('.mnav-acc-items');
-        if (!toggle || !items) return;
-        toggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var isOpen = items.classList.contains('open');
-          // Close all
-          document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
-          document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
-          // Open this one if it was closed
-          if (!isOpen) {
-            items.classList.add('open');
-            toggle.classList.add('open');
-          }
-        });
+    document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
+      var toggle = acc.querySelector('.mnav-acc-toggle');
+      var items  = acc.querySelector('.mnav-acc-items');
+      if (!toggle || !items) return;
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = items.classList.contains('open');
+        document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
+        document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
+        if (!isOpen) { items.classList.add('open'); toggle.classList.add('open'); }
       });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initAccordion);
-    } else {
-      initAccordion();
-    }
+    });
   })();
   </script>
 </body>
