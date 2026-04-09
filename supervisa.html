@@ -161,6 +161,7 @@
         /* WHATSAPP FLOAT */
         .wa-float { position:fixed; bottom:1.8rem; right:1.8rem; z-index:9999; background:#25D366; color:white; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 16px rgba(37,211,102,0.4); text-decoration:none; transition:transform 0.2s; }
         .wa-float:hover { transform:scale(1.12); }
+        @media (max-width: 1024px) { .wa-float { display: none; } }
 
         /* BENEFITS GRID */
         .benefits-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; margin-top:2rem; }
@@ -1693,6 +1694,152 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
     body { padding-bottom: 72px; }
   }
 </style>
+<!-- ===== FLOATING QUOTE TAB + DRAWER (mobile only) ===== -->
+<style>
+  .quote-tab-btn, .quote-overlay, .quote-drawer { display: none; }
+
+  @media (max-width: 1024px) {
+    .quote-tab-btn {
+      display: flex;
+      position: fixed;
+      right: 0;
+      top: 42%;
+      transform: translateY(-50%);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      background: #E63946;
+      color: white;
+      padding: 0.85rem 0.45rem;
+      border-radius: 10px 0 0 10px;
+      cursor: pointer;
+      box-shadow: -3px 0 14px rgba(230,57,70,0.35);
+      border: none;
+      outline: none;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .quote-tab-btn:active { background: #c62835; }
+    .quote-tab-btn .qtb-icon { font-size: 1.1rem; }
+    .quote-tab-btn .qtb-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .quote-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .quote-overlay.open { opacity: 1; pointer-events: all; }
+    .quote-drawer {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 20px 20px 0 0;
+      z-index: 1001;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
+      max-height: 82vh;
+      overflow-y: auto;
+      padding: 0 0 env(safe-area-inset-bottom);
+    }
+    .quote-drawer.open { transform: translateY(0); }
+    .qd-handle { display: flex; justify-content: center; padding: 0.75rem 0 0.25rem; }
+    .qd-handle-bar { width: 40px; height: 4px; background: #dde; border-radius: 99px; }
+    .qd-header { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1.3rem 0.75rem; border-bottom: 1px solid #eee; }
+    .qd-header h3 { font-size: 1rem; font-weight: 700; color: #0F2142; margin: 0; }
+    .qd-close { background: #f1f3f5; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #555; }
+    .qd-switcher { padding: 1rem 1.3rem 0.5rem; }
+    .qd-switcher-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 0.6rem; }
+    .qd-product-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; text-decoration: none; border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 0.5rem; background: white; transition: background 0.15s; }
+    .qd-product-card.active { background: #fff5f5; border-color: #E63946; border-left: 3px solid #E63946; }
+    .qd-product-card:active { background: #f8f9fa; }
+    .qd-product-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .qd-product-body h4 { font-size: 0.88rem; font-weight: 700; color: #0F2142; margin: 0 0 0.1rem; }
+    .qd-product-body p  { font-size: 0.75rem; color: #6b7280; margin: 0; }
+    .qd-arrow { margin-left: auto; color: #E63946; font-weight: 700; }
+    .qd-cta { margin: 0.5rem 1.3rem 1.3rem; background: #0F2142; border-radius: 14px; padding: 1.2rem; }
+    .qd-cta-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-bottom: 0.3rem; }
+    .qd-cta h4 { font-size: 1.1rem; font-weight: 800; color: white; margin: 0 0 0.25rem; }
+    .qd-cta p  { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 1rem; }
+    .qd-cta-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; width: 100%; padding: 0.75rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; margin-bottom: 0.5rem; transition: opacity 0.15s; }
+    .qd-cta-btn:active { opacity: 0.8; }
+    .qd-cta-btn.qdc-quote { background: #E63946; color: white; }
+    .qd-cta-btn.qdc-call  { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+    .qd-cta-btn.qdc-wa    { background: rgba(37,211,102,0.15); color: #4ade80; border: 1px solid rgba(37,211,102,0.3); }
+  }
+</style>
+
+<div class="quote-overlay" id="quoteOverlay" onclick="closeQuoteDrawer()"></div>
+
+<button class="quote-tab-btn" id="quoteTabBtn" onclick="openQuoteDrawer()" aria-label="Get a quote">
+  <span class="qtb-icon">⚡</span>
+  <span class="qtb-label">Get Quote</span>
+</button>
+
+<div class="quote-drawer" id="quoteDrawer">
+  <div class="qd-handle"><div class="qd-handle-bar"></div></div>
+  <div class="qd-header">
+    <h3>Get Your Best Rate</h3>
+    <button class="qd-close" onclick="closeQuoteDrawer()">✕</button>
+  </div>
+  <div class="qd-switcher">
+    <div class="qd-switcher-label">Choose Insurance Type</div>
+    <a href="visitors.html" class="qd-product-card">
+      <span class="qd-product-icon">✈️</span>
+      <div class="qd-product-body">
+        <h4>Visitor Insurance</h4>
+        <p>Protection for any visitor to Canada</p>
+      </div>
+      <span class="qd-arrow">→</span>
+    </a>
+    <a href="supervisa.html" class="qd-product-card active">
+      <span class="qd-product-icon">🇨🇦</span>
+      <div class="qd-product-body">
+        <h4>Super Visa Insurance</h4>
+        <p>For parents &amp; grandparents</p>
+      </div>
+      <span class="qd-arrow">→</span>
+    </a>
+  </div>
+  <div class="qd-cta">
+    <div class="qd-cta-label">⚡ Free · No Obligation</div>
+    <h4>Compare &amp; Save</h4>
+    <p>25+ carriers in minutes. Same-day approval available.</p>
+    <a href="quote-tool.html#supervisa" class="qd-cta-btn qdc-quote">⚡ Get My Free Quote</a>
+    <a href="tel:+16479955891" class="qd-cta-btn qdc-call">📞 (647) 995-5891</a>
+    <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Super%20Visa%20Insurance" target="_blank" class="qd-cta-btn qdc-wa">💬 WhatsApp Me</a>
+  </div>
+</div>
+
+<script>
+  function openQuoteDrawer() {
+    document.getElementById('quoteDrawer').classList.add('open');
+    document.getElementById('quoteOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeQuoteDrawer() {
+    document.getElementById('quoteDrawer').classList.remove('open');
+    document.getElementById('quoteOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
 <div class="mobile-sticky-cta" id="mobileStickyBar">
   <a href="quote-tool.html#supervisa" class="msc-btn msc-primary">⚡ Get Quotes Instantly</a>
   <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Super%20Visa%20Insurance" target="_blank" class="msc-btn msc-wa">💬 WhatsApp</a>
