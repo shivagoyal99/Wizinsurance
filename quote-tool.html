@@ -247,6 +247,47 @@
   }
   .field-wrap input[type="number"] { padding-right: 40px; }
 
+  /* STEPPER BUTTONS for mobile number inputs */
+  .stepper-wrap {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+  .stepper-btn {
+    display: none;
+    width: 36px;
+    min-width: 36px;
+    background: var(--navy);
+    color: #fff;
+    border: 1.5px solid var(--navy);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-radius: 0;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    padding: 0;
+    user-select: none;
+  }
+  .stepper-btn:active { background: var(--accent); border-color: var(--accent); }
+  .stepper-dec { border-radius: 8px 0 0 8px; }
+  .stepper-inc { border-radius: 0 8px 8px 0; }
+  @media (max-width: 768px) {
+    .stepper-btn { display: flex; }
+    .stepper-wrap input[type="number"] {
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      text-align: center;
+      padding-right: 8px !important;
+    }
+    .field-wrap:has(.stepper-wrap) { max-width: none !important; }
+    .stepper-wrap ~ .unit { display: none; }
+  }
+
   /* DATES ROW */
   .dates-row {
     display: flex;
@@ -1855,7 +1896,7 @@
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-nav-header">
         <div class="mobile-nav-logo">
-          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:30px;height:30px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
+          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:34px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
           <span class="mnav-sub">Wisdom · Integrity · Zeal</span>
         </div>
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
@@ -1952,7 +1993,7 @@
         </div>
         <div class="header-main">
             <a href="index.html" class="logo">
-                <span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:30px;height:30px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal
+                <span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:34px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal
                 <div class="logo-subtitle">LIFE INSURANCE ADVISOR · CANADA</div>
             </a>
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -2078,7 +2119,11 @@
           <span class="or-label">or</span>
           <div class="field-wrap" style="max-width:100px;">
             <label>Age</label>
-            <input type="number" id="age1" placeholder="60" min="1" max="110" value="60" onchange="this.dataset.userSet='1'; ageToDob('age1','dob1')"/>
+            <div class="stepper-wrap">
+              <button class="stepper-btn stepper-dec" onclick="stepInput('age1',-1)">−</button>
+              <input type="number" id="age1" placeholder="60" min="1" max="110" value="60" onchange="this.dataset.userSet='1'; ageToDob('age1','dob1')"/>
+              <button class="stepper-btn stepper-inc" onclick="stepInput('age1',1)">+</button>
+            </div>
             <span class="unit">years</span>
           </div>
         </div>
@@ -2096,7 +2141,11 @@
           <span class="or-label">or</span>
           <div class="field-wrap" style="max-width:90px;">
             <label id="days1-label">Days</label>
-            <input type="number" id="days1" placeholder="365" min="1" max="730" onchange="daysToEndDate()"/>
+            <div class="stepper-wrap">
+              <button class="stepper-btn stepper-dec" onclick="stepInput('days1',-1)">−</button>
+              <input type="number" id="days1" placeholder="365" min="1" max="730" onchange="daysToEndDate()"/>
+              <button class="stepper-btn stepper-inc" onclick="stepInput('days1',1)">+</button>
+            </div>
           </div>
         </div>
         <div id="sv-lock-note" style="display:none; font-size:11.5px; color:#c9a84c; font-weight:600; margin-top:-8px; margin-bottom:4px;">
@@ -2149,7 +2198,11 @@
           <span class="or-label">or</span>
           <div class="field-wrap" style="max-width:100px;">
             <label>Age</label>
-            <input type="number" id="age2" placeholder="55" min="1" max="110" onchange="ageToDob('age2','dob2')"/>
+            <div class="stepper-wrap">
+              <button class="stepper-btn stepper-dec" onclick="stepInput('age2',-1)">−</button>
+              <input type="number" id="age2" placeholder="55" min="1" max="110" onchange="ageToDob('age2','dob2')"/>
+              <button class="stepper-btn stepper-inc" onclick="stepInput('age2',1)">+</button>
+            </div>
             <span class="unit">years</span>
           </div>
         </div>
@@ -2507,6 +2560,16 @@
     diffCovOpen = !diffCovOpen;
     document.getElementById('diff-coverage-section').style.display = diffCovOpen ? '' : 'none';
     document.getElementById('diff-cov-icon').textContent = diffCovOpen ? '−' : '+';
+  }
+
+  function stepInput(id, delta) {
+    const el = document.getElementById(id);
+    const min = parseInt(el.min) || 1;
+    const max = parseInt(el.max) || 9999;
+    const val = parseInt(el.value) || 0;
+    el.value = Math.min(max, Math.max(min, val + delta));
+    el.dataset.userSet = '1';
+    el.dispatchEvent(new Event('change'));
   }
 
   function dobToAge(dobId, ageId) {
@@ -3477,6 +3540,15 @@
 
     if (!age1 || age1 < 1) { alert('Please enter applicant age or date of birth.'); return; }
 
+    if (policyType === 'couple' || policyType === 'family') {
+      const age2val = parseInt(document.getElementById('age2').value);
+      if (!age2val || age2val < 1) {
+        alert('Please enter the second applicant\'s age or date of birth.');
+        document.getElementById('age2').focus();
+        return;
+      }
+    }
+
     // sync coverage dropdown on results page
     const resCov = document.getElementById('res-coverage');
     if (resCov) {
@@ -3529,7 +3601,7 @@
         return !supported || supported.includes(deductible);
       });
     const results = carriers
-      .map(c => {
+      .map(c => { try {
         let annual;
         if (c.id === 'trustone-std') {
           // Use exact HMC rate table for TrueStone
@@ -3601,7 +3673,7 @@
             const age2 = parseInt(document.getElementById('age2').value) || age1;
             const cov2 = diffCovOpen ? parseInt(document.getElementById('coverage2').value) : coverage;
             const pre2 = document.querySelector('input[name="pre2"]:checked')?.value === 'yes';
-            const tv2 = priceFn(age2, cov2, days, isEnh, pre2, deductible);
+            const tv2 = twovisitPrice(age2, cov2, days, isEnh, pre2, deductible);
             tv += tv2 !== null ? tv2 : base * c.mult;
           }
           annual = tv;
@@ -3693,7 +3765,7 @@
           annual = base * c.mult;
         }
         return { ...c, annual, monthly: annual / 12 };
-      })
+      } catch(e) { console.error('Price error for', c.id, e); return { ...c, annual: null, monthly: null }; } })
       .sort((a, b) => {
         if (a.annual === null && b.annual === null) return 0;
         if (a.annual === null) return 1;
