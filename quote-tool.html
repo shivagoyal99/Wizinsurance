@@ -442,40 +442,25 @@
     transition: background 0.2s, transform 0.15s;
   }
   .tooltip-trigger:hover { background: var(--navy-mid); transform: scale(1.1); }
-  .tooltip-box {
+  /* Inline .tooltip-box hidden — JS reads its content into #g-tip */
+  .tooltip-box { display: none !important; }
+  #g-tip {
     display: none;
-    position: fixed; /* fixed so it never gets clipped by parent overflow */
-    width: min(270px, 80vw);
+    position: fixed;
+    z-index: 99999;
+    width: min(290px, 82vw);
     background: var(--white);
-    border: 1.5px solid var(--navy);
-    border-radius: 10px;
-    padding: 11px 13px 11px 13px;
-    box-shadow: 0 8px 32px rgba(13,31,60,0.18);
-    z-index: 9000;
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--text);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px 12px;
+    box-shadow: 0 6px 24px rgba(13,31,60,0.13);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--navy);
     font-weight: 400;
   }
-  .tooltip-close-btn {
-    position: absolute;
-    top: 6px; right: 8px;
-    font-size: 16px;
-    color: var(--muted);
-    cursor: pointer;
-    line-height: 1;
-    background: none;
-    border: none;
-    padding: 0;
-  }
-  .tooltip-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 12.5px; padding-right: 16px; }
-  .tooltip-box a { color: var(--navy); font-weight: 700; text-decoration: underline; }
-  /* Desktop: hover opens tooltip */
-  @media (hover: hover) {
-    .tooltip-trigger:hover .tooltip-box { display: block; }
-  }
-  /* Any device: .active class opens tooltip */
-  .tooltip-trigger.active .tooltip-box { display: block; }
+  #g-tip strong { color: var(--navy); display: block; margin-bottom: 6px; font-size: 13.5px; font-weight: 700; }
+  #g-tip.visible { display: block; }
   .pre-radio-group {
     display: flex;
     gap: 20px;
@@ -914,7 +899,7 @@
     .coverage-row { display: flex; flex-direction: column; gap: 6px; }
 
     /* Tooltip repositioned for mobile — anchor to right so it opens leftward, never off-screen */
-    .tooltip-box { left: auto; right: 0; top: 28px; width: min(240px, 75vw); }
+    /* tooltip-box positioned by JS — no override needed */
 
     /* Lead capture */
     .lead-grid { grid-template-columns: 1fr; }
@@ -2253,7 +2238,7 @@
               <div class="tooltip-box">
                 <button class="tooltip-close-btn" onclick="this.closest('.tooltip-trigger').classList.remove('active'); event.stopPropagation();">×</button>
                 <strong>What is a pre-existing medical condition?</strong>
-                A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor at any time prior to your departure date. These medical conditions or symptoms are described in the insurance policy.
+                A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor or other practitioner at any time prior to your departure date. These medical conditions or symptoms are described in the insurance policy.
               </div>
             </div>
           </div>
@@ -2338,7 +2323,7 @@
               <div class="tooltip-box">
                 <button class="tooltip-close-btn" onclick="this.closest('.tooltip-trigger').classList.remove('active'); event.stopPropagation();">×</button>
                 <strong>What is a pre-existing medical condition?</strong>
-                A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor at any time prior to your departure date.
+                A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor or other practitioner at any time prior to your departure date. These medical conditions or symptoms are described in the insurance policy.
               </div>
             </div>
           </div>
@@ -6075,65 +6060,70 @@ function showToast(msg) {
 </script>
 
   <script>
-  // ── Tooltip system ──────────────────────────────────────────────────────────
-  function positionTooltip(trigger) {
-    var box = trigger.querySelector('.tooltip-box');
-    if (!box) return;
-    var rect = trigger.getBoundingClientRect();
-    var boxW = Math.min(270, window.innerWidth * 0.8);
-    var left = rect.right + 8;
-    var top  = rect.top - 8;
-    if (left + boxW > window.innerWidth - 8) left = rect.left - boxW - 8;
-    if (top + 160 > window.innerHeight) top = window.innerHeight - 170;
-    if (top < 8) top = 8;
-    box.style.left = left + 'px';
-    box.style.top  = top  + 'px';
-    box.style.width = boxW + 'px';
-  }
+  // ── Global tooltip system ───────────────────────────────────────────────────
+  (function() {
+    // Create #g-tip here so it's guaranteed to exist regardless of HTML order
+    var gTip = document.getElementById('g-tip') || (function(){
+      var d = document.createElement('div');
+      d.id = 'g-tip';
+      document.body.appendChild(d);
+      return d;
+    })();
+    var activeTrigger = null;
 
-  function closeAllTooltips() {
-    document.querySelectorAll('.tooltip-trigger.active').forEach(function(t) {
-      t.classList.remove('active');
-    });
-  }
+    function showTip(trigger) {
+      var src = trigger.querySelector('.tooltip-box');
+      if (!src) return;
+      gTip.innerHTML = src.innerHTML;
+      // Remove any stale close buttons from previous passes
+      var cb = gTip.querySelector('.tooltip-close-btn');
+      if (cb) cb.remove();
 
-  function toggleTooltip(trigger) {
-    var isActive = trigger.classList.contains('active');
-    closeAllTooltips();
-    if (!isActive) {
-      positionTooltip(trigger);
-      trigger.classList.add('active');
+      var r    = trigger.getBoundingClientRect();
+      var boxW = Math.min(290, window.innerWidth * 0.82);
+      // Place below the icon, centered under it
+      var top  = r.bottom + 10;
+      var left = r.left + r.width / 2 - boxW / 2;
+      // Clamp within viewport
+      if (left + boxW > window.innerWidth - 8) left = window.innerWidth - boxW - 8;
+      if (left < 8) left = 8;
+      // Flip above only if genuinely no room below
+      if (top + 240 > window.innerHeight) top = r.top - 240;
+      if (top < 8) top = 8;
+
+      gTip.style.top   = top  + 'px';
+      gTip.style.left  = left + 'px';
+      gTip.style.width = boxW + 'px';
+      gTip.classList.add('visible');
+      activeTrigger = trigger;
     }
-  }
 
-  document.querySelectorAll('.tooltip-trigger').forEach(function(trigger) {
-    // touchend — fires reliably on mobile divs; preventDefault stops synthetic click
-    trigger.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleTooltip(trigger);
-    });
-    // click — for desktop / mouse
-    trigger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      toggleTooltip(trigger);
-    });
-  });
-
-  // Outside-tap dismiss (touchstart fires before click, safe for mobile)
-  document.addEventListener('touchstart', function(e) {
-    var t = e.target;
-    if (t && typeof t.closest === 'function' && !t.closest('.tooltip-trigger')) {
-      closeAllTooltips();
+    function hideTip() {
+      gTip.classList.remove('visible');
+      activeTrigger = null;
     }
-  }, { passive: true });
 
-  // Outside-click dismiss for desktop
-  document.addEventListener('click', function() { closeAllTooltips(); });
+    document.querySelectorAll('.tooltip-trigger').forEach(function(trigger) {
+      // Desktop hover
+      trigger.addEventListener('mouseenter', function() { showTip(trigger); });
+      trigger.addEventListener('mouseleave', hideTip);
 
-  // Close on scroll or resize
-  document.addEventListener('scroll', closeAllTooltips, true);
-  window.addEventListener('resize', closeAllTooltips);
+      // Mobile tap toggle
+      trigger.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (activeTrigger === trigger) { hideTip(); } else { showTip(trigger); }
+      });
+    });
+
+    // Tap outside closes on mobile
+    document.addEventListener('touchstart', function(e) {
+      if (activeTrigger && !activeTrigger.contains(e.target)) hideTip();
+    }, { passive: true });
+
+    document.addEventListener('scroll', hideTip, true);
+    window.addEventListener('resize', hideTip);
+  })();
   // ────────────────────────────────────────────────────────────────────────────
   </script>
 
@@ -6167,5 +6157,6 @@ function showToast(msg) {
     }
   })();
   </script>
+<div id="g-tip"></div>
 </body>
 </html>
