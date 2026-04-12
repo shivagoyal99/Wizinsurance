@@ -286,15 +286,29 @@
   }
   .stepper-btn:not(:last-child) { border-bottom: 1px solid var(--border); }
   .stepper-btn:active { background: var(--navy); color: #fff; }
+  /* Hide arrows when input is locked/readonly (e.g. Super Visa days) */
+  .stepper-wrap input[readonly] ~ .stepper-arrows { display: none !important; }
+  .stepper-wrap input[readonly] {
+    border-radius: 8px !important;
+    border-right: 1.5px solid var(--border) !important;
+    background: #f1f5f9 !important;
+    color: #6b7280 !important;
+    cursor: not-allowed;
+  }
+
   @media (max-width: 768px) {
     .stepper-arrows { display: flex; }
-    .stepper-wrap input[type="number"] {
+    .stepper-wrap input[type="number"]:not([readonly]) {
       border-radius: 8px 0 0 8px !important;
       border-right: none !important;
       flex: 1;
     }
-    .field-wrap:has(.stepper-wrap) { max-width: none !important; }
+    /* Fixed width for age/days on mobile — not full width */
+    .field-wrap:has(.stepper-wrap) { max-width: 160px !important; flex: 0 0 160px !important; }
     .stepper-wrap ~ .unit { display: none; }
+    /* Pre-existing radio always inline */
+    .pre-radio-group { display: flex !important; flex-wrap: nowrap !important; gap: 16px !important; align-items: center !important; }
+    .pre-radio { white-space: nowrap; }
   }
 
   /* DATES ROW */
@@ -2353,10 +2367,12 @@
       </div>
 
       <!-- Pre-existing toggle on results page -->
-      <div style="text-align:center; font-size:13px; margin-bottom:12px; color:var(--text);">
-        Would you like to cover pre-existing medical conditions?
-        <label style="margin-left:12px; cursor:pointer;"><input type="radio" name="res-pre" value="no" checked onchange="rerunQuotes()"/> No</label>
-        <label style="margin-left:10px; cursor:pointer;"><input type="radio" name="res-pre" value="yes" onchange="rerunQuotes()"/> Yes</label>
+      <div style="font-size:13px; margin-bottom:12px; color:var(--text); display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px;">
+        <span>Would you like to cover pre-existing medical conditions?</span>
+        <span style="display:inline-flex; align-items:center; gap:12px; white-space:nowrap; flex-shrink:0;">
+          <label style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;"><input type="radio" name="res-pre" value="no" checked onchange="rerunQuotes()"/> No</label>
+          <label style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;"><input type="radio" name="res-pre" value="yes" onchange="rerunQuotes()"/> Yes</label>
+        </span>
       </div>
 
       <!-- Deductible + Coverage filter -->
