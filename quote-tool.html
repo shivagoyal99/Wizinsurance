@@ -303,12 +303,22 @@
       border-right: none !important;
       flex: 1;
     }
-    /* Fixed width for age/days on mobile — not full width */
-    .field-wrap:has(.stepper-wrap) { max-width: 160px !important; flex: 0 0 160px !important; }
+    /* Remove max-width constraint so age/days fill their row naturally */
+    .field-wrap:has(.stepper-wrap) { max-width: none !important; }
     .stepper-wrap ~ .unit { display: none; }
     /* Pre-existing radio always inline */
     .pre-radio-group { display: flex !important; flex-wrap: nowrap !important; gap: 16px !important; align-items: center !important; }
     .pre-radio { white-space: nowrap; }
+  }
+
+  /* On mobile, stack DOB and Age fields vertically to avoid gaps */
+  @media (max-width: 768px) {
+    .input-row { flex-direction: column !important; align-items: stretch !important; }
+    .input-row .or-label { text-align: center; }
+    .input-row .field-wrap { max-width: none !important; }
+    .dates-row { flex-direction: column !important; align-items: stretch !important; }
+    .dates-row .or-label { text-align: center; }
+    .dates-row .field-wrap { max-width: none !important; }
   }
 
   /* DATES ROW */
