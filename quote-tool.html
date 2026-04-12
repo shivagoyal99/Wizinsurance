@@ -444,24 +444,38 @@
   .tooltip-trigger:hover { background: var(--navy-mid); transform: scale(1.1); }
   .tooltip-box {
     display: none;
-    position: absolute;
-    left: 26px;
-    top: -8px;
-    width: 270px;
+    position: fixed; /* fixed so it never gets clipped by parent overflow */
+    width: min(270px, 80vw);
     background: var(--white);
     border: 1.5px solid var(--navy);
     border-radius: 10px;
-    padding: 11px 13px;
+    padding: 11px 13px 11px 13px;
     box-shadow: 0 8px 32px rgba(13,31,60,0.18);
-    z-index: 100;
+    z-index: 9000;
     font-size: 12px;
     line-height: 1.5;
     color: var(--text);
     font-weight: 400;
   }
-  .tooltip-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 12.5px; }
+  .tooltip-close-btn {
+    position: absolute;
+    top: 6px; right: 8px;
+    font-size: 16px;
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .tooltip-box strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 12.5px; padding-right: 16px; }
   .tooltip-box a { color: var(--navy); font-weight: 700; text-decoration: underline; }
-  .tooltip-trigger:hover .tooltip-box, .tooltip-trigger.active .tooltip-box { display: block; }
+  /* Desktop: hover opens tooltip */
+  @media (hover: hover) {
+    .tooltip-trigger:hover .tooltip-box { display: block; }
+  }
+  /* Any device: .active class opens tooltip */
+  .tooltip-trigger.active .tooltip-box { display: block; }
   .pre-radio-group {
     display: flex;
     gap: 20px;
@@ -2237,6 +2251,7 @@
             <div class="tooltip-trigger">
               i
               <div class="tooltip-box">
+                <button class="tooltip-close-btn" onclick="this.closest('.tooltip-trigger').classList.remove('active'); event.stopPropagation();">×</button>
                 <strong>What is a pre-existing medical condition?</strong>
                 A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor at any time prior to your departure date. These medical conditions or symptoms are described in the insurance policy.
               </div>
@@ -2262,7 +2277,7 @@
           <div class="field-wrap">
             <label>Age</label>
             <div class="stepper-wrap">
-              <input type="number" id="age2" placeholder="55" min="1" max="110" onchange="ageToDob('age2','dob2')"/>
+              <input type="number" id="age2" placeholder="60" min="1" max="110" value="60" onchange="this.dataset.userSet='1'; ageToDob('age2','dob2')"/>
               <div class="stepper-arrows">
                 <button class="stepper-btn stepper-inc" onclick="stepInput('age2',1)">▲</button>
                 <button class="stepper-btn stepper-dec" onclick="stepInput('age2',-1)">▼</button>
@@ -2321,6 +2336,7 @@
             <div class="tooltip-trigger">
               i
               <div class="tooltip-box">
+                <button class="tooltip-close-btn" onclick="this.closest('.tooltip-trigger').classList.remove('active'); event.stopPropagation();">×</button>
                 <strong>What is a pre-existing medical condition?</strong>
                 A pre-existing medical condition usually means any medical condition or symptoms for which medical advice, diagnosis, or treatment was recommended or received by a doctor at any time prior to your departure date.
               </div>
@@ -2569,6 +2585,7 @@
       document.getElementById('sv-lock-note').style.display = '';
       // Preset age 60
       if (!document.getElementById('age1').dataset.userSet) document.getElementById('age1').value = 60;
+      if (!document.getElementById('age2').dataset.userSet) document.getElementById('age2').value = 60;
       setCovrageOptions('coverage1', [100000,150000,200000,300000,500000,1000000], 100000);
       setCovrageOptions('coverage2', [100000,150000,200000,300000,500000,1000000], 100000);
     } else {
@@ -2584,6 +2601,7 @@
       document.getElementById('sv-lock-note').style.display = 'none';
       // Preset age 35
       if (!document.getElementById('age1').dataset.userSet) document.getElementById('age1').value = 35;
+      if (!document.getElementById('age2').dataset.userSet) document.getElementById('age2').value = 35;
       setCovrageOptions('coverage1', [10000,15000,25000,50000,100000,150000,200000,250000,300000,500000,1000000], 50000);
       setCovrageOptions('coverage2', [10000,15000,25000,50000,100000,150000,200000,250000,300000,500000,1000000], 50000);
     }
@@ -2615,6 +2633,10 @@
     document.getElementById('applicant2').style.display = (type === 'couple' || type === 'family') ? '' : 'none';
     document.getElementById('app1-title').style.display = (type === 'couple' || type === 'family') ? '' : 'none';
     document.getElementById('family-block').style.display = type === 'family' ? '' : 'none';
+    // Set age2 default based on current tab when applicant2 becomes visible
+    if ((type === 'couple' || type === 'family') && !document.getElementById('age2').dataset.userSet) {
+      document.getElementById('age2').value = currentTab === 'supervisa' ? 60 : 35;
+    }
   }
 
   function toggleDiffDates() {
@@ -6053,25 +6075,52 @@ function showToast(msg) {
 </script>
 
   <script>
-  // Tooltip tap support for mobile
+  // Tooltip: position box near trigger using fixed coords, toggle on tap/click
+  function positionTooltip(trigger) {
+    var box = trigger.querySelector('.tooltip-box');
+    if (!box) return;
+    var rect = trigger.getBoundingClientRect();
+    var boxW = Math.min(270, window.innerWidth * 0.8);
+    var left = rect.right + 8;
+    var top  = rect.top - 8;
+    // Flip left if overflows right edge
+    if (left + boxW > window.innerWidth - 8) left = rect.left - boxW - 8;
+    // Keep within bottom of screen
+    if (top + 160 > window.innerHeight) top = window.innerHeight - 170;
+    if (top < 8) top = 8;
+    box.style.left = left + 'px';
+    box.style.top  = top  + 'px';
+  }
+
+  function closeAllTooltips() {
+    document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
+      t.classList.remove('active');
+    });
+  }
+
   document.querySelectorAll('.tooltip-trigger').forEach(function(trigger) {
     trigger.addEventListener('click', function(e) {
       e.stopPropagation();
       var isActive = trigger.classList.contains('active');
-      // Close all tooltips
-      document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
-        t.classList.remove('active');
-      });
-      // Toggle this one
-      if (!isActive) trigger.classList.add('active');
+      closeAllTooltips();
+      if (!isActive) {
+        positionTooltip(trigger);
+        trigger.classList.add('active');
+      }
     });
   });
-  // Tap outside closes tooltip
-  document.addEventListener('click', function() {
-    document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
-      t.classList.remove('active');
-    });
-  });
+
+  // Close on click OR touchstart outside
+  function outsideDismiss(e) {
+    if (!e.target.closest('.tooltip-trigger')) closeAllTooltips();
+  }
+  document.addEventListener('click', outsideDismiss);
+  document.addEventListener('touchstart', outsideDismiss, { passive: true });
+
+  // Reposition on scroll/resize
+  document.addEventListener('scroll', closeAllTooltips, true);
+  window.addEventListener('resize', closeAllTooltips);
+
   </script>
 
 
