@@ -33,9 +33,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;c
 
 header{background:white;border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.06);position:sticky;top:0;z-index:100}
 
-.logo{font-size:1.1rem;font-weight:700;color:var(--primary);text-decoration:none;line-height:1.25}
+.logo{font-weight:700;color:var(--primary);text-decoration:none;line-height:1.25}
 .logo span{display:block;font-size:0.52rem;color:var(--accent);letter-spacing:1.5px;font-weight:600;margin-top:1px}
-nav{display:flex;gap:1.5rem;font-size:0.88rem}
+nav { display: flex; gap: 1.6rem;font-size:0.88rem}
 nav a{color:#333;text-decoration:none;font-weight:500}
 nav a:hover{color:var(--accent)}
 .btn-call{background:var(--accent);color:white;padding:0.58rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.85rem}
@@ -160,7 +160,7 @@ footer a:hover{color:white}
             background: #0F1F3C; position: sticky; top: 0; z-index: 2;
         }
         .mobile-nav-logo .mnav-name { color: white; font-size: 1rem; font-weight: 700; line-height: 1.2; }
-        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.72rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
+        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.68rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
         .mobile-nav-close {
             background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.8);
             width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
@@ -264,13 +264,13 @@ footer a:hover{color:white}
         .mnav-acc-items.open { display: block !important; }
         .mnav-acc-items a {
             display: flex !important; padding-left: 2.2rem !important;
-            font-size: 0.85rem; color: rgba(255,255,255,0.7) !important;
+            font-size: 0.82rem; color: rgba(255,255,255,0.7) !important;
         }
         .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
         </style>
     <style>
         /* === HEADER STYLES (synced from index.html) === */
-        /* ===== HEADER ===== */
+                /* ===== HEADER ===== */
         header {
             background: white;
             border-bottom: 1px solid var(--border);
@@ -283,8 +283,8 @@ footer a:hover{color:white}
         .header-top {
             background: var(--primary);
             color: white;
-            padding: 0.8rem 2rem;
-            font-size: 0.85rem;
+            padding: 0.38rem 2rem;
+            font-size: 0.82rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
@@ -321,48 +321,51 @@ footer a:hover{color:white}
         .header-main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.6rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
         }
 
         .logo {
             display: inline-flex;
+            flex-direction: row;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             color: var(--primary);
             flex-shrink: 0;
         }
+        .logo-top-row { display: contents; }
         .logo-text-wrap {
             display: flex;
             flex-direction: column;
-            line-height: 1.3;
+            gap: 3px;
         }
         .logo-name {
-            font-size: 1.2rem;
+            font-size: 1.22rem;
             font-weight: 700;
             color: var(--primary);
+            line-height: 1;
         }
-
         .logo-subtitle {
-            font-size: 0.72rem;
-            color: #555;
-            letter-spacing: 1.5px;
+            font-size: 0.6rem;
+            color: #666;
+            letter-spacing: 0.3px;
             font-weight: 500;
         }
 
         nav {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.6rem;
             align-items: center;
+            justify-content: center;
             flex: 1;
             min-width: 0;
             overflow: visible;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         nav > a {
@@ -394,16 +397,14 @@ footer a:hover{color:white}
         .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
         .dropdown-menu {
             display: none;
-            position: absolute;
+            position: fixed;
             background: white;
             min-width: 260px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.15);
             border-radius: 8px;
-            top: calc(100% + 10px);
-            left: 0;
             border: 1px solid var(--border);
             z-index: 9999;
-            max-height: calc(100vh - 80px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
         }
         .dropdown.open .dropdown-menu { display: block; }
@@ -436,15 +437,15 @@ footer a:hover{color:white}
         .btn-call {
             background: #E63946;
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
+            padding: 0.65rem 1.5rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
             white-space: nowrap;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .btn-call:hover {
@@ -456,15 +457,15 @@ footer a:hover{color:white}
         .btn-quote {
             background: white;
             color: #000;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
+            padding: 0.65rem 1.5rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
             border: 2px solid #000;
             transition: all 0.3s;
             cursor: pointer;
             white-space: nowrap;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .btn-quote:hover {
@@ -572,7 +573,7 @@ footer a:hover{color:white}
             background: #0F1F3C; position: sticky; top: 0; z-index: 2;
         }
         .mobile-nav-logo .mnav-name { color: white; font-size: 1rem; font-weight: 700; line-height: 1.2; }
-        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.72rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
+        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.68rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
         .mobile-nav-close {
             background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.8);
             width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
@@ -665,7 +666,7 @@ footer a:hover{color:white}
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-nav-header">
         <div class="mobile-nav-logo">
-          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:34px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
+          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:30px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
           <span class="mnav-sub">Wisdom · Integrity · Zeal</span>
         </div>
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
@@ -762,9 +763,12 @@ footer a:hover{color:white}
         </div>
         <div class="header-main">
             <a href="index.html" class="logo">
-                <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:52px;width:auto;object-fit:contain;vertical-align:middle;margin-right:8px;">
-                <span class="logo-text-wrap"><span class="logo-name">Shivang Goyal</span><span class="logo-subtitle">LIFE INSURANCE ADVISOR · CANADA</span></span>
-            </a>
+                    <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:34px;width:auto;object-fit:contain;">
+                    <span class="logo-text-wrap">
+                        <span class="logo-name">Shivang Goyal</span>
+                        <span class="logo-subtitle">INSURANCE ADVISOR · CANADA</span>
+                    </span>
+                </a>
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 
             <nav>
@@ -950,6 +954,7 @@ footer a:hover{color:white}
 
 <script>
 (function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+(function(){var t={};function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';}function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true)})();
 </script>
 
   <script>
