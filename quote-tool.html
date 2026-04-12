@@ -6075,7 +6075,7 @@ function showToast(msg) {
 </script>
 
   <script>
-  // Tooltip: position box near trigger using fixed coords, toggle on tap/click
+  // ── Tooltip system ──────────────────────────────────────────────────────────
   function positionTooltip(trigger) {
     var box = trigger.querySelector('.tooltip-box');
     if (!box) return;
@@ -6083,44 +6083,58 @@ function showToast(msg) {
     var boxW = Math.min(270, window.innerWidth * 0.8);
     var left = rect.right + 8;
     var top  = rect.top - 8;
-    // Flip left if overflows right edge
     if (left + boxW > window.innerWidth - 8) left = rect.left - boxW - 8;
-    // Keep within bottom of screen
     if (top + 160 > window.innerHeight) top = window.innerHeight - 170;
     if (top < 8) top = 8;
     box.style.left = left + 'px';
     box.style.top  = top  + 'px';
+    box.style.width = boxW + 'px';
   }
 
   function closeAllTooltips() {
-    document.querySelectorAll('.tooltip-trigger').forEach(function(t) {
+    document.querySelectorAll('.tooltip-trigger.active').forEach(function(t) {
       t.classList.remove('active');
     });
   }
 
+  function toggleTooltip(trigger) {
+    var isActive = trigger.classList.contains('active');
+    closeAllTooltips();
+    if (!isActive) {
+      positionTooltip(trigger);
+      trigger.classList.add('active');
+    }
+  }
+
   document.querySelectorAll('.tooltip-trigger').forEach(function(trigger) {
+    // touchend — fires reliably on mobile divs; preventDefault stops synthetic click
+    trigger.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTooltip(trigger);
+    });
+    // click — for desktop / mouse
     trigger.addEventListener('click', function(e) {
       e.stopPropagation();
-      var isActive = trigger.classList.contains('active');
-      closeAllTooltips();
-      if (!isActive) {
-        positionTooltip(trigger);
-        trigger.classList.add('active');
-      }
+      toggleTooltip(trigger);
     });
   });
 
-  // Close on click OR touchstart outside
-  function outsideDismiss(e) {
-    if (!e.target.closest('.tooltip-trigger')) closeAllTooltips();
-  }
-  document.addEventListener('click', outsideDismiss);
-  document.addEventListener('touchstart', outsideDismiss, { passive: true });
+  // Outside-tap dismiss (touchstart fires before click, safe for mobile)
+  document.addEventListener('touchstart', function(e) {
+    var t = e.target;
+    if (t && typeof t.closest === 'function' && !t.closest('.tooltip-trigger')) {
+      closeAllTooltips();
+    }
+  }, { passive: true });
 
-  // Reposition on scroll/resize
+  // Outside-click dismiss for desktop
+  document.addEventListener('click', function() { closeAllTooltips(); });
+
+  // Close on scroll or resize
   document.addEventListener('scroll', closeAllTooltips, true);
   window.addEventListener('resize', closeAllTooltips);
-
+  // ────────────────────────────────────────────────────────────────────────────
   </script>
 
 
