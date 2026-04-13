@@ -1559,8 +1559,7 @@
         .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
         </style>
     <style>
-        /* === HEADER STYLES (synced from index.html) === */
-                /* ===== HEADER ===== */
+        /* ===== HEADER ===== */
         header {
             background: white;
             border-bottom: 1px solid #E0E0E0;
@@ -1575,7 +1574,7 @@
         }
 
         .header-top {
-            background: var(--primary);
+            background: #0F1F3C;
             color: white;
             padding: 0.38rem 2rem;
             font-size: 0.82rem;
@@ -1586,9 +1585,7 @@
             gap: 2rem;
         }
 
-        .header-top-left {
-            flex: 1;
-        }
+        .header-top-left { flex: 1; }
 
         .header-top-right {
             display: flex;
@@ -1598,7 +1595,7 @@
         }
 
         .reviews-badge {
-            background: var(--accent);
+            background: #E63946;
             color: white;
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
@@ -1609,10 +1606,7 @@
             display: inline-block;
         }
 
-        .phone-number {
-            white-space: nowrap;
-            font-weight: 500;
-        }
+        .phone-number { white-space: nowrap; font-weight: 500; }
 
         .header-main {
             max-width: 1400px;
@@ -1631,27 +1625,13 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            color: var(--primary);
+            color: #0F1F3C;
             flex-shrink: 0;
         }
         .logo-top-row { display: contents; }
-        .logo-text-wrap {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .logo-name {
-            font-size: 1.22rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1;
-        }
-        .logo-subtitle {
-            font-size: 0.6rem;
-            color: #666;
-            letter-spacing: 0.3px;
-            font-weight: 500;
-        }
+        .logo-text-wrap { display: flex; flex-direction: column; gap: 3px; }
+        .logo-name { font-size: 1.22rem; font-weight: 700; color: #0F1F3C; line-height: 1; }
+        .logo-subtitle { font-size: 0.6rem; color: #666; letter-spacing: 0.3px; font-weight: 500; }
 
         nav {
             display: flex;
@@ -1673,9 +1653,7 @@
             white-space: nowrap;
         }
 
-        nav > a:hover {
-            color: var(--accent);
-        }
+        nav > a:hover { color: #E63946; }
 
         /* ===== DROPDOWN ===== */
         .dropdown { position: relative; display: inline-block; }
@@ -1684,7 +1662,7 @@
             cursor: pointer; color: #1A1A1A; text-decoration: none;
             font-size: 0.9rem; font-weight: 500; white-space: nowrap;
         }
-        .dropdown > a:hover { color: var(--accent); }
+        .dropdown > a:hover { color: #E63946; }
         .dropdown-arrow {
             display: inline-block; width: 0; height: 0;
             border-left: 4px solid transparent; border-right: 4px solid transparent;
@@ -1692,16 +1670,11 @@
         }
         .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
         .dropdown-menu {
-            display: none;
-            position: fixed;
-            background: white;
-            min-width: 260px;
+            display: none; position: fixed;
+            background: white; min-width: 260px;
             box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-            z-index: 9999;
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
+            border-radius: 8px; border: 1px solid #E0E0E0;
+            z-index: 9999; max-height: calc(100vh - 120px); overflow-y: auto;
         }
         .dropdown.open .dropdown-menu { display: block; }
         .dropdown:hover .dropdown-menu { display: block; }
@@ -1710,7 +1683,7 @@
         .dropdown-section-title {
             padding: 0.3rem 1.2rem 0.2rem;
             font-size: 0.68rem; font-weight: 700;
-            color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
+            color: #E63946; text-transform: uppercase; letter-spacing: 0.5px;
         }
         .dropdown-menu a {
             display: block; padding: 0.6rem 1.2rem;
@@ -1719,200 +1692,27 @@
             border-left: 3px solid transparent;
         }
         .dropdown-menu a:hover {
-            background: var(--light-bg); color: var(--accent);
-            border-left-color: var(--accent);
+            background: #F8F9FA; color: #E63946; border-left-color: #E63946;
         }
         .dropdown-divider { height: 1px; background: #E0E0E0; margin: 0.2rem 0; }
 
-        .cta-buttons {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-        }
+        .cta-buttons { display: flex; gap: 0.6rem; flex-shrink: 0; }
 
         .btn-call {
-            background: #E63946;
-            color: white;
-            padding: 0.65rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.88rem;
+            background: #E63946; color: white;
+            padding: 0.65rem 1.5rem; border-radius: 10px;
+            text-decoration: none; font-weight: 700; transition: all 0.3s;
+            border: none; cursor: pointer; white-space: nowrap; font-size: 0.88rem;
         }
-
-        .btn-call:hover {
-            background: #d32f3d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
-        }
+        .btn-call:hover { background: #d32f3d; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(230,57,70,0.3); }
 
         .btn-quote {
-            background: white;
-            color: #000;
-            padding: 0.65rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 2px solid #000;
-            transition: all 0.3s;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.88rem;
+            background: white; color: #000;
+            padding: 0.65rem 1.5rem; border-radius: 10px;
+            text-decoration: none; font-weight: 700; border: 2px solid #000;
+            transition: all 0.3s; cursor: pointer; white-space: nowrap; font-size: 0.88rem;
         }
-
-        .btn-quote:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-
-        /* ===== DROPDOWN ===== */
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown > a {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            cursor: pointer; color: #1A1A1A; text-decoration: none;
-            font-size: 0.9rem; font-weight: 500; white-space: nowrap;
-        }
-        .dropdown > a:hover { color: var(--accent); }
-        .dropdown-arrow {
-            display: inline-block; width: 0; height: 0;
-            border-left: 4px solid transparent; border-right: 4px solid transparent;
-            border-top: 4px solid currentColor; transition: transform 0.2s;
-        }
-        .dropdown.open > a .dropdown-arrow { transform: rotate(180deg); }
-        .dropdown-menu {
-            display: none;
-            position: fixed;
-            background: white;
-            min-width: 260px;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-            z-index: 9999;
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-        }
-        .dropdown.open .dropdown-menu { display: block; }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-section { padding: 0.5rem 0; }
-        .dropdown-section:first-child { padding-top: 0.8rem; }
-        .dropdown-section-title {
-            padding: 0.3rem 1.2rem 0.2rem;
-            font-size: 0.68rem; font-weight: 700;
-            color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .dropdown-menu a {
-            display: block; padding: 0.6rem 1.2rem;
-            color: #1A1A1A; text-decoration: none;
-            font-size: 0.88rem; transition: all 0.15s;
-            border-left: 3px solid transparent;
-        }
-        .dropdown-menu a:hover {
-            background: var(--light-bg); color: var(--accent);
-            border-left-color: var(--accent);
-        }
-        .dropdown-divider { height: 1px; background: #E0E0E0; margin: 0.2rem 0; }
-
-        .cta-buttons {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-        }
-
-        .btn-call {
-            background: #E63946;
-            color: white;
-            padding: 0.65rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.88rem;
-        }
-
-        .btn-call:hover {
-            background: #d32f3d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
-        }
-
-        .btn-quote {
-            background: white;
-            color: #000;
-            padding: 0.65rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 2px solid #000;
-            transition: all 0.3s;
-            cursor: pointer;
-            white-space: nowrap;
-            font-size: 0.88rem;
-        }
-
-        .btn-quote:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-        /* Hamburger — navy square, right side of header */
-        
-        
-        
-        
-        
-
-        /* Dim overlay */
-        
-        
-
-        /* Drawer — slides in from RIGHT, dark navy */
-        
-        
-
-        /* Nav header */
-        
-        
-        
-        
-        
-
-        /* Section label */
-        
-
-        /* Nav links */
-        
-        
-        
-        
-
-        /* Thin divider */
-        
-
-        /* CTA buttons at bottom */
-        
-        
-        
-        
-        
-        
-
-        /* ── BREAKPOINTS ── */
-        
-
-        
-
-        /* ══════════════════════════════════════════════════
-           DEFINITIVE MOBILE STYLES
-           ══════════════════════════════════════════════════ */
-
+        .btn-quote:hover { background: #f5f5f5; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
         .hamburger {
             display: none;
             flex-direction: column;
