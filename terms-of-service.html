@@ -27,21 +27,29 @@
 <title>Terms of Service | Shivang Goyal Insurance</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#0F1F3C;--secondary:#1a3a5c;--accent:#E63946;--light:#F8F9FA;--text:#555;--border:#E0E0E0}
+:root{--primary:#0F1F3C;--secondary:#1a3a5c;--accent:#E63946;--light:#F8F9FA;--light-bg:#F4F6F9;--text:#555;--text-dark:#1A1A1A;--text-light:#555;--border:#E0E0E0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1A1A1A;background:#fff}
 
 
-header{background:white;border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.06);position:sticky;top:0;z-index:100}
+header{background:white;border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.06);position:sticky;top:0;z-index:1000}
 
 .logo{font-weight:700;color:var(--primary);text-decoration:none;line-height:1.25}
-.logo span{display:block;font-size:0.52rem;color:var(--accent);letter-spacing:1.5px;font-weight:600;margin-top:1px}
-nav { display: flex; gap: 1.6rem;font-size:0.88rem}
+.logo span:not([class]){display:block;font-size:0.52rem;color:var(--accent);letter-spacing:1.5px;font-weight:600;margin-top:1px}
+nav {
+            flex: 1;
+            display: flex;
+            gap: 2.2rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin: 0;
+        }
 nav a{color:#333;text-decoration:none;font-weight:500}
 nav a:hover{color:var(--accent)}
 .btn-call{background:var(--accent);color:white;padding:0.58rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.85rem}
-.hero{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:3.5rem 2rem;text-align:center}
-.hero h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;margin-bottom:0.5rem}
-.hero p{opacity:0.75;font-size:0.95rem}
+
+
+
 .wrap{max-width:840px;margin:0 auto;padding:3rem 2rem 5rem}
 .updated{background:#EBF5FB;border:1px solid #AED6F1;border-radius:8px;padding:0.8rem 1.2rem;margin-bottom:2rem;font-size:0.88rem;color:#1A5276;font-weight:600}
 h2{color:var(--primary);font-size:1.15rem;font-weight:700;margin:2.2rem 0 0.75rem;padding-bottom:0.45rem;border-bottom:2px solid var(--accent)}
@@ -52,7 +60,7 @@ li{color:var(--text);font-size:0.94rem;line-height:1.85;margin-bottom:0.3rem}
 strong{color:#1A1A1A}
 .box{background:var(--light);border-left:4px solid var(--accent);padding:1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.2rem 0;font-size:0.92rem;color:var(--text);line-height:1.8}
 .box strong{color:var(--primary)}
-footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:1.6rem 2rem;text-align:center;font-size:0.82rem}
+footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:1.6rem 2rem;font-size:0.82rem}
 footer a{color:rgba(255,255,255,0.65);text-decoration:none}
 footer a:hover{color:white}
 .wa{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 16px rgba(37,211,102,0.4);text-decoration:none}
@@ -183,14 +191,16 @@ footer a:hover{color:white}
         @media (max-width: 860px) {
             .header-top { display: none !important; }
             .header-main {
-                padding: 0.75rem 1rem !important;
-                display: flex !important; flex-direction: row !important;
-                align-items: center !important; justify-content: space-between !important;
-                flex-wrap: nowrap !important; gap: 0 !important;
-            }
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
             .hamburger { display: flex !important; }
             nav, .cta-btns, .cta-buttons { display: none !important; }
-            .logo { font-size: 1rem !important; } .logo-name { font-size: 1rem !important; }
+            .logo { font-size: 1rem !important; } .logo-name { font-size: 1.38rem !important; }
             .logo-subtitle, .logo-sub { font-size: 0.68rem !important; }
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
             .hero h1, .page-hero h1 { font-size: 1.65rem !important; line-height: 1.25 !important; }
@@ -267,9 +277,487 @@ footer a:hover{color:white}
             font-size: 0.82rem; color: rgba(255,255,255,0.7) !important;
         }
         .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
-        </style>
-    <style>
-        /* === HEADER STYLES (synced from index.html) === */
+                footer {
+            background: linear-gradient(180deg, #0d1b33 0%, #0a1628 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            text-align: left;
+        }
+        .footer-col-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1.2rem;
+        }
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.2px;
+        }
+        .footer-bio {
+            font-size: 0.84rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--accent); text-decoration: none; }
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin: 0 auto 1.5rem;
+            max-width: 1400px;
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+        }
+        .footer-disclaimer {
+            margin-top: 1rem;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.28);
+            line-height: 1.7;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+        }
+        @media (max-width: 500px) {
+            .footer-grid { grid-template-columns: 1fr !important; }
+        }
+        
+        /* ===== SCROLL ANIMATIONS ===== */
+        .anim-fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .anim-fade-up.in-view { opacity: 1; transform: translateY(0); }
+        .anim-fade-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .anim-fade-left.in-view { opacity: 1; transform: translateX(0); }
+        .anim-fade-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .anim-fade-right.in-view { opacity: 1; transform: translateX(0); }
+        .hero {
+    background: #0F1F3C;
+    color: white;
+    padding: 3rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+/* WIZ letters */
+@keyframes wizW { 0%,100%{opacity:0.1;transform:rotate(-5deg) scale(1)} 50%{opacity:0.22;transform:rotate(-5deg) scale(1.02)} }
+@keyframes wizI { 0%,100%{opacity:0.08;transform:translate(-50%,-50%) rotate(2deg) scale(1)} 50%{opacity:0.2;transform:translate(-50%,-50%) rotate(2deg) scale(1.03)} }
+@keyframes wizZ { 0%,100%{opacity:0.09;transform:rotate(6deg) scale(1)} 50%{opacity:0.21;transform:rotate(6deg) scale(1.02)} }
+.hero-wiz{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-wiz-letter{position:absolute;font-size:clamp(180px,22vw,260px);font-weight:900;color:transparent;line-height:1;user-select:none;opacity:0}
+.hero-wiz-w{bottom:-10px;left:-15px;-webkit-text-stroke:2px rgba(230,57,70,0.9);filter:drop-shadow(0 0 30px rgba(230,57,70,0.6));animation:wizW 8s ease-in-out infinite;animation-fill-mode:both}
+.hero-wiz-i{top:50%;left:50%;-webkit-text-stroke:2px rgba(255,255,255,0.85);filter:drop-shadow(0 0 30px rgba(255,255,255,0.5));animation:wizI 12s ease-in-out infinite;animation-delay:3s;animation-fill-mode:both}
+.hero-wiz-z{top:-15px;right:-15px;-webkit-text-stroke:2px rgba(255,185,60,0.9);filter:drop-shadow(0 0 30px rgba(255,185,60,0.6));animation:wizZ 10s ease-in-out infinite;animation-delay:6s;animation-fill-mode:both}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:0.5rem;letter-spacing:-0.5px;animation:heroFadeUp 0.5s ease 0.1s both}
+.hero p{opacity:0.72;font-size:1rem;font-weight:300;animation:heroFadeUp 0.5s ease 0.2s both}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">
+          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:30px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
+          <span class="mnav-sub">Wisdom · Integrity · Zeal</span>
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
+      </div>
+      <div class="mobile-nav-body">
+        <div class="mnav-label">Main</div>
+        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
+        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
+        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
+        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
+
+        <div class="mnav-divider"></div>
+
+        <!-- Accordion: Visitor & Travel -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">✈️</span>Visitor &amp; Travel</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+            <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+            <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+            <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Life Insurance -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">🛡️</span>Life Insurance</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+            <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+            <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+            <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Living Benefits -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">🩺</span>Living Benefits</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
+            <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+            <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+            <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+            <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+          </div>
+        </div>
+
+        <!-- Accordion: Investments -->
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">📈</span>Investments</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+            <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+            <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+            <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+            <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+            <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+            <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+            <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
+          </div>
+        </div>
+
+        <div class="mnav-divider"></div>
+        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
+        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
+      </div>
+      <div class="mobile-nav-cta">
+        <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
+        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+          <div class="header-top-inner">
+            <div class="header-top-left">
+                🇨🇦 Licensed in Ontario, Canada
+            </div>
+            <div class="header-top-right">
+                <a href="tel:+16479955891" class="top-contact-link">📞 (647) 995-5891</a>
+                <div class="top-strip-divider"></div>
+                <div class="social-icons">
+                    <a href="mailto:shivang.goyal.financial@gmail.com" class="social-icon si-email" title="Email Shivang"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/shivugoyal99" target="_blank" rel="noopener" class="social-icon si-fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" rel="noopener" class="social-icon si-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank" rel="noopener" class="social-icon si-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" rel="noopener" class="social-icon si-goog" title="Google Reviews"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></a>
+                    <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank" rel="noopener" class="social-icon si-yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/16479955891" target="_blank" rel="noopener" class="social-icon si-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-main">
+            <a href="index.html" class="logo">
+                <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:42px;width:auto;object-fit:contain;">
+                <span class="logo-text-wrap">
+                    <span class="logo-name">Shivang Goyal</span>
+                    <span class="logo-subtitle">INSURANCE ADVISOR · CANADA</span>
+                </span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                
+                <div class="dropdown">
+                    <a href="#insurance">Insurance<span class="dropdown-arrow"></span></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Visitor & Travel</div>
+                            <a href="visitors.html">🛂 Visitor to Canada</a>
+                            <a href="supervisa.html">📋 SuperVisa Insurance</a>
+                            <a href="travel.html">🌍 Travel Insurance</a>
+                            <a href="student-insurance.html">🎓 International Student</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Life Insurance</div>
+                            <a href="term-life.html">🛡️ Term Life Insurance</a>
+                            <a href="whole-life.html">🌿 Whole Life Insurance</a>
+                            <a href="universal-life.html">⚙️ Universal Life</a>
+                            <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Living Benefits</div>
+                            <a href="critical-illness.html">🩺 Critical Illness</a>
+                            <a href="disability.html">🦺 Disability Insurance</a>
+                            <a href="health-dental.html">💊 Drug & Dental</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Planning</div>
+                            <a href="estate-planning.html">🏭 Estate Planning</a>
+                            <a href="business-insurance.html">💼 Business Insurance</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown" id="dd-invest">
+                    <a href="#">Investments <span class="dropdown-arrow"></span></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Registered Accounts</div>
+                            <a href="rrsp.html">📈 RRSP</a>
+                            <a href="tfsa.html">💰 TFSA</a>
+                            <a href="fhsa.html">🏡 FHSA</a>
+                            <a href="resp.html">🎓 RESP</a>
+                            <a href="rdsp.html">♿ RDSP</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Other</div>
+                            <a href="non-registered.html">📊 Non-Registered</a>
+                            <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                            <a href="financial-calculators.html">🧮 Financial Calculators</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="credit-cards.html">Credit Cards</a>
+                <a href="get-quotes.html">Get Quotes</a>
+                <a href="get-quotes.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+<div class="hero">
+    <div class="hero-wiz">
+        <div class="hero-wiz-letter hero-wiz-w">W</div>
+        <div class="hero-wiz-letter hero-wiz-i">I</div>
+        <div class="hero-wiz-letter hero-wiz-z">Z</div>
+    </div>
+    <div class="hero-content">
+        <h1>Terms of Service</h1>
+    </div>
+</div>
+<div class="wrap">
+
+<div class="updated">📅 Last Updated: March 2025 &nbsp;|&nbsp; Effective Date: March 1, 2025</div>
+<div class="box"><strong>Please read carefully.</strong> By accessing or using this website, you agree to these Terms of Service. If you do not agree, please do not use this website.</div>
+
+<h2>1. About This Website</h2>
+<p>This website is operated by <strong>Shivang Goyal</strong>, an independently licensed insurance advisor (LLQP) holding a <strong>Master of Engineering (MEng)</strong> and a background as a MEng graduate, with experience in 3 government positions. Shivang Goyal is licensed to advise on life and health insurance products in: <strong>Ontario (ON)</strong>.</p>
+
+<h2>2. Not Financial or Legal Advice</h2>
+<p>All content on this website is provided for <strong>general educational and informational purposes only</strong>. Nothing on this website constitutes:</p>
+<ul>
+  <li>Financial, investment, or tax advice</li>
+  <li>Legal advice</li>
+  <li>A guarantee of insurance coverage, eligibility, or pricing</li>
+  <li>A binding offer or contract of any kind</li>
+</ul>
+<p>All insurance products are subject to full underwriting review and approval by the relevant insurance carrier. Coverage terms, conditions, exclusions, and premiums are determined by the insurer's policies and your individual circumstances. Always review your policy documents carefully before signing.</p>
+
+<h2>3. Government Benefit Program Information</h2>
+<p>Information about Canadian government programs (CPP, OAS, GIS, RDSP, CESG, FHSA, Canadian Dental Care Plan, etc.) is provided for <strong>general educational purposes only</strong>. Government program rules, eligibility criteria, and benefit amounts can change. Always verify current information directly with the relevant government authority (Service Canada, CRA, etc.) or consult a qualified professional for advice specific to your situation.</p>
+
+<h2>4. Credit Card and Financial Product Information</h2>
+<p>Credit card comparisons and recommendations on this website are provided for informational purposes only. They reflect conditions available at the time of writing and may not reflect current offers, rates, or terms. Shivang Goyal operates as a partner of <strong>FinlyWealth</strong> for credit card information. Always review the full cardholder agreement directly with the issuing financial institution before applying. Approval for any credit product is subject to the lender's criteria.</p>
+
+<h2>5. Accuracy of Information</h2>
+<p>We make reasonable efforts to ensure accuracy and currency of information on this website. However, we make no warranties — express or implied — that the information is complete, accurate, current, or error-free. Insurance rates, product features, and government program details change frequently. Always confirm current details directly with the relevant carrier or government authority.</p>
+
+<h2>6. Licensing and Independence</h2>
+<p>Shivang Goyal is licensed to sell life and health insurance products in Ontario and operates in compliance with applicable provincial insurance regulations and the LLQP. Shivang Goyal is an <strong>independent advisor</strong> and is not an employee or agent of any insurance carrier.</p>
+
+<h2>7. Third-Party Websites</h2>
+<p>This website contains links to third-party websites including FinlyWealth and insurance carriers. These links are provided for convenience only. Shivang Goyal does not endorse or take responsibility for the content, privacy practices, or accuracy of any third-party website. Use of third-party sites is at your own risk.</p>
+
+<h2>8. Limitation of Liability</h2>
+<p>To the fullest extent permitted by applicable law, Shivang Goyal shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of this website, reliance on any content, or errors or omissions in the information provided.</p>
+
+<h2>9. Intellectual Property</h2>
+<p>All content on this website — including text, design, graphics, and branding — is the property of Shivang Goyal unless otherwise noted. You may not reproduce, distribute, or use any content without express written permission.</p>
+
+<h2>10. Changes to These Terms</h2>
+<p>We may update these Terms at any time. Changes will be posted on this page with an updated date. Continued use of the website constitutes acceptance of the updated terms.</p>
+
+<h2>11. Governing Law</h2>
+<p>These Terms are governed by the laws of the <strong>Province of Ontario</strong> and the federal laws of Canada. Any disputes shall be subject to the exclusive jurisdiction of the courts of Ontario.</p>
+
+<h2>12. Contact</h2>
+<div class="box">
+  <strong>Shivang Goyal — Insurance &amp; Financial Solutions</strong><br>
+  MEng · MEng Graduate · LLQP Certified Insurance Advisor<br>
+  📞 (647) 995-5891<br>
+  ✉️ shivang.goyal.financial@gmail.com<br>
+  📍 Ontario, Canada &nbsp;|&nbsp; Licensed: Ontario (LLQP)
+</div>
+
+</div>
+    <footer>
+        <div class="footer-grid">
+            <!-- Col 1: Brand -->
+            <div class="anim-fade-up" style="transition-delay:0s">
+                <div class="footer-brand">Shivang Goyal</div>
+                <div class="footer-bio">
+                    Life Insurance Advisor<br>
+                    LLQP Certified · Ontario
+                </div>
+                <div class="footer-links">
+                    <a href="tel:+16479955891">📞 (647) 995-5891</a>
+                    <a href="mailto:shivang.goyal.financial@gmail.com">✉️ shivang.goyal.financial@gmail.com</a>
+                    <a href="https://wa.me/16479955891" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Insurance -->
+            <div class="anim-fade-up" style="transition-delay:0.1s">
+                <div class="footer-col-title">Insurance</div>
+                <div class="footer-links">
+                    <a href="term-life.html">Term Life Insurance</a>
+                    <a href="visitors.html">Visitors to Canada</a>
+                    <a href="supervisa.html">Super Visa Insurance</a>
+                    <a href="critical-illness.html">Critical Illness</a>
+                    <a href="disability.html">Disability Insurance</a>
+                    <a href="health-dental.html">Drug &amp; Dental</a>
+                </div>
+            </div>
+
+            <!-- Col 3: Investments -->
+            <div class="anim-fade-up" style="transition-delay:0.2s">
+                <div class="footer-col-title">Investments</div>
+                <div class="footer-links">
+                    <a href="rrsp.html">RRSP</a>
+                    <a href="tfsa.html">TFSA</a>
+                    <a href="fhsa.html">FHSA</a>
+                    <a href="resp.html">RESP</a>
+                    <a href="estate-planning.html">Estate Planning</a>
+                    <a href="business-insurance.html">Business Insurance</a>
+                </div>
+            </div>
+
+            <!-- Col 4: Connect -->
+            <div class="anim-fade-up" style="transition-delay:0.3s">
+                <div class="footer-col-title">Connect</div>
+                <div class="footer-links">
+                    <a href="about.html">About Shivang</a>
+                    <a href="awards.html">Credentials &amp; Reviews</a>
+                    <a href="get-quotes.html">Get a Quote</a>
+                    <a href="https://www.instagram.com/thefinwiz.ca" target="_blank">Instagram</a>
+                    <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank">YouTube</a>
+                    <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank">LinkedIn</a>
+                    <a href="https://finwiz.finlywealth.com" target="_blank">💳 FinlyWealth</a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Shivang Goyal | Insurance &amp; Financial Solutions | Ontario Licensed Advisor</p>
+            <div class="footer-disclaimer">
+                <strong style="color:rgba(255,255,255,0.45);">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Insurance products are subject to underwriting approval and policy terms. Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Past performance of investment products does not guarantee future results. Shivang Goyal operates as an independent advisor and is not an employee of any insurance carrier.
+                <a href="privacy-policy.html" style="color:rgba(255,255,255,0.35);text-decoration:none">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.35);text-decoration:none">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+<a href="https://wa.me/16479955891" target="_blank" class="wa" title="WhatsApp">💬</a>
+
+<script>
+(function(){var t={};function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';m.style.maxHeight=(window.innerHeight-r.bottom-16)+'px';}function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true)})();
+(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+
+</script>
+
+  <script>
+  // Mobile nav accordion — robust v2
+  (function() {
+    function initAccordion() {
+      document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
+        var toggle = acc.querySelector('.mnav-acc-toggle');
+        var items  = acc.querySelector('.mnav-acc-items');
+        if (!toggle || !items) return;
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = items.classList.contains('open');
+          // Close all
+          document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
+          document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
+          // Open this one if it was closed
+          if (!isOpen) {
+            items.classList.add('open');
+            toggle.classList.add('open');
+          }
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAccordion);
+    } else {
+      initAccordion();
+    }
+  })();
+  </script>
+    <!-- Header override: always wins via cascade position -->
+    <style id="header-override">
                 /* ===== HEADER ===== */
         header {
             background: white;
@@ -283,9 +771,16 @@ footer a:hover{color:white}
         .header-top {
             background: var(--primary);
             color: white;
-            padding: 0.38rem 2rem;
             font-size: 0.82rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0;
+            display: block;
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.65rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -298,8 +793,15 @@ footer a:hover{color:white}
 
         .header-top-right {
             display: flex;
-            gap: 2rem;
+            gap: 1.4rem;
             align-items: center;
+            flex-shrink: 0;
+        }
+
+        .top-strip-divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(255,255,255,0.25);
             flex-shrink: 0;
         }
 
@@ -320,22 +822,61 @@ footer a:hover{color:white}
             font-weight: 500;
         }
 
+        .top-contact-link {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.78rem;
+            white-space: nowrap;
+            font-weight: 400;
+            letter-spacing: 0.1px;
+            transition: color 0.2s;
+        }
+        .top-contact-link:hover { color: white; }
+
+        .social-icons {
+            display: flex;
+            gap: 0.45rem;
+            align-items: center;
+        }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            font-size: 0.76rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+        .social-icon:hover { background: rgba(255,255,255,0.22); color: white; }
+        /* Brand colours on hover */
+        .social-icon.si-email:hover   { background: #EA4335; }
+        .social-icon.si-fb:hover      { background: #1877F2; }
+        .social-icon.si-ig:hover      { background: #E1306C; }
+        .social-icon.si-li:hover      { background: #0A66C2; }
+        .social-icon.si-goog svg      { filter: brightness(0) invert(1); transition: filter 0.2s; }
+        .social-icon.si-goog:hover    { background: white; }
+        .social-icon.si-goog:hover svg { filter: none; }
+        .social-icon.si-yt:hover      { background: #FF0000; }
+        .social-icon.si-wa:hover      { background: #25D366; }
+
         .header-main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0.6rem 2rem;
+            padding: 1.3rem 2.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap;
-            gap: 1.5rem;
+            gap: 0;
         }
 
         .logo {
             display: inline-flex;
             flex-direction: row;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             color: var(--primary);
             flex-shrink: 0;
@@ -344,30 +885,29 @@ footer a:hover{color:white}
         .logo-text-wrap {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 4px;
         }
         .logo-name {
-            font-size: 1.22rem;
+            font-size: 1.38rem;
             font-weight: 700;
             color: var(--primary);
             line-height: 1;
         }
         .logo-subtitle {
-            font-size: 0.6rem;
+            font-size: 0.66rem;
             color: #666;
             letter-spacing: 0.3px;
             font-weight: 500;
         }
 
         nav {
+            flex: 1;
             display: flex;
-            gap: 1.6rem;
+            gap: 2.2rem;
             align-items: center;
             justify-content: center;
-            flex: 1;
-            min-width: 0;
-            overflow: visible;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
+            margin: 0;
         }
 
         nav > a {
@@ -406,11 +946,14 @@ footer a:hover{color:white}
             border-radius: 8px;
             border: 1px solid var(--border);
             z-index: 9999;
-            max-height: calc(100vh - 120px);
+            max-height: 80vh;
             overflow-y: auto;
         }
+        .dropdown-menu::-webkit-scrollbar { width: 5px; }
+        .dropdown-menu::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .dropdown-menu::-webkit-scrollbar-thumb { background: #ccc; border-radius: 8px; }
+        .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu { display: block; }
-        .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-section { padding: 0.5rem 0; }
         .dropdown-section:first-child { padding-top: 0.8rem; }
         .dropdown-section-title {
@@ -475,6 +1018,23 @@ footer a:hover{color:white}
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
+
+                /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            nav {
+                gap: 1.5rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        
+    
+        /* ══════════════════════════════════════════
+           MOBILE NAV — Rattan-style
+           ══════════════════════════════════════════ */
 
         /* Hamburger — navy square, right side of header */
         
@@ -575,7 +1135,7 @@ footer a:hover{color:white}
             background: #0F1F3C; position: sticky; top: 0; z-index: 2;
         }
         .mobile-nav-logo .mnav-name { color: white; font-size: 1rem; font-weight: 700; line-height: 1.2; }
-        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.68rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
+        .mobile-nav-logo .mnav-sub { color: rgba(255,255,255,0.55); font-size: 0.72rem; letter-spacing: 1px; font-style: italic; display: block; margin-top: 3px; }
         .mobile-nav-close {
             background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.8);
             width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
@@ -596,16 +1156,25 @@ footer a:hover{color:white}
         .mobile-nav-cta a:hover { opacity: 0.88; }
 
         @media (max-width: 860px) {
+            .hero-wiz-letter { font-size: clamp(90px, 26vw, 140px) !important; }
+            .hero-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
+            .hero { padding: 2.5rem 1.2rem 3rem !important; }
+            .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
+            .hero-tagline { font-size: 0.95rem !important; }
+            .hero-ctas { gap: 0.7rem !important; }
+            .hero-btn-primary, .hero-btn-secondary { padding: 0.75rem 1.4rem !important; font-size: 0.88rem !important; }
             .header-top { display: none !important; }
             .header-main {
-                padding: 0.75rem 1rem !important;
-                display: flex !important; flex-direction: row !important;
-                align-items: center !important; justify-content: space-between !important;
-                flex-wrap: nowrap !important; gap: 0 !important;
-            }
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
             .hamburger { display: flex !important; }
             nav, .cta-btns, .cta-buttons { display: none !important; }
-            .logo { font-size: 1rem !important; } .logo-name { font-size: 1rem !important; }
+            .logo { font-size: 1rem !important; } .logo-name { font-size: 1.38rem !important; }
             .logo-subtitle, .logo-sub { font-size: 0.68rem !important; }
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
             .hero h1, .page-hero h1 { font-size: 2.2rem !important; line-height: 1.2 !important; }
@@ -616,7 +1185,7 @@ footer a:hover{color:white}
             .two-col, .three-col, .four-col, .about-grid, .contact-wrapper, .coverage-grid, .foundation-grid, .steps-grid { grid-template-columns: 1fr !important; }
             .stats-bar { grid-template-columns: 1fr 1fr !important; margin: 0 auto !important; border-radius: 0 !important; padding: 1.5rem 1rem !important; }
             .about-strip-inner { grid-template-columns: 1fr !important; text-align: center !important; }
-            .advisor-photo { width: 150px !important; height: 150px !important; margin: 0 auto 1rem !important; }
+            .advisor-photo { width: 220px !important; height: 220px !important; margin: 0 auto 1.5rem !important; }
             .about-strip { padding: 2.5rem 1.2rem !important; }
             .quote-tool { padding: 1.4rem 1.1rem !important; margin: 1.5rem auto 0 !important; }
             .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -660,333 +1229,45 @@ footer a:hover{color:white}
             .stat-number { font-size: 2rem !important; }
             .testimonial-card { flex: 0 0 270px !important; }
         }
+
+
+        /* ===== Mobile Nav Accordion ===== */
+        .mnav-accordion { border-left: 2px solid transparent; }
+        .mnav-acc-toggle {
+            display: flex !important; align-items: center; justify-content: space-between;
+            padding: 0.75rem 1.3rem; min-height: 44px;
+            color: rgba(255,255,255,0.82); cursor: pointer;
+            font-size: 0.9rem; font-weight: 500;
+            transition: background 0.12s, color 0.12s;
+            user-select: none; border-left: 2px solid transparent;
+        }
+        .mnav-acc-toggle:hover { background: rgba(255,255,255,0.06) !important; color: white !important; }
+        .mnav-acc-toggle.open { color: white !important; border-left-color: #E63946 !important; background: rgba(255,255,255,0.04) !important; }
+        .mnav-acc-arrow {
+            font-size: 1.1rem; color: rgba(255,255,255,0.4);
+            transition: transform 0.2s; display: inline-block;
+        }
+        .mnav-acc-toggle.open .mnav-acc-arrow { transform: rotate(90deg); color: #E63946; }
+        .mnav-acc-items { display: none !important; background: rgba(0,0,0,0.15); }
+        .mnav-acc-items.open { display: block !important; }
+        .mnav-acc-items a {
+            display: flex !important; padding-left: 2.2rem !important;
+            font-size: 0.85rem; color: rgba(255,255,255,0.7) !important;
+        }
+        .mnav-acc-items a:hover { color: white !important; background: rgba(255,255,255,0.06) !important; }
     </style>
-</head>
-<body>
-
-    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
-    <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
-      <div class="mobile-nav-header">
-        <div class="mobile-nav-logo">
-          <div class="mnav-name" style="display:flex;align-items:center;gap:6px;"><span style="background:white;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;"><img src="finwiz-removebg-preview.png" style="width:30px;height:34px;object-fit:contain;" alt="WIZ Insurance"></span>Shivang Goyal</div>
-          <span class="mnav-sub">Wisdom · Integrity · Zeal</span>
-        </div>
-        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
-      </div>
-      <div class="mobile-nav-body">
-        <div class="mnav-label">Main</div>
-        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
-        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
-        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
-        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
-
-        <div class="mnav-divider"></div>
-
-        <!-- Accordion: Visitor & Travel -->
-        <div class="mnav-accordion">
-          <div class="mnav-acc-toggle">
-            <span><span class="mnav-icon">✈️</span>Visitor &amp; Travel</span>
-            <span class="mnav-acc-arrow">›</span>
-          </div>
-          <div class="mnav-acc-items">
-            <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
-            <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
-            <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
-            <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
-          </div>
-        </div>
-
-        <!-- Accordion: Life Insurance -->
-        <div class="mnav-accordion">
-          <div class="mnav-acc-toggle">
-            <span><span class="mnav-icon">🛡️</span>Life Insurance</span>
-            <span class="mnav-acc-arrow">›</span>
-          </div>
-          <div class="mnav-acc-items">
-            <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
-            <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
-            <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
-            <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
-          </div>
-        </div>
-
-        <!-- Accordion: Living Benefits -->
-        <div class="mnav-accordion">
-          <div class="mnav-acc-toggle">
-            <span><span class="mnav-icon">🩺</span>Living Benefits</span>
-            <span class="mnav-acc-arrow">›</span>
-          </div>
-          <div class="mnav-acc-items">
-            <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
-            <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
-            <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
-            <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
-            <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
-          </div>
-        </div>
-
-        <!-- Accordion: Investments -->
-        <div class="mnav-accordion">
-          <div class="mnav-acc-toggle">
-            <span><span class="mnav-icon">📈</span>Investments</span>
-            <span class="mnav-acc-arrow">›</span>
-          </div>
-          <div class="mnav-acc-items">
-            <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
-            <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
-            <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
-            <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
-            <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
-            <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
-            <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
-          </div>
-        </div>
-
-        <div class="mnav-divider"></div>
-        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
-        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
-      </div>
-      <div class="mobile-nav-cta">
-        <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
-        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
-        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
-      </div>
-    </div>
-
-<header>
-        <div class="header-top">
-            <div class="header-top-left">
-                🇨🇦 Licensed in Ontario, Canada
-            </div>
-            <div class="header-top-right">
-                <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" rel="noopener" class="reviews-badge">⭐ 20+ Reviews</a>
-                <span class="phone-number">📞 (647) 995-5891</span>
-            </div>
-        </div>
-        <div class="header-main">
-            <a href="index.html" class="logo">
-                    <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:34px;width:auto;object-fit:contain;">
-                    <span class="logo-text-wrap">
-                        <span class="logo-name">Shivang Goyal</span>
-                        <span class="logo-subtitle">INSURANCE ADVISOR · CANADA</span>
-                    </span>
-                </a>
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                
-                <div class="dropdown">
-                    <a href="index.html#insurance">Insurance<span class="dropdown-arrow"></span></a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Visitor & Travel</div>
-                            <a href="visitors.html">🛂 Visitor to Canada</a>
-                            <a href="supervisa.html">📋 SuperVisa Insurance</a>
-                            <a href="travel.html">🌍 Travel Insurance</a>
-                            <a href="student-insurance.html">🎓 International Student</a>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Life Insurance</div>
-                            <a href="term-life.html">🛡️ Term Life Insurance</a>
-                            <a href="whole-life.html">🌿 Whole Life Insurance</a>
-                            <a href="universal-life.html">⚙️ Universal Life</a>
-                            <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Living Benefits</div>
-                            <a href="critical-illness.html">🩺 Critical Illness</a>
-                            <a href="disability.html">🦺 Disability Insurance</a>
-                            <a href="health-dental.html">💊 Drug & Dental</a>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Planning</div>
-                            <a href="estate-planning.html">🏭 Estate Planning</a>
-                            <a href="business-insurance.html">💼 Business Insurance</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dropdown" id="dd-invest">
-                    <a href="#">Investments <span class="dropdown-arrow"></span></a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Registered Accounts</div>
-                            <a href="rrsp.html">📈 RRSP</a>
-                            <a href="tfsa.html">💰 TFSA</a>
-                            <a href="fhsa.html">🏡 FHSA</a>
-                            <a href="resp.html">🎓 RESP</a>
-                            <a href="rdsp.html">♿ RDSP</a>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-section">
-                            <div class="dropdown-section-title">Other</div>
-                            <a href="non-registered.html">📊 Non-Registered</a>
-                            <a href="retirement-planning.html">🌞 Retirement Planning</a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="get-quotes.html">Get Quotes</a>
-                <a href="awards.html">Credentials</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-            <div class="cta-buttons">
-                <a href="tel:+16479955891" class="btn-call">📞 Call Now</a>
-                <a href="get-quotes.html" class="btn-quote">⚡ Get a Quote</a>
-            </div>
-        </div>
-    </header>
-<div class="hero">
-  <h1>Terms of Service</h1>
-  <p>Shivang Goyal Insurance &amp; Financial Solutions</p>
-</div>
-<div class="wrap">
-
-<div class="updated">📅 Last Updated: March 2025 &nbsp;|&nbsp; Effective Date: March 1, 2025</div>
-<div class="box"><strong>Please read carefully.</strong> By accessing or using this website, you agree to these Terms of Service. If you do not agree, please do not use this website.</div>
-
-<h2>1. About This Website</h2>
-<p>This website is operated by <strong>Shivang Goyal</strong>, an independently licensed insurance advisor (LLQP) holding a <strong>Master of Engineering (MEng)</strong> and a background as a MEng graduate, with experience in 3 government positions. Shivang Goyal is licensed to advise on life and health insurance products in: <strong>ON, BC, AB, MB, SK, NS, PEI, NB</strong>.</p>
-
-<h2>2. Not Financial or Legal Advice</h2>
-<p>All content on this website is provided for <strong>general educational and informational purposes only</strong>. Nothing on this website constitutes:</p>
-<ul>
-  <li>Financial, investment, or tax advice</li>
-  <li>Legal advice</li>
-  <li>A guarantee of insurance coverage, eligibility, or pricing</li>
-  <li>A binding offer or contract of any kind</li>
-</ul>
-<p>All insurance products are subject to full underwriting review and approval by the relevant insurance carrier. Coverage terms, conditions, exclusions, and premiums are determined by the insurer's policies and your individual circumstances. Always review your policy documents carefully before signing.</p>
-
-<h2>3. Government Benefit Program Information</h2>
-<p>Information about Canadian government programs (CPP, OAS, GIS, RDSP, CESG, FHSA, Canadian Dental Care Plan, etc.) is provided for <strong>general educational purposes only</strong>. Government program rules, eligibility criteria, and benefit amounts can change. Always verify current information directly with the relevant government authority (Service Canada, CRA, etc.) or consult a qualified professional for advice specific to your situation.</p>
-
-<h2>4. Credit Card and Financial Product Information</h2>
-<p>Credit card comparisons and recommendations on this website are provided for informational purposes only. They reflect conditions available at the time of writing and may not reflect current offers, rates, or terms. Shivang Goyal operates as a partner of <strong>FinlyWealth</strong> for credit card information. Always review the full cardholder agreement directly with the issuing financial institution before applying. Approval for any credit product is subject to the lender's criteria.</p>
-
-<h2>5. Accuracy of Information</h2>
-<p>We make reasonable efforts to ensure accuracy and currency of information on this website. However, we make no warranties — express or implied — that the information is complete, accurate, current, or error-free. Insurance rates, product features, and government program details change frequently. Always confirm current details directly with the relevant carrier or government authority.</p>
-
-<h2>6. Licensing and Independence</h2>
-<p>Shivang Goyal is licensed to sell life and health insurance products in Ontario and operates in compliance with applicable provincial insurance regulations and the LLQP. Shivang Goyal is an <strong>independent advisor</strong> and is not an employee or agent of any insurance carrier.</p>
-
-<h2>7. Third-Party Websites</h2>
-<p>This website contains links to third-party websites including FinlyWealth and insurance carriers. These links are provided for convenience only. Shivang Goyal does not endorse or take responsibility for the content, privacy practices, or accuracy of any third-party website. Use of third-party sites is at your own risk.</p>
-
-<h2>8. Limitation of Liability</h2>
-<p>To the fullest extent permitted by applicable law, Shivang Goyal shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of this website, reliance on any content, or errors or omissions in the information provided.</p>
-
-<h2>9. Intellectual Property</h2>
-<p>All content on this website — including text, design, graphics, and branding — is the property of Shivang Goyal unless otherwise noted. You may not reproduce, distribute, or use any content without express written permission.</p>
-
-<h2>10. Changes to These Terms</h2>
-<p>We may update these Terms at any time. Changes will be posted on this page with an updated date. Continued use of the website constitutes acceptance of the updated terms.</p>
-
-<h2>11. Governing Law</h2>
-<p>These Terms are governed by the laws of the <strong>Province of Ontario</strong> and the federal laws of Canada. Any disputes shall be subject to the exclusive jurisdiction of the courts of Ontario.</p>
-
-<h2>12. Contact</h2>
-<div class="box">
-  <strong>Shivang Goyal — Insurance &amp; Financial Solutions</strong><br>
-  MEng · MEng Graduate · LLQP Certified Insurance Advisor<br>
-  📞 (647) 995-5891<br>
-  ✉️ shivang.goyal.financial@gmail.com<br>
-  📍 Ontario, Canada &nbsp;|&nbsp; Licensed: Ontario (RIBO)
-</div>
-
-</div>
-<footer>
-        <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:2rem 0;text-align:left;">
-            <div>
-                <div style="font-weight:700;font-size:1.1rem;margin-bottom:1rem;">Shivang Goyal</div>
-                <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;line-height:1.8;">
-                    Insurance Advisor · LLQP Certified<br>
-                    📞 <a href="tel:+16479955891" style="color:rgba(255,255,255,0.7)">(647) 995-5891</a><br>
-                    ✉️ <a href="mailto:shivang.goyal.financial@gmail.com" style="color:rgba(255,255,255,0.7)">shivang.goyal.financial@gmail.com</a><br>
-                    📍 Ontario (Primary) · Licensed in Ontario
-                </div>
-            </div>
-            <div>
-                <div style="font-weight:700;margin-bottom:1rem;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;">Insurance</div>
-                <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.85rem;">
-                    <a href="term-life.html" style="color:rgba(255,255,255,0.7)">Term Life Insurance</a>
-                    <a href="visitors.html" style="color:rgba(255,255,255,0.7)">Visitors to Canada</a>
-                    <a href="supervisa.html" style="color:rgba(255,255,255,0.7)">Super Visa Insurance</a>
-                    <a href="critical-illness.html" style="color:rgba(255,255,255,0.7)">Critical Illness</a>
-                    <a href="disability.html" style="color:rgba(255,255,255,0.7)">Disability Insurance</a>
-                    <a href="health-dental.html" style="color:rgba(255,255,255,0.7)">Drug & Dental</a>
-                </div>
-            </div>
-            <div>
-                <div style="font-weight:700;margin-bottom:1rem;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;">More Services</div>
-                <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.85rem;">
-                    <a href="rrsp.html" style="color:rgba(255,255,255,0.7)">Investments & RRSP</a>
-                    <a href="resp.html" style="color:rgba(255,255,255,0.7)">RESP</a>
-                    <a href="estate-planning.html" style="color:rgba(255,255,255,0.7)">Estate Planning</a>
-                    <a href="business-insurance.html" style="color:rgba(255,255,255,0.7)">Business Insurance</a>
-                    <a href="credit-cards.html" style="color:rgba(255,255,255,0.7)">Credit Card Optimization</a>
-                </div>
-            </div>
-            <div>
-                <div style="font-weight:700;margin-bottom:1rem;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;">Company</div>
-                <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.85rem;">
-                    <a href="about.html" style="color:rgba(255,255,255,0.7)">About Shivang</a>
-                    <a href="awards.html" style="color:rgba(255,255,255,0.7)">Credentials & Reviews</a>
-                    <a href="get-quotes.html" style="color:rgba(255,255,255,0.7)">Get a Quote</a>
-                    <a href="index.html#contact" style="color:rgba(255,255,255,0.7)">Contact</a>
-                    <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" style="color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:0.4rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig2)"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg> @thefinwiz.ca</a>
-                    <a href="https://finwiz.finlywealth.com" target="_blank" style="color:rgba(255,255,255,0.7)">💳 FinlyWealth Partner</a>
-                </div>
-            </div>
-        </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6);font-size:0.8rem;">
-            <p>&copy; 2025 Shivang Goyal | Insurance & Financial Solutions | Ontario Licensed Advisor</p>
-
-        </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;margin-top:0.5rem;text-align:center;color:rgba(255,255,255,0.45);font-size:0.72rem;line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto;">
-            <strong style="color:rgba(255,255,255,0.6);">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Insurance products are subject to underwriting approval and policy terms. Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Credit card information is provided for informational purposes; always review cardholder agreements before applying. Past performance of investment products does not guarantee future results. Shivang Goyal operates as an independent advisor and is not an employee of any insurance carrier. <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.5)">Terms of Service</a>
-        </div>
-    </footer>
-<a href="https://wa.me/16479955891" target="_blank" class="wa" title="WhatsApp">💬</a>
 
 <script>
-(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
-(function(){var t={};function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';}function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true)})();
+// ===== SCROLL ANIMATIONS =====
+(function(){
+  var animEls = document.querySelectorAll('.anim-fade-up, .anim-fade-left, .anim-fade-right');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in-view'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  animEls.forEach(function(el){ obs.observe(el); });
+})();
 </script>
-
-  <script>
-  // Mobile nav accordion — robust v2
-  (function() {
-    function initAccordion() {
-      document.querySelectorAll('.mnav-accordion').forEach(function(acc) {
-        var toggle = acc.querySelector('.mnav-acc-toggle');
-        var items  = acc.querySelector('.mnav-acc-items');
-        if (!toggle || !items) return;
-        toggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var isOpen = items.classList.contains('open');
-          // Close all
-          document.querySelectorAll('.mnav-acc-items').forEach(function(i) { i.classList.remove('open'); });
-          document.querySelectorAll('.mnav-acc-toggle').forEach(function(t) { t.classList.remove('open'); });
-          // Open this one if it was closed
-          if (!isOpen) {
-            items.classList.add('open');
-            toggle.classList.add('open');
-          }
-        });
-      });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initAccordion);
-    } else {
-      initAccordion();
-    }
-  })();
-  </script>
 </body>
 </html>
