@@ -217,6 +217,17 @@
             border-top: 1px solid var(--border);
         }
 
+        /* Calculator snapshot */
+        .csn-box { background:linear-gradient(135deg,#0F1F3C,#1a3a5c); border-radius:10px; padding:0.7rem 0.9rem; margin-bottom:0.65rem; color:white; }
+        .csn-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.4rem; }
+        .csn-lbl { font-size:0.72rem; color:rgba(255,255,255,0.5); }
+        .csn-val { font-size:1.3rem; font-weight:800; color:#4ade80; }
+        .csn-bar { display:flex; height:5px; border-radius:3px; overflow:hidden; margin-bottom:0.35rem; }
+        .csn-inv { background:rgba(255,255,255,0.25); }
+        .csn-grow { background:#4ade80; }
+        .csn-legend { display:flex; justify-content:space-between; font-size:0.68rem; color:rgba(255,255,255,0.5); }
+        .csn-btn { display:flex; align-items:center; justify-content:center; gap:0.5rem; background:var(--light-bg); border:2px solid var(--border); border-radius:10px; padding:0.75rem; font-size:0.82rem; font-weight:700; color:var(--primary); text-decoration:none; margin-bottom:1rem; transition:all 0.18s; }
+        .csn-btn:hover { border-color:var(--primary); background:white; transform:translateY(-2px); box-shadow:0 6px 16px rgba(15,31,60,0.1); }
         /* HQ tabs (shared with index) */
         .hq-tabs-row { display: grid; gap: 0.6rem; margin-bottom: 1rem; }
         .hq-tab {
@@ -681,24 +692,16 @@
         </div>
 
         <div class="page-hero-card">
-            <div class="phc-badge">⚡ Free Quote</div>
-            <h3>Get a Free Quote</h3>
-            <p>Non-Registered Investments</p>
-            <div class="hq-tabs-row" style="grid-template-columns: repeat(3,1fr);">
-                <a href="get-quotes.html" class="hq-tab">
-                    <span class="hq-icon">⚡</span>
-                    Online Quote
-                </a>
-                <a href="tel:+16479955891" class="hq-tab">
-                    <span class="hq-icon">📞</span>
-                    Call Shivang
-                </a>
-                <a href="https://wa.me/16479955891" target="_blank" class="hq-tab">
-                    <span class="hq-icon">💬</span>
-                    WhatsApp
-                </a>
+            <div class="phc-badge">📈 Calculator</div>
+            <h3>See your investment grow</h3>
+            
+            <div class="csn-box">
+                <div class="csn-top"><span class="csn-lbl">$500/mo · 20 yrs · 10% return</span><span class="csn-val" id="csn-projected">—</span></div>
+                <div class="csn-bar"><div class="csn-inv" id="csn-bar-inv"></div><div class="csn-grow" id="csn-bar-grow"></div></div>
+                <div class="csn-legend"><span id="csn-invested">—</span><span style="color:#4ade80" id="csn-gains">—</span></div>
             </div>
-            <div class="phc-footer">🔒 Independent · 25+ carriers compared · Licensed in Ontario</div>
+            <a href="financial-calculators.html" class="csn-btn">📊 Try the Full Calculator →</a>
+            <div class="phc-footer">🔒 Free · No sign-up · Fully interactive</div>
         </div>
     </div>
 </div>
@@ -1350,6 +1353,21 @@
     });
   }, { threshold: 0.15 });
   animEls.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+<script>
+(function(){
+    var mo=500,years=20,rate=10,n=years*12,mr=rate/100/12;
+    var fv=mr>0?mo*((Math.pow(1+mr,n)-1)/mr)*(1+mr):mo*n;
+    var invested=mo*n,growth=fv-invested;
+    var fmt=function(v){return v>=1000000?"$"+(v/1000000).toFixed(2).replace(/\.?0+$/,"")+"M":"$"+Math.round(v).toLocaleString();};
+    var fmtK=function(v){return v>=1000?"+$"+Math.round(v/1000)+"K gains":"+$"+Math.round(v)+" gains";};
+    document.getElementById("csn-projected").textContent=fmt(fv);
+    document.getElementById("csn-invested").textContent="Invested "+fmt(invested);
+    document.getElementById("csn-gains").textContent=fmtK(growth);
+    var p=Math.round(invested/fv*100);
+    document.getElementById("csn-bar-inv").style.width=p+"%";
+    document.getElementById("csn-bar-grow").style.width=(100-p)+"%";
 })();
 </script>
 </body>

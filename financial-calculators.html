@@ -2605,10 +2605,10 @@
                 <h1>Free Financial <em>Calculators</em><br>for Canadians.</h1>
                 <p class="hero-tagline">
                     <span class="hero-tagline-l1">Compound growth · RESP · CAGR · Goal planning</span>
-                    <span class="hero-tagline-l2">7 free tools. No sign-up required.</span>
+                    <span class="hero-tagline-l2">6 free tools. No sign-up required.</span>
                 </p>
                 <div class="hero-trust" style="flex-direction:row;gap:1.2rem;margin-bottom:0;">
-                    <span class="hero-trust-item">🧮 7 Calculators</span>
+                    <span class="hero-trust-item">🧮 6 Calculators</span>
                     <span class="hero-trust-item">🇨🇦 Built for Canada</span>
                     <span class="hero-trust-item">✅ 100% Free</span>
                 </div>
@@ -3622,16 +3622,16 @@ function switchTab(id){
       if(t) t.style.display = 'block';
     }, 50);
   }
-  // Re-render chart for the active tab — Chart.js doesn't render properly on hidden canvases
+  // Re-render chart for the active tab — Chart.js can't measure hidden canvases; redraw after panel is visible
   setTimeout(()=>{
     try{
-      if(id==='sip')     { chartSIP(); }
+      if(id==='sip')          { chartSIP(); }
       else if(id==='goal')    { chartGoal(); }
       else if(id==='swp')     { chartSWP(); }
       else if(id==='cagr')    { /* no chart */ }
       else if(id==='options') { chartOptions(); }
     }catch(e){ console.warn('Chart redraw:', e); }
-  }, 50);
+  }, 100);
 }
 
 const fmt = n => n >= 1000000 ? '$'+(n/1000000).toFixed(2).replace(/\.?0+$/,'')+'M'
@@ -3861,7 +3861,11 @@ try{calcOptions();}catch(e){console.warn("calcOptions init:",e);}
 function makeChart(id, labels, datasets){
   const canvas = document.getElementById(id);
   if(!canvas) return;
-  if(charts[id]) charts[id].destroy();
+  if(charts[id]){ charts[id].destroy(); delete charts[id]; }
+  // Clear stale inline dimensions set by Chart.js when canvas was hidden (display:none)
+  canvas.removeAttribute('style');
+  canvas.removeAttribute('width');
+  canvas.removeAttribute('height');
   charts[id] = new Chart(canvas, {
     type:'line',
     data:{labels, datasets},
@@ -3872,7 +3876,11 @@ function makeChart(id, labels, datasets){
 function makeBarChart(id, labels, datasets){
   const canvas = document.getElementById(id);
   if(!canvas) return;
-  if(charts[id]) charts[id].destroy();
+  if(charts[id]){ charts[id].destroy(); delete charts[id]; }
+  // Clear stale inline dimensions set by Chart.js when canvas was hidden (display:none)
+  canvas.removeAttribute('style');
+  canvas.removeAttribute('width');
+  canvas.removeAttribute('height');
   charts[id] = new Chart(canvas, {
     type:'bar',
     data:{labels, datasets},

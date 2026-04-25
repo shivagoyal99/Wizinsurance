@@ -1045,12 +1045,22 @@
         /* ===== TESTIMONIALS ===== */
         .testimonials-section {
             background: var(--light-bg);
-            padding: 4rem 2rem;
+            padding: 4rem 0;
+            overflow: hidden;
         }
 
         .testimonials-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .testimonials-track-outer {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
         }
 
         .testimonials-title {
@@ -1080,7 +1090,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             flex: 0 0 340px;
-
         }
 
         .stars {
@@ -1340,16 +1349,15 @@
         /* ===== WHITE CTA STRIP ===== */
         .white-cta-strip {
             background: white;
-            padding: 1.4rem 2rem;
+            padding: 1.2rem 2rem;
             text-align: center;
-            border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
         .white-cta-strip a {
             display: inline-block;
             background: var(--accent);
             color: white;
-            padding: 1rem 2.8rem;
+            padding: 0.85rem 2.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -1561,21 +1569,21 @@
         /* ===== HOW IT WORKS ===== */
         .how-it-works {
             background: var(--primary);
-            padding: 4rem 2rem;
+            padding: 2.5rem 2rem 2rem;
             color: white;
         }
 
         .how-it-works h2 {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .how-it-works .subtitle {
             text-align: center;
             opacity: 0.75;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-size: 1rem;
         }
 
@@ -1592,7 +1600,7 @@
         .steps-grid::before {
             content: '';
             position: absolute;
-            top: 3.8rem;
+            top: 3.2rem;
             left: 12.5%;
             right: 12.5%;
             height: 2px;
@@ -1606,7 +1614,7 @@
 
         .step {
             text-align: center;
-            padding: 2.2rem 1.5rem 2.5rem;
+            padding: 1.4rem 1.2rem 1.6rem;
             position: relative;
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.08);
@@ -1621,9 +1629,9 @@
             transform: translateY(-5px);
         }
         .step-icon {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: rgba(255,255,255,0.5);
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.6rem;
             opacity: 0;
             transform: translateY(10px);
             transition: opacity 0.4s ease, transform 0.4s ease;
@@ -1635,17 +1643,17 @@
 
         /* Step number — starts scaled down, springs in */
         .step-number {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: white;
-            margin: 0 auto 1.4rem;
+            margin: 0 auto 1rem;
             box-shadow: 0 4px 20px rgba(230,57,70,0.35);
             transform: scale(0) rotate(-30deg);
             opacity: 0;
@@ -1759,7 +1767,7 @@
             content: '';
             position: absolute;
             top: 0; bottom: 0;
-            width: 80px;
+            width: 40px;
             z-index: 2;
             pointer-events: none;
         }
@@ -2490,6 +2498,8 @@
     <section class="testimonials-section">
         <div class="testimonials-container">
             <h2 class="testimonials-title anim-fade-up">What Clients Are Saying</h2>
+        </div>
+        <div class="testimonials-track-outer">
             <div class="testimonials-track-wrap">
                 <div class="testimonials-auto-track">
                     <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"Shivang made the whole process so easy. He compared multiple options and got us the best rate for our Super Visa insurance — all in the same day!"</p><div class="testimonial-author">— Harpreet K., Brampton ON</div></div>
@@ -2507,7 +2517,10 @@
                     <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"I came in confused about critical illness vs disability. Shivang broke it down simply and helped me pick the right coverage. Exceptional service."</p><div class="testimonial-author">— Neha B., Markham ON</div></div>
                 </div>
             </div>
-            <div style="text-align:center;margin-top:2rem;">
+            </div>
+        </div>
+        <div class="testimonials-container" style="padding-top:0;">
+            <div style="text-align:center;margin-top:1.5rem;">
                 <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;font-size:0.95rem;">View all reviews on Google →</a>
             </div>
         </div>
@@ -2660,13 +2673,14 @@
     
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 <script>
-// Testimonials infinite scroll - JS-driven for reliable mobile support
+// Testimonials infinite scroll
 (function(){
   var track = document.querySelector('.testimonials-auto-track');
   if (!track) return;
   var wrap = track.parentElement;
-  var speed = 0.5; // px per frame
+  var speed = 0.5;
   var pos = 0;
   var paused = false;
   var halfWidth = 0;
@@ -2676,26 +2690,17 @@
     var total = cards.length;
     var half = Math.floor(total / 2);
     var w = 0;
-    var gap = 24; // 1.5rem gap
-    for (var i = 0; i < half; i++) {
-      w += cards[i].offsetWidth + gap;
-    }
+    var gap = 24;
+    for (var i = 0; i < half; i++) { w += cards[i].offsetWidth + gap; }
     return w;
   }
 
-  function init() {
-    halfWidth = getHalfWidth();
-    pos = 0;
-    track.style.transform = 'translateX(0px)';
-    animate();
-  }
+  function init() { halfWidth = getHalfWidth(); pos = 0; track.style.transform = 'translateX(0px)'; animate(); }
 
   function animate() {
     if (!paused) {
       pos += speed;
-      if (halfWidth > 0 && pos >= halfWidth) {
-        pos = 0;
-      }
+      if (halfWidth > 0 && pos >= halfWidth) { pos = 0; }
       track.style.transform = 'translateX(-' + pos + 'px)';
     }
     requestAnimationFrame(animate);
@@ -2706,7 +2711,6 @@
   wrap.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
   wrap.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 2000); }, {passive:true});
 
-  // Wait for layout
   if (document.readyState === 'complete') { init(); }
   else { window.addEventListener('load', init); }
 })();

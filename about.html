@@ -714,27 +714,28 @@
         .why-card p { font-size:0.82rem; color:var(--text-light); line-height:1.6; margin:0; }
 
         /* Stats bar */
-        .about-stats { background:var(--primary); padding:2.8rem 2rem; }
+        .about-stats { background:var(--primary); padding:1.2rem 2rem; }
         .about-stats-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
-        .about-stat { padding:0.5rem; }
-        .about-stat-num { font-size:1.9rem; font-weight:800; color:var(--accent); line-height:1; margin-bottom:0.4rem; }
+        .about-stat { padding:0.2rem; }
+        .about-stat-num { font-size:1.6rem; font-weight:800; color:var(--accent); line-height:1; margin-bottom:0.25rem; }
         .about-stat-label { font-size:0.78rem; color:rgba(255,255,255,0.6); font-weight:500; line-height:1.4; }
 
         /* Reviews */
-        .reviews-section { background:var(--primary); padding:5rem 2rem; position:relative; overflow:hidden; }
-        .reviews-section::before { content:'"'; position:absolute; top:-2rem; left:2rem; font-size:18rem; font-family:Georgia,serif; color:rgba(230,57,70,0.08); line-height:1; pointer-events:none; }
-        .reviews-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
-        .section-head { text-align:center; margin-bottom:3rem; }
-        .section-head h2 { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:white; margin-bottom:0.5rem; letter-spacing:-0.3px; }
+        .reviews-section { background:#f5f7fa; padding:2.5rem 2rem; position:relative; }
+        .reviews-section .section-head h2 { color:var(--primary); }
+        .reviews-section .section-head p { color:#555; }
+        .reviews-inner { max-width:1100px; margin:0 auto; }
+        .section-head { text-align:center; margin-bottom:1rem; }
+        .section-head h2 { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:white; margin-bottom:0.4rem; letter-spacing:-0.3px; }
         .section-head p { color:rgba(255,255,255,0.55); font-size:1rem; }
-        .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
-        .review-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:1.8rem; transition:background 0.2s,transform 0.2s; position:relative; }
-        .review-card:hover { background:rgba(255,255,255,0.11); transform:translateY(-4px); }
-        .stars { color:#FFB800; font-size:0.95rem; margin-bottom:0.9rem; letter-spacing:2px; }
-        .review-card p { font-size:0.9rem; color:rgba(255,255,255,0.82); line-height:1.75; font-style:italic; margin-bottom:1.1rem; }
-        .reviewer { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.45); }
-        .btn-outline { display:inline-block; padding:0.7rem 2rem; border:2px solid rgba(255,255,255,0.35); color:white; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.92rem; transition:all 0.2s; }
-        .btn-outline:hover { background:white; color:var(--primary); border-color:white; }
+        .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:0; }
+        .review-card { background:white; border:1px solid #e2e6ed; border-radius:12px; padding:1.3rem 1.5rem; transition:box-shadow 0.2s,transform 0.2s; position:relative; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .review-card:hover { box-shadow:0 6px 20px rgba(0,0,0,0.09); transform:translateY(-3px); }
+        .stars { color:#FFB800; font-size:0.9rem; margin-bottom:0.6rem; letter-spacing:2px; }
+        .review-card p { font-size:0.88rem; color:#444; line-height:1.65; font-style:italic; margin-bottom:0.8rem; }
+        .reviewer { font-size:0.8rem; font-weight:600; color:#888; }
+        .btn-outline { display:inline-block; padding:0.7rem 2rem; border:2px solid var(--primary); color:var(--primary); border-radius:8px; text-decoration:none; font-weight:700; font-size:0.92rem; transition:all 0.2s; }
+        .btn-outline:hover { background:var(--primary); color:white; }
 
         .cta-band { background:linear-gradient(135deg,#0F1F3C 0%,#1a3a5c 100%); color:white; padding:4rem 2rem; text-align:center; }
         .cta-band h2 { font-size:clamp(1.5rem,3.5vw,2.1rem); font-weight:800; margin-bottom:0.7rem; }
@@ -1061,7 +1062,6 @@
     <div class="reviews-inner">
         <div class="section-head">
             <h2>What Clients Say</h2>
-            <p>Real reviews from real people across Ontario.</p>
         </div>
         <div class="reviews-grid">
             <div class="review-card anim-fade-up" style="transition-delay:0s">
@@ -1080,19 +1080,12 @@
                 <div class="reviewer">— Raj K., Mississauga, ON</div>
             </div>
         </div>
-        <div style="text-align:center;margin-top:2rem;">
+        <div style="text-align:center;margin-top:1.2rem;">
             <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" class="btn-outline">Read All Reviews on Google →</a>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-band">
-    <h2>Let's find the right coverage for you.</h2>
-    <p>No forms to fill. Just an honest conversation — call, WhatsApp, or send a message.</p>
-    <a href="tel:+16479955891" class="btn-cta-white">📞 Call Shivang</a>
-    <a href="get-quotes.html" class="btn-cta-dark">⚡ Get a Free Quote</a>
-</div>
 
 <footer>
     <div class="footer-grid">
