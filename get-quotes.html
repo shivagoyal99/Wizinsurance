@@ -1557,24 +1557,81 @@ async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form
         .mobile-nav-cta a:hover { opacity: 0.88; }
 
         @media (max-width: 860px) {
-            .hero-wiz-letter { font-size: clamp(90px, 26vw, 140px) !important; }
-            .hero-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
-            .hero { padding: 2.5rem 1.2rem 3rem !important; }
-            .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
-            .hero-tagline { font-size: 0.95rem !important; }
-            .hero-ctas { gap: 0.7rem !important; }
-            .hero-btn-primary, .hero-btn-secondary { padding: 0.75rem 1.4rem !important; font-size: 0.88rem !important; }
+            /* ── Header ── */
             .header-top { display: none !important; }
-            .header-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.3rem 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0;
-        }
+            .header-main { padding: 0.9rem 1.2rem !important; }
             .hamburger { display: flex !important; }
-            nav, .cta-btns, .cta-buttons { display: none !important; }
+            nav, .cta-btns, .cta-buttons, .btn-call { display: none !important; }
+            .logo-name { font-size: 1.1rem !important; }
+
+            /* ── Hero ── */
+            .page-hero { padding: 2.2rem 1.2rem 2.2rem !important; }
+            .page-hero-inner { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .page-hero h1 { font-size: clamp(1.75rem, 6.5vw, 2.1rem) !important; line-height: 1.15 !important; margin-bottom: 0.6rem !important; }
+            .page-hero-card[style*="visibility:hidden"] { display: none !important; }
+            .page-hero-card { padding: 1.2rem !important; }
+            .hero-tagline { font-size: 0.88rem !important; }
+
+            /* ── Quote section ── */
+            .quotes-container { padding: 1.5rem 1rem !important; }
+
+            /* ── Category tabs — horizontal scroll, never overflow ── */
+            .category-tabs {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                flex-wrap: nowrap !important;
+                gap: 0.35rem !important;
+                padding-bottom: 0 !important;
+                margin-bottom: 1.5rem !important;
+                scrollbar-width: none !important;
+            }
+            .category-tabs::-webkit-scrollbar { display: none !important; }
+            .cat-tab {
+                padding: 0.6rem 0.9rem !important;
+                font-size: 0.78rem !important;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+                border-radius: 20px !important;
+                border: 2px solid var(--border) !important;
+                border-bottom: 2px solid var(--border) !important;
+                bottom: 0 !important;
+            }
+            .cat-tab.active { background: var(--accent) !important; color: white !important; border-color: var(--accent) !important; }
+
+            /* ── Category panel heading ── */
+            .category-panel h2 { font-size: 1.2rem !important; margin-bottom: 0.3rem !important; }
+            .category-panel .desc { font-size: 0.85rem !important; margin-bottom: 1.2rem !important; }
+
+            /* ── Product cards ── */
+            .products-grid { grid-template-columns: 1fr !important; gap: 0.9rem !important; }
+            .product-card { padding: 1.2rem !important; }
+            .product-icon { font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+            .product-card h3 { font-size: 0.95rem !important; }
+            .product-card p { font-size: 0.8rem !important; margin-bottom: 0.9rem !important; }
+
+            /* ── Product buttons — full width stacked ── */
+            .product-actions { flex-direction: column !important; gap: 0.45rem !important; }
+            .btn-instant, .btn-call-sm { width: 100% !important; text-align: center !important; padding: 0.7rem 1rem !important; justify-content: center !important; }
+
+            /* ── Trust bar ── */
+            .trust-bar { padding: 1rem !important; }
+            .trust-items { flex-wrap: wrap !important; gap: 0.75rem 1.5rem !important; justify-content: center !important; }
+            .trust-item { font-size: 0.78rem !important; }
+
+            /* ── Contact section ── */
+            .contact-fallback { padding: 2rem 1rem !important; }
+            .contact-inner h2 { font-size: 1.35rem !important; }
+            .contact-inner > p { font-size: 0.88rem !important; margin-bottom: 1.2rem !important; }
+            .contact-wrapper-gq { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+            .contact-form-gq, .contact-info-gq { padding: 1.3rem !important; }
+            .contact-info-gq h3 { font-size: 1.1rem !important; margin-bottom: 1.2rem !important; }
+            .form-group input, .form-group select, .form-group textarea { font-size: 16px !important; }
+
+            /* ── Footer ── */
+            footer { padding: 2rem 1rem 1.5rem !important; }
+            .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; }
+
+            .hero-wiz-letter { font-size: clamp(90px, 26vw, 140px) !important; }
             .logo { font-size: 1rem !important; } .logo-name { font-size: 1.38rem !important; }
             .logo-subtitle, .logo-sub { font-size: 0.68rem !important; }
             .hero, .page-hero { padding: 2.5rem 1.2rem 2rem !important; }
