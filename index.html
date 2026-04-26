@@ -2080,18 +2080,9 @@
             .hero-actions > *, .hero-buttons > * { width: 100% !important; text-align: center !important; box-sizing: border-box !important; display: block !important; }
             .page-body { padding: 2rem 1.1rem !important; }
             .two-col, .three-col, .four-col, .about-grid, .contact-wrapper, .coverage-grid, .foundation-grid { grid-template-columns: 1fr !important; }
-            /* Hide WIZ label + letters on mobile */
-            .hero-wiz-label { display: none !important; }
-            .hero-wiz-letter { display: none !important; }
-            /* Quote card floats to bottom edge of hero, overlaps carrier strip */
-            .hero { padding-bottom: 1rem !important; }
-            .hero-quote-card {
-                margin-bottom: -2.5rem !important;
-                position: relative !important;
-                z-index: 10 !important;
-                box-shadow: 0 12px 40px rgba(0,0,0,0.22) !important;
-            }
-            .carrier-strip { padding-top: 3.5rem !important; margin-top: 0 !important; }
+            /* Give hero enough bottom room so WIZ label sits clearly below the card */
+            .hero { padding-bottom: 4.5rem !important; }
+            .hero-quote-card { margin-bottom: 0 !important; }
             /* Steps: single column, horizontal layout on mobile */
             .steps-grid { grid-template-columns: 1fr !important; gap: 0.6rem !important; } .steps-grid::before { display: none !important; }
             .step { display: flex !important; flex-direction: row !important; align-items: center !important; text-align: left !important; padding: 0.85rem 1rem !important; margin: 0 !important; gap: 1rem !important; }
