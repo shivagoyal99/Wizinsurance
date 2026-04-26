@@ -472,6 +472,37 @@
         .anim-fade-right.in-view { opacity: 1; transform: translateX(0); }
         </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ===== MOBILE STICKY CTA BAR ===== -->
+<style>
+  .mobile-sticky-cta { display: none; }
+  @media (max-width: 1024px) {
+    .mobile-sticky-cta {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 999; background: #0F2142; border-top: 2px solid #E63946;
+      padding: 0.75rem 1rem; gap: 0.5rem; align-items: center;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
+      transform: translateY(100%); transition: transform 0.3s ease;
+    }
+    .mobile-sticky-cta.visible { transform: translateY(0); }
+    .mobile-sticky-cta .msc-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.35rem; text-decoration: none; border-radius: 8px;
+      font-weight: 700; font-size: 0.82rem; padding: 0.65rem 0.9rem;
+      white-space: nowrap; transition: opacity 0.15s;
+    }
+    .mobile-sticky-cta .msc-btn:active { opacity: 0.8; }
+    .mobile-sticky-cta .msc-primary { flex: 2; background: #E63946; color: white; }
+    .mobile-sticky-cta .msc-wa {
+      flex: 1; background: rgba(37,211,102,0.15);
+      color: #4ade80; border: 1px solid rgba(37,211,102,0.3);
+    }
+    .mobile-sticky-cta .msc-call {
+      flex: 1; background: rgba(255,255,255,0.08);
+      color: white; border: 1px solid rgba(255,255,255,0.15);
+    }
+    body { padding-bottom: 72px; }
+  }
+</style>
 </head>
 <body>
 
@@ -679,33 +710,24 @@
                 <span class="hero-tagline-l2">I'll find coverage that pays it off if something happens.</span>
             </p>
         </div>
-
-        <div class="page-hero-card">
+        <div class="page-hero-card" style="visibility:hidden;pointer-events:none;">
             <div class="phc-badge">⚡ Free Quote</div>
             <h3>Get a Free Quote</h3>
             <p>Mortgage Insurance</p>
             <div class="hq-tabs-row" style="grid-template-columns: repeat(3,1fr);">
-                <a href="get-quotes.html" class="hq-tab">
-                    <span class="hq-icon">⚡</span>
-                    Online Quote
-                </a>
-                <a href="tel:+16479955891" class="hq-tab">
-                    <span class="hq-icon">📞</span>
-                    Call Shivang
-                </a>
-                <a href="https://wa.me/16479955891" target="_blank" class="hq-tab">
-                    <span class="hq-icon">💬</span>
-                    WhatsApp
-                </a>
+                <a href="#" class="hq-tab"><span class="hq-icon">⚡</span>Online Quote</a>
+                <a href="#" class="hq-tab"><span class="hq-icon">📞</span>Call Shivang</a>
+                <a href="#" class="hq-tab"><span class="hq-icon">💬</span>WhatsApp</a>
             </div>
             <div class="phc-footer">🔒 Independent · 25+ carriers compared · Licensed in Ontario</div>
+        </div>
         </div>
     </div>
 </div>
 <div class="page-body">
   <div class="two-col">
     <div>
-      <div class="section-head"><h2>Bank Mortgage Insurance vs. Term Life</h2><div class="divider"></div></div>
+      <div class="section-head"><h2>Is Bank Mortgage Insurance Worth It?</h2><div class="divider"></div></div>
       <p style="color:var(--text-light);line-height:1.8;margin-bottom:1.5rem;">Your bank will offer mortgage life insurance at closing. While convenient, it has significant limitations vs. an independent term life policy. Here's the critical difference:</p>
       <div class="info-card">
         <h3>🏦 Bank Mortgage Insurance</h3>
@@ -1360,6 +1382,26 @@
     });
   }, { threshold: 0.15 });
   animEls.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+<div class="mobile-sticky-cta" id="mobileStickyBar">
+  <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Mortgage%20Insurance" target="_blank" class="msc-btn msc-wa" style="flex:2;">💬 WhatsApp Shivang</a>
+  <a href="tel:+16479955891" class="msc-btn msc-call" style="flex:1;">📞 Call</a>
+</div>
+<script>
+(function() {
+  var bar  = document.getElementById('mobileStickyBar');
+  var hero = document.querySelector('.page-hero');
+  if (!bar) return;
+  if (hero) {
+    var io = new IntersectionObserver(function(entries) {
+      entries[0].isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
+    }, { threshold: 0 });
+    io.observe(hero);
+  } else {
+    bar.classList.add('visible');
+  }
 })();
 </script>
 </body>
