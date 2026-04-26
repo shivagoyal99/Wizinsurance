@@ -1670,5 +1670,67 @@ async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form
   animEls.forEach(function(el){ obs.observe(el); });
 })();
 </script>
+
+<style id="mobile-hero-fix">
+@media (max-width: 860px) {
+  /* ── Hero ── */
+  .page-hero { padding: 2.2rem 1.2rem 2.2rem !important; }
+  .page-hero-inner { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+  .page-hero h1 { font-size: clamp(1.75rem, 6.5vw, 2.1rem) !important; letter-spacing: -0.4px !important; line-height: 1.15 !important; margin-bottom: 0.8rem !important; }
+  .page-hero-left { gap: 0.6rem !important; }
+  .hero-tagline { font-size: 0.88rem !important; }
+  .hero-tagline-l1, .hero-tagline-l2 { display: block; line-height: 1.5; }
+  .hero-actions { flex-direction: column !important; gap: 0.6rem !important; }
+  .hero-actions > * { width: 100% !important; text-align: center !important; }
+
+  /* ── Ghost hero cards (visibility:hidden) — eliminate dead space ── */
+  .page-hero-card[style*="visibility:hidden"] { display: none !important; }
+
+  /* ── Visible hero cards (supervisa, visitors, term-life) ── */
+  .page-hero-card { padding: 1.2rem 1.2rem 1rem !important; border-radius: 12px !important; }
+  .page-hero-card h3 { font-size: 1.05rem !important; margin-bottom: 0.15rem !important; }
+  .page-hero-card > p { font-size: 0.8rem !important; margin-bottom: 0.8rem !important; }
+  .phc-badge { font-size: 0.65rem !important; padding: 0.25rem 0.6rem !important; margin-bottom: 0.7rem !important; }
+  .phc-footer { font-size: 0.72rem !important; margin-top: 0.7rem !important; padding-top: 0.7rem !important; }
+  .hq-tabs-row { grid-template-columns: 1fr 1fr !important; gap: 0.45rem !important; }
+  .hq-tab { padding: 0.65rem 0.3rem !important; font-size: 0.75rem !important; min-height: 54px !important; }
+  .hq-icon { font-size: 1rem !important; }
+  /* 2-button rows (supervisa/visitors style) */
+  .hq-tabs-row[style*="repeat(2"] { grid-template-columns: 1fr 1fr !important; }
+
+  /* ── Trust bar ── */
+  .page-trust-bar { gap: 1rem !important; padding: 0.75rem 1rem !important; flex-wrap: wrap !important; }
+  .trust-item { font-size: 0.76rem !important; }
+
+  /* ── Page body ── */
+  .page-body { padding: 2rem 1rem !important; }
+  .two-col, .three-col, .four-col { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+  .section-head h2 { font-size: 1.35rem !important; }
+  .section-head p { font-size: 0.88rem !important; }
+  .divider { margin: 0.4rem 0 0.9rem !important; }
+
+  /* ── Cards ── */
+  .info-card { padding: 1.2rem !important; }
+  .highlight-card { padding: 1.2rem !important; }
+  .info-card h3, .highlight-card h3 { font-size: 0.95rem !important; }
+
+  /* ── FAQ ── */
+  .faq-q { font-size: 0.88rem !important; padding: 1rem 0 !important; }
+  .faq-a { font-size: 0.85rem !important; }
+
+  /* ── Footer ── */
+  footer { padding: 2rem 1rem 1.5rem !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; padding-bottom: 1.5rem !important; }
+  .footer-brand { font-size: 1rem !important; }
+  .footer-links a { font-size: 0.82rem !important; }
+}
+@media (max-width: 500px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .page-trust-bar { justify-content: flex-start !important; }
+  .hq-tabs-row { grid-template-columns: 1fr !important; }
+  .hq-tab { min-height: 44px !important; }
+}
+</style>
+
 </body>
 </html>
