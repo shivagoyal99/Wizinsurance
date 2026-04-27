@@ -394,6 +394,18 @@ footer a:hover{color:white}
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style id="mobile-nav-head-fix">
+        /* ── Mobile nav: hide immediately (prevents FOUC) ── */
+        .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
+        .mobile-nav { display: none; position: fixed; top: 0; right: 0; width: 85%; max-width: 330px; height: 100vh; z-index: 9999; transform: translateX(100%); }
+        .hamburger { display: none; }
+        @media (max-width: 860px) {
+          .hamburger { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; cursor: pointer; background: var(--primary, #0F1F3C); border: none; border-radius: 8px; padding: 9px; flex-shrink: 0; margin-left: auto; }
+          .header-main { padding: 0.9rem 1.1rem !important; }
+          header nav, .header-main nav { display: none !important; }
+          .cta-btns, .cta-buttons { display: none !important; }
+        }
+</style>
 </head>
 <body>
 
