@@ -2294,6 +2294,31 @@
   .calc-input{font-size:0.82rem}
   .input-label{font-size:0.58rem}
   .input-val{font-size:0.75rem}
+
+  /* ── Needs calculator mobile fixes ── */
+  /* Assumptions bar: stack vertically, hide dividers */
+  .needs-assump-bar{flex-direction:column!important;gap:14px!important;padding:14px 16px!important}
+  .needs-assump-divider{display:none!important}
+  /* Result strip: remove side borders on middle section, no min-width constraints */
+  .needs-strip-left{min-width:0!important}
+  .needs-strip-right{min-width:0!important;flex-direction:row!important;flex-wrap:wrap!important}
+  .needs-strip-mid{border-left:none!important;border-right:none!important;padding:16px 0 0!important;border-top:1px solid rgba(255,255,255,0.08)!important}
+  /* Breakdown numbers: 2-col on mobile instead of 3 */
+  .needs-breakdown-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  /* Cards: tighter padding */
+  .needs-card{padding:16px!important}
+  /* CTA buttons: full width */
+  .needs-strip-right a{flex:1 1 auto!important;font-size:0.72rem!important;padding:11px 10px!important}
+  /* Allow assumption bar hint text to wrap */
+  .needs-assump-hint{white-space:normal!important}
+}
+@media(max-width:420px){
+  /* Very small phones: single column breakdown, larger result number */
+  .needs-breakdown-grid{grid-template-columns:1fr!important}
+  #n-result-main{font-size:1.6rem!important}
+  .needs-strip-right{flex-direction:column!important}
+  .needs-strip-right a{flex:none!important;width:100%!important}
+  .calc-tab{padding:11px 10px!important;font-size:0.55rem!important}
 }
 
 .input-panel{background:#fff;border:1px solid #e8e4dc;border-radius:18px;overflow:hidden}
@@ -3480,7 +3505,7 @@
   </div><!-- /needs-3col -->
 
   <!-- ── Assumptions bar ── -->
-  <div style="margin-top:16px;background:#fff;border-radius:12px;padding:16px 22px;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+  <div class="needs-assump-bar" style="margin-top:16px;background:#fff;border-radius:12px;padding:16px 22px;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
 
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
       <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📅 Years of support</div>
@@ -3491,10 +3516,10 @@
         <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',25,'yrs-chips')">25 yrs</button>
         <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',30,'yrs-chips')">30 yrs</button>
       </div>
-      <div style="font-size:0.6rem;color:#bbb;white-space:nowrap">Until youngest child finishes school, or partner reaches retirement</div>
+      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">Until youngest child finishes school, or partner reaches retirement</div>
     </div>
 
-    <div style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
+    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
 
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
       <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📈 Expected return</div>
@@ -3503,10 +3528,10 @@
         <button class="needs-chip active" onclick="needsChip('n-ret','n-ret-r',6,'ret-chips')">Balanced 6%</button>
         <button class="needs-chip" onclick="needsChip('n-ret','n-ret-r',9,'ret-chips')">Growth 9%</button>
       </div>
-      <div style="font-size:0.6rem;color:#bbb;white-space:nowrap">What the insurance payout could realistically earn if invested</div>
+      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">What the insurance payout could realistically earn if invested</div>
     </div>
 
-    <div style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
+    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
 
     <!-- PV Factor badge -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
@@ -3522,15 +3547,15 @@
   <div class="result-card" style="margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center" id="needs-result-strip">
 
     <!-- Left: big number -->
-    <div style="min-width:160px">
+    <div class="needs-strip-left" style="min-width:160px">
       <div class="result-eyebrow" style="margin-bottom:8px">Recommended Coverage</div>
       <div class="result-val" id="n-result-main" style="font-size:2rem;line-height:1">$1,184,000</div>
       <div class="result-note" id="n-result-sub" style="margin-top:8px;font-size:0.68rem;max-width:180px">Review with a licensed advisor for a personalized plan.</div>
     </div>
 
     <!-- Middle: breakdown rows + bars -->
-    <div style="border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);padding:0 24px">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
+    <div class="needs-strip-mid" style="border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);padding:0 24px">
+      <div class="needs-breakdown-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Cash needs</div>
           <div class="result-val white" id="nb-cash" style="font-size:1.1rem">$435K</div>
@@ -3567,7 +3592,7 @@
     </div>
 
     <!-- Right: CTAs -->
-    <div style="display:flex;flex-direction:column;gap:10px;min-width:150px">
+    <div class="needs-strip-right" style="display:flex;flex-direction:column;gap:10px;min-width:150px">
       <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20needs%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:#E63946;color:#fff;text-align:center">Chat with Shivang</a>
       <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);text-align:center">Get Instant Quote</a>
       <div style="font-size:0.58rem;color:rgba(255,255,255,0.18);text-align:center;line-height:1.5">Educational only · Not advice<br>Shivang Goyal</div>
@@ -5674,7 +5699,6 @@ function calcRESP(){
 
 
 <div class="mobile-sticky-cta" id="mobileStickyBar">
-  <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20have%20a%20question%20about%20financial%20planning" target="_blank" class="msc-btn msc-wa" style="flex:2;">💬 WhatsApp</a>
   <a href="tel:+16479955891" class="msc-btn msc-call" style="flex:1;">📞 Call</a>
 </div>
 <script>
