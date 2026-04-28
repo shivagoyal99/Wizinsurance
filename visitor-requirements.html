@@ -307,7 +307,7 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
         .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
-        .mobile-nav { display: none; position: fixed; top: 0; right: 0; width: 82%; max-width: 290px; height: 100vh; z-index: 9999; transform: translateX(100%); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); }
         .hamburger { display: none; }
         @media (max-width: 860px) {
           .hamburger { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; cursor: pointer; background: var(--primary, #0F1F3C); border: none; border-radius: 8px; padding: 9px; flex-shrink: 0; margin-left: auto; }
@@ -329,63 +329,47 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
   <div class="mobile-nav-body">
-    <div class="mnav-label">Main</div>
-    <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
-    <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
-    <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
-    <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
-    <div class="mnav-divider"></div>
-    <div class="mnav-accordion">
-      <div class="mnav-acc-toggle"><span><span class="mnav-icon">✈️</span>Visitor &amp; Travel</span><span class="mnav-acc-arrow">›</span></div>
-      <div class="mnav-acc-items">
-        <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
-        <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
-        <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
-        <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+        <a href="index.html" class="mnav-main-link">🏠 Home</a>
+        <a href="about.html" class="mnav-main-link">👤 About Shivang</a>
+        <a href="awards.html" class="mnav-main-link">🏆 Credentials &amp; Reviews</a>
+        <a href="get-quotes.html" class="mnav-main-link">⚡ Get a Quote</a>
+
+        <div class="mnav-section-head">✈️ &nbsp;Visitor &amp; Travel</div>
+        <a href="supervisa.html" class="mnav-section-link">🇨🇦 Super Visa Insurance</a>
+        <a href="visitors.html" class="mnav-section-link">✈️ Visitors to Canada</a>
+        <a href="travel.html" class="mnav-section-link">🌍 Travel Insurance</a>
+        <a href="student-insurance.html" class="mnav-section-link">🎓 Student Insurance</a>
+
+        <div class="mnav-section-head">🛡️ &nbsp;Life Insurance</div>
+        <a href="term-life.html" class="mnav-section-link">🛡️ Term Life</a>
+        <a href="whole-life.html" class="mnav-section-link">🌿 Whole Life</a>
+        <a href="universal-life.html" class="mnav-section-link">⚙️ Universal Life</a>
+        <a href="mortgage-insurance.html" class="mnav-section-link">🏠 Mortgage Insurance</a>
+
+        <div class="mnav-section-head">🩺 &nbsp;Living Benefits</div>
+        <a href="critical-illness.html" class="mnav-section-link">🩺 Critical Illness</a>
+        <a href="disability.html" class="mnav-section-link">🦺 Disability Insurance</a>
+        <a href="health-dental.html" class="mnav-section-link">💊 Drug &amp; Dental</a>
+        <a href="estate-planning.html" class="mnav-section-link">📜 Estate Planning</a>
+        <a href="business-insurance.html" class="mnav-section-link">💼 Business Insurance</a>
+
+        <div class="mnav-section-head">📈 &nbsp;Investments</div>
+        <a href="rrsp.html" class="mnav-section-link">📈 RRSP</a>
+        <a href="tfsa.html" class="mnav-section-link">💰 TFSA</a>
+        <a href="fhsa.html" class="mnav-section-link">🏡 FHSA</a>
+        <a href="resp.html" class="mnav-section-link">🎓 RESP</a>
+        <a href="rdsp.html" class="mnav-section-link">♿ RDSP</a>
+        <a href="non-registered.html" class="mnav-section-link">📊 Non-Registered</a>
+        <a href="retirement-planning.html" class="mnav-section-link">🌅 Retirement Planning</a>
+        <a href="financial-calculators.html" class="mnav-section-link">🧮 Financial Calculators</a>
+
+        <div class="mnav-section-head">More</div>
+        <a href="credit-cards.html" class="mnav-main-link">💳 Credit Cards</a>
+        <a href="index.html#contact" class="mnav-main-link">📬 Contact Me</a>
       </div>
-    </div>
-    <div class="mnav-accordion">
-      <div class="mnav-acc-toggle"><span><span class="mnav-icon">🛡️</span>Life Insurance</span><span class="mnav-acc-arrow">›</span></div>
-      <div class="mnav-acc-items">
-        <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
-        <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
-        <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
-        <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
-      </div>
-    </div>
-    <div class="mnav-accordion">
-      <div class="mnav-acc-toggle"><span><span class="mnav-icon">🩺</span>Living Benefits</span><span class="mnav-acc-arrow">›</span></div>
-      <div class="mnav-acc-items">
-        <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
-        <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
-        <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
-        <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
-        <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
-      </div>
-    </div>
-    <div class="mnav-accordion">
-      <div class="mnav-acc-toggle"><span><span class="mnav-icon">📈</span>Investments</span><span class="mnav-acc-arrow">›</span></div>
-      <div class="mnav-acc-items">
-        <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
-        <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
-        <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
-        <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
-        <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
-        <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
-        <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
-        <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
-      </div>
-    </div>
-    <div class="mnav-divider"></div>
-    <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
-    <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
-  </div>
   <div class="mobile-nav-cta">
-        <div class="mnav-cta-row">
-          <a href="tel:+16479955891" class="m-call">📞 Call</a>
-          <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp</a>
-        </div>
-        <a href="get-quotes.html" class="m-quote">⚡ Get a Quote</a>
+        <a href="tel:+16479955891" class="m-call">📞 Call Now</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp</a>
       </div>
 </div>
 
