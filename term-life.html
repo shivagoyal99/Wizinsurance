@@ -247,6 +247,49 @@
             box-shadow: 0 8px 20px rgba(15,31,60,0.12);
         }
 
+        /* Term Life card button variants */
+        .tl-badge {
+            background: rgba(15,31,60,0.06);
+            color: var(--primary);
+            border-color: rgba(15,31,60,0.14);
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+        .tl-badge::before { display: none; }
+        .hq-tab.tl-tab-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            font-size: 0.9rem;
+            flex-direction: row;
+            min-height: 58px;
+            justify-content: center;
+            padding: 0.9rem 1rem;
+        }
+        .hq-tab.tl-tab-primary:hover {
+            background: #d32f3d;
+            border-color: #d32f3d;
+            color: white;
+            box-shadow: 0 6px 18px rgba(230,57,70,0.3);
+            transform: translateY(-2px);
+        }
+        .hq-tab.tl-tab-outline {
+            background: white;
+            border: 2px solid var(--border);
+            color: var(--primary);
+            font-size: 0.9rem;
+            flex-direction: row;
+            min-height: 58px;
+            justify-content: center;
+            padding: 0.9rem 1rem;
+        }
+        .hq-tab.tl-tab-outline:hover {
+            border-color: var(--primary);
+            background: var(--light-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(15,31,60,0.08);
+        }
+
         /* Entry animations */
         @keyframes heroFadeUp {
             from { opacity:0; transform:translateY(22px); }
@@ -572,9 +615,6 @@
     body { padding-bottom: 72px; }
   }
 </style>
-<style id="wa-float-mobile-hide">
-@media (max-width: 1024px) { .wa-float { display: none !important; } }
-</style>
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
         .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
@@ -677,7 +717,7 @@
       <div class="mobile-nav-cta">
         <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
         <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
-        <a href="get-quotes.html" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+        <a href="get-quotes.html" class="m-quote">Get a Quote</a>
       </div>
     </div>
 
@@ -767,6 +807,10 @@
                             <div class="dropdown-section-title">Other</div>
                             <a href="non-registered.html">📊 Non-Registered</a>
                             <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Tools</div>
                             <a href="financial-calculators.html">🧮 Financial Calculators</a>
                         </div>
                     </div>
@@ -797,21 +841,15 @@
         </div>
 
         <div class="page-hero-card">
-            <div class="phc-badge">⚡ Free Quote</div>
-            <h3>Get a Free Quote</h3>
-            <p>Term Life Insurance</p>
-            <div class="hq-tabs-row" style="grid-template-columns: repeat(3,1fr);">
-                <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" class="hq-tab">
-                    <span class="hq-icon">⚡</span>
-                    Online Quote
+            <div class="phc-badge tl-badge">Term Life</div>
+            <h3>How can I help you?</h3>
+            <p>No broker fees · Same-day approval</p>
+            <div class="hq-tabs-row" style="grid-template-columns: repeat(2,1fr);">
+                <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" class="hq-tab tl-tab-primary" style="text-decoration:none;">
+                    Instant Quote
                 </a>
-                <a href="tel:+16479955891" class="hq-tab">
-                    <span class="hq-icon">📞</span>
-                    Call Shivang
-                </a>
-                <a href="https://wa.me/16479955891" target="_blank" class="hq-tab">
-                    <span class="hq-icon">💬</span>
-                    WhatsApp
+                <a href="financial-calculators.html#needs" class="hq-tab tl-tab-outline" style="text-decoration:none;">
+                    How Much Coverage?
                 </a>
             </div>
             <div class="phc-footer">🔒 Independent · 25+ carriers compared · Licensed in Ontario</div>
@@ -927,7 +965,6 @@
             </div>
         </div>
     </footer>
-<a href="https://wa.me/16479955891" target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
 
 
     
@@ -1406,8 +1443,8 @@
             .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .quote-product-btn { font-size: 0.8rem !important; padding: 0.6rem !important; }
             .hero-quote-card { padding: 1.2rem 1rem !important; margin: 1.5rem 0 0 !important; border-radius: 10px !important; max-width: 100% !important; }
-            .hq-tabs-row { grid-template-columns: repeat(3, 1fr) !important; gap: 0.45rem !important; }
-            .hq-tab { padding: 0.6rem 0.3rem !important; font-size: 0.72rem !important; min-height: 60px !important; }
+            .hq-tabs-row { grid-template-columns: repeat(2, 1fr) !important; gap: 0.45rem !important; }
+            .hq-tab { padding: 0.75rem 0.5rem !important; font-size: 0.82rem !important; min-height: 54px !important; }
             .hq-item { padding: 0.65rem 0.85rem !important; font-size: 0.82rem !important; }
             .category-tabs { border-bottom: none !important; gap: 0.4rem !important; margin-bottom: 1.5rem !important; }
             .cat-tab { padding: 0.5rem 0.85rem !important; font-size: 0.78rem !important; border-radius: 20px !important; border: 2px solid var(--border) !important; bottom: 0 !important; }
@@ -1486,7 +1523,7 @@
 </script>
 
 <div class="mobile-sticky-cta" id="mobileStickyBar">
-  <a href="quote-tool.html#term" class="msc-btn msc-primary">⚡ Get Quotes</a>
+  <a href="quote-tool.html#term" class="msc-btn msc-primary">Get Quotes</a>
   <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20a%20quote%20for%20Term%20Life%20Insurance" target="_blank" class="msc-btn msc-wa">💬 WhatsApp</a>
   <a href="tel:+16479955891" class="msc-btn msc-call">📞 Call</a>
 </div>
@@ -1527,11 +1564,9 @@
   .page-hero-card > p { font-size: 0.8rem !important; margin-bottom: 0.8rem !important; }
   .phc-badge { font-size: 0.65rem !important; padding: 0.25rem 0.6rem !important; margin-bottom: 0.7rem !important; }
   .phc-footer { font-size: 0.72rem !important; margin-top: 0.7rem !important; padding-top: 0.7rem !important; }
-  .hq-tabs-row { grid-template-columns: 1fr 1fr !important; gap: 0.45rem !important; }
-  .hq-tab { padding: 0.65rem 0.3rem !important; font-size: 0.75rem !important; min-height: 54px !important; }
-  .hq-icon { font-size: 1rem !important; }
-  /* 2-button rows (supervisa/visitors style) */
-  .hq-tabs-row[style*="repeat(2"] { grid-template-columns: 1fr 1fr !important; }
+  .hq-tabs-row { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
+  .hq-tab { padding: 0.8rem 0.5rem !important; font-size: 0.82rem !important; min-height: 54px !important; }
+  .hq-tab.tl-tab-primary, .hq-tab.tl-tab-outline { font-size: 0.82rem !important; min-height: 54px !important; }
 
   /* ── Trust bar ── */
   .page-trust-bar { gap: 1rem !important; padding: 0.75rem 1rem !important; flex-wrap: wrap !important; }

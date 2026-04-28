@@ -301,14 +301,8 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
 .footer-bottom { max-width: 1100px; margin: 0 auto; font-size: 0.78rem; color: rgba(255,255,255,0.35); display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.25); line-height: 1.65; }
 @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-
-.wa-float { position:fixed; bottom:1.5rem; right:1.5rem; width:54px; height:54px; background:#25D366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; text-decoration:none; box-shadow:0 4px 16px rgba(37,211,102,0.4); z-index:900; transition:transform 0.2s; }
-.wa-float:hover { transform:scale(1.08); }
 </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style id="wa-float-mobile-hide">
-@media (max-width: 1024px) { .wa-float { display: none !important; } }
-</style>
 <style id="req-padding">@media (max-width:1024px){body{padding-bottom:70px;}}</style>
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
@@ -389,7 +383,7 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
   <div class="mobile-nav-cta">
     <a href="tel:+16479955891" class="m-call">📞&nbsp; Call (647) 995-5891</a>
     <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬&nbsp; WhatsApp Me</a>
-    <a href="quote-tool.html#visitor" class="m-quote">⚡&nbsp; Get Instant Quote</a>
+    <a href="quote-tool.html#visitor" class="m-quote">Get a Quote</a>
   </div>
 </div>
 
@@ -468,6 +462,10 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
                         <div class="dropdown-section-title">Other</div>
                         <a href="non-registered.html">📊 Non-Registered</a>
                         <a href="retirement-planning.html">🌞 Retirement Planning</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Tools</div>
                         <a href="financial-calculators.html">🧮 Financial Calculators</a>
                     </div>
                 </div>
@@ -761,7 +759,6 @@ footer { background: var(--primary); color: white; padding: 3rem 2rem 1.5rem; }
     </div>
 </footer>
 
-<a href="https://wa.me/16479955891" target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
 
 
 <style id="header-override">
