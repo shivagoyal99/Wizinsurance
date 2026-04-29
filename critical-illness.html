@@ -420,9 +420,15 @@
         }
 
         /* ===== Mobile Nav Flat Categories ===== */
-        .mnav-cat-head { display: block; padding: 0.55rem 1.3rem 0.35rem; font-size: 0.6rem; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 2px; background: #f4f4f4; border-top: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb; }
-        .mnav-cat-body a { display: flex !important; align-items: center; gap: 0.6rem; background: #f8f8f8 !important; padding: 0.75rem 1.3rem 0.75rem 1.5rem !important; color: #333 !important; font-weight: 500 !important; font-size: 0.88rem !important; text-decoration: none !important; border-bottom: 1px solid #ebebeb; }
-        .mnav-cat-body a:active { background: #efefef !important; }
+        .mnav-cat-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.3rem; background: #f4f4f4; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; cursor: pointer; user-select: none; -webkit-user-select: none; }
+        .mnav-cat-label { font-size: 0.72rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1.5px; }
+        .mnav-cat-arrow { font-size: 1.2rem; color: #aaa; transition: transform 0.22s; line-height: 1; display: inline-block; }
+        .mnav-cat-toggle.open .mnav-cat-arrow { transform: rotate(90deg); color: #E63946; }
+        .mnav-cat-toggle:active { background: #ebebeb; }
+        .mnav-cat-items { display: none; }
+        .mnav-cat-items.open { display: block; }
+        .mnav-cat-items a { display: flex !important; align-items: center; gap: 0.6rem; background: #fff !important; padding: 0.82rem 1.3rem 0.82rem 1.5rem !important; color: #333 !important; font-weight: 500 !important; font-size: 0.9rem !important; text-decoration: none !important; border-bottom: 1px solid #f0f0f0; }
+        .mnav-cat-items a:active { background: #f5f5f5 !important; }
         .mnav-cat-body a:active { background: #efefef !important; }
         
         /* ── WIZ letter animation (matches index/about) ── */
@@ -569,30 +575,38 @@
       <div class="mobile-nav-header">
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
-      <div class="mobile-nav-body">
-        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
-        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
-        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
-        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
+            <div class="mobile-nav-body">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Shivang</a>
+        <a href="get-quotes.html">Get a Quote</a>
 
-        <div class="mnav-cat-head">Visitor &amp; Travel</div>
-        <div class="mnav-cat-body">
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+          <span class="mnav-cat-label">Visitor &amp; Travel</span>
+          <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
           <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
           <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
           <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
           <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
         </div>
 
-        <div class="mnav-cat-head">Life Insurance</div>
-        <div class="mnav-cat-body">
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+          <span class="mnav-cat-label">Life Insurance</span>
+          <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
           <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
           <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
           <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
           <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
         </div>
 
-        <div class="mnav-cat-head">Living Benefits</div>
-        <div class="mnav-cat-body">
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+          <span class="mnav-cat-label">Living Benefits</span>
+          <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
           <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
           <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
           <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
@@ -600,8 +614,11 @@
           <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
         </div>
 
-        <div class="mnav-cat-head">Investments</div>
-        <div class="mnav-cat-body">
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+          <span class="mnav-cat-label">Investments</span>
+          <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
           <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
           <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
           <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
@@ -612,7 +629,6 @@
           <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
         </div>
 
-        <div class="mnav-divider"></div>
         <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
         <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
       </div>
