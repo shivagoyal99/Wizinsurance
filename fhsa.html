@@ -430,10 +430,23 @@
             .footer-grid { grid-template-columns: 1fr !important; }
         }
 
-        /* ===== Mobile Nav Flat Sections ===== */
-        .mnav-section-head { padding: 0.5rem 1.2rem 0.3rem; font-size: 0.58rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 2px; background: #f2f2f2; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
-        .mnav-main-link { font-weight: 600 !important; color: #111 !important; font-size: 0.93rem !important; }
-        .mnav-section-link { color: #3a3a3a !important; padding-left: 1.5rem !important; font-size: 0.86rem !important; }
+        /* ===== Mobile Nav Accordion ===== */
+        .mnav-accordion { border-left: 2px solid transparent; }
+        .mnav-acc-toggle {
+            display: flex !important; align-items: center; justify-content: space-between;
+            padding: 0.72rem 1.2rem; min-height: 44px;
+            color: #1a1a1a; cursor: pointer; font-size: 0.88rem; font-weight: 600;
+            border-bottom: 1px solid #f0f0f0; border-left: 2px solid transparent;
+            transition: background 0.1s; user-select: none;
+        }
+        .mnav-acc-toggle:active { background: #fafafa; }
+        .mnav-acc-toggle.open { color: #E63946 !important; border-left-color: #E63946 !important; background: #fff5f5 !important; }
+        .mnav-acc-arrow { font-size: 1rem; color: #bbb; transition: transform 0.2s; display: inline-block; flex-shrink: 0; }
+        .mnav-acc-toggle.open .mnav-acc-arrow { transform: rotate(90deg); color: #E63946; }
+        .mnav-acc-items { display: none !important; background: #fafafa; }
+        .mnav-acc-items.open { display: block !important; }
+        .mnav-acc-items a { padding-left: 2.4rem !important; color: #444 !important; font-size: 0.84rem !important; background: #fafafa; border-left: 2px solid transparent !important; }
+        .mnav-acc-items a:active { background: #efefef !important; }
         
         /* ── WIZ letter animation (matches index/about) ── */
         @keyframes wizW { 0%,100% { opacity:0.1; transform:rotate(-5deg) scale(1); } 50% { opacity:0.22; transform:rotate(-5deg) scale(1.02); } }
@@ -499,8 +512,8 @@
 </style>
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
-        .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
-        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); }
+        .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; background: rgba(0,0,0,0.45); }
+        .mobile-nav { display: none; position: fixed; top: 70px; right: 0; width: 88%; max-width: 300px; height: calc(100vh - 70px); z-index: 9999; transform: translateX(100%); }
         .hamburger { display: none; }
         /* ── Header: hamburger right-side positioning ── */
         @media (max-width: 860px) {
@@ -516,50 +529,78 @@
     <div class="mobile-nav-overlay" id="mobileOverlay"></div>
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-nav-header">
-        <div class="mnav-header-brand">
-          <img src="finwiz-removebg-preview.png" alt="WIZ Insurance">
-          <span>WIZ Insurance</span>
-        </div>
+        <span class="mnav-header-title">Menu</span>
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
       <div class="mobile-nav-body">
-        <a href="index.html" class="mnav-main-link">🏠 Home</a>
-        <a href="about.html" class="mnav-main-link">👤 About Shivang</a>
-        <a href="awards.html" class="mnav-main-link">🏆 Credentials &amp; Reviews</a>
-        <a href="get-quotes.html" class="mnav-main-link">⚡ Get a Quote</a>
+        <div class="mnav-label">Main</div>
+        <a href="index.html"><span class="mnav-icon">🏠</span>Home</a>
+        <a href="about.html"><span class="mnav-icon">👤</span>About Shivang</a>
+        <a href="awards.html"><span class="mnav-icon">🏆</span>Credentials &amp; Reviews</a>
+        <a href="get-quotes.html"><span class="mnav-icon">⚡</span>Get a Quote</a>
 
-        <div class="mnav-section-head">✈️ &nbsp;Visitor &amp; Travel</div>
-        <a href="supervisa.html" class="mnav-section-link">🇨🇦 Super Visa Insurance</a>
-        <a href="visitors.html" class="mnav-section-link">✈️ Visitors to Canada</a>
-        <a href="travel.html" class="mnav-section-link">🌍 Travel Insurance</a>
-        <a href="student-insurance.html" class="mnav-section-link">🎓 Student Insurance</a>
+        <div class="mnav-divider"></div>
 
-        <div class="mnav-section-head">🛡️ &nbsp;Life Insurance</div>
-        <a href="term-life.html" class="mnav-section-link">🛡️ Term Life</a>
-        <a href="whole-life.html" class="mnav-section-link">🌿 Whole Life</a>
-        <a href="universal-life.html" class="mnav-section-link">⚙️ Universal Life</a>
-        <a href="mortgage-insurance.html" class="mnav-section-link">🏠 Mortgage Insurance</a>
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">✈️</span>Visitor &amp; Travel</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+            <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+            <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+            <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+          </div>
+        </div>
 
-        <div class="mnav-section-head">🩺 &nbsp;Living Benefits</div>
-        <a href="critical-illness.html" class="mnav-section-link">🩺 Critical Illness</a>
-        <a href="disability.html" class="mnav-section-link">🦺 Disability Insurance</a>
-        <a href="health-dental.html" class="mnav-section-link">💊 Drug &amp; Dental</a>
-        <a href="estate-planning.html" class="mnav-section-link">📜 Estate Planning</a>
-        <a href="business-insurance.html" class="mnav-section-link">💼 Business Insurance</a>
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">🛡️</span>Life Insurance</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+            <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+            <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+            <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+          </div>
+        </div>
 
-        <div class="mnav-section-head">📈 &nbsp;Investments</div>
-        <a href="rrsp.html" class="mnav-section-link">📈 RRSP</a>
-        <a href="tfsa.html" class="mnav-section-link">💰 TFSA</a>
-        <a href="fhsa.html" class="mnav-section-link">🏡 FHSA</a>
-        <a href="resp.html" class="mnav-section-link">🎓 RESP</a>
-        <a href="rdsp.html" class="mnav-section-link">♿ RDSP</a>
-        <a href="non-registered.html" class="mnav-section-link">📊 Non-Registered</a>
-        <a href="retirement-planning.html" class="mnav-section-link">🌅 Retirement Planning</a>
-        <a href="financial-calculators.html" class="mnav-section-link">🧮 Financial Calculators</a>
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">🩺</span>Living Benefits</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
+            <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+            <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+            <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+            <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+          </div>
+        </div>
 
-        <div class="mnav-section-head">More</div>
-        <a href="credit-cards.html" class="mnav-main-link">💳 Credit Cards</a>
-        <a href="index.html#contact" class="mnav-main-link">📬 Contact Me</a>
+        <div class="mnav-accordion">
+          <div class="mnav-acc-toggle">
+            <span><span class="mnav-icon">📈</span>Investments</span>
+            <span class="mnav-acc-arrow">›</span>
+          </div>
+          <div class="mnav-acc-items">
+            <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+            <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+            <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+            <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+            <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+            <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+            <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+            <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
+          </div>
+        </div>
+
+        <div class="mnav-divider"></div>
+        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
+        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
       </div>
       <div class="mobile-nav-cta">
         <a href="tel:+16479955891" class="m-call">📞 Call Now</a>
@@ -1199,35 +1240,39 @@
 
         .mobile-nav {
             display: none; position: fixed;
-            top: 0; right: 0;
-            width: 85%; max-width: 330px; height: 100vh;
-            background: #0d1b33; z-index: 9999;
-            overflow-y: auto; transform: translateX(100%);
+            top: 70px; right: 0;
+            width: 88%; max-width: 300px; height: calc(100vh - 70px);
+            background: #fff; z-index: 9999;
+            border-top: 3px solid #E63946;
+            box-shadow: -5px 0 24px rgba(0,0,0,0.18);
+            overflow: hidden;
+            transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
             flex-direction: column; -webkit-overflow-scrolling: touch;
         }
         .mobile-nav.active { transform: translateX(0); display: flex; }
 
         .mobile-nav-header {
-            padding: 1rem 1.1rem;
-            border-bottom: 3px solid #E63946;
+            padding: 0.5rem 0.75rem 0.5rem 1.1rem;
+            border-bottom: 1px solid #efefef;
             display: flex; justify-content: space-between; align-items: center;
-            background: #0F1F3C; position: sticky; top: 0; z-index: 2; flex-shrink: 0;
+            background: #fff; position: sticky; top: 0; z-index: 2; flex-shrink: 0;
         }
-        .mnav-header-brand { display: flex; align-items: center; gap: 8px; }
-        .mnav-header-brand img { height: 26px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
-        .mnav-header-brand span { color: white; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }
+        .mnav-header-title { font-size: 0.62rem; font-weight: 700; color: #bbb; text-transform: uppercase; letter-spacing: 1.8px; }
         .mobile-nav-close {
-            background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.8);
-            width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 1rem;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s;
+            background: #f0f0f0; border: none; color: #666;
+            width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 0.95rem;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s;
         }
-        .mobile-nav-close:hover { background: rgba(255,255,255,0.2); color: white; }
-        .mobile-nav-body { padding: 0; flex: 1; overflow-y: auto; background: #fff; -webkit-overflow-scrolling: touch; }
-        .mobile-nav-body a { display: flex; align-items: center; gap: 0.55rem; padding: 0.85rem 1.2rem; color: #1a1a1a; text-decoration: none; font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background 0.1s; min-height: 48px; }
-        .mobile-nav-body a:active { background: #f8f8f8; }
-        .mobile-nav-cta { padding: 0.85rem 1rem; border-top: 2px solid #E63946; display: flex; gap: 0.6rem; background: #0F1F3C; flex-shrink: 0; }
-        .mobile-nav-cta a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.85rem 0.8rem; border-radius: 10px; font-weight: 700; font-size: 0.88rem; text-decoration: none; text-align: center; transition: opacity 0.2s; }
+        .mobile-nav-close:active { background: #e0e0e0; }
+        .mobile-nav-body { padding: 0; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .mobile-nav-body a { display: flex; align-items: center; gap: 0.55rem; padding: 0.7rem 1.1rem; min-height: 42px; color: #1a1a1a; text-decoration: none; font-size: 0.86rem; font-weight: 500; border-bottom: 1px solid #f2f2f2; border-left: 2px solid transparent; transition: background 0.1s; }
+        .mobile-nav-body a:active { background: #f8f8f8; border-left-color: #E63946; }
+        .mnav-icon { font-size: 0.88rem; width: 20px; text-align: center; flex-shrink: 0; }
+        .mnav-label { padding: 0.6rem 1.1rem 0.18rem; font-size: 0.58rem; font-weight: 700; color: #bbb; text-transform: uppercase; letter-spacing: 2px; }
+        .mnav-divider { height: 1px; background: #ececec; margin: 0.15rem 0; }
+        .mobile-nav-cta { padding: 0.75rem 0.9rem; border-top: 1px solid #e8e8e8; display: flex; gap: 0.55rem; background: #0F1F3C; flex-shrink: 0; }
+        .mobile-nav-cta a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.78rem 0.6rem; border-radius: 9px; font-weight: 700; font-size: 0.84rem; text-decoration: none; text-align: center; transition: opacity 0.2s; }
         .m-call  { background: #E63946 !important; color: white !important; }
         .m-wa    { background: #25D366 !important; color: white !important; }
         .mobile-nav-cta a:hover { opacity: 0.88; }
