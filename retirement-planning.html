@@ -417,14 +417,14 @@
         }
 
         /* ===== Mobile Nav Flat Categories ===== */
-        .mnav-cat-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.3rem; background: #f4f4f4; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; cursor: pointer; user-select: none; -webkit-user-select: none; }
-        .mnav-cat-label { font-size: 0.72rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1.5px; }
-        .mnav-cat-arrow { font-size: 1.2rem; color: #aaa; transition: transform 0.22s; line-height: 1; display: inline-block; }
+        .mnav-cat-toggle { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.3rem; background: #f4f4f4; border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; cursor: pointer; user-select: none; -webkit-user-select: none; }
+        .mnav-cat-label { font-size: 1rem; font-weight: 600; color: #111; }
+        .mnav-cat-arrow { font-size: 1.1rem; color: #bbb; transition: transform 0.22s; display: inline-block; }
         .mnav-cat-toggle.open .mnav-cat-arrow { transform: rotate(90deg); color: #E63946; }
         .mnav-cat-toggle:active { background: #ebebeb; }
         .mnav-cat-items { display: none; }
         .mnav-cat-items.open { display: block; }
-        .mnav-cat-items a { display: flex !important; align-items: center; gap: 0.6rem; background: #fff !important; padding: 0.82rem 1.3rem 0.82rem 1.5rem !important; color: #333 !important; font-weight: 500 !important; font-size: 0.9rem !important; text-decoration: none !important; border-bottom: 1px solid #f0f0f0; }
+        .mnav-cat-items a { display: flex !important; align-items: center; gap: 0.6rem; background: #fff !important; padding: 0.82rem 1.3rem 0.82rem 1.8rem !important; color: #444 !important; font-weight: 500 !important; font-size: 0.92rem !important; text-decoration: none !important; border-bottom: 1px solid #f0f0f0; }
         .mnav-cat-items a:active { background: #f5f5f5 !important; }
         .mnav-cat-body a:active { background: #efefef !important; }
         
@@ -511,7 +511,7 @@
       <div class="mobile-nav-header">
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
-            <div class="mobile-nav-body">
+                  <div class="mobile-nav-body">
         <a href="index.html">Home</a>
         <a href="about.html">About Shivang</a>
         <a href="get-quotes.html">Get a Quote</a>
@@ -565,12 +565,8 @@
           <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
         </div>
 
-        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
-        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
-      </div>
-      <div class="mobile-nav-cta">
-        <a href="tel:+16479955891" class="m-call">📞 Call Now</a>
-        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp</a>
+        <a href="credit-cards.html">Credit Cards</a>
+        <a href="about.html#contact">Contact Me</a>
       </div>
     </div>
 
@@ -840,7 +836,7 @@
   })();
   </script>
   <script>
-  (function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+  (function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function posNav(){var hdr=document.querySelector('header'),ftr=document.getElementById('mobileStickyBar');var hh=hdr?hdr.getBoundingClientRect().bottom:0;var fh=ftr&&ftr.offsetParent!==null?ftr.offsetHeight:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)';}function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
   </script>
     <!-- Header override: always wins via cascade position -->
     <style id="header-override">

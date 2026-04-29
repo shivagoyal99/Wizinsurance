@@ -2037,14 +2037,14 @@
         .mobile-nav-body > a:active { background: #f5f5f5; }
         .mnav-icon { font-size: 1rem; flex-shrink: 0; }
         .mnav-divider { height: 1px; background: #e8e8e8; margin: 0.3rem 0; }
-        .mnav-cat-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.3rem; background: #f4f4f4; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; cursor: pointer; user-select: none; -webkit-user-select: none; }
-        .mnav-cat-label { font-size: 0.72rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1.5px; }
-        .mnav-cat-arrow { font-size: 1.2rem; color: #aaa; transition: transform 0.22s; line-height: 1; display: inline-block; }
+        .mnav-cat-toggle { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.3rem; background: #f4f4f4; border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; cursor: pointer; user-select: none; -webkit-user-select: none; }
+        .mnav-cat-label { font-size: 1rem; font-weight: 600; color: #111; }
+        .mnav-cat-arrow { font-size: 1.1rem; color: #bbb; transition: transform 0.22s; display: inline-block; }
         .mnav-cat-toggle.open .mnav-cat-arrow { transform: rotate(90deg); color: #E63946; }
         .mnav-cat-toggle:active { background: #ebebeb; }
         .mnav-cat-items { display: none; }
         .mnav-cat-items.open { display: block; }
-        .mnav-cat-items a { display: flex !important; align-items: center; gap: 0.6rem; background: #fff !important; padding: 0.82rem 1.3rem 0.82rem 1.5rem !important; color: #333 !important; font-weight: 500 !important; font-size: 0.9rem !important; text-decoration: none !important; border-bottom: 1px solid #f0f0f0; }
+        .mnav-cat-items a { display: flex !important; align-items: center; gap: 0.6rem; background: #fff !important; padding: 0.82rem 1.3rem 0.82rem 1.8rem !important; color: #444 !important; font-weight: 500 !important; font-size: 0.92rem !important; text-decoration: none !important; border-bottom: 1px solid #f0f0f0; }
         .mnav-cat-items a:active { background: #f5f5f5 !important; }
         .mobile-nav-cta { padding: 0.9rem 1rem; border-top: 1px solid #ddd; display: flex; gap: 0.6rem; background: #0F1F3C; flex-shrink: 0; }
         .mobile-nav-cta a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.9rem; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; text-align: center; transition: opacity 0.2s; }
@@ -2539,7 +2539,7 @@
       <div class="mobile-nav-header">
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
       </div>
-            <div class="mobile-nav-body">
+                  <div class="mobile-nav-body">
         <a href="index.html">Home</a>
         <a href="about.html">About Shivang</a>
         <a href="get-quotes.html">Get a Quote</a>
@@ -2593,12 +2593,8 @@
           <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
         </div>
 
-        <a href="credit-cards.html"><span class="mnav-icon">💳</span>Credit Cards</a>
-        <a href="index.html#contact"><span class="mnav-icon">📬</span>Contact Me</a>
-      </div>
-      <div class="mobile-nav-cta">
-        <a href="tel:+16479955891" class="m-call">📞 Call Now</a>
-        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp</a>
+        <a href="credit-cards.html">Credit Cards</a>
+        <a href="about.html#contact">Contact Me</a>
       </div>
     </div>
 
@@ -3750,7 +3746,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
 function selectProduct(btn,key){document.querySelectorAll('.quote-product-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.quote-sub-options').forEach(function(d){d.classList.remove('visible')});btn.classList.add('active');var el=document.getElementById('sub-'+key);if(el)el.classList.add('visible')}
 function selectHQ(btn,key){document.querySelectorAll('.hq-tab').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.hq-panel').forEach(function(d){d.classList.remove('visible')});btn.classList.add('active');var el=document.getElementById('hqp-'+key);if(el)el.classList.add('visible')}
 async function handleSubmit(e){e.preventDefault();var form=e.target;var btn=form.querySelector('button[type="submit"]');var orig=btn.textContent;btn.textContent='⏳ Sending...';btn.disabled=true;try{var r=await fetch('https://formspree.io/f/xbdzdgrn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.innerHTML='<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">✅</div><h3 style="color:#0F1F3C;font-size:1.4rem;margin-bottom:.7rem">Message Sent!</h3><p style="color:#555;line-height:1.7">Thanks! Shivang will reply within a few hours.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem"><a href="tel:+16479955891" style="background:#0F1F3C;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">📞 Call Shivang</a><a href="https://wa.me/16479955891" target="_blank" style="background:#25D366;color:white;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700">💬 WhatsApp</a></div></div>'}else{throw new Error()}}catch(err){btn.textContent=orig;btn.disabled=false;alert('Something went wrong. Please call (647) 995-5891')}}
-(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function open(){btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function posNav(){var hdr=document.querySelector('header'),ftr=document.getElementById('mobileStickyBar');var hh=hdr?hdr.getBoundingClientRect().bottom:0;var fh=ftr&&ftr.offsetParent!==null?ftr.offsetHeight:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)';}function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
 </script>
 
   <script>
