@@ -529,7 +529,7 @@
   @media (max-width: 1024px) {
     .mobile-sticky-cta {
       display: flex; position: fixed; bottom: 0; left: 0; right: 0;
-      z-index: 999; background: #0F2142; border-top: 2px solid #E63946;
+      z-index: 10000; background: #0F2142; border-top: 2px solid #E63946;
       padding: 0.75rem 1rem; gap: 0.5rem; align-items: center;
       box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
       transform: translateY(100%); transition: transform 0.3s ease;
@@ -557,7 +557,7 @@
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
         .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
-        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); border-top: 3px solid #E63946; }
         .hamburger { display: none; }
         /* ── Header: hamburger right-side positioning ── */
         @media (max-width: 860px) {
@@ -572,9 +572,6 @@
 
     <div class="mobile-nav-overlay" id="mobileOverlay"></div>
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
-      <div class="mobile-nav-header">
-        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
-      </div>
                   <div class="mobile-nav-body">
         <a href="index.html">Home</a>
         <a href="about.html">About Shivang</a>
@@ -911,7 +908,7 @@
   })();
   </script>
   <script>
-  (function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function posNav(){var hdr=document.querySelector('header'),ftr=document.getElementById('mobileStickyBar');var hh=hdr?hdr.getBoundingClientRect().bottom:0;var fh=ftr&&ftr.offsetParent!==null?ftr.offsetHeight:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)';}function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+  (function(){ var btn=document.getElementById('hamburger'), nav=document.getElementById('mobileNav'), ov=document.getElementById('mobileOverlay'); if(!btn)return; function posNav(){ var hdr=document.querySelector('header'); var hh=hdr?hdr.getBoundingClientRect().bottom:0; nav.style.top=hh+'px'; nav.style.height='calc(100vh - '+hh+'px)'; ov.style.top=hh+'px'; ov.style.height='calc(100vh - '+hh+'px)'; } function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');} function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');} btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();}); ov.addEventListener('click',close); nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)}); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();}); })();
   </script>
     <!-- Header override: always wins via cascade position -->
     <style id="header-override">
@@ -1280,6 +1277,7 @@
             width: 100%; height: 100vh;
             background: #fff; z-index: 9999;
             overflow: hidden;
+            border-top: 3px solid #E63946;
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
             flex-direction: column; -webkit-overflow-scrolling: touch;

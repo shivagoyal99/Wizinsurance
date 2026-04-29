@@ -152,6 +152,7 @@ footer a:hover{color:white}
             width: 100%; height: 100vh;
             background: #fff; z-index: 9999;
             overflow: hidden;
+            border-top: 3px solid #E63946;
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
             flex-direction: column; -webkit-overflow-scrolling: touch;
@@ -397,7 +398,7 @@ footer a:hover{color:white}
 <style id="mobile-nav-head-fix">
         /* ── Mobile nav: hide immediately (prevents FOUC) ── */
         .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; }
-        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 100vh; z-index: 9999; transform: translateX(100%); border-top: 3px solid #E63946; }
         .hamburger { display: none; }
         @media (max-width: 860px) {
           .hamburger { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; cursor: pointer; background: var(--primary, #0F1F3C); border: none; border-radius: 8px; padding: 9px; flex-shrink: 0; margin-left: auto; }
@@ -411,9 +412,6 @@ footer a:hover{color:white}
 
     <div class="mobile-nav-overlay" id="mobileOverlay"></div>
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
-      <div class="mobile-nav-header">
-        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close">&#x2715;</button>
-      </div>
                   <div class="mobile-nav-body">
         <a href="index.html">Home</a>
         <a href="about.html">About Shivang</a>
@@ -722,7 +720,7 @@ footer a:hover{color:white}
 
 <script>
 (function(){var t={};function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';m.style.maxHeight=(window.innerHeight-r.bottom-16)+'px';}function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true)})();
-(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileNavClose');if(!btn)return;function posNav(){var hdr=document.querySelector('header'),ftr=document.getElementById('mobileStickyBar');var hh=hdr?hdr.getBoundingClientRect().bottom:0;var fh=ftr&&ftr.offsetParent!==null?ftr.offsetHeight:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)';}function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.body.style.overflow='hidden';}function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.body.style.overflow='';}btn.addEventListener('click',open);cl.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+(function(){ var btn=document.getElementById('hamburger'), nav=document.getElementById('mobileNav'), ov=document.getElementById('mobileOverlay'); if(!btn)return; function posNav(){ var hdr=document.querySelector('header'); var hh=hdr?hdr.getBoundingClientRect().bottom:0; nav.style.top=hh+'px'; nav.style.height='calc(100vh - '+hh+'px)'; ov.style.top=hh+'px'; ov.style.height='calc(100vh - '+hh+'px)'; } function open(){posNav();btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');} function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');} btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();}); ov.addEventListener('click',close); nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)}); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();}); })();
 
 </script>
 
