@@ -485,6 +485,7 @@
       transform: translateY(100%); transition: transform 0.3s ease;
     }
     .mobile-sticky-cta.visible { transform: translateY(0); }
+    body.menu-open .mobile-sticky-cta { transform: translateY(0) !important; }
     .mobile-sticky-cta .msc-btn {
       display: flex; align-items: center; justify-content: center;
       gap: 0.35rem; text-decoration: none; border-radius: 8px;
@@ -611,7 +612,7 @@
                     <span class="logo-subtitle">INSURANCE ADVISOR · CANADA</span>
                 </span>
             </a>
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" style="touch-action:manipulation"><span></span><span></span><span></span></button>
 
             <nav>
                 <a href="index.html">Home</a>
@@ -848,7 +849,7 @@
   })();
   </script>
   <script>
-  (function(){ var btn=document.getElementById('hamburger'), nav=document.getElementById('mobileNav'), ov=document.getElementById('mobileOverlay'); if(!btn)return; function stopScroll(e){e.preventDefault();} function posNav(){ var hdr=document.querySelector('header'); var ftr=document.getElementById('mobileStickyBar'); var hh=hdr?hdr.getBoundingClientRect().bottom:0; var fh=ftr?(ftr.offsetHeight||64):64; nav.style.top=hh+'px'; nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)'; ov.style.top=hh+'px'; ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)'; } function open(){posNav();var ftr=document.getElementById('mobileStickyBar');if(ftr)ftr.classList.add('visible');btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');ov.addEventListener('touchmove',stopScroll,{passive:false});} function close(){btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');ov.removeEventListener('touchmove',stopScroll);} btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();}); ov.addEventListener('click',close); nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)}); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();}); })();
+  (function(){ var btn=document.getElementById('hamburger'), nav=document.getElementById('mobileNav'), ov=document.getElementById('mobileOverlay'); if(!btn)return; function stopScroll(e){if(!e.target.closest||!e.target.closest('.mobile-nav-body'))e.preventDefault();} function posNav(){ var hdr=document.querySelector('header'); var ftr=document.getElementById('mobileStickyBar'); var hh=hdr?hdr.getBoundingClientRect().bottom:0; var fh=ftr?(ftr.offsetHeight||64):64; nav.style.top=hh+'px'; nav.style.height='calc(100vh - '+hh+'px - '+fh+'px)'; ov.style.top=hh+'px'; ov.style.height='calc(100vh - '+hh+'px - '+fh+'px)'; } function open(){posNav();var ftr=document.getElementById('mobileStickyBar');if(ftr)ftr.classList.add('visible');document.body.classList.add('menu-open');btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.addEventListener('touchmove',stopScroll,{passive:false});} function close(){document.body.classList.remove('menu-open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');document.removeEventListener('touchmove',stopScroll);} btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();}); ov.addEventListener('click',close); nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)}); document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();}); })();
   </script>
     <!-- Header override: always wins via cascade position -->
     <style id="header-override">
