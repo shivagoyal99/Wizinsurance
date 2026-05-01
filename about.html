@@ -776,8 +776,22 @@
             .why-grid { grid-template-columns:1fr 1fr; }
             .about-stats-inner { grid-template-columns:repeat(2,1fr); }
             .reviews-grid { grid-template-columns:1fr; }
-            .hero-photo-card { order:-1; }
-            .hero-photo-card img { height:200px; }
+            .hero-photo-card {
+                order: -1;
+                width: 160px !important;
+                height: 160px !important;
+                border-radius: 50% !important;
+                margin: 0 auto 0.5rem !important;
+                box-shadow: 0 0 0 4px rgba(255,255,255,0.15), 0 8px 32px rgba(0,0,0,0.4) !important;
+                background: white !important;
+                overflow: hidden !important;
+            }
+            .hero-photo-card img {
+                height: 160px !important;
+                width: 160px !important;
+                object-fit: cover !important;
+                object-position: center 12% !important;
+            }
         }
         @media (max-width:860px) {
             .footer-grid { grid-template-columns:1fr 1fr !important; gap:2rem !important; }
