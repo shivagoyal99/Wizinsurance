@@ -89,6 +89,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -96,6 +97,8 @@
             color: var(--text-dark);
             line-height: 1.6;
             background-color: #fff;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         /* ===== HEADER ===== */
@@ -2108,7 +2111,8 @@
             .quote-tool { padding: 1.4rem 1.1rem !important; margin: 1.5rem auto 0 !important; }
             .quote-product-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .quote-product-btn { font-size: 0.8rem !important; padding: 0.6rem !important; }
-            .hero-quote-card { padding: 1.2rem 1rem !important; margin: 1.5rem 0 0 !important; border-radius: 10px !important; max-width: 100% !important; }
+            .hero-inner .hero-quote-card { display: none !important; }
+            .hero-quote-mobile { display: block !important; }
             .hq-tabs-row { grid-template-columns: repeat(3, 1fr) !important; gap: 0.45rem !important; }
             .hq-tab { padding: 0.6rem 0.3rem !important; font-size: 0.72rem !important; min-height: 60px !important; }
             .hq-item { padding: 0.65rem 0.85rem !important; font-size: 0.82rem !important; }
@@ -2430,8 +2434,30 @@
         </div>
     </section>
 
+    <!-- Mobile-only quote card (pulled out of hero) -->
+    <div class="hero-quote-mobile" style="display:none; background:#F8F9FA; padding:1.5rem 1.2rem; border-bottom:1px solid #e8e8e8;">
+        <div class="hero-quote-card" style="background:#fff; border-radius:14px; padding:1.4rem 1.2rem; box-shadow:0 2px 16px rgba(0,0,0,0.08); max-width:100%; margin:0;">
+            <div class="hero-quote-badge">⚡ Instant Quotes</div>
+            <h3 style="margin:0.6rem 0 0.2rem; font-size:1.1rem;">Get an Instant Quote</h3>
+            <p style="margin:0 0 1rem; color:#666; font-size:0.88rem;">Select a product to get started</p>
+            <div class="hq-tabs-row" style="grid-template-columns: repeat(3,1fr);">
+                <a href="quote-tool.html#visitor" class="hq-tab" style="text-decoration:none;">
+                    <span class="hq-icon">✈️</span>
+                    Visitors to Canada
+                </a>
+                <a href="quote-tool.html#supervisa" class="hq-tab" style="text-decoration:none;">
+                    <span class="hq-icon">🛂</span>
+                    SuperVisa Insurance
+                </a>
+                <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" class="hq-tab" style="text-decoration:none;">
+                    <span class="hq-icon">🛡️</span>
+                    Term Life Insurance
+                </a>
+            </div>
+            <div class="hq-footer">🔒 Independent · 25+ carriers compared · Licensed in Ontario</div>
+        </div>
+    </div>
 
-    
     <!-- Carriers Section -->
     <section class="carriers-section">
         <div class="carriers-wrapper">
