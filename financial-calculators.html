@@ -2568,6 +2568,7 @@
           <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
           <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
           <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
+          <a href="investment-account-quiz.html"><span class="mnav-icon">🏦</span>TFSA vs RRSP vs FHSA Quiz</a>
         </div>
 
         <a href="credit-cards.html">Credit Cards</a>
@@ -2666,6 +2667,7 @@
                         <div class="dropdown-section">
                             <div class="dropdown-section-title">Tools</div>
                             <a href="financial-calculators.html">🧮 Financial Calculators</a>
+                            <a href="investment-account-quiz.html">🏦 TFSA vs RRSP vs FHSA Quiz</a>
                         </div>
                     </div>
                 </div>
@@ -3339,6 +3341,15 @@
 <div class="calc-panel active" id="panel-needs">
   <div class="panel-title">Life Insurance Needs Analysis</div>
   <div class="panel-sub">Estimate how much coverage your family needs — adjust the values and the result updates instantly.</div>
+
+  <!-- ── Client info bar ── -->
+  <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;align-items:flex-end">
+    <div style="flex:1;min-width:180px;max-width:360px">
+      <label style="display:block;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:6px">Client Name</label>
+      <input id="n-client-name" type="text" placeholder="e.g. John & Sarah Smith" style="width:100%;padding:10px 14px;border:1.5px solid #e8eaf0;border-radius:9px;font-size:0.88rem;font-weight:600;color:#0F2142;background:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='#3a6bc0'" onblur="this.style.borderColor='#e8eaf0'">
+    </div>
+  </div>
+
   <!-- ── 3-column card grid ── -->
   <div class="needs-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start">
 
@@ -3550,8 +3561,9 @@
 
     <!-- Right: CTAs -->
     <div class="needs-strip-right" style="display:flex;flex-direction:column;gap:10px;min-width:150px">
-      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20needs%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:#E63946;color:#fff;text-align:center">Chat with Shivang</a>
-      <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);text-align:center">Get Instant Quote</a>
+      <button onclick="downloadNeedsReport()" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:#E63946;color:#fff;text-align:center;border:none;cursor:pointer;width:100%">📄 Download Report</button>
+      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20needs%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);text-align:center">💬 Chat with Shivang</a>
+      <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);text-align:center">Get Instant Quote</a>
       <div style="font-size:0.58rem;color:rgba(255,255,255,0.18);text-align:center;line-height:1.5">Educational only · Not advice<br>Shivang Goyal</div>
     </div>
 
@@ -3562,13 +3574,82 @@
     <div class="needs-sec-label" style="margin-top:0;margin-bottom:16px;font-size:0.6rem">Also consider — other coverage gaps</div>
     <div class="needs-extra-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
 
-      <!-- Critical Illness card -->
-      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0">
-        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E63946;margin-bottom:10px">🫀 Critical Illness Insurance</div>
-        <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-ci-amount">$135,000</div>
-        <div style="font-size:0.65rem;color:rgba(255,255,255,0.38);margin-top:5px;margin-bottom:12px">Suggested lump-sum · 1.5× annual income</div>
-        <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);line-height:1.65;flex:1">A tax-free lump sum paid if you're diagnosed with a covered condition (heart attack, cancer, stroke, etc.). Covers what OHIP doesn't — lost income during recovery, private care, home adjustments.</div>
-        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Critical%20Illness%20insurance" target="_blank" style="display:block;text-align:center;margin-top:16px;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(230,57,70,0.18);color:#E63946;border:1px solid rgba(230,57,70,0.3)">Ask Shivang about CI →</a>
+      <!-- Critical Illness card — full width, iA Financial methodology -->
+      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0;grid-column:1/-1">
+
+        <!-- Header: label + result + recovery chips -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E63946;margin-bottom:8px">🫀 Critical Illness Insurance</div>
+            <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-ci-amount">—</div>
+            <div style="font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:6px">Suggested lump-sum · iA Financial methodology</div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Recovery period</div>
+            <div style="display:flex;gap:6px" id="ci-recovery-chips">
+              <button onclick="setCIRecovery(12,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:#E63946;color:#fff;border:1px solid #E63946;transition:all 0.2s">12 mo</button>
+              <button onclick="setCIRecovery(18,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">18 mo</button>
+              <button onclick="setCIRecovery(24,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">24 mo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 monthly inputs: 2×2 grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Mortgage / rent <span id="ci-housing-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-housing" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Loans / credit cards <span id="ci-loans-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-loans" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">RRSP / TFSA / RESP <span id="ci-savings-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-savings" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Other monthly expenses <span id="ci-other-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-other" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Calculation breakdown -->
+        <div style="background:rgba(255,255,255,0.05);border-radius:9px;padding:12px 14px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Monthly commitments × <span id="ci-months-label">12</span> months</span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff" id="ci-monthly-total">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Medical expenses <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff">$15,000</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07)">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Wellness budget <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff">$10,000</span>
+          </div>
+        </div>
+
+        <div style="font-size:0.64rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:14px">A tax-free lump sum paid if you're diagnosed with a covered condition (heart attack, cancer, stroke, etc.). Covers what OHIP doesn't — lost income during recovery, private care, home adjustments.</div>
+        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Critical%20Illness%20insurance" target="_blank" style="display:block;text-align:center;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(230,57,70,0.18);color:#E63946;border:1px solid rgba(230,57,70,0.3)">Ask Shivang about CI →</a>
+
       </div>
 
       <!-- Disability Insurance card -->
@@ -3983,10 +4064,8 @@ function calcNeeds() {
   if(bf('nbar-inc'))  bf('nbar-inc').style.width  = Math.min(100,incPct)  + '%';
   if(bf('nbar-ass'))  bf('nbar-ass').style.width  = assPct + '%';
 
-  // Critical Illness estimate: 1.5× annual income, rounded up to nearest $25K
-  const ciRaw = income * 1.5;
-  const ciAmt = income > 0 ? Math.ceil(ciRaw / 25000) * 25000 : 0;
-  s('n-ci-amount', income > 0 ? fmtNFull(ciAmt) : '—');
+  // CI is handled separately by calcCI() — call it to keep in sync
+  calcCI();
 
   // Disability estimate: 70% of monthly income, capped at $10,000/mo (typical individual policy max)
   const diMonthly = income > 0 ? Math.min(Math.round(income * 0.70 / 12), 10000) : 0;
@@ -3994,6 +4073,286 @@ function calcNeeds() {
   if(diEl) diEl.innerHTML = income > 0
     ? '$' + diMonthly.toLocaleString('en-CA') + '<span style="font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.45)">/mo</span>'
     : '—';
+}
+
+// ── Critical Illness Calculator (iA Financial methodology) ──────────────────
+var ciMonths = 12;
+
+function setCIRecovery(months, btn) {
+  ciMonths = months;
+  document.querySelectorAll('#ci-recovery-chips button').forEach(function(b) {
+    b.style.background    = 'rgba(255,255,255,0.08)';
+    b.style.color         = 'rgba(255,255,255,0.5)';
+    b.style.borderColor   = 'rgba(255,255,255,0.15)';
+  });
+  btn.style.background  = '#E63946';
+  btn.style.color       = '#fff';
+  btn.style.borderColor = '#E63946';
+  calcCI();
+}
+
+function calcCI() {
+  var housing = parseFloat(document.getElementById('ci-housing') && document.getElementById('ci-housing').value) || 0;
+  var loans   = parseFloat(document.getElementById('ci-loans')   && document.getElementById('ci-loans').value)   || 0;
+  var savings = parseFloat(document.getElementById('ci-savings') && document.getElementById('ci-savings').value) || 0;
+  var other   = parseFloat(document.getElementById('ci-other')   && document.getElementById('ci-other').value)   || 0;
+  var monthly = housing + loans + savings + other;
+  var raw     = monthly * ciMonths + 15000 + 10000;
+  var rounded = monthly > 0 ? Math.ceil(raw / 25000) * 25000 : 0;
+
+  var fmtM = function(n) { return n > 0 ? '$' + n.toLocaleString('en-CA') + '/mo' : ''; };
+  var fmtN = function(n) { return '$' + Math.round(n).toLocaleString('en-CA'); };
+
+  var el = function(id) { return document.getElementById(id); };
+  if(el('ci-housing-lbl')) el('ci-housing-lbl').textContent = fmtM(housing);
+  if(el('ci-loans-lbl'))   el('ci-loans-lbl').textContent   = fmtM(loans);
+  if(el('ci-savings-lbl')) el('ci-savings-lbl').textContent = fmtM(savings);
+  if(el('ci-other-lbl'))   el('ci-other-lbl').textContent   = fmtM(other);
+  if(el('ci-months-label'))  el('ci-months-label').textContent  = ciMonths;
+  if(el('ci-monthly-total')) el('ci-monthly-total').textContent = monthly > 0 ? fmtN(monthly * ciMonths) : '—';
+  if(el('n-ci-amount'))      el('n-ci-amount').textContent      = rounded > 0 ? fmtN(rounded) : '—';
+}
+
+// ── Download PDF Report ─────────────────────────────────────────────────────
+function downloadNeedsReport() {
+  // Collect inputs
+  const clientName = (document.getElementById('n-client-name').value || '').trim() || 'Client';
+
+  const g = id => parseFloat(document.getElementById(id).value) || 0;
+  const mortgage  = g('n-mortgage');
+  const funeral   = g('n-funeral');
+  const emergency = g('n-emergency');
+  const education = g('n-education');
+  const income    = g('n-income');
+  const pct       = g('n-pct');
+  const yrs       = g('n-yrs');
+  const ret       = g('n-ret');
+  const ins       = g('n-ins');
+  const grp       = g('n-group');
+  const rrsp      = g('n-rrsp');
+  const savings   = g('n-savings');
+
+  // Read computed results from DOM
+  const totalCoverage = document.getElementById('n-result-main').textContent.trim();
+  const cashNeeds     = document.getElementById('n-s1-total').textContent.trim();
+  const incomeNeeds   = document.getElementById('n-s2-total').textContent.trim();
+  const assetsTotal   = document.getElementById('n-s3-total').textContent.trim();
+  const ciAmount      = document.getElementById('n-ci-amount').textContent.trim();
+  const ciHousing     = parseFloat(document.getElementById('ci-housing').value) || 0;
+  const ciLoans       = parseFloat(document.getElementById('ci-loans').value)   || 0;
+  const ciSavingsInp  = parseFloat(document.getElementById('ci-savings').value) || 0;
+  const ciOther       = parseFloat(document.getElementById('ci-other').value)   || 0;
+  const ciMonthly     = ciHousing + ciLoans + ciSavingsInp + ciOther;
+  const ciMonthlyTotal = document.getElementById('ci-monthly-total').textContent.trim();
+  const ciMonthsVal   = ciMonths;
+  const pvFactor      = document.getElementById('n-pv-factor').textContent.trim();
+  const diRaw         = document.getElementById('n-di-amount');
+  const diText        = diRaw ? diRaw.innerText.replace(/\s+/g,' ').trim() : '—';
+  const resultSub     = document.getElementById('n-result-sub').textContent.trim();
+  const isShortfall   = resultSub.includes('already cover');
+
+  const fmt = n => n > 0 ? '$' + n.toLocaleString('en-CA') : '$0';
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Life Insurance Needs Analysis — ${clientName}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#1a1a1a;background:#fff;font-size:10.5pt}
+@page{size:letter;margin:.5in .6in}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:13px;border-bottom:3px solid #0F2142}
+.logo-name{font-size:20pt;font-weight:900;letter-spacing:.02em;color:#0F2142}
+.logo-tag{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:#E63946;font-weight:700;margin-top:3px}
+.advisor-block{text-align:right;font-size:8.5pt;color:#666;line-height:1.7}
+.advisor-block strong{color:#0F2142;font-size:10pt;display:block;font-weight:800}
+
+.doc-title{font-size:15pt;font-weight:900;color:#0F2142;margin-bottom:3px}
+.doc-sub{font-size:7.5pt;color:#aaa;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+
+.client-bar{background:#f4f6fb;border-radius:7px;padding:9px 14px;display:flex;gap:34px;margin-bottom:13px;border-left:4px solid #0F2142}
+.cf label{font-size:7.5pt;text-transform:uppercase;letter-spacing:.12em;color:#aaa;font-weight:700;display:block;margin-bottom:2px}
+.cf span{font-size:11pt;font-weight:800;color:#0F2142}
+
+.result-hero{background:#0F2142;border-radius:9px;padding:14px 20px;color:#fff;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between}
+.rh-label{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px}
+.rh-amount{font-size:26pt;font-weight:900;color:#E63946;line-height:1}
+.rh-note{font-size:7.5pt;color:rgba(255,255,255,.35);margin-top:5px;max-width:180px;line-height:1.45}
+.rh-breakdown{display:flex;gap:20px;flex-shrink:0}
+.bd-item{text-align:center}
+.bd-lbl{font-size:7.5pt;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:3px}
+.bd-val{font-size:12pt;font-weight:900}
+.bd-val.red{color:#E63946}.bd-val.blue{color:#6b9fff}.bd-val.green{color:#4caf7d}
+
+.sec-title{font-size:7.5pt;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E63946;margin:12px 0 8px}
+
+.inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.ic{background:#f9f9fb;border-radius:7px;padding:10px 12px;border-top:2.5px solid #e0e3ec}
+.ic.red-t{border-top-color:#E63946}.ic.blue-t{border-top-color:#3a6bc0}.ic.green-t{border-top-color:#4caf7d}
+.ic-title{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:6px}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0}
+.ir:last-of-type{border-bottom:none}
+.ir .lbl{font-size:8.5pt;color:#666}
+.ir .val{font-size:9pt;font-weight:700;color:#0F2142}
+.subtotal{display:flex;justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid #ddd}
+.st-lbl{font-size:7.5pt;text-transform:uppercase;color:#bbb;font-weight:700;letter-spacing:.06em}
+.st-val{font-size:10pt;font-weight:900}
+.st-val.red{color:#c0392b}.st-val.blue{color:#2c5fab}.st-val.green{color:#1a7a4a}
+
+.assump-row{background:#f4f6fb;border-radius:7px;padding:9px 14px;display:flex;gap:30px;margin-bottom:12px;font-size:9pt}
+.as-item label{color:#bbb;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:2px;font-size:7.5pt}
+.as-item span{color:#0F2142;font-weight:800}
+
+.extra-grid{display:grid;grid-template-columns:3fr 2fr;gap:11px;margin-bottom:16px}
+.ec{background:#0F2142;border-radius:8px;padding:13px 15px;color:#fff}
+.ec-type{font-size:7.5pt;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:5px}
+.ec-type.red{color:#E63946}.ec-type.blue{color:#6b9fff}
+.ec-amount{font-size:18pt;font-weight:900;color:#fff;line-height:1;margin-bottom:7px}
+.ec-sub{font-size:7.5pt;color:rgba(255,255,255,.38);line-height:1.6}
+.ec-row{display:flex;justify-content:space-between;font-size:8pt;color:rgba(255,255,255,.5);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.ec-row:last-of-type{border-bottom:none}
+.ec-row span:last-child{font-weight:700;color:rgba(255,255,255,.8)}
+.ec-total{display:flex;justify-content:space-between;font-size:8pt;margin-top:7px;padding-top:6px;border-top:1px solid rgba(255,255,255,.15)}
+.ec-total span:last-child{font-weight:800;color:#fff}
+
+.sig-section{margin-top:18px;padding-top:14px;border-top:2px solid #e8eaf0}
+.sig-title-txt{font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0F2142;margin-bottom:14px}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.sig-line{border-bottom:1.5px solid #0F2142;height:36px;margin-bottom:5px}
+.sig-lbl{font-size:8pt;color:#aaa;text-transform:uppercase;letter-spacing:.08em}
+.sig-name{font-size:9.5pt;font-weight:700;color:#0F2142;margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="logo-name">Shivang Goyal</div>
+    <div class="logo-tag">Licensed Insurance Advisor (LLQP) &nbsp;·&nbsp; Ontario</div>
+  </div>
+  <div class="advisor-block">
+    (647) 995-5891 &nbsp;·&nbsp; shivang.goyal.financial@gmail.com<br>
+    wizinsurance.ca
+  </div>
+</div>
+
+<div class="doc-title">Life Insurance Needs Analysis</div>
+<div class="doc-sub">Prepared for client review &nbsp;·&nbsp; wizinsurance.ca</div>
+
+<div class="client-bar">
+  <div class="cf"><label>Client Name</label><span>${clientName}</span></div>
+  <div class="cf"><label>Advisor</label><span>Shivang Goyal</span></div>
+</div>
+
+<div class="result-hero">
+  <div>
+    <div class="rh-label">Recommended Life Insurance Coverage</div>
+    <div class="rh-amount">${totalCoverage}</div>
+    <div class="rh-note">${isShortfall ? 'Existing assets already cover estimated needs — strong financial position.' : 'Estimated coverage gap based on information provided. Subject to underwriting approval.'}</div>
+  </div>
+  <div class="rh-breakdown">
+    <div class="bd-item">
+      <div class="bd-lbl">Cash Needs</div>
+      <div class="bd-val red">${cashNeeds}</div>
+    </div>
+    <div class="bd-item">
+      <div class="bd-lbl">Income (PV)</div>
+      <div class="bd-val blue">${incomeNeeds}</div>
+    </div>
+    <div class="bd-item">
+      <div class="bd-lbl">Less Assets</div>
+      <div class="bd-val green">−${assetsTotal}</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-title">Inputs Used in This Analysis</div>
+
+<div class="inputs-grid">
+  <div class="ic red-t">
+    <div class="ic-title">💸 Cash Needs</div>
+    <div class="ir"><span class="lbl">Mortgage / debt</span><span class="val">${fmt(mortgage)}</span></div>
+    <div class="ir"><span class="lbl">Funeral &amp; estate</span><span class="val">${fmt(funeral)}</span></div>
+    <div class="ir"><span class="lbl">Emergency fund</span><span class="val">${fmt(emergency)}</span></div>
+    <div class="ir"><span class="lbl">Education fund</span><span class="val">${fmt(education)}</span></div>
+    <div class="subtotal"><span class="st-lbl">Subtotal</span><span class="st-val red">${cashNeeds}</span></div>
+  </div>
+  <div class="ic blue-t">
+    <div class="ic-title">💰 Income Replacement</div>
+    <div class="ir"><span class="lbl">Annual income</span><span class="val">${fmt(income)}</span></div>
+    <div class="ir"><span class="lbl">Replacement %</span><span class="val">${pct}%</span></div>
+    <div class="ir"><span class="lbl">Years of support</span><span class="val">${yrs} yrs</span></div>
+    <div class="ir"><span class="lbl">Expected return</span><span class="val">${ret}%</span></div>
+    <div class="ir"><span class="lbl">PV factor applied</span><span class="val">${pvFactor}</span></div>
+    <div class="subtotal"><span class="st-lbl">Subtotal (PV)</span><span class="st-val blue">${incomeNeeds}</span></div>
+  </div>
+  <div class="ic green-t">
+    <div class="ic-title">✅ Assets to Deduct</div>
+    <div class="ir"><span class="lbl">Existing life insurance</span><span class="val">${fmt(ins)}</span></div>
+    <div class="ir"><span class="lbl">Group / employer coverage</span><span class="val">${fmt(grp)}</span></div>
+    <div class="ir"><span class="lbl">RRSPs / investments</span><span class="val">${fmt(rrsp)}</span></div>
+    <div class="ir"><span class="lbl">Savings / cash</span><span class="val">${fmt(savings)}</span></div>
+    <div class="subtotal"><span class="st-lbl">Already covered</span><span class="st-val green">${assetsTotal}</span></div>
+  </div>
+</div>
+
+<div class="assump-row">
+  <div class="as-item"><label>Years of Support</label><span>${yrs} years</span></div>
+  <div class="as-item"><label>Income Replacement</label><span>${pct}%</span></div>
+  <div class="as-item"><label>Expected Return</label><span>${ret}% / yr</span></div>
+  <div class="as-item"><label>PV Factor Applied</label><span>${pvFactor}</span></div>
+</div>
+
+<div class="sec-title">Additional Coverage to Consider</div>
+
+<div class="extra-grid">
+  <div class="ec">
+    <div class="ec-type red">🫀 Critical Illness Insurance</div>
+    <div class="ec-amount">${ciAmount}</div>
+    ${ciMonthly > 0 ? `
+    <div class="ec-row"><span>Mortgage / rent</span><span>${fmt(ciHousing)}/mo</span></div>
+    <div class="ec-row"><span>Loans / credit cards</span><span>${fmt(ciLoans)}/mo</span></div>
+    <div class="ec-row"><span>RRSP / TFSA / RESP</span><span>${fmt(ciSavingsInp)}/mo</span></div>
+    <div class="ec-row"><span>Other expenses</span><span>${fmt(ciOther)}/mo</span></div>
+    <div class="ec-total"><span>× ${ciMonthsVal} mo + medical + wellness</span><span>${ciMonthlyTotal} + $25,000</span></div>
+    ` : `<div class="ec-sub">Tax-free lump sum on diagnosis of heart attack, cancer, stroke &amp; more. Enter monthly commitments to calculate.</div>`}
+  </div>
+  <div class="ec">
+    <div class="ec-type blue">🛡️ Disability Insurance</div>
+    <div class="ec-amount">${diText}</div>
+    <div class="ec-sub">Suggested monthly benefit · 70% of income, capped at $10,000/mo<br>Replaces income if illness or injury prevents you from working</div>
+  </div>
+</div>
+
+<div class="sig-section">
+  <div class="sig-title-txt">Acknowledgement &amp; Signature</div>
+  <div class="sig-grid">
+    <div>
+      <div class="sig-line"></div>
+      <div class="sig-lbl">Client Signature &amp; Date</div>
+      <div class="sig-name">${clientName}</div>
+    </div>
+    <div>
+      <div class="sig-line"></div>
+      <div class="sig-lbl">Advisor Signature &amp; Date</div>
+      <div class="sig-name">Shivang Goyal &nbsp;·&nbsp; LLQP</div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>`;
+
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if (!win) { alert('Please allow pop-ups for this site to download the report.'); return; }
+  win.document.write(html);
+  win.document.close();
+  setTimeout(() => win.print(), 600);
 }
 
 // Hash routing — activate correct tab on page load based on URL anchor
@@ -4007,7 +4366,7 @@ window.addEventListener('DOMContentLoaded', function(){
     if(btn) btn.classList.add('active');
     const panel = document.getElementById('panel-'+hash);
     if(panel) panel.classList.add('active');
-    if(hash==='needs') calcNeeds();
+    if(hash==='needs') { calcNeeds(); calcCI(); }
     if(hash==='resp' && !respInitialized) {
       respInitialized = true;
       const today = new Date();
@@ -4023,7 +4382,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
   } else {
     // Default: needs tab is active, fire its calc
-    calcNeeds();
+    calcNeeds(); calcCI();
   }
 });
 
