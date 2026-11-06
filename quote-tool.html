@@ -2098,6 +2098,12 @@
           .cta-btns, .cta-buttons { display: none !important; }
         }
 </style>
+<!-- Reddit Pixel -->
+<script>
+!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_jxss3wk6davh",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_jxss3wk6davh');rdt('track', 'PageVisit');
+</script>
+<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+<!-- End Reddit Pixel -->
 </head>
 <body>
 
@@ -2364,7 +2370,7 @@
         <div class="dates-row">
           <div class="field-wrap">
             <label>Start Date</label>
-            <input type="date" id="start1" onchange="calcDays()"/>
+            <input type="date" id="start1" onchange="shiftEndDate()"/>
           </div>
           <div class="field-wrap">
             <label>End Date</label>
@@ -2528,19 +2534,19 @@
 
       <!-- LEAD CAPTURE -->
       <div class="lead-section">
-        <h3>📧 Optional — Email me these quotes</h3>
-        <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Leave your details and we'll send your quote summary. Not required to see prices.</p>
+        <h3>📧 Where should we send your quotes?</h3>
+        <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Enter your name and email to see your personalized rates. No spam — ever.</p>
         <div class="lead-grid">
           <div class="lead-field">
-            <label>Full Name <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
+            <label>Full Name <span style="color:#e53e3e; font-weight:600;">*</span></label>
             <input type="text" id="lead-name" placeholder="Jane Smith"/>
           </div>
           <div class="lead-field">
-            <label>Email <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
+            <label>Email <span style="color:#e53e3e; font-weight:600;">*</span></label>
             <input type="email" id="lead-email" placeholder="jane@email.com"/>
           </div>
           <div class="lead-field">
-            <label>Phone <span style="color:var(--muted); font-weight:400;">(optional)</span></label>
+            <label>Phone <span style="color:#e53e3e; font-weight:600;">*</span></label>
             <input type="tel" id="lead-phone" placeholder="(416) 555-0123"/>
           </div>
         </div>
@@ -2718,6 +2724,19 @@
       document.getElementById('family-option').style.display = '';
     }
     setDefaults(startTab);
+
+    // Hide lead capture form for bypass users
+    // Check both ?sg=1 (correct) and #...?sg=1 (after hash, common mistake)
+    const fullUrl = window.location.href;
+    const urlBypass = new URLSearchParams(window.location.search).get('sg') === '1'
+                   || /[?&]sg=1/.test(window.location.hash)
+                   || /[?&]sg=1/.test(fullUrl);
+    if (urlBypass) { try { localStorage.setItem('wiz_bypass','1'); } catch(e){} }
+    const bypass = urlBypass || (function(){ try { return localStorage.getItem('wiz_bypass')==='1'; } catch(e){ return false; } })();
+    if (bypass) {
+      const ls = document.querySelector('.lead-section');
+      if (ls) ls.style.display = 'none';
+    }
   });
 
   function setDefaults(tab) {
@@ -2731,8 +2750,8 @@
     const end2Field  = document.getElementById('end2');
 
     if (tab === 'supervisa') {
-      // Lock to 365 days
-      const end = new Date(); end.setFullYear(end.getFullYear() + 1);
+      // Lock to 365 days (end = start + 364 days, inclusive)
+      const end = new Date(); end.setDate(end.getDate() + 364);
       const endStr = end.toISOString().split('T')[0];
       end1Field.value = endStr; end2Field.value = endStr;
       daysField1.value = 365; daysField2.value = 365;
@@ -2747,8 +2766,8 @@
       setCovrageOptions('coverage1', [100000,150000,200000,300000,500000,1000000], 100000);
       setCovrageOptions('coverage2', [100000,150000,200000,300000,500000,1000000], 100000);
     } else {
-      // Visitor: 90 days, unlocked, preset age 35
-      const end = new Date(); end.setDate(end.getDate() + 90);
+      // Visitor: 90 days, unlocked, preset age 35 (end = start + 89 days, inclusive)
+      const end = new Date(); end.setDate(end.getDate() + 89);
       const endStr = end.toISOString().split('T')[0];
       end1Field.value = endStr; end2Field.value = endStr;
       daysField1.value = 90; daysField2.value = 90;
@@ -2835,18 +2854,29 @@
   }
 
   function calcDays() {
+    // End date is inclusive: days = (end - start) + 1
     const s = new Date(document.getElementById('start1').value);
     const e = new Date(document.getElementById('end1').value);
     if (isNaN(s) || isNaN(e)) return;
-    const days = Math.round((e - s) / (1000 * 60 * 60 * 24));
+    const days = Math.round((e - s) / (1000 * 60 * 60 * 24)) + 1;
     if (days > 0) document.getElementById('days1').value = days;
   }
 
+  function shiftEndDate() {
+    // When start date changes, keep the same number of days and push end date forward (inclusive)
+    const s = new Date(document.getElementById('start1').value);
+    if (isNaN(s)) return;
+    const days = parseInt(document.getElementById('days1').value) || (currentTab === 'supervisa' ? 365 : 90);
+    const end = new Date(s.getTime() + (days - 1) * 86400000);
+    document.getElementById('end1').value = end.toISOString().split('T')[0];
+  }
+
   function daysToEndDate() {
+    // End date is inclusive: end = start + (days - 1)
     const s = new Date(document.getElementById('start1').value);
     const days = parseInt(document.getElementById('days1').value);
     if (isNaN(s) || !days) return;
-    const end = new Date(s.getTime() + days * 86400000);
+    const end = new Date(s.getTime() + (days - 1) * 86400000);
     document.getElementById('end1').value = end.toISOString().split('T')[0];
   }
 
@@ -3777,6 +3807,13 @@
   var lastQuoteParams = {};
 
   function getQuotes() {
+    // Bypass: ?sg=1 in URL sets localStorage flag; either grants preview mode
+    const urlBypass = new URLSearchParams(window.location.search).get('sg') === '1'
+                   || /[?&]sg=1/.test(window.location.hash)
+                   || /[?&]sg=1/.test(window.location.href);
+    if (urlBypass) { try { localStorage.setItem('wiz_bypass','1'); } catch(e){} }
+    const bypass = urlBypass || (function(){ try { return localStorage.getItem('wiz_bypass')==='1'; } catch(e){ return false; } })();
+
     const age1 = parseInt(document.getElementById('age1').value);
     const coverage1 = parseInt(document.getElementById('coverage1').value);
     const days = parseInt(document.getElementById('days1').value) || (currentTab === 'supervisa' ? 365 : 90);
@@ -3786,6 +3823,12 @@
     const phone = document.getElementById('lead-phone').value.trim();
 
     if (!age1 || age1 < 1) { alert('Please enter applicant age or date of birth.'); return; }
+
+    if (!bypass) {
+      if (!name) { alert('Please enter your full name to see quotes.'); document.getElementById('lead-name').focus(); return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address to see quotes.'); document.getElementById('lead-email').focus(); return; }
+      if (!phone) { alert('Please enter your phone number to see quotes.'); document.getElementById('lead-phone').focus(); return; }
+    }
 
     if (policyType === 'couple' || policyType === 'family') {
       const age2val = parseInt(document.getElementById('age2').value);
@@ -6129,7 +6172,13 @@ function showToast(msg) {
     const cmpPage = document.getElementById('compare-page');
     const styles = Array.from(document.querySelectorAll('style')).map(s => s.outerHTML).join('\n');
     const linkTags = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.outerHTML).join('\n');
-    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${linkTags}${styles}<style>body{margin:0;}.cmp-back-btn,.cmp-header-actions,.compare-bar{display:none!important;}#compare-page{display:block!important;position:relative;overflow:visible;}</style></head><body>${cmpPage.outerHTML}
+    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${linkTags}${styles}<style>body{margin:0;}.cmp-back-btn,.cmp-header-actions,.compare-bar{display:none!important;}#compare-page{display:block!important;position:relative;overflow:visible;}</style><!-- Reddit Pixel -->
+<script>
+!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_jxss3wk6davh",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_jxss3wk6davh');rdt('track', 'PageVisit');
+</script>
+<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+<!-- End Reddit Pixel -->
+</head><body>${cmpPage.outerHTML}
     <!-- Header override: always wins via cascade position -->
     <style id="header-override">
                 /* ===== HEADER ===== */
