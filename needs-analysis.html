@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Insurance Needs Analysis — How Much Coverage Do You Need? | Shivang Goyal</title>
+<meta name="description" content="Free life insurance needs analysis calculator. Find out exactly how much life insurance coverage you need based on your income, debts, and family situation. Canadian advisor.">
+<link rel="canonical" href="https://www.wizinsurance.ca/needs-analysis.html">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.wizinsurance.ca/needs-analysis.html">
+<meta property="og:title" content="Life Insurance Needs Analysis — How Much Coverage Do You Need?">
+<meta property="og:description" content="Free calculator: find your exact life insurance coverage need based on income, debts, and family goals. Built for Canadians.">
+<meta property="og:image" content="https://www.wizinsurance.ca/og-image.jpg">
+<meta property="og:site_name" content="Shivang Goyal Insurance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.wizinsurance.ca/og-image.jpg">
+<style>
+/* ══ SITE BASE ══ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#0F1F3C;
+  --secondary:#1a3a5c;
+  --accent:#E63946;
+  --light-bg:#F8F9FA;
+  --text-dark:#1A1A1A;
+  --text-light:#555;
+  --border:#E0E0E0;
+  --navy:#0F1F3C;
+  --red:#E63946;
+  --green:#4caf7d;
+  --blue:#3a6bc0;
+  --gold:#f5a623;
+  --qcard:#fff;
+  --muted:#888;
+  --qborder:#e8eaf0;
+  --radius:16px;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text-dark);line-height:1.6;background:#fff}
+
+/* ── Header ── */
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header-top{background:var(--primary);color:#fff;font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.1);padding:0;display:block}
+.header-top-inner{max-width:1400px;margin:0 auto;padding:.65rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.header-top-left{flex:1}
+.header-top-right{display:flex;gap:1.4rem;align-items:center;flex-shrink:0}
+.top-strip-divider{width:1px;height:16px;background:rgba(255,255,255,.25);flex-shrink:0}
+.top-contact-link{color:rgba(255,255,255,.85);text-decoration:none;font-size:.78rem;white-space:nowrap;font-weight:400;transition:color .2s}
+.top-contact-link:hover{color:#fff}
+.social-icons{display:flex;gap:.45rem;align-items:center}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:5px;background:rgba(255,255,255,.12);color:#fff;font-size:.76rem;text-decoration:none;transition:background .2s,color .2s}
+.social-icon:hover{background:rgba(255,255,255,.22);color:#fff}
+.social-icon.si-email:hover{background:#EA4335}
+.social-icon.si-fb:hover{background:#1877F2}
+.social-icon.si-ig:hover{background:#E1306C}
+.social-icon.si-li:hover{background:#0A66C2}
+.social-icon.si-goog svg{filter:brightness(0) invert(1);transition:filter .2s}
+.social-icon.si-goog:hover{background:#fff}
+.social-icon.si-goog:hover svg{filter:none}
+.social-icon.si-yt:hover{background:#FF0000}
+.social-icon.si-wa:hover{background:#25D366}
+.header-main{max-width:1400px;margin:0 auto;padding:1.3rem 2.5rem;display:flex;align-items:center;gap:0}
+.logo{display:inline-flex;flex-direction:row;align-items:center;gap:12px;text-decoration:none;color:var(--primary);flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;gap:4px}
+.logo-name{font-size:1.38rem;font-weight:700;color:var(--primary);line-height:1}
+.logo-subtitle{font-size:.66rem;color:#666;letter-spacing:.3px;font-weight:500}
+nav{flex:1;display:flex;gap:2.2rem;align-items:center;justify-content:center;font-size:.9rem;margin:0}
+nav>a{color:var(--text-dark);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;white-space:nowrap}
+nav>a:hover{color:var(--accent)}
+.dropdown{position:relative;display:inline-block}
+.dropdown>a{display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;color:var(--text-dark);text-decoration:none;font-size:.9rem;font-weight:500;white-space:nowrap}
+.dropdown>a:hover{color:var(--accent)}
+.dropdown-arrow{display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform .2s}
+.dropdown.open>a .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-menu{display:none;position:fixed;background:#fff;min-width:260px;box-shadow:0 12px 32px rgba(0,0,0,.15);border-radius:8px;border:1px solid var(--border);z-index:9999;max-height:80vh;overflow-y:auto}
+.dropdown-menu::-webkit-scrollbar{width:5px}
+.dropdown-menu::-webkit-scrollbar-track{background:#f1f1f1;border-radius:8px}
+.dropdown-menu::-webkit-scrollbar-thumb{background:#ccc;border-radius:8px}
+.dropdown:hover .dropdown-menu,.dropdown.open .dropdown-menu{display:block}
+.dropdown-section{padding:.5rem 0}
+.dropdown-section:first-child{padding-top:.8rem}
+.dropdown-section-title{padding:.3rem 1.2rem .2rem;font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+.dropdown-menu a{display:block;padding:.6rem 1.2rem;color:var(--text-dark);text-decoration:none;font-size:.88rem;transition:all .15s;border-left:3px solid transparent}
+.dropdown-menu a:hover{background:var(--light-bg);color:var(--accent);border-left-color:var(--accent)}
+.dropdown-divider{height:1px;background:var(--border);margin:.2rem 0}
+.cta-buttons{display:flex;gap:.6rem;flex-shrink:0}
+.btn-call{background:var(--accent);color:#fff;padding:.65rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700;transition:all .3s;border:none;cursor:pointer;white-space:nowrap;font-size:.88rem}
+.btn-call:hover{background:#d32f3d;transform:translateY(-2px);box-shadow:0 6px 16px rgba(230,57,70,.3)}
+
+/* ── Hero ── */
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes revealRight{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
+@keyframes wizW{0%,100%{opacity:.1;transform:rotate(-5deg) scale(1)}50%{opacity:.22;transform:rotate(-5deg) scale(1.02)}}
+@keyframes wizI{0%,100%{opacity:.08;transform:translate(-50%,-50%) rotate(2deg) scale(1)}50%{opacity:.2;transform:translate(-50%,-50%) rotate(2deg) scale(1.03)}}
+@keyframes wizZ{0%,100%{opacity:.09;transform:rotate(6deg) scale(1)}50%{opacity:.21;transform:rotate(6deg) scale(1.02)}}
+.hero{background:#0F1F3C;color:#fff;padding:3.5rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-wiz{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-wiz-letter{position:absolute;font-size:clamp(180px,22vw,260px);font-weight:900;color:transparent;line-height:1;user-select:none;opacity:0}
+.hero-wiz-w{bottom:-10px;left:-15px;-webkit-text-stroke:2px rgba(230,57,70,.9);filter:drop-shadow(0 0 30px rgba(230,57,70,.6)) drop-shadow(0 0 8px rgba(230,57,70,.5));animation:wizW 8s ease-in-out infinite;animation-fill-mode:both}
+.hero-wiz-i{top:50%;left:50%;-webkit-text-stroke:2px rgba(255,255,255,.85);filter:drop-shadow(0 0 30px rgba(255,255,255,.5)) drop-shadow(0 0 8px rgba(255,255,255,.4));animation:wizI 12s ease-in-out infinite;animation-delay:3s;animation-fill-mode:both}
+.hero-wiz-z{top:-15px;right:-15px;-webkit-text-stroke:2px rgba(255,185,60,.9);filter:drop-shadow(0 0 30px rgba(255,185,60,.6)) drop-shadow(0 0 8px rgba(255,185,60,.5));animation:wizZ 10s ease-in-out infinite;animation-delay:6s;animation-fill-mode:both}
+.hero-wiz-label{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;position:relative;z-index:1}
+.hero-left{display:flex;flex-direction:column;gap:0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:.3rem .9rem;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.9);width:fit-content;margin-bottom:1.4rem;animation:heroFadeUp .5s ease both}
+.hero-eyebrow-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;display:inline-block}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:1.2rem;animation:heroFadeUp .5s ease .1s both}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-tagline{margin-bottom:2rem;max-width:580px;animation:heroFadeUp .5s ease .2s both}
+.hero-tagline-l1{display:block;font-size:1rem;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.3px;margin-bottom:.45rem;font-style:italic;animation:fadeSlideUp .6s ease .8s both}
+.hero-tagline-l2{display:block;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.2px;animation:revealRight 1s cubic-bezier(.77,0,.175,1) 1.3s both}
+.hero-trust{display:flex;flex-direction:row;gap:1.4rem;flex-wrap:wrap;margin-bottom:0;animation:heroFadeUp .5s ease .3s both}
+.hero-trust-item{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.85)}
+.hero-trust-item::before{content:'✓';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:rgba(230,57,70,.25);border-radius:50%;font-size:.68rem;font-weight:800;color:#ff8a8a;flex-shrink:0}
+
+/* ── Footer ── */
+footer{background:linear-gradient(180deg,#0d1b33 0%,#0a1628 100%);color:#fff;padding:3rem 2rem 2rem}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;text-align:left}
+.footer-col-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.4);margin-bottom:1.2rem}
+.footer-brand{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.6rem;letter-spacing:-.2px}
+.footer-bio{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-links{display:flex;flex-direction:column;gap:.7rem}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 auto 1.5rem;max-width:1400px}
+.footer-bottom{max-width:1400px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.4);text-align:center}
+.footer-disclaimer{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.28);line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto}
+footer a{color:#fff;text-decoration:none}
+footer a:hover{text-decoration:none}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr !important;gap:2rem !important}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr !important}}
+
+/* ── Mobile nav ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;cursor:pointer;background:var(--primary);border:none;border-radius:8px;padding:9px;flex-shrink:0}
+.hamburger span{display:block;height:2px;background:#fff;border-radius:2px;transition:all .3s ease;transform-origin:center}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+.mobile-nav-overlay.active{display:block}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;width:100%;height:100vh;background:#fff;z-index:9999;overflow:hidden;border-top:3px solid #E63946;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);flex-direction:column;-webkit-overflow-scrolling:touch}
+.mobile-nav.active{transform:translateX(0);display:flex}
+.mobile-nav-header{padding:.9rem 1.2rem;border-bottom:3px solid #E63946;display:flex;justify-content:flex-end;align-items:center;background:#fff;position:sticky;top:0;z-index:2;flex-shrink:0}
+.mobile-nav-close{background:#f0f0f0;border:none;color:#444;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mobile-nav-close:active{background:#e0e0e0}
+.mobile-nav-body{padding:0;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-width:none}
+.mobile-nav-body::-webkit-scrollbar{display:none}
+.mobile-nav-body>a{display:flex;align-items:center;gap:.7rem;padding:1rem 1.3rem;color:#111;text-decoration:none;font-size:1rem;font-weight:600;border-bottom:1px solid #ebebeb;transition:background .1s}
+.mobile-nav-body>a:hover{color:#111;background:#f0f0f0}
+.mnav-icon{font-size:1rem;flex-shrink:0}
+.mnav-cat-toggle{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.3rem;background:#f4f4f4;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;cursor:pointer;user-select:none}
+.mnav-cat-label{font-size:1rem;font-weight:600;color:#111}
+.mnav-cat-arrow{font-size:1.1rem;color:#bbb;transition:transform .22s;display:inline-block}
+.mnav-cat-toggle.open .mnav-cat-arrow{transform:rotate(90deg);color:#E63946}
+.mnav-cat-items{display:none}
+.mnav-cat-items.open{display:block}
+.mnav-cat-items a{display:flex !important;align-items:center;gap:.6rem;background:#fff !important;padding:.82rem 1.3rem .82rem 1.8rem !important;color:#444 !important;font-weight:500 !important;font-size:.92rem !important;text-decoration:none !important;border-bottom:1px solid #f0f0f0}
+.mnav-cat-items a:active{background:#f5f5f5 !important}
+.mobile-nav-cta{padding:.9rem 1rem;border-top:1px solid #ddd;display:flex;gap:.6rem;background:#0F1F3C;flex-shrink:0}
+.mobile-nav-cta a{flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;padding:.9rem;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;text-align:center;transition:opacity .2s}
+.m-call{background:#E63946 !important;color:#fff !important}
+.m-wa{background:#25D366 !important;color:#fff !important}
+.mobile-nav-cta a:hover{opacity:.88}
+
+/* ── Responsive header ── */
+@media(max-width:860px){
+  .header-top{display:none !important}
+  .header-main{padding:.75rem 1rem !important;display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;flex-wrap:nowrap !important;gap:0 !important}
+  .hamburger{display:flex !important}
+  nav,.cta-buttons{display:none !important}
+  .logo-name{font-size:1rem !important}
+  .logo-subtitle{font-size:.68rem !important}
+  .hero{padding:2.5rem 1.2rem 3rem !important}
+  .hero h1{font-size:clamp(1.8rem,7vw,2.4rem) !important}
+  .hero-wiz-letter{font-size:clamp(90px,26vw,140px) !important}
+  .hero-tagline{font-size:.9rem !important}
+  .hero-trust{gap:.8rem !important}
+}
+
+/* ══ CALC CSS ══ */
+.calc-area{max-width:1100px;margin:0 auto;padding:40px 56px 52px;background:#F8F9FA}
+.panel-title{font-family:inherit;font-size:1.3rem;font-weight:800;color:#1a1a1a;margin-bottom:4px}
+.panel-sub{font-size:0.78rem;color:#999;margin-bottom:28px;line-height:1.6}
+
+/* Input groups */
+.input-group{margin-bottom:20px}
+.input-label{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0}
+.input-val{font-size:0.8rem;font-weight:700;color:#c0392b;white-space:nowrap;flex-shrink:0}
+.input-val.blue{color:#3a6bc0}
+.input-val.green{color:#2e7d52}
+.input-wrap{position:relative}
+.input-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:0.85rem;font-weight:600;color:#888;pointer-events:none}
+.calc-input{width:100%;min-width:0;padding:12px 14px 12px 30px;border:1.5px solid #e8e4dc;border-radius:10px;font-size:0.88rem;font-family:inherit;background:#fff;color:#1a1a1a;outline:none;transition:border-color .15s}
+.calc-input:focus{border-color:#c0392b}
+.calc-input.no-prefix{padding-left:14px}
+.calc-input.suffix-pad{padding-right:36px}
+.input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:0.85rem;font-weight:600;color:#888;pointer-events:none}
+.calc-range{width:100%;margin-top:8px;accent-color:#c0392b;cursor:pointer}
+
+/* White input cards (colored top border, no navy header) */
+.needs-card{background:#fff;border:1px solid #e8e4dc;border-radius:18px;overflow:hidden}
+.needs-card.r{border-top:3px solid #E63946}
+.needs-card.b{border-top:3px solid #3a6bc0}
+.needs-card.g{border-top:3px solid #4caf7d}
+.needs-card-body{padding:24px}
+.needs-card-title{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.needs-card-title.r{color:#E63946}
+.needs-card-title.b{color:#3a6bc0}
+.needs-card-title.g{color:#4caf7d}
+
+/* Input grid */
+.needs-input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:14px}
+.needs-input-grid>*{min-width:0}
+
+/* Section totals inside white cards */
+.needs-total-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0 6px;border-top:1px solid #f0ece4;margin-top:6px}
+.needs-total-lbl{font-size:0.6rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.08em}
+.needs-total-val{font-size:0.95rem;font-weight:800;color:#0F1F3C}
+.needs-total-val.grn{color:#2e7d52}
+
+/* Chip row inside white cards */
+.chip-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.needs-chip{background:#f4f2ee;border:1px solid #e8e4dc;border-radius:20px;padding:3px 10px;font-size:0.62rem;font-weight:600;color:#666;cursor:pointer;font-family:inherit;transition:all .15s;line-height:1.8}
+.needs-chip:hover{background:#e8e4dc;color:#222}
+.needs-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+
+/* Chips + PV panel row (below input grid) */
+.needs-panel-row{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;margin-bottom:18px;align-items:start}
+.needs-assump-card{background:#fff;border:1px solid #e8e4dc;border-radius:14px;display:flex;flex-direction:row;align-items:stretch;margin-bottom:18px;overflow:hidden}
+.needs-assump-section{flex:1;padding:16px 18px}
+.needs-assump-pv{flex:0 0 auto;min-width:150px}
+.needs-assump-divider{width:1px;background:#e8e4dc;flex-shrink:0;margin:12px 0}
+.needs-panel-item{background:#fff;border:1px solid #e8e4dc;border-radius:14px;padding:16px 18px}
+.needs-panel-lbl{font-size:0.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.needs-panel-lbl.r{color:#E63946}
+.needs-panel-lbl.b{color:#3a6bc0}
+.needs-panel-lbl.n{color:#888}
+.needs-panel-desc{font-size:0.62rem;color:#aaa;margin-top:8px;line-height:1.6}
+.pv-factor-big{font-size:1.8rem;font-weight:900;color:#3a6bc0;line-height:1;margin:4px 0}
+
+/* Result card (dark navy) */
+.result-card{background:#0F1F3C;border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;width:100%;margin-bottom:16px}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c0392b,#E63946)}
+.result-eyebrow{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(230,57,70,0.5);font-weight:700;margin-bottom:16px}
+.result-label{font-size:0.68rem;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:0.06em;text-transform:uppercase}
+.result-val{font-family:inherit;font-size:1.6rem;font-weight:800;color:#E63946;line-height:1}
+.result-val.blue{color:#6b9fff}
+.result-note{font-size:0.68rem;color:rgba(255,255,255,0.25);margin-top:4px;line-height:1.5}
+
+/* Result layout: 3 columns */
+.result-layout{display:grid;grid-template-columns:1.1fr 2fr 0.9fr;gap:20px;align-items:start}
+.result-layout-left{padding-right:16px;border-right:1px solid rgba(255,255,255,.08)}
+.result-layout-right{padding-left:8px;border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
+.result-3grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.result-3grid>*{min-width:0}
+.result-action-btn{display:flex;align-items:center;justify-content:center;padding:11px 10px;border-radius:9px;font-weight:700;font-size:0.78rem;text-decoration:none;white-space:nowrap;cursor:pointer;border:none;font-family:inherit;transition:opacity .15s;text-align:center}
+.result-action-btn:active{opacity:.8}
+.result-action-btn.r{background:#E63946;color:#fff}
+.result-action-btn.s{background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12)}
+
+/* Bars */
+.needs-bar-row{margin-bottom:8px}
+.needs-bar-lbl{font-size:0.58rem;color:rgba(255,255,255,0.3);display:flex;justify-content:space-between;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em}
+.needs-bar-track{height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden}
+.needs-bar-fill{height:100%;border-radius:100px;transition:width .6s ease}
+.needs-bar-fill.r{background:#E63946}
+.needs-bar-fill.b{background:#3a6bc0}
+.needs-bar-fill.g{background:#4caf7d}
+
+/* "Also consider" heading */
+.needs-also-lbl{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c0392b;margin:8px 0 12px;padding:0 2px}
+
+/* CI card layout */
+.ci-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:14px}
+.ci-inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.ci-ask-btn{display:block;width:100%;text-align:center;padding:11px;border-radius:9px;font-weight:700;font-size:.82rem;text-decoration:none;border:1px solid rgba(230,57,70,.3);color:#E63946;background:rgba(230,57,70,.06);margin-top:14px;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.ci-ask-btn:active{opacity:.8}
+
+/* DI narrower */
+.di-card{max-width:680px;border-top:3px solid #3a6bc0}
+
+/* CI inputs (dark-themed) */
+.ci-input-group{margin-bottom:8px}
+.ci-input-label{font-size:0.57rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:700;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.ci-input-lbl-val{color:rgba(255,255,255,0.5);font-size:0.62rem}
+.ci-input-wrap{position:relative}
+.ci-prefix{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:0.78rem;color:rgba(255,255,255,0.35);pointer-events:none}
+.ci-input{width:100%;padding:8px 10px 8px 24px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.06);color:#fff;font-size:0.85rem;font-family:inherit;outline:none;transition:border-color .15s}
+.ci-input:focus{border-color:rgba(230,57,70,.5)}
+.recovery-chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
+.recovery-chip{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:3px 10px;font-size:0.62rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;line-height:1.8}
+.recovery-chip.active{background:#E63946;color:#fff;border-color:#E63946}
+
+/* Client name bar */
+.client-bar{background:#fff;border:1px solid #e8e4dc;border-radius:12px;padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.client-bar label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;white-space:nowrap}
+.client-bar input{flex:1;border:none;outline:none;font-size:0.95rem;font-weight:600;color:#1a1a1a;font-family:inherit;background:transparent}
+.client-bar input::placeholder{color:#ccc;font-weight:400}
+
+/* Calc disclaimer */
+.calc-disclaimer{font-size:0.65rem;color:#bbb;line-height:1.7;margin-top:20px;padding:12px 16px;background:#fff;border-radius:8px;border-left:2px solid #e8e4dc}
+
+/* ── Needs calculator ── */
+.needs-sec-label{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#c0392b;margin-bottom:14px;margin-top:24px}
+.needs-sec-label:first-child{margin-top:0}
+.needs-assump-bar{flex-wrap:wrap}
+.needs-assump-hint{white-space:nowrap}
+.needs-chip{background:#f4f2ee;border:1px solid #e8e4dc;border-radius:20px;padding:3px 10px;font-size:0.62rem;font-weight:600;color:#666;cursor:pointer;font-family:inherit;transition:all .15s;line-height:1.8}
+.needs-chip.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.needs-chip:hover:not(.active){border-color:#c0392b;color:#c0392b}
+/* result bar */
+.result-bar-name{font-size:0.63rem;color:rgba(255,255,255,0.4);white-space:nowrap;display:flex;align-items:center;gap:5px}
+.result-bar-row{display:grid;grid-template-columns:90px 1fr 72px;gap:8px;align-items:center;margin-bottom:10px}
+.result-bar-track{flex:1;height:10px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden}
+.result-bar-fill{height:100%;border-radius:100px;transition:width .6s ease}
+.result-bar-fill.gold{background:linear-gradient(90deg,#c0392b,#E63946)}
+.result-bar-fill.green{background:linear-gradient(90deg,#1a6b3c,#4caf7d)}
+.result-bar-text{font-size:0.63rem;color:rgba(255,255,255,0.45);text-align:right;white-space:nowrap}
+/* result val modifiers */
+.result-val.white{color:#fff}
+.result-val.green{color:#4caf7d}
+/* needs grid responsive */
+.needs-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start}
+.needs-extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.needs-breakdown-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+/* mobile fixes */
+@media(max-width:860px){.needs-3col{grid-template-columns:1fr 1fr!important}}
+@media(max-width:720px){
+  .needs-extra-grid{grid-template-columns:1fr!important}
+  .needs-3col{grid-template-columns:1fr!important}
+  #needs-result-strip{grid-template-columns:1fr!important}
+  .needs-assump-bar{flex-direction:column!important;gap:14px!important;padding:14px 16px!important}
+  .needs-assump-divider{display:none!important}
+  .needs-strip-left{min-width:0!important}
+  .needs-strip-right{flex-direction:row!important;flex-wrap:wrap!important}
+  .needs-strip-mid{border-left:none!important;border-right:none!important;padding:16px 0 0!important;border-top:1px solid rgba(255,255,255,0.08)!important}
+  .needs-breakdown-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .needs-assump-hint{white-space:normal!important}
+}
+@media(max-width:420px){
+  .needs-breakdown-grid{grid-template-columns:1fr!important}
+  #n-result-main{font-size:1.6rem!important}
+  .needs-strip-right{flex-direction:column!important}
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .needs-input-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .needs-panel-row{grid-template-columns:1fr 1fr}
+  .needs-assump-card{flex-direction:column}
+  .needs-assump-divider{width:auto;height:1px;margin:0 12px}
+  .needs-assump-pv{min-width:unset}
+  .result-layout{grid-template-columns:1fr;gap:16px}
+  .result-layout-left{border-right:none;padding-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:16px}
+  .result-layout-right{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;flex-direction:row;flex-wrap:wrap}
+  .ci-top{flex-direction:column;gap:12px}
+}
+@media(max-width:720px){
+  .needs-input-grid{grid-template-columns:1fr}
+  .needs-panel-row{grid-template-columns:1fr}
+  .calc-area{padding:20px 16px}
+  .ci-inputs-grid{grid-template-columns:1fr}
+  .result-3grid{grid-template-columns:1fr 1fr}
+  .calc-input{font-size:0.95rem}
+  .ci-input{font-size:0.95rem}
+  .di-card{max-width:100%}
+  .result-val{font-size:1.35rem}
+  .needs-card-body{padding:18px}
+  .result-card{padding:20px 18px}
+}
+
+/* Anim */
+.anim-fade-up{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.anim-fade-up.in-view{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ── Mobile nav ── -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-nav-header">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mobile-nav-body">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Shivang</a>
+    <a href="get-quotes.html">Get a Quote</a>
+
+    <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+      <span class="mnav-cat-label">Visitor &amp; Travel</span>
+      <span class="mnav-cat-arrow">&#x203A;</span>
+    </div>
+    <div class="mnav-cat-items">
+      <a href="supervisa.html"><span class="mnav-icon">🇨🇦</span>Super Visa Insurance</a>
+      <a href="visitors.html"><span class="mnav-icon">✈️</span>Visitors to Canada</a>
+      <a href="travel.html"><span class="mnav-icon">🌍</span>Travel Insurance</a>
+      <a href="student-insurance.html"><span class="mnav-icon">🎓</span>Student Insurance</a>
+    </div>
+
+    <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+      <span class="mnav-cat-label">Life Insurance</span>
+      <span class="mnav-cat-arrow">&#x203A;</span>
+    </div>
+    <div class="mnav-cat-items">
+      <a href="term-life.html"><span class="mnav-icon">🛡️</span>Term Life</a>
+      <a href="whole-life.html"><span class="mnav-icon">🌿</span>Whole Life</a>
+      <a href="universal-life.html"><span class="mnav-icon">⚙️</span>Universal Life</a>
+      <a href="mortgage-insurance.html"><span class="mnav-icon">🏠</span>Mortgage Insurance</a>
+    </div>
+
+    <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+      <span class="mnav-cat-label">Living Benefits</span>
+      <span class="mnav-cat-arrow">&#x203A;</span>
+    </div>
+    <div class="mnav-cat-items">
+      <a href="critical-illness.html"><span class="mnav-icon">🩺</span>Critical Illness</a>
+      <a href="disability.html"><span class="mnav-icon">🦺</span>Disability Insurance</a>
+      <a href="health-dental.html"><span class="mnav-icon">💊</span>Drug &amp; Dental</a>
+      <a href="estate-planning.html"><span class="mnav-icon">📜</span>Estate Planning</a>
+      <a href="business-insurance.html"><span class="mnav-icon">💼</span>Business Insurance</a>
+    </div>
+
+    <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+      <span class="mnav-cat-label">Investments</span>
+      <span class="mnav-cat-arrow">&#x203A;</span>
+    </div>
+    <div class="mnav-cat-items">
+      <a href="rrsp.html"><span class="mnav-icon">📈</span>RRSP</a>
+      <a href="tfsa.html"><span class="mnav-icon">💰</span>TFSA</a>
+      <a href="fhsa.html"><span class="mnav-icon">🏡</span>FHSA</a>
+      <a href="resp.html"><span class="mnav-icon">🎓</span>RESP</a>
+      <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
+      <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
+      <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
+    </div>
+
+    <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+      <span class="mnav-cat-label">Calculators</span>
+      <span class="mnav-cat-arrow">&#x203A;</span>
+    </div>
+    <div class="mnav-cat-items">
+      <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Investment Calculators</a>
+      <a href="needs-analysis.html"><span class="mnav-icon">📝</span>Needs Analysis</a>
+      <a href="investment-account-quiz.html"><span class="mnav-icon">🏦</span>TFSA vs RRSP vs FHSA Quiz</a>
+      <a href="estate-planning-calculator.html"><span class="mnav-icon">🔒</span>Estate Planning Calculator</a>
+    </div>
+
+    <a href="credit-cards.html">Credit Cards</a>
+    <a href="get-quotes.html#contact">Contact Me</a>
+  </div>
+  <div class="mobile-nav-cta">
+    <a href="tel:+16479955891" class="m-call">📞 Call</a>
+    <a href="https://wa.me/16479955891" target="_blank" class="m-wa">💬 WhatsApp</a>
+  </div>
+</div>
+
+<!-- ── Header ── -->
+<header>
+  <div class="header-top">
+    <div class="header-top-inner">
+      <div class="header-top-left">🇨🇦 Licensed in Ontario, Canada</div>
+      <div class="header-top-right">
+        <a href="tel:+16479955891" class="top-contact-link">📞 (647) 995-5891</a>
+        <div class="top-strip-divider"></div>
+        <div class="social-icons">
+          <a href="mailto:shivang.goyal.financial@gmail.com" class="social-icon si-email" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.facebook.com/shivugoyal99" target="_blank" rel="noopener" class="social-icon si-fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" rel="noopener" class="social-icon si-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank" rel="noopener" class="social-icon si-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" rel="noopener" class="social-icon si-goog" title="Google Reviews"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></a>
+          <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank" rel="noopener" class="social-icon si-yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/16479955891" target="_blank" rel="noopener" class="social-icon si-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="index.html" class="logo">
+      <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:42px;width:auto;object-fit:contain">
+      <span class="logo-text-wrap">
+        <span class="logo-name">Shivang Goyal</span>
+        <span class="logo-subtitle">INSURANCE ADVISOR · CANADA</span>
+      </span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="dropdown">
+        <a href="#insurance">Insurance <span class="dropdown-arrow"></span></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Visitor &amp; Travel</div>
+            <a href="visitors.html">🛂 Visitor to Canada</a>
+            <a href="supervisa.html">📋 SuperVisa Insurance</a>
+            <a href="travel.html">🌍 Travel Insurance</a>
+            <a href="student-insurance.html">🎓 International Student</a>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Life Insurance</div>
+            <a href="term-life.html">🛡️ Term Life Insurance</a>
+            <a href="whole-life.html">🌿 Whole Life Insurance</a>
+            <a href="universal-life.html">⚙️ Universal Life</a>
+            <a href="mortgage-insurance.html">🏠 Mortgage Insurance</a>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Living Benefits</div>
+            <a href="critical-illness.html">🩺 Critical Illness</a>
+            <a href="disability.html">🦺 Disability Insurance</a>
+            <a href="health-dental.html">💊 Drug &amp; Dental</a>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Planning</div>
+            <a href="estate-planning.html">🏭 Estate Planning</a>
+            <a href="business-insurance.html">💼 Business Insurance</a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown" id="dd-invest">
+        <a href="#">Investments <span class="dropdown-arrow"></span></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Registered Accounts</div>
+            <a href="rrsp.html">📈 RRSP</a>
+            <a href="tfsa.html">💰 TFSA</a>
+            <a href="fhsa.html">🏡 FHSA</a>
+            <a href="resp.html">🎓 RESP</a>
+            <a href="rdsp.html">♿ RDSP</a>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section">
+            <div class="dropdown-section-title">Other</div>
+            <a href="non-registered.html">📊 Non-Registered</a>
+            <a href="retirement-planning.html">🌞 Retirement Planning</a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown" id="dd-calc">
+        <a href="#">Calculators <span class="dropdown-arrow"></span></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-section">
+            <a href="financial-calculators.html">🧮 Investment Calculators</a>
+            <a href="needs-analysis.html">📝 Needs Analysis</a>
+            <a href="investment-account-quiz.html">🏦 TFSA vs RRSP vs FHSA Quiz</a>
+            <a href="estate-planning-calculator.html">🔒 Estate Planning Calculator</a>
+          </div>
+        </div>
+      </div>
+      <a href="credit-cards.html">Credit Cards</a>
+      <a href="get-quotes.html">Get Quotes</a>
+      <a href="get-quotes.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-wiz">
+    <div class="hero-wiz-letter hero-wiz-w">W</div>
+    <div class="hero-wiz-letter hero-wiz-i">I</div>
+    <div class="hero-wiz-letter hero-wiz-z">Z</div>
+    <div class="hero-wiz-label">Wisdom · Integrity · Zeal</div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Free · Instant · Canadian Methodology</div>
+      <h1>Life Insurance<br><em>Needs Analysis</em></h1>
+      <p class="hero-tagline">
+        <span class="hero-tagline-l1">Enter your details · Get your coverage number instantly</span>
+        <span class="hero-tagline-l2">Based on income replacement, debts &amp; your family's real needs.</span>
+      </p>
+      <div class="hero-trust">
+        <span class="hero-trust-item">🇨🇦 Built for Canada</span>
+        <span class="hero-trust-item">📊 PV-Based Methodology</span>
+        <span class="hero-trust-item">✅ Includes CI &amp; Disability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Calculator ── -->
+<div style="background:#F8F9FA">
+<div class="calc-area">
+
+  <!-- Client info bar -->
+  <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;align-items:flex-end">
+    <div style="flex:1;min-width:180px;max-width:360px">
+      <label style="display:block;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:6px">Client Name</label>
+      <input id="n-client-name" type="text" placeholder="e.g. John &amp; Sarah Smith" style="width:100%;padding:10px 14px;border:1.5px solid #e8eaf0;border-radius:9px;font-size:0.88rem;font-weight:600;color:#0F2142;background:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='#3a6bc0'" onblur="this.style.borderColor='#e8eaf0'">
+    </div>
+  </div>
+
+  <!-- 3-column card grid -->
+  <div class="needs-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start">
+
+    <!-- Card 1: Cash needs (red) -->
+    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #E63946">
+      <div class="needs-sec-label" style="color:#E63946;margin-top:0">Cash needs</div>
+      <div class="input-group">
+        <div class="input-label">Mortgage / debt <span class="input-val" id="n-mortgage-lbl">$400,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-mortgage" type="number" value="400000" min="0" step="10000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="2000000" step="10000" value="400000" oninput="document.getElementById('n-mortgage').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Funeral &amp; estate <span class="input-val" id="n-funeral-lbl">$15,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-funeral" type="number" value="15000" min="0" step="1000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="100000" step="1000" value="15000" oninput="document.getElementById('n-funeral').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Emergency fund <span class="input-val" id="n-emergency-lbl">$20,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-emergency" type="number" value="20000" min="0" step="5000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="200000" step="5000" value="20000" oninput="document.getElementById('n-emergency').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Education fund <span class="input-val" id="n-education-lbl">$0</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-education" type="number" value="0" min="0" step="5000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="300000" step="5000" value="0" oninput="document.getElementById('n-education').value=this.value;calcNeeds()">
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Section total</span>
+        <span style="font-size:0.92rem;font-weight:800;color:#E63946" id="n-col1-total">$435,000</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Income replacement (blue) -->
+    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #3a6bc0">
+      <div class="needs-sec-label" style="color:#3a6bc0;margin-top:0">Income replacement</div>
+      <div class="input-group">
+        <div class="input-label">Annual income <span class="input-val" id="n-income-lbl">$90,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-income" type="number" value="90000" min="0" step="5000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="500000" step="5000" value="90000" oninput="document.getElementById('n-income').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">% family needs <span class="input-val" id="n-pct-lbl">70%</span></div>
+        <div class="input-wrap">
+          <input class="calc-input no-prefix suffix-pad" id="n-pct" type="number" value="70" min="10" max="100" step="5" oninput="calcNeeds()">
+          <span class="input-suffix">%</span>
+        </div>
+        <input class="calc-range" type="range" min="10" max="100" step="5" value="70" oninput="document.getElementById('n-pct').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Years of support <span class="input-val" id="n-yrs-lbl">20 yrs</span></div>
+        <div class="input-wrap">
+          <input class="calc-input no-prefix suffix-pad" id="n-yrs" type="number" value="20" min="1" max="40" step="1" oninput="needsClearChips('yrs-chips');calcNeeds()">
+          <span class="input-suffix">yrs</span>
+        </div>
+        <input class="calc-range" id="n-yrs-r" type="range" min="1" max="40" step="1" value="20" oninput="document.getElementById('n-yrs').value=this.value;needsClearChips('yrs-chips');calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Expected return <span class="input-val" id="n-ret-lbl">6%</span></div>
+        <div class="input-wrap">
+          <input class="calc-input no-prefix suffix-pad" id="n-ret" type="number" value="6" min="1" max="12" step="0.5" oninput="needsClearChips('ret-chips');calcNeeds()">
+          <span class="input-suffix">%</span>
+        </div>
+        <input class="calc-range" id="n-ret-r" type="range" min="1" max="12" step="0.5" value="6" oninput="document.getElementById('n-ret').value=this.value;needsClearChips('ret-chips');calcNeeds()">
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Section total</span>
+        <span style="font-size:0.92rem;font-weight:800;color:#3a6bc0" id="n-col2-total">$819,000</span>
+      </div>
+    </div>
+
+    <!-- Card 3: Assets to deduct (green) -->
+    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #4caf7d">
+      <div class="needs-sec-label" style="color:#1a7a4a;margin-top:0">Assets to deduct</div>
+      <div class="input-group">
+        <div class="input-label">Existing life insurance <span class="input-val" id="n-ins-lbl">$0</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-ins" type="number" value="0" min="0" step="10000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="2000000" step="10000" value="0" oninput="document.getElementById('n-ins').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Group / employer coverage <span class="input-val" id="n-group-lbl">$0</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-group" type="number" value="0" min="0" step="10000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="1000000" step="10000" value="0" oninput="document.getElementById('n-group').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">RRSPs / investments <span class="input-val" id="n-rrsp-lbl">$50,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-rrsp" type="number" value="50000" min="0" step="5000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="2000000" step="5000" value="50000" oninput="document.getElementById('n-rrsp').value=this.value;calcNeeds()">
+      </div>
+      <div class="input-group">
+        <div class="input-label">Savings / cash <span class="input-val" id="n-savings-lbl">$20,000</span></div>
+        <div class="input-wrap"><span class="input-prefix">$</span>
+          <input class="calc-input" id="n-savings" type="number" value="20000" min="0" step="1000" oninput="calcNeeds()">
+        </div>
+        <input class="calc-range" type="range" min="0" max="500000" step="1000" value="20000" oninput="document.getElementById('n-savings').value=this.value;calcNeeds()">
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Already covered</span>
+        <span style="font-size:0.92rem;font-weight:800;color:#1a7a4a" id="n-col3-total">$70,000</span>
+      </div>
+    </div>
+
+  </div><!-- /needs-3col -->
+
+  <!-- Assumptions bar -->
+  <div class="needs-assump-bar" style="margin-top:16px;background:#fff;border-radius:12px;padding:16px 22px;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
+      <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📅 Years of support</div>
+      <div class="needs-chips" id="yrs-chips" style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',10,'yrs-chips')">10 yrs</button>
+        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',15,'yrs-chips')">15 yrs</button>
+        <button class="needs-chip active" onclick="needsChip('n-yrs','n-yrs-r',20,'yrs-chips')">20 yrs</button>
+        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',25,'yrs-chips')">25 yrs</button>
+        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',30,'yrs-chips')">30 yrs</button>
+      </div>
+      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">Until youngest child finishes school, or partner reaches retirement</div>
+    </div>
+
+    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
+
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
+      <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📈 Expected return</div>
+      <div class="needs-chips" id="ret-chips" style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="needs-chip" onclick="needsChip('n-ret','n-ret-r',4,'ret-chips')">Conservative 4%</button>
+        <button class="needs-chip active" onclick="needsChip('n-ret','n-ret-r',6,'ret-chips')">Balanced 6%</button>
+        <button class="needs-chip" onclick="needsChip('n-ret','n-ret-r',9,'ret-chips')">Growth 9%</button>
+      </div>
+      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">What the insurance payout could realistically earn if invested</div>
+    </div>
+
+    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
+
+    <!-- PV Factor badge -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
+      <div style="font-size:0.58rem;font-weight:700;color:#aaa;letter-spacing:0.08em;text-transform:uppercase">PV Factor</div>
+      <div style="font-size:1.5rem;font-weight:800;color:#3a6bc0;line-height:1" id="n-pv-factor">11.47×</div>
+      <div style="font-size:0.58rem;color:#bbb;text-align:center;line-height:1.4" id="n-pv-factor-sub">20 yrs @ 6%</div>
+      <div style="font-size:0.56rem;color:#ccc;text-align:center;max-width:110px;line-height:1.4;margin-top:2px">$1/yr of income needs this much coverage today</div>
+    </div>
+
+  </div><!-- /assumptions bar -->
+
+  <!-- Full-width result strip -->
+  <div class="result-card" style="margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center" id="needs-result-strip">
+
+    <!-- Left: big number -->
+    <div class="needs-strip-left" style="min-width:160px">
+      <div class="result-eyebrow" style="margin-bottom:8px">Recommended Coverage</div>
+      <div class="result-val" id="n-result-main" style="font-size:2rem;line-height:1">$1,184,000</div>
+      <div class="result-note" id="n-result-sub" style="margin-top:8px;font-size:0.68rem;max-width:180px">Review with a licensed advisor for a personalized plan.</div>
+    </div>
+
+    <!-- Middle: breakdown + bars -->
+    <div class="needs-strip-mid" style="border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);padding:0 24px">
+      <div class="needs-breakdown-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Cash needs</div>
+          <div class="result-val white" id="nb-cash" style="font-size:1.1rem">$435K</div>
+          <div class="result-note" id="n-s1-total">$435,000</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Income replacement</div>
+          <div class="result-val white" id="nb-income" style="font-size:1.1rem">$819K</div>
+          <div class="result-note" id="n-s2-total">$819,000</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Assets deducted</div>
+          <div class="result-val green" id="nb-assets" style="font-size:1.1rem">−$70K</div>
+          <div class="result-note" id="n-s3-total">$70,000</div>
+        </div>
+      </div>
+      <div class="result-bar-wrap">
+        <div class="result-bar-row">
+          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#E63946;display:inline-block;flex-shrink:0"></span>Cash</div>
+          <div class="result-bar-track"><div class="result-bar-fill gold" id="nbar-cash" style="width:37%"></div></div>
+          <div class="result-bar-text" id="nbar-cash-pct">37%</div>
+        </div>
+        <div class="result-bar-row">
+          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#3a6bc0;display:inline-block;flex-shrink:0"></span>Income</div>
+          <div class="result-bar-track"><div class="result-bar-fill green" id="nbar-inc" style="width:69%"></div></div>
+          <div class="result-bar-text" id="nbar-inc-pct">69%</div>
+        </div>
+        <div class="result-bar-row">
+          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#4caf7d;display:inline-block;flex-shrink:0"></span>Assets</div>
+          <div class="result-bar-track"><div class="result-bar-fill green" id="nbar-ass" style="width:6%"></div></div>
+          <div class="result-bar-text" id="nbar-ass-pct">6%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: CTAs -->
+    <div class="needs-strip-right" style="display:flex;flex-direction:column;gap:10px;min-width:150px">
+      <button onclick="downloadNeedsReport()" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:#E63946;color:#fff;text-align:center;border:none;cursor:pointer;width:100%">📄 Download Report</button>
+      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20needs%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);text-align:center">💬 Chat with Shivang</a>
+      <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);text-align:center">Get Instant Quote</a>
+      <div style="font-size:0.58rem;color:rgba(255,255,255,0.18);text-align:center;line-height:1.5">Educational only · Not advice<br>Shivang Goyal</div>
+    </div>
+
+  </div><!-- /result strip -->
+
+  <!-- Additional coverage: CI + Disability -->
+  <div style="margin-top:32px">
+    <div class="needs-sec-label" style="margin-top:0;margin-bottom:16px;font-size:0.6rem">Also consider — other coverage gaps</div>
+    <div class="needs-extra-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+      <!-- Critical Illness card -->
+      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0">
+
+        <!-- Header: label + result + recovery chips -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E63946;margin-bottom:8px">🫀 Critical Illness Insurance</div>
+            <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-ci-amount">—</div>
+            <div style="font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:6px">Suggested lump-sum · iA Financial methodology</div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Recovery period</div>
+            <div style="display:flex;gap:6px" id="ci-recovery-chips">
+              <button onclick="setCIRecovery(12,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:#E63946;color:#fff;border:1px solid #E63946;transition:all 0.2s">12 mo</button>
+              <button onclick="setCIRecovery(18,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">18 mo</button>
+              <button onclick="setCIRecovery(24,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">24 mo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 monthly inputs: 2×2 grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Mortgage / rent <span id="ci-housing-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-housing" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Loans / credit cards <span id="ci-loans-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-loans" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">RRSP / TFSA / RESP <span id="ci-savings-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-savings" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Other monthly expenses <span id="ci-other-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
+            <div style="position:relative">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
+              <input id="ci-other" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculation breakdown -->
+        <div style="background:rgba(255,255,255,0.05);border-radius:9px;padding:12px 14px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Monthly commitments × <span id="ci-months-label">12</span> months</span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff" id="ci-monthly-total">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Medical expenses <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff">$15,000</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07)">
+            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Wellness budget <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
+            <span style="font-size:0.75rem;font-weight:800;color:#fff">$10,000</span>
+          </div>
+        </div>
+
+        <div style="font-size:0.64rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:14px">A tax-free lump sum paid if you're diagnosed with a covered condition (heart attack, cancer, stroke, etc.). Covers what OHIP doesn't — lost income during recovery, private care, home adjustments.</div>
+        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Critical%20Illness%20insurance" target="_blank" style="display:block;text-align:center;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(230,57,70,0.18);color:#E63946;border:1px solid rgba(230,57,70,0.3)">Ask Shivang about CI →</a>
+
+      </div><!-- /CI card -->
+
+      <!-- Disability Insurance card -->
+      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0">
+        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#3a6bc0;margin-bottom:10px">🛡️ Disability Insurance</div>
+        <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-di-amount">$5,250<span style="font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.45)">/mo</span></div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.38);margin-top:5px;margin-bottom:12px">Suggested monthly benefit · 70% of income</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);line-height:1.65;flex:1">Replaces your paycheque if illness or injury stops you from working. 1 in 3 Canadians will face a disability before retirement. Group plans often fall short — an individual policy fills the gap.</div>
+        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Disability%20insurance" target="_blank" style="display:block;text-align:center;margin-top:16px;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(58,107,192,0.18);color:#6b9fff;border:1px solid rgba(58,107,192,0.3)">Ask Shivang about DI →</a>
+      </div><!-- /DI card -->
+
+    </div>
+  </div>
+
+  <div class="calc-disclaimer" style="margin-top:20px">For illustrative and educational purposes only. Results are estimates based on standard industry rules of thumb and do not constitute financial, insurance, or legal advice. Actual coverage needs vary by individual. Consult a licensed advisor. <strong>Shivang Goyal accepts no responsibility for decisions made based on this tool.</strong></div>
+
+  </div><!-- /calc-area -->
+</div><!-- /bg -->
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="anim-fade-up" style="transition-delay:0s">
+      <div class="footer-brand">Shivang Goyal</div>
+      <div class="footer-bio">Life Insurance Advisor<br>LLQP Certified · Ontario</div>
+      <div class="footer-links">
+        <a href="tel:+16479955891">📞 (647) 995-5891</a>
+        <a href="mailto:shivang.goyal.financial@gmail.com">✉️ shivang.goyal.financial@gmail.com</a>
+        <a href="https://wa.me/16479955891" target="_blank">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="anim-fade-up" style="transition-delay:0.1s">
+      <div class="footer-col-title">Insurance</div>
+      <div class="footer-links">
+        <a href="term-life.html">Term Life Insurance</a>
+        <a href="visitors.html">Visitors to Canada</a>
+        <a href="supervisa.html">Super Visa Insurance</a>
+        <a href="critical-illness.html">Critical Illness</a>
+        <a href="disability.html">Disability Insurance</a>
+        <a href="health-dental.html">Drug &amp; Dental</a>
+      </div>
+    </div>
+    <div class="anim-fade-up" style="transition-delay:0.2s">
+      <div class="footer-col-title">Investments</div>
+      <div class="footer-links">
+        <a href="rrsp.html">RRSP</a>
+        <a href="tfsa.html">TFSA</a>
+        <a href="fhsa.html">FHSA</a>
+        <a href="resp.html">RESP</a>
+        <a href="estate-planning.html">Estate Planning</a>
+        <a href="business-insurance.html">Business Insurance</a>
+      </div>
+    </div>
+    <div class="anim-fade-up" style="transition-delay:0.3s">
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-links">
+        <a href="about.html">About Shivang</a>
+        <a href="awards.html">Credentials &amp; Reviews</a>
+        <a href="get-quotes.html">Get a Quote</a>
+        <a href="https://www.instagram.com/thefinwiz.ca" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank">YouTube</a>
+        <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank">LinkedIn</a>
+        <a href="https://finwiz.finlywealth.com" target="_blank">💳 FinlyWealth</a>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <p>&copy; 2025 Shivang Goyal | Insurance &amp; Financial Solutions | Ontario Licensed Advisor</p>
+    <div class="footer-disclaimer">
+      <strong style="color:rgba(255,255,255,0.45);">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Insurance products are subject to underwriting approval and policy terms. Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice. Past performance of investment products does not guarantee future results. Shivang Goyal operates as an independent advisor and is not an employee of any insurance carrier.
+      <a href="privacy-policy.html" style="color:rgba(255,255,255,0.35)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,0.35)">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══ NEEDS ANALYSIS JS ══ */
+function needsRaw(el) { el.value = el.value.replace(/,/g, ''); }
+function needsFmt(el) {
+  const n = parseFloat(el.value.replace(/,/g, '')) || 0;
+  el.value = n > 0 ? Math.round(n).toLocaleString('en-CA') : '0';
+  calcNeeds();
+}
+function fmtN(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(2).replace(/\.?0+$/, '') + 'M';
+  if (n >= 1000)    return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtNFull(n) { return '$' + Math.round(n).toLocaleString(); }
+function pvFactor(r, n) {
+  if (r <= 0) return n;
+  return (1 - Math.pow(1 + r, -n)) / r;
+}
+function needsChip(inputId, rangeId, val, groupId) {
+  const inp = document.getElementById(inputId);
+  const rng = document.getElementById(rangeId);
+  if (inp) inp.value = val;
+  if (rng) rng.value = val;
+  const group = document.getElementById(groupId);
+  if (group) group.querySelectorAll('.needs-chip').forEach(c => c.classList.remove('active'));
+  if (event && event.target) event.target.classList.add('active');
+  calcNeeds();
+}
+function needsClearChips(groupId) {
+  const group = document.getElementById(groupId);
+  if (group) group.querySelectorAll('.needs-chip').forEach(c => c.classList.remove('active'));
+}
+
+function calcNeeds() {
+  const g = id => parseFloat((document.getElementById(id)?.value || '0').replace(/,/g, '')) || 0;
+  const s = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+
+  // Card 1
+  const funeral   = g('n-funeral');
+  const mortgage  = g('n-mortgage');
+  const emergency = g('n-emergency');
+  const education = g('n-education');
+  const s1 = funeral + mortgage + emergency + education;
+
+  // Card 2
+  const income = g('n-income');
+  const pct    = g('n-pct') / 100;
+  const yrs    = g('n-yrs');
+  const ret    = g('n-ret') / 100;
+  const pv     = pvFactor(ret, yrs);
+  const s2     = income * pct * pv;
+
+  // Live label updates
+  s('n-mortgage-lbl',  '$'+Math.round(mortgage).toLocaleString('en-CA'));
+  s('n-funeral-lbl',   '$'+Math.round(funeral).toLocaleString('en-CA'));
+  s('n-emergency-lbl', '$'+Math.round(emergency).toLocaleString('en-CA'));
+  s('n-education-lbl', '$'+Math.round(education).toLocaleString('en-CA'));
+  s('n-income-lbl',    '$'+Math.round(income).toLocaleString('en-CA'));
+  s('n-pct-lbl',       Math.round(pct*100)+'%');
+  s('n-yrs-lbl',       yrs+' yrs');
+  s('n-ret-lbl',       g('n-ret') + '%');
+  s('n-ins-lbl',       '$'+Math.round(g('n-ins')).toLocaleString('en-CA'));
+  s('n-group-lbl',     '$'+Math.round(g('n-group')).toLocaleString('en-CA'));
+  s('n-rrsp-lbl',      '$'+Math.round(g('n-rrsp')).toLocaleString('en-CA'));
+  s('n-savings-lbl',   '$'+Math.round(g('n-savings')).toLocaleString('en-CA'));
+
+  // PV box
+  s('n-pv-factor', pv.toFixed(2) + '×');
+  s('n-pv-factor-sub', yrs + ' yrs @ ' + g('n-ret') + '%');
+
+  // Card 3
+  const ins     = g('n-ins');
+  const grp     = g('n-group');
+  const rrsp    = g('n-rrsp');
+  const savings = g('n-savings');
+  const s3 = ins + grp + rrsp + savings;
+
+  // Card subtotals
+  s('n-col1-total', fmtNFull(s1));
+  s('n-col2-total', fmtNFull(Math.round(s2)));
+  s('n-col3-total', fmtNFull(s3));
+
+  // Main result
+  const raw     = s1 + s2 - s3;
+  const result  = Math.max(0, raw);
+  const rounded = Math.ceil(result / 25000) * 25000;
+
+  s('n-s1-total', fmtNFull(s1));
+  s('n-s2-total', fmtNFull(Math.round(s2)));
+  s('n-s3-total', fmtNFull(s3));
+
+  s('n-result-main', fmtNFull(rounded));
+  const shortfall = raw < 0;
+  const mainEl = document.getElementById('n-result-main');
+  if (mainEl) mainEl.style.color = shortfall ? '#4caf7d' : '#E63946';
+  s('n-result-sub', shortfall
+    ? 'Your existing assets already cover your estimated needs — great financial position!'
+    : 'Recommended coverage · Review with an advisor for a personalized plan');
+
+  // Breakdown
+  s('nb-cash',   fmtN(s1));
+  s('nb-income', fmtN(Math.round(s2)));
+  s('nb-assets', '−' + fmtN(s3));
+
+  // Bars
+  const total   = s1 + s2;
+  const cashPct = total > 0 ? Math.round(s1/total*100) : 0;
+  const incPct  = total > 0 ? Math.round(s2/total*100) : 0;
+  const assPct  = total > 0 ? Math.min(100, Math.round(s3/total*100)) : 0;
+  s('nbar-cash-pct', cashPct + '%');
+  s('nbar-inc-pct',  incPct  + '%');
+  s('nbar-ass-pct',  assPct  + '%');
+  const bf = id => document.getElementById(id);
+  if (bf('nbar-cash')) bf('nbar-cash').style.width = cashPct + '%';
+  if (bf('nbar-inc'))  bf('nbar-inc').style.width  = Math.min(100,incPct) + '%';
+  if (bf('nbar-ass'))  bf('nbar-ass').style.width  = assPct + '%';
+
+  // DI
+  const diMonthly = income > 0 ? Math.min(Math.round(income * 0.70 / 12), 10000) : 0;
+  const diEl = document.getElementById('n-di-amount');
+  if (diEl) diEl.innerHTML = income > 0
+    ? '$' + diMonthly.toLocaleString('en-CA') + '<span style="font-size:0.9rem;font-weight:500;color:rgba(255,255,255,.45)">/mo</span>'
+    : '—';
+
+  calcCI();
+}
+
+// ── CI ──
+var ciMonths = 12;
+function setCIRecovery(months, btn) {
+  ciMonths = months;
+  document.querySelectorAll('#ci-recovery-chips button').forEach(function(b) {
+    b.style.background  = 'rgba(255,255,255,0.08)';
+    b.style.color       = 'rgba(255,255,255,0.5)';
+    b.style.borderColor = 'rgba(255,255,255,0.15)';
+  });
+  btn.style.background  = '#E63946';
+  btn.style.color       = '#fff';
+  btn.style.borderColor = '#E63946';
+  calcCI();
+}
+function calcCI() {
+  const housing = parseFloat(document.getElementById('ci-housing')?.value) || 0;
+  const loans   = parseFloat(document.getElementById('ci-loans')?.value)   || 0;
+  const savings = parseFloat(document.getElementById('ci-savings')?.value) || 0;
+  const other   = parseFloat(document.getElementById('ci-other')?.value)   || 0;
+  const monthly = housing + loans + savings + other;
+  const raw     = monthly * ciMonths + 15000 + 10000;
+  const rounded = monthly > 0 ? Math.ceil(raw / 25000) * 25000 : 0;
+
+  const fmtM = n => n > 0 ? '$' + n.toLocaleString('en-CA') + '/mo' : '';
+  const fmtC = n => '$' + Math.round(n).toLocaleString('en-CA');
+  const el   = id => document.getElementById(id);
+
+  if (el('ci-housing-lbl')) el('ci-housing-lbl').textContent = fmtM(housing);
+  if (el('ci-loans-lbl'))   el('ci-loans-lbl').textContent   = fmtM(loans);
+  if (el('ci-savings-lbl')) el('ci-savings-lbl').textContent = fmtM(savings);
+  if (el('ci-other-lbl'))   el('ci-other-lbl').textContent   = fmtM(other);
+  if (el('ci-months-label'))  el('ci-months-label').textContent  = ciMonths;
+  if (el('ci-monthly-total')) el('ci-monthly-total').textContent = monthly > 0 ? fmtC(monthly * ciMonths) : '—';
+  if (el('n-ci-amount'))      el('n-ci-amount').textContent      = rounded > 0 ? fmtC(rounded) : '—';
+}
+
+// ── PDF Report ──
+function downloadNeedsReport() {
+  const clientName   = (document.getElementById('n-client-name').value || '').trim() || 'Client';
+  const g = id => parseFloat(document.getElementById(id)?.value) || 0;
+  const mortgage  = g('n-mortgage');
+  const funeral   = g('n-funeral');
+  const emergency = g('n-emergency');
+  const education = g('n-education');
+  const income    = g('n-income');
+  const pct       = g('n-pct');
+  const yrs       = g('n-yrs');
+  const ret       = g('n-ret');
+  const ins       = g('n-ins');
+  const grp       = g('n-group');
+  const rrsp      = g('n-rrsp');
+  const savings   = g('n-savings');
+
+  const totalCoverage = document.getElementById('n-result-main').textContent.trim();
+  const cashNeeds     = document.getElementById('n-s1-total')?.textContent.trim() || '—';
+  const incomeNeeds   = document.getElementById('n-s2-total')?.textContent.trim() || '—';
+  const assetsTotal   = document.getElementById('n-s3-total')?.textContent.trim() || '—';
+  const ciAmount      = document.getElementById('n-ci-amount').textContent.trim();
+  const ciHousing     = parseFloat(document.getElementById('ci-housing').value) || 0;
+  const ciLoans       = parseFloat(document.getElementById('ci-loans').value)   || 0;
+  const ciSav         = parseFloat(document.getElementById('ci-savings').value) || 0;
+  const ciOther       = parseFloat(document.getElementById('ci-other').value)   || 0;
+  const ciMonthly     = ciHousing + ciLoans + ciSav + ciOther;
+  const ciMonthlyTotal = document.getElementById('ci-monthly-total').textContent.trim();
+  const pvF           = document.getElementById('n-pv-factor').textContent.trim();
+  const diRaw         = document.getElementById('n-di-amount');
+  const diText        = diRaw ? diRaw.innerText.replace(/\s+/g,' ').trim() : '—';
+  const resultSub     = document.getElementById('n-result-sub').textContent.trim();
+  const isShortfall   = resultSub.includes('already cover');
+  const fmt = n => n > 0 ? '$' + n.toLocaleString('en-CA') : '$0';
+
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>Life Insurance Needs Analysis — ${clientName}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#1a1a1a;background:#fff;font-size:10.5pt}
+@page{size:letter;margin:.5in .6in}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:13px;border-bottom:3px solid #0F2142}
+.logo-name{font-size:20pt;font-weight:900;letter-spacing:.02em;color:#0F2142}
+.logo-tag{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:#E63946;font-weight:700;margin-top:3px}
+.advisor-block{text-align:right;font-size:8.5pt;color:#666;line-height:1.7}
+.advisor-block strong{color:#0F2142;font-size:10pt;display:block;font-weight:800}
+.doc-title{font-size:15pt;font-weight:900;color:#0F2142;margin-bottom:3px}
+.doc-sub{font-size:7.5pt;color:#aaa;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.client-bar{background:#f4f6fb;border-radius:7px;padding:9px 14px;display:flex;gap:34px;margin-bottom:13px;border-left:4px solid #0F2142}
+.cf label{font-size:7.5pt;text-transform:uppercase;letter-spacing:.12em;color:#aaa;font-weight:700;display:block;margin-bottom:2px}
+.cf span{font-size:11pt;font-weight:800;color:#0F2142}
+.result-hero{background:#0F2142;border-radius:9px;padding:14px 20px;color:#fff;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between}
+.rh-label{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px}
+.rh-amount{font-size:26pt;font-weight:900;color:#E63946;line-height:1}
+.rh-note{font-size:7.5pt;color:rgba(255,255,255,.35);margin-top:5px;max-width:180px;line-height:1.45}
+.rh-breakdown{display:flex;gap:20px;flex-shrink:0}
+.bd-item{text-align:center}
+.bd-lbl{font-size:7.5pt;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:3px}
+.bd-val{font-size:12pt;font-weight:900}
+.bd-val.red{color:#E63946}.bd-val.blue{color:#6b9fff}.bd-val.green{color:#4caf7d}
+.sec-title{font-size:7.5pt;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#E63946;margin:12px 0 8px}
+.inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.ic{background:#f9f9fb;border-radius:7px;padding:10px 12px;border-top:2.5px solid #e0e3ec}
+.ic.red-t{border-top-color:#E63946}.ic.blue-t{border-top-color:#3a6bc0}.ic.green-t{border-top-color:#4caf7d}
+.ic-title{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:6px}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f0f0f0}
+.ir:last-of-type{border-bottom:none}
+.ir .lbl{font-size:8.5pt;color:#666}.ir .val{font-size:9pt;font-weight:700;color:#0F2142}
+.subtotal{display:flex;justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid #ddd}
+.st-lbl{font-size:7.5pt;text-transform:uppercase;color:#bbb;font-weight:700;letter-spacing:.06em}
+.st-val{font-size:10pt;font-weight:900}
+.st-val.red{color:#c0392b}.st-val.blue{color:#2c5fab}.st-val.green{color:#1a7a4a}
+.assump-row{background:#f4f6fb;border-radius:7px;padding:9px 14px;display:flex;gap:30px;margin-bottom:12px;font-size:9pt}
+.as-item label{color:#bbb;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:2px;font-size:7.5pt}
+.as-item span{color:#0F2142;font-weight:800}
+.extra-grid{display:grid;grid-template-columns:3fr 2fr;gap:11px;margin-bottom:16px}
+.ec{background:#0F2142;border-radius:8px;padding:13px 15px;color:#fff}
+.ec-type{font-size:7.5pt;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:5px}
+.ec-type.red{color:#E63946}.ec-type.blue{color:#6b9fff}
+.ec-amount{font-size:18pt;font-weight:900;color:#fff;line-height:1;margin-bottom:7px}
+.ec-sub{font-size:7.5pt;color:rgba(255,255,255,.38);line-height:1.6}
+.ec-row{display:flex;justify-content:space-between;font-size:8pt;color:rgba(255,255,255,.5);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.ec-row:last-of-type{border-bottom:none}
+.ec-row span:last-child{font-weight:700;color:rgba(255,255,255,.8)}
+.ec-total{display:flex;justify-content:space-between;font-size:8pt;margin-top:7px;padding-top:6px;border-top:1px solid rgba(255,255,255,.15)}
+.ec-total span:last-child{font-weight:800;color:#fff}
+.sig-section{margin-top:18px;padding-top:14px;border-top:2px solid #e8eaf0}
+.sig-title-txt{font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0F2142;margin-bottom:14px}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.sig-line{border-bottom:1.5px solid #0F2142;height:36px;margin-bottom:5px}
+.sig-lbl{font-size:8pt;color:#aaa;text-transform:uppercase;letter-spacing:.08em}
+.sig-name{font-size:9.5pt;font-weight:700;color:#0F2142;margin-top:2px}
+</style></head><body>
+<div class="header">
+  <div><div class="logo-name">Shivang Goyal</div><div class="logo-tag">Licensed Insurance Advisor (LLQP) &nbsp;·&nbsp; Ontario</div></div>
+  <div class="advisor-block">(647) 995-5891 &nbsp;·&nbsp; shivang.goyal.financial@gmail.com<br>wizinsurance.ca</div>
+</div>
+<div class="doc-title">Life Insurance Needs Analysis</div>
+<div class="doc-sub">Prepared for client review &nbsp;·&nbsp; wizinsurance.ca</div>
+<div class="client-bar">
+  <div class="cf"><label>Client Name</label><span>${clientName}</span></div>
+  <div class="cf"><label>Advisor</label><span>Shivang Goyal</span></div>
+</div>
+<div class="result-hero">
+  <div>
+    <div class="rh-label">Recommended Life Insurance Coverage</div>
+    <div class="rh-amount">${totalCoverage}</div>
+    <div class="rh-note">${isShortfall ? 'Existing assets already cover estimated needs — strong financial position.' : 'Estimated coverage gap. Subject to underwriting approval.'}</div>
+  </div>
+  <div class="rh-breakdown">
+    <div class="bd-item"><div class="bd-lbl">Cash Needs</div><div class="bd-val red">${cashNeeds}</div></div>
+    <div class="bd-item"><div class="bd-lbl">Income (PV)</div><div class="bd-val blue">${incomeNeeds}</div></div>
+    <div class="bd-item"><div class="bd-lbl">Less Assets</div><div class="bd-val green">−${assetsTotal}</div></div>
+  </div>
+</div>
+<div class="sec-title">Inputs Used in This Analysis</div>
+<div class="inputs-grid">
+  <div class="ic red-t">
+    <div class="ic-title">💸 Cash Needs</div>
+    <div class="ir"><span class="lbl">Mortgage / debt</span><span class="val">${fmt(mortgage)}</span></div>
+    <div class="ir"><span class="lbl">Funeral &amp; estate</span><span class="val">${fmt(funeral)}</span></div>
+    <div class="ir"><span class="lbl">Emergency fund</span><span class="val">${fmt(emergency)}</span></div>
+    <div class="ir"><span class="lbl">Education fund</span><span class="val">${fmt(education)}</span></div>
+    <div class="subtotal"><span class="st-lbl">Subtotal</span><span class="st-val red">${cashNeeds}</span></div>
+  </div>
+  <div class="ic blue-t">
+    <div class="ic-title">💰 Income Replacement</div>
+    <div class="ir"><span class="lbl">Annual income</span><span class="val">${fmt(income)}</span></div>
+    <div class="ir"><span class="lbl">Replacement %</span><span class="val">${pct}%</span></div>
+    <div class="ir"><span class="lbl">Years of support</span><span class="val">${yrs} yrs</span></div>
+    <div class="ir"><span class="lbl">Expected return</span><span class="val">${ret}%</span></div>
+    <div class="ir"><span class="lbl">PV factor applied</span><span class="val">${pvF}</span></div>
+    <div class="subtotal"><span class="st-lbl">Subtotal (PV)</span><span class="st-val blue">${incomeNeeds}</span></div>
+  </div>
+  <div class="ic green-t">
+    <div class="ic-title">✅ Assets to Deduct</div>
+    <div class="ir"><span class="lbl">Existing life insurance</span><span class="val">${fmt(ins)}</span></div>
+    <div class="ir"><span class="lbl">Group / employer coverage</span><span class="val">${fmt(grp)}</span></div>
+    <div class="ir"><span class="lbl">RRSPs / investments</span><span class="val">${fmt(rrsp)}</span></div>
+    <div class="ir"><span class="lbl">Savings / cash</span><span class="val">${fmt(savings)}</span></div>
+    <div class="subtotal"><span class="st-lbl">Already covered</span><span class="st-val green">${assetsTotal}</span></div>
+  </div>
+</div>
+<div class="assump-row">
+  <div class="as-item"><label>Years of Support</label><span>${yrs} years</span></div>
+  <div class="as-item"><label>Income Replacement</label><span>${pct}%</span></div>
+  <div class="as-item"><label>Expected Return</label><span>${ret}% / yr</span></div>
+  <div class="as-item"><label>PV Factor Applied</label><span>${pvF}</span></div>
+</div>
+<div class="sec-title">Additional Coverage to Consider</div>
+<div class="extra-grid">
+  <div class="ec">
+    <div class="ec-type red">🫀 Critical Illness Insurance</div>
+    <div class="ec-amount">${ciAmount}</div>
+    ${ciMonthly > 0 ? `
+    <div class="ec-row"><span>Mortgage / rent</span><span>${fmt(ciHousing)}/mo</span></div>
+    <div class="ec-row"><span>Loans / credit cards</span><span>${fmt(ciLoans)}/mo</span></div>
+    <div class="ec-row"><span>RRSP / TFSA / RESP</span><span>${fmt(ciSav)}/mo</span></div>
+    <div class="ec-row"><span>Other expenses</span><span>${fmt(ciOther)}/mo</span></div>
+    <div class="ec-total"><span>× ${ciMonths} mo + medical + wellness</span><span>${ciMonthlyTotal} + $25,000</span></div>
+    ` : `<div class="ec-sub">Tax-free lump sum on diagnosis of heart attack, cancer, stroke &amp; more. Enter monthly commitments to calculate.</div>`}
+  </div>
+  <div class="ec">
+    <div class="ec-type blue">🛡️ Disability Insurance</div>
+    <div class="ec-amount">${diText}</div>
+    <div class="ec-sub">Suggested monthly benefit · 70% of income, capped at $10,000/mo</div>
+  </div>
+</div>
+<div class="sig-section">
+  <div class="sig-title-txt">Acknowledgement &amp; Signature</div>
+  <div class="sig-grid">
+    <div><div class="sig-line"></div><div class="sig-lbl">Client Signature &amp; Date</div><div class="sig-name">${clientName}</div></div>
+    <div><div class="sig-line"></div><div class="sig-lbl">Advisor Signature &amp; Date</div><div class="sig-name">Shivang Goyal &nbsp;·&nbsp; LLQP</div></div>
+  </div>
+</div>
+</body></html>`;
+
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if (!win) { alert('Please allow pop-ups to download the report.'); return; }
+  win.document.write(html);
+  win.document.close();
+  setTimeout(() => win.print(), 600);
+}
+
+// ── Mobile nav ──
+(function(){
+  var btn=document.getElementById('hamburger'), nav=document.getElementById('mobileNav'), ov=document.getElementById('mobileOverlay');
+  if(!btn)return;
+  var _sy=0;
+  function stopScroll(e){var nb=nav.querySelector('.mobile-nav-body');if(nb&&e.target&&nb.contains(e.target)&&nb.scrollHeight>nb.clientHeight)return;e.preventDefault();}
+  function posNav(){var hdr=document.querySelector('header');var hh=hdr?hdr.getBoundingClientRect().bottom:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px)';}
+  function open(){posNav();_sy=window.scrollY;var hdr=document.querySelector('header');if(hdr){hdr.style.position='fixed';hdr.style.top='0';hdr.style.left='0';hdr.style.right='0';hdr.style.zIndex='10001';}document.body.style.position='fixed';document.body.style.top='-'+_sy+'px';document.body.style.width='100%';document.body.classList.add('menu-open');btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');document.addEventListener('touchmove',stopScroll,{passive:false});}
+  function close(){document.removeEventListener('touchmove',stopScroll);var de=document.documentElement;de.style.scrollBehavior='auto';document.body.style.position='';document.body.style.top='';document.body.style.width='';var hdr=document.querySelector('header');if(hdr){hdr.style.position='';hdr.style.top='';hdr.style.left='';hdr.style.right='';hdr.style.zIndex='';}window.scrollTo(0,_sy);de.style.scrollBehavior='';document.body.classList.remove('menu-open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');}
+  btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();});
+  ov.addEventListener('click',close);
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});
+  document.getElementById('mobileNavClose').addEventListener('click',close);
+})();
+
+// ── Dropdown hover ──
+(function(){
+  var t={};
+  function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';m.style.maxHeight=(window.innerHeight-r.bottom-16)+'px';}
+  function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}
+  function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}
+  function k(d){if(t[d.id])clearTimeout(t[d.id])}
+  document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});
+  document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});
+  window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true);
+})();
+
+// ── Scroll animations ──
+(function(){
+  var els=document.querySelectorAll('.anim-fade-up');
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target);}});},{threshold:0.1});
+  els.forEach(function(el){obs.observe(el);});
+})();
+
+// Init
+window.addEventListener('DOMContentLoaded', function() {
+  calcNeeds();
+});
+</script>
+</body>
+</html>

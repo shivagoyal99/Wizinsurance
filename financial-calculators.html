@@ -2567,10 +2567,29 @@
           <a href="rdsp.html"><span class="mnav-icon">♿</span>RDSP</a>
           <a href="non-registered.html"><span class="mnav-icon">📊</span>Non-Registered</a>
           <a href="retirement-planning.html"><span class="mnav-icon">🌅</span>Retirement Planning</a>
-          <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Financial Calculators</a>
+        </div>
+        <div class="mnav-cat-items">
+          <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Investment Calculators</a>
+          <a href="needs-analysis.html"><span class="mnav-icon">📝</span>Needs Analysis</a>
           <a href="investment-account-quiz.html"><span class="mnav-icon">🏦</span>TFSA vs RRSP vs FHSA Quiz</a>
+          <a href="estate-planning-calculator.html"><span class="mnav-icon">🔒</span>Estate Planning Calculator</a>
         </div>
 
+        
+
+                
+
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+          <span class="mnav-cat-label">Calculators</span>
+          <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+          <a href="financial-calculators.html"><span class="mnav-icon">🧮</span>Investment Calculators</a>
+          <a href="needs-analysis.html"><span class="mnav-icon">📝</span>Needs Analysis</a>
+          <a href="investment-account-quiz.html"><span class="mnav-icon">🏦</span>TFSA vs RRSP vs FHSA Quiz</a>
+          <a href="estate-planning-calculator.html"><span class="mnav-icon">🔒</span>Estate Planning Calculator</a>
+        </div>
         <a href="credit-cards.html">Credit Cards</a>
         <a href="get-quotes.html#contact">Contact Me</a>
       </div>
@@ -2663,11 +2682,17 @@
                             <a href="non-registered.html">📊 Non-Registered</a>
                             <a href="retirement-planning.html">🌞 Retirement Planning</a>
                         </div>
-                        <div class="dropdown-divider"></div>
+                    </div>
+                </div>
+
+                <div class="dropdown" id="dd-calc">
+                    <a href="#">Calculators <span class="dropdown-arrow"></span></a>
+                    <div class="dropdown-menu">
                         <div class="dropdown-section">
-                            <div class="dropdown-section-title">Tools</div>
-                            <a href="financial-calculators.html">🧮 Financial Calculators</a>
+                            <a href="financial-calculators.html">🧮 Investment Calculators</a>
+                            <a href="needs-analysis.html">📝 Needs Analysis</a>
                             <a href="investment-account-quiz.html">🏦 TFSA vs RRSP vs FHSA Quiz</a>
+                            <a href="estate-planning-calculator.html">🔒 Estate Planning Calculator</a>
                         </div>
                     </div>
                 </div>
@@ -2714,8 +2739,7 @@
 </div>
 <div class="calc-tabs-wrap">
 <div class="calc-tabs">
-  <button class="calc-tab active" onclick="switchTab('needs')">🛡️ Life Insurance Needs</button>
-  <button class="calc-tab" onclick="switchTab('sip')">Investment Calculator</button>
+  <button class="calc-tab active" onclick="switchTab('sip')">Investment Calculator</button>
   <button class="calc-tab" onclick="switchTab('resp')"><span class="resp-flag">🇨🇦 </span>RESP <span style="font-size:0.55rem;background:rgba(230,57,70,0.15);color:#E63946;border:1px solid rgba(230,57,70,0.3);border-radius:4px;padding:1px 5px;letter-spacing:0.06em;vertical-align:middle;margin-left:3px">Advanced</span></button>
   <button class="calc-tab" onclick="switchTab('goal')">Goal Planner</button>
   <button class="calc-tab" onclick="switchTab('swp')">Withdrawal (SWP)</button>
@@ -2728,7 +2752,7 @@
 <!-- PANEL 1: Monthly Investing (SIP) -->
 <!-- ════════════════════════════════════════ -->
 <div class="calc-area">
-<div class="calc-panel" id="panel-sip">
+<div class="calc-panel active" id="panel-sip">
   <div class="panel-title">Investment Calculator</div>
   <div class="panel-sub">See how monthly contributions and/or a lump sum grow over time. Set monthly to $0 for lump sum only, or set lump sum to $0 for monthly only.</div>
   <div class="calc-layout">
@@ -3335,339 +3359,7 @@
 
 
 
-<!-- ════════════════════════════════════════ -->
-<!-- PANEL: Life Insurance Needs Analysis   -->
-<!-- ════════════════════════════════════════ -->
-<div class="calc-panel active" id="panel-needs">
-  <div class="panel-title">Life Insurance Needs Analysis</div>
-  <div class="panel-sub">Estimate how much coverage your family needs — adjust the values and the result updates instantly.</div>
 
-  <!-- ── Client info bar ── -->
-  <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;align-items:flex-end">
-    <div style="flex:1;min-width:180px;max-width:360px">
-      <label style="display:block;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:6px">Client Name</label>
-      <input id="n-client-name" type="text" placeholder="e.g. John & Sarah Smith" style="width:100%;padding:10px 14px;border:1.5px solid #e8eaf0;border-radius:9px;font-size:0.88rem;font-weight:600;color:#0F2142;background:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='#3a6bc0'" onblur="this.style.borderColor='#e8eaf0'">
-    </div>
-  </div>
-
-  <!-- ── 3-column card grid ── -->
-  <div class="needs-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start">
-
-    <!-- Card 1: Cash needs (red) -->
-    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #E63946">
-      <div class="needs-sec-label" style="color:#E63946;margin-top:0">Cash needs</div>
-      <div class="input-group">
-        <div class="input-label">Mortgage / debt <span class="input-val" id="n-mortgage-lbl">$400,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-mortgage" type="number" value="400000" min="0" step="10000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="2000000" step="10000" value="400000" oninput="document.getElementById('n-mortgage').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Funeral &amp; estate <span class="input-val" id="n-funeral-lbl">$15,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-funeral" type="number" value="15000" min="0" step="1000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="100000" step="1000" value="15000" oninput="document.getElementById('n-funeral').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Emergency fund <span class="input-val" id="n-emergency-lbl">$20,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-emergency" type="number" value="20000" min="0" step="5000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="200000" step="5000" value="20000" oninput="document.getElementById('n-emergency').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Education fund <span class="input-val" id="n-education-lbl">$0</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-education" type="number" value="0" min="0" step="5000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="300000" step="5000" value="0" oninput="document.getElementById('n-education').value=this.value;calcNeeds()">
-      </div>
-      <!-- Subtotal -->
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
-        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Section total</span>
-        <span style="font-size:0.92rem;font-weight:800;color:#E63946" id="n-col1-total">$435,000</span>
-      </div>
-    </div>
-
-    <!-- Card 2: Income replacement (blue) -->
-    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #3a6bc0">
-      <div class="needs-sec-label" style="color:#3a6bc0;margin-top:0">Income replacement</div>
-      <div class="input-group">
-        <div class="input-label">Annual income <span class="input-val" id="n-income-lbl">$90,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-income" type="number" value="90000" min="0" step="5000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="500000" step="5000" value="90000" oninput="document.getElementById('n-income').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">% family needs <span class="input-val" id="n-pct-lbl">70%</span></div>
-        <div class="input-wrap">
-          <input class="calc-input no-prefix suffix-pad" id="n-pct" type="number" value="70" min="10" max="100" step="5" oninput="calcNeeds()">
-          <span class="input-suffix">%</span>
-        </div>
-        <input class="calc-range" type="range" min="10" max="100" step="5" value="70" oninput="document.getElementById('n-pct').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Years of support <span class="input-val" id="n-yrs-lbl">20 yrs</span></div>
-        <div class="input-wrap">
-          <input class="calc-input no-prefix suffix-pad" id="n-yrs" type="number" value="20" min="1" max="40" step="1" oninput="needsClearChips('yrs-chips');calcNeeds()">
-          <span class="input-suffix">yrs</span>
-        </div>
-        <input class="calc-range" id="n-yrs-r" type="range" min="1" max="40" step="1" value="20" oninput="document.getElementById('n-yrs').value=this.value;needsClearChips('yrs-chips');calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Expected return <span class="input-val" id="n-ret-lbl">6%</span></div>
-        <div class="input-wrap">
-          <input class="calc-input no-prefix suffix-pad" id="n-ret" type="number" value="6" min="1" max="12" step="0.5" oninput="needsClearChips('ret-chips');calcNeeds()">
-          <span class="input-suffix">%</span>
-        </div>
-        <input class="calc-range" id="n-ret-r" type="range" min="1" max="12" step="0.5" value="6" oninput="document.getElementById('n-ret').value=this.value;needsClearChips('ret-chips');calcNeeds()">
-      </div>
-      <!-- Subtotal -->
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
-        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Section total</span>
-        <span style="font-size:0.92rem;font-weight:800;color:#3a6bc0" id="n-col2-total">$819,000</span>
-      </div>
-    </div>
-
-    <!-- Card 3: Assets to deduct (green) -->
-    <div class="needs-card" style="background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(0,0,0,0.06);border-top:3px solid #4caf7d">
-      <div class="needs-sec-label" style="color:#1a7a4a;margin-top:0">Assets to deduct</div>
-      <div class="input-group">
-        <div class="input-label">Existing life insurance <span class="input-val" id="n-ins-lbl">$0</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-ins" type="number" value="0" min="0" step="10000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="2000000" step="10000" value="0" oninput="document.getElementById('n-ins').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Group / employer coverage <span class="input-val" id="n-group-lbl">$0</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-group" type="number" value="0" min="0" step="10000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="1000000" step="10000" value="0" oninput="document.getElementById('n-group').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">RRSPs / investments <span class="input-val" id="n-rrsp-lbl">$50,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-rrsp" type="number" value="50000" min="0" step="5000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="2000000" step="5000" value="50000" oninput="document.getElementById('n-rrsp').value=this.value;calcNeeds()">
-      </div>
-      <div class="input-group">
-        <div class="input-label">Savings / cash <span class="input-val" id="n-savings-lbl">$20,000</span></div>
-        <div class="input-wrap"><span class="input-prefix">$</span>
-          <input class="calc-input" id="n-savings" type="number" value="20000" min="0" step="1000" oninput="calcNeeds()">
-        </div>
-        <input class="calc-range" type="range" min="0" max="500000" step="1000" value="20000" oninput="document.getElementById('n-savings').value=this.value;calcNeeds()">
-      </div>
-      <!-- Subtotal -->
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #f0ede8;display:flex;justify-content:space-between;align-items:center">
-        <span style="font-size:0.62rem;color:#999;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Already covered</span>
-        <span style="font-size:0.92rem;font-weight:800;color:#1a7a4a" id="n-col3-total">$70,000</span>
-      </div>
-    </div>
-
-  </div><!-- /needs-3col -->
-
-  <!-- ── Assumptions bar ── -->
-  <div class="needs-assump-bar" style="margin-top:16px;background:#fff;border-radius:12px;padding:16px 22px;box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
-
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
-      <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📅 Years of support</div>
-      <div class="needs-chips" id="yrs-chips" style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',10,'yrs-chips')">10 yrs</button>
-        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',15,'yrs-chips')">15 yrs</button>
-        <button class="needs-chip active" onclick="needsChip('n-yrs','n-yrs-r',20,'yrs-chips')">20 yrs</button>
-        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',25,'yrs-chips')">25 yrs</button>
-        <button class="needs-chip" onclick="needsChip('n-yrs','n-yrs-r',30,'yrs-chips')">30 yrs</button>
-      </div>
-      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">Until youngest child finishes school, or partner reaches retirement</div>
-    </div>
-
-    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
-
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex:1;min-width:0">
-      <div style="font-size:0.62rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap">📈 Expected return</div>
-      <div class="needs-chips" id="ret-chips" style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="needs-chip" onclick="needsChip('n-ret','n-ret-r',4,'ret-chips')">Conservative 4%</button>
-        <button class="needs-chip active" onclick="needsChip('n-ret','n-ret-r',6,'ret-chips')">Balanced 6%</button>
-        <button class="needs-chip" onclick="needsChip('n-ret','n-ret-r',9,'ret-chips')">Growth 9%</button>
-      </div>
-      <div class="needs-assump-hint" style="font-size:0.6rem;color:#bbb;white-space:nowrap">What the insurance payout could realistically earn if invested</div>
-    </div>
-
-    <div class="needs-assump-divider" style="width:1px;background:#f0ede8;align-self:stretch;flex-shrink:0"></div>
-
-    <!-- PV Factor badge -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
-      <div style="font-size:0.58rem;font-weight:700;color:#aaa;letter-spacing:0.08em;text-transform:uppercase">PV Factor</div>
-      <div style="font-size:1.5rem;font-weight:800;color:#3a6bc0;line-height:1" id="n-pv-factor">11.47×</div>
-      <div style="font-size:0.58rem;color:#bbb;text-align:center;line-height:1.4" id="n-pv-factor-sub">20 yrs @ 6%</div>
-      <div style="font-size:0.56rem;color:#ccc;text-align:center;max-width:110px;line-height:1.4;margin-top:2px">$1/yr of income needs this much coverage today</div>
-    </div>
-
-  </div><!-- /assumptions bar -->
-
-  <!-- ── Full-width result strip ── -->
-  <div class="result-card" style="margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center" id="needs-result-strip">
-
-    <!-- Left: big number -->
-    <div class="needs-strip-left" style="min-width:160px">
-      <div class="result-eyebrow" style="margin-bottom:8px">Recommended Coverage</div>
-      <div class="result-val" id="n-result-main" style="font-size:2rem;line-height:1">$1,184,000</div>
-      <div class="result-note" id="n-result-sub" style="margin-top:8px;font-size:0.68rem;max-width:180px">Review with a licensed advisor for a personalized plan.</div>
-    </div>
-
-    <!-- Middle: breakdown rows + bars -->
-    <div class="needs-strip-mid" style="border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);padding:0 24px">
-      <div class="needs-breakdown-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
-        <div>
-          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Cash needs</div>
-          <div class="result-val white" id="nb-cash" style="font-size:1.1rem">$435K</div>
-          <div class="result-note" id="n-s1-total">$435,000</div>
-        </div>
-        <div>
-          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Income replacement</div>
-          <div class="result-val white" id="nb-income" style="font-size:1.1rem">$819K</div>
-          <div class="result-note" id="n-s2-total">$819,000</div>
-        </div>
-        <div>
-          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Assets deducted</div>
-          <div class="result-val green" id="nb-assets" style="font-size:1.1rem">−$70K</div>
-          <div class="result-note" id="n-s3-total">$70,000</div>
-        </div>
-      </div>
-      <div class="result-bar-wrap" style="margin-top:0">
-        <div class="result-bar-row">
-          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#E63946;display:inline-block;flex-shrink:0"></span>Cash</div>
-          <div class="result-bar-track"><div class="result-bar-fill gold" id="nbar-cash" style="width:37%"></div></div>
-          <div class="result-bar-text" id="nbar-cash-pct">37%</div>
-        </div>
-        <div class="result-bar-row">
-          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#3a6bc0;display:inline-block;flex-shrink:0"></span>Income</div>
-          <div class="result-bar-track"><div class="result-bar-fill green" id="nbar-inc" style="width:69%"></div></div>
-          <div class="result-bar-text" id="nbar-inc-pct">69%</div>
-        </div>
-        <div class="result-bar-row">
-          <div class="result-bar-name"><span style="width:8px;height:8px;border-radius:50%;background:#4caf7d;display:inline-block;flex-shrink:0"></span>Assets</div>
-          <div class="result-bar-track"><div class="result-bar-fill green" id="nbar-ass" style="width:6%"></div></div>
-          <div class="result-bar-text" id="nbar-ass-pct">6%</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: CTAs -->
-    <div class="needs-strip-right" style="display:flex;flex-direction:column;gap:10px;min-width:150px">
-      <button onclick="downloadNeedsReport()" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.78rem;text-decoration:none;background:#E63946;color:#fff;text-align:center;border:none;cursor:pointer;width:100%">📄 Download Report</button>
-      <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20needs%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);text-align:center">💬 Chat with Shivang</a>
-      <a href="https://ia.ca/life-insurance-calculator?cuid=ct0bQpfM" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);text-align:center">Get Instant Quote</a>
-      <div style="font-size:0.58rem;color:rgba(255,255,255,0.18);text-align:center;line-height:1.5">Educational only · Not advice<br>Shivang Goyal</div>
-    </div>
-
-  </div><!-- /result strip -->
-
-  <!-- ── Additional coverage: CI + Disability ── -->
-  <div style="margin-top:32px">
-    <div class="needs-sec-label" style="margin-top:0;margin-bottom:16px;font-size:0.6rem">Also consider — other coverage gaps</div>
-    <div class="needs-extra-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-
-      <!-- Critical Illness card — full width, iA Financial methodology -->
-      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0;grid-column:1/-1">
-
-        <!-- Header: label + result + recovery chips -->
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px">
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E63946;margin-bottom:8px">🫀 Critical Illness Insurance</div>
-            <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-ci-amount">—</div>
-            <div style="font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:6px">Suggested lump-sum · iA Financial methodology</div>
-          </div>
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Recovery period</div>
-            <div style="display:flex;gap:6px" id="ci-recovery-chips">
-              <button onclick="setCIRecovery(12,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:#E63946;color:#fff;border:1px solid #E63946;transition:all 0.2s">12 mo</button>
-              <button onclick="setCIRecovery(18,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">18 mo</button>
-              <button onclick="setCIRecovery(24,this)" style="padding:6px 13px;border-radius:6px;font-size:0.65rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s">24 mo</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 monthly inputs: 2×2 grid -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
-
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Mortgage / rent <span id="ci-housing-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
-            <div style="position:relative">
-              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
-              <input id="ci-housing" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            </div>
-          </div>
-
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Loans / credit cards <span id="ci-loans-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
-            <div style="position:relative">
-              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
-              <input id="ci-loans" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            </div>
-          </div>
-
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">RRSP / TFSA / RESP <span id="ci-savings-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
-            <div style="position:relative">
-              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
-              <input id="ci-savings" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            </div>
-          </div>
-
-          <div>
-            <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.38);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Other monthly expenses <span id="ci-other-lbl" style="color:rgba(255,255,255,0.55)"></span></div>
-            <div style="position:relative">
-              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.35);font-size:0.85rem;pointer-events:none">$</span>
-              <input id="ci-other" type="number" value="0" min="0" step="100" oninput="calcCI()" placeholder="0" style="width:100%;padding:9px 10px 9px 23px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-size:0.88rem;font-weight:700;outline:none" onfocus="this.style.borderColor='rgba(230,57,70,0.55)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Calculation breakdown -->
-        <div style="background:rgba(255,255,255,0.05);border-radius:9px;padding:12px 14px;margin-bottom:14px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Monthly commitments × <span id="ci-months-label">12</span> months</span>
-            <span style="font-size:0.75rem;font-weight:800;color:#fff" id="ci-monthly-total">—</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Medical expenses <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
-            <span style="font-size:0.75rem;font-weight:800;color:#fff">$15,000</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07)">
-            <span style="font-size:0.62rem;color:rgba(255,255,255,0.38)">Wellness budget <span style="font-size:0.56rem;color:rgba(255,255,255,0.2)">(iA default)</span></span>
-            <span style="font-size:0.75rem;font-weight:800;color:#fff">$10,000</span>
-          </div>
-        </div>
-
-        <div style="font-size:0.64rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:14px">A tax-free lump sum paid if you're diagnosed with a covered condition (heart attack, cancer, stroke, etc.). Covers what OHIP doesn't — lost income during recovery, private care, home adjustments.</div>
-        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Critical%20Illness%20insurance" target="_blank" style="display:block;text-align:center;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(230,57,70,0.18);color:#E63946;border:1px solid rgba(230,57,70,0.3)">Ask Shivang about CI →</a>
-
-      </div>
-
-      <!-- Disability Insurance card -->
-      <div style="background:#1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:0">
-        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#3a6bc0;margin-bottom:10px">🛡️ Disability Insurance</div>
-        <div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1" id="n-di-amount">$5,250<span style="font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.45)">/mo</span></div>
-        <div style="font-size:0.65rem;color:rgba(255,255,255,0.38);margin-top:5px;margin-bottom:12px">Suggested monthly benefit · 70% of income</div>
-        <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);line-height:1.65;flex:1">Replaces your paycheque if illness or injury stops you from working. 1 in 3 Canadians will face a disability before retirement. Group plans often fall short — an individual policy fills the gap.</div>
-        <a href="https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%27d%20like%20to%20learn%20about%20Disability%20insurance" target="_blank" style="display:block;text-align:center;margin-top:16px;padding:10px;border-radius:9px;font-weight:700;font-size:0.75rem;text-decoration:none;background:rgba(58,107,192,0.18);color:#6b9fff;border:1px solid rgba(58,107,192,0.3)">Ask Shivang about DI →</a>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="calc-disclaimer" style="margin-top:20px">For illustrative and educational purposes only. Results are estimates based on standard industry rules of thumb and do not constitute financial, insurance, or legal advice. Actual coverage needs vary by individual. Consult a licensed advisor. <strong>Shivang Goyal accepts no responsibility for decisions made based on this tool.</strong></div>
-
-</div>
-<!-- end panel-needs -->
 
 </div><!-- /calc-area -->
 
@@ -4358,7 +4050,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;color:#1a1a1a;background:#fff;font-
 // Hash routing — activate correct tab on page load based on URL anchor
 window.addEventListener('DOMContentLoaded', function(){
   const hash = window.location.hash.replace('#','');
-  const validTabs = ['sip','resp','goal','swp','cagr','needs'];
+  const validTabs = ['sip','resp','goal','swp','cagr'];
   if(hash && validTabs.includes(hash)) {
     document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
@@ -4366,7 +4058,7 @@ window.addEventListener('DOMContentLoaded', function(){
     if(btn) btn.classList.add('active');
     const panel = document.getElementById('panel-'+hash);
     if(panel) panel.classList.add('active');
-    if(hash==='needs') { calcNeeds(); calcCI(); }
+    if(hash==='sip') { calcSIP(); }
     if(hash==='resp' && !respInitialized) {
       respInitialized = true;
       const today = new Date();
@@ -4381,29 +4073,11 @@ window.addEventListener('DOMContentLoaded', function(){
       setTimeout(() => calcRESP(), 0);
     }
   } else {
-    // Default: needs tab is active, fire its calc
-    calcNeeds(); calcCI();
+    // Default: sip tab is active
+    switchTab && document.querySelector('[onclick*="\'sip\'"]') && document.querySelector('[onclick*="\'sip\'"]').click ? null : null;
+    calcSIP();
   }
 });
-
-// Auto-switch to needs tab if URL has #needs
-(function(){
-  if(window.location.hash === '#needs') {
-    function activateNeedsTab() {
-      document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
-      const btn = document.querySelector('[onclick*="needs"]');
-      if(btn) btn.classList.add('active');
-      const panel = document.getElementById('panel-needs');
-      if(panel) { panel.classList.add('active'); calcNeeds(); }
-    }
-    if(document.readyState === 'loading') {
-      window.addEventListener('DOMContentLoaded', activateNeedsTab);
-    } else {
-      activateNeedsTab();
-    }
-  }
-})();
 
 // (moved to top of script)
 function switchTab(id){
@@ -4426,7 +4100,7 @@ function switchTab(id){
     addContribRow(_ts, null, 'monthly', 208);
     setTimeout(() => calcRESP(), 0);
   }
-  if(id==='needs') { calcNeeds(); }
+  // (needs tab removed — see needs-analysis.html)
   if(id==='resp'){
     // Always show suggestions trigger when RESP tab is active
     setTimeout(()=>{

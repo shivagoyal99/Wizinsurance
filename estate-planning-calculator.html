@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estate Planning Calculator — What Does Your Family Actually Inherit? | Shivang Goyal</title>
+<meta name="description" content="Free Canadian estate planning calculator. See your estate value, taxes, debts, probate costs and insurance gap — projected to when it matters.">
+<link rel="canonical" href="https://www.wizinsurance.ca/estate-planning-calculator.html">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.wizinsurance.ca/estate-planning-calculator.html">
+<meta property="og:title" content="Estate Planning Calculator — What Does Your Family Actually Inherit?">
+<meta property="og:description" content="Answer a few questions. See your estate — taxes, debts, insurance gap — in plain English.">
+<meta property="og:image" content="https://www.wizinsurance.ca/og-image.jpg">
+<meta property="og:site_name" content="Shivang Goyal Insurance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.wizinsurance.ca/og-image.jpg">
+<style>
+/* ══════════════════════════════════════════
+   SITE BASE
+══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --primary:#0F1F3C;
+    --secondary:#1a3a5c;
+    --accent:#E63946;
+    --light-bg:#F8F9FA;
+    --text-dark:#1A1A1A;
+    --text-light:#555;
+    --border:#E0E0E0;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text-dark);line-height:1.6;background:#fff}
+
+/* ── Header ── */
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header-top{background:var(--primary);color:#fff;font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.1);padding:0;display:block}
+.header-top-inner{max-width:1400px;margin:0 auto;padding:.65rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.header-top-left{flex:1}
+.header-top-right{display:flex;gap:1.4rem;align-items:center;flex-shrink:0}
+.top-strip-divider{width:1px;height:16px;background:rgba(255,255,255,.25);flex-shrink:0}
+.top-contact-link{color:rgba(255,255,255,.85);text-decoration:none;font-size:.78rem;white-space:nowrap;font-weight:400;transition:color .2s}
+.top-contact-link:hover{color:#fff}
+.social-icons{display:flex;gap:.45rem;align-items:center}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:5px;background:rgba(255,255,255,.12);color:#fff;font-size:.76rem;text-decoration:none;transition:background .2s,color .2s}
+.social-icon:hover{background:rgba(255,255,255,.22);color:#fff}
+.social-icon.si-email:hover{background:#EA4335}
+.social-icon.si-fb:hover{background:#1877F2}
+.social-icon.si-ig:hover{background:#E1306C}
+.social-icon.si-li:hover{background:#0A66C2}
+.social-icon.si-goog svg{filter:brightness(0) invert(1);transition:filter .2s}
+.social-icon.si-goog:hover{background:#fff}
+.social-icon.si-goog:hover svg{filter:none}
+.social-icon.si-yt:hover{background:#FF0000}
+.social-icon.si-wa:hover{background:#25D366}
+.header-main{max-width:1400px;margin:0 auto;padding:1.3rem 2.5rem;display:flex;align-items:center;gap:0}
+.logo{display:inline-flex;flex-direction:row;align-items:center;gap:12px;text-decoration:none;color:var(--primary);flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;gap:4px}
+.logo-name{font-size:1.38rem;font-weight:700;color:var(--primary);line-height:1}
+.logo-subtitle{font-size:.66rem;color:#666;letter-spacing:.3px;font-weight:500}
+nav{flex:1;display:flex;gap:2.2rem;align-items:center;justify-content:center;font-size:.9rem;margin:0}
+nav>a{color:var(--text-dark);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;white-space:nowrap}
+nav>a:hover{color:var(--accent)}
+.dropdown{position:relative;display:inline-block}
+.dropdown>a{display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;color:var(--text-dark);text-decoration:none;font-size:.9rem;font-weight:500;white-space:nowrap}
+.dropdown>a:hover{color:var(--accent)}
+.dropdown-arrow{display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform .2s}
+.dropdown.open>a .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-menu{display:none;position:fixed;background:#fff;min-width:260px;box-shadow:0 12px 32px rgba(0,0,0,.15);border-radius:8px;border:1px solid var(--border);z-index:9999;max-height:80vh;overflow-y:auto}
+.dropdown-menu::-webkit-scrollbar{width:5px}
+.dropdown-menu::-webkit-scrollbar-track{background:#f1f1f1;border-radius:8px}
+.dropdown-menu::-webkit-scrollbar-thumb{background:#ccc;border-radius:8px}
+.dropdown:hover .dropdown-menu,.dropdown.open .dropdown-menu{display:block}
+.dropdown-section{padding:.5rem 0}
+.dropdown-section:first-child{padding-top:.8rem}
+.dropdown-section-title{padding:.3rem 1.2rem .2rem;font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+.dropdown-menu a{display:block;padding:.6rem 1.2rem;color:var(--text-dark);text-decoration:none;font-size:.88rem;transition:all .15s;border-left:3px solid transparent}
+.dropdown-menu a:hover{background:var(--light-bg);color:var(--accent);border-left-color:var(--accent)}
+.dropdown-divider{height:1px;background:var(--border);margin:.2rem 0}
+.cta-buttons{display:flex;gap:.6rem;flex-shrink:0}
+.btn-call{background:var(--accent);color:#fff;padding:.65rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700;transition:all .3s;border:none;cursor:pointer;white-space:nowrap;font-size:.88rem}
+.btn-call:hover{background:#d32f3d;transform:translateY(-2px);box-shadow:0 6px 16px rgba(230,57,70,.3)}
+
+/* ── Hero / WIZ animation ── */
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes revealRight{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
+@keyframes wizW{0%,100%{opacity:.1;transform:rotate(-5deg) scale(1)}50%{opacity:.22;transform:rotate(-5deg) scale(1.02)}}
+@keyframes wizI{0%,100%{opacity:.08;transform:translate(-50%,-50%) rotate(2deg) scale(1)}50%{opacity:.2;transform:translate(-50%,-50%) rotate(2deg) scale(1.03)}}
+@keyframes wizZ{0%,100%{opacity:.09;transform:rotate(6deg) scale(1)}50%{opacity:.21;transform:rotate(6deg) scale(1.02)}}
+.hero{background:#0F1F3C;color:#fff;padding:3.5rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-wiz{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-wiz-letter{position:absolute;font-size:clamp(180px,22vw,260px);font-weight:900;color:transparent;line-height:1;user-select:none;opacity:0}
+.hero-wiz-w{bottom:-10px;left:-15px;-webkit-text-stroke:2px rgba(230,57,70,.9);filter:drop-shadow(0 0 30px rgba(230,57,70,.6)) drop-shadow(0 0 8px rgba(230,57,70,.5));animation:wizW 8s ease-in-out infinite;animation-fill-mode:both}
+.hero-wiz-i{top:50%;left:50%;-webkit-text-stroke:2px rgba(255,255,255,.85);filter:drop-shadow(0 0 30px rgba(255,255,255,.5)) drop-shadow(0 0 8px rgba(255,255,255,.4));animation:wizI 12s ease-in-out infinite;animation-delay:3s;animation-fill-mode:both}
+.hero-wiz-z{top:-15px;right:-15px;-webkit-text-stroke:2px rgba(255,185,60,.9);filter:drop-shadow(0 0 30px rgba(255,185,60,.6)) drop-shadow(0 0 8px rgba(255,185,60,.5));animation:wizZ 10s ease-in-out infinite;animation-delay:6s;animation-fill-mode:both}
+.hero-wiz-label{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;position:relative;z-index:1}
+.hero-left{display:flex;flex-direction:column;gap:0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:.3rem .9rem;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.9);width:fit-content;margin-bottom:1.4rem;animation:heroFadeUp .5s ease both}
+.hero-eyebrow-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;display:inline-block}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:1.2rem;animation:heroFadeUp .5s ease .1s both}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-tagline{margin-bottom:2rem;max-width:580px;animation:heroFadeUp .5s ease .2s both}
+.hero-tagline-l1{display:block;font-size:1rem;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.3px;margin-bottom:.45rem;font-style:italic;animation:fadeSlideUp .6s ease .8s both}
+.hero-tagline-l2{display:block;font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.2px;animation:revealRight 1s cubic-bezier(.77,0,.175,1) 1.3s both}
+.hero-trust{display:flex;flex-direction:row;gap:1.4rem;flex-wrap:wrap;margin-bottom:0;animation:heroFadeUp .5s ease .3s both}
+.hero-trust-item{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.85)}
+.hero-trust-item::before{content:'✓';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:rgba(230,57,70,.25);border-radius:50%;font-size:.68rem;font-weight:800;color:#ff8a8a;flex-shrink:0}
+
+/* ── Footer ── */
+footer{background:linear-gradient(180deg,#0d1b33 0%,#0a1628 100%);color:#fff;padding:3rem 2rem 2rem}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;text-align:left}
+.footer-col-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.4);margin-bottom:1.2rem}
+.footer-brand{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.6rem;letter-spacing:-.2px}
+.footer-bio{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-links{display:flex;flex-direction:column;gap:.7rem}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 auto 1.5rem;max-width:1400px}
+.footer-bottom{max-width:1400px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.4);text-align:center}
+.footer-disclaimer{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.28);line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto}
+footer a{color:#fff;text-decoration:none}
+footer a:hover{text-decoration:none}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr !important;gap:2rem !important}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr !important}}
+
+/* ── Hamburger / Mobile nav ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;cursor:pointer;background:var(--primary);border:none;border-radius:8px;padding:9px;flex-shrink:0}
+.hamburger span{display:block;height:2px;background:#fff;border-radius:2px;transition:all .3s ease;transform-origin:center}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+.mobile-nav-overlay.active{display:block}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;width:100%;height:100vh;background:#fff;z-index:9999;overflow:hidden;border-top:3px solid #E63946;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);flex-direction:column;-webkit-overflow-scrolling:touch}
+.mobile-nav.active{transform:translateX(0);display:flex}
+.mobile-nav-header{padding:.9rem 1.2rem;border-bottom:3px solid #E63946;display:flex;justify-content:flex-end;align-items:center;background:#fff;position:sticky;top:0;z-index:2;flex-shrink:0}
+.mobile-nav-close{background:#f0f0f0;border:none;color:#444;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mobile-nav-close:active{background:#e0e0e0}
+.mobile-nav-body{padding:0;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-width:none}
+.mobile-nav-body::-webkit-scrollbar{display:none}
+.mobile-nav-body>a{display:flex;align-items:center;gap:.7rem;padding:1rem 1.3rem;color:#111;text-decoration:none;font-size:1rem;font-weight:600;border-bottom:1px solid #ebebeb;transition:background .1s}
+.mobile-nav-body>a:hover{color:#111;background:#f0f0f0}
+.mnav-icon{font-size:1rem;flex-shrink:0}
+.mnav-cat-toggle{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.3rem;background:#f4f4f4;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;cursor:pointer;user-select:none}
+.mnav-cat-label{font-size:1rem;font-weight:600;color:#111}
+.mnav-cat-arrow{font-size:1.1rem;color:#bbb;transition:transform .22s;display:inline-block}
+.mnav-cat-toggle.open .mnav-cat-arrow{transform:rotate(90deg);color:#E63946}
+.mnav-cat-items{display:none}
+.mnav-cat-items.open{display:block}
+.mnav-cat-items a{display:flex !important;align-items:center;gap:.6rem;background:#fff !important;padding:.82rem 1.3rem .82rem 1.8rem !important;color:#444 !important;font-weight:500 !important;font-size:.92rem !important;text-decoration:none !important;border-bottom:1px solid #f0f0f0}
+.mnav-cat-items a:active{background:#f5f5f5 !important}
+.mobile-nav-cta{padding:.9rem 1rem;border-top:1px solid #ddd;display:flex;gap:.6rem;background:#0F1F3C;flex-shrink:0}
+.mobile-nav-cta a{flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;padding:.9rem;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;text-align:center;transition:opacity .2s}
+.m-call{background:#E63946 !important;color:#fff !important}
+.m-wa{background:#25D366 !important;color:#fff !important}
+.mobile-nav-cta a:hover{opacity:.88}
+
+/* ── Responsive header ── */
+@media(max-width:860px){
+    .header-top{display:none !important}
+    .header-main{padding:.75rem 1rem !important;display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;flex-wrap:nowrap !important;gap:0 !important}
+    .hamburger{display:flex !important}
+    nav,.cta-buttons{display:none !important}
+    .logo-name{font-size:1rem !important}
+    .logo-subtitle{font-size:.68rem !important}
+    .hero{padding:2.5rem 1.2rem 3rem !important}
+    .hero h1{font-size:clamp(1.8rem,7vw,2.4rem) !important}
+    .hero-wiz-letter{font-size:clamp(90px,26vw,140px) !important}
+    .hero-tagline{font-size:.9rem !important}
+    .hero-trust{gap:.8rem !important}
+}
+
+/* ══════════════════════════════════════════
+   CALC-SPECIFIC STYLES
+══════════════════════════════════════════ */
+:root{
+    --navy:#0F1F3C;
+    --red:#E63946;
+    --green:#4caf7d;
+    --blue:#3a6bc0;
+    --gold:#f5a623;
+    --qcard:#fff;
+    --muted:#888;
+    --qborder:#e8eaf0;
+    --radius:16px;
+}
+
+.calc-disclaimer-top{background:#fff8e1;border:1px solid #ffe082;border-radius:10px;padding:.85rem 1.1rem;font-size:.78rem;color:#7a5f00;line-height:1.6;margin-bottom:1.5rem;text-align:center}
+
+.calc-section{background:#F8F9FA;padding:2rem 1rem 4rem}
+.calc-wrap{max-width:660px;margin:0 auto}
+
+/* Progress */
+.progress-outer{margin:0 0 24px;background:var(--qborder);border-radius:8px;height:6px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),#ff6b6b);border-radius:8px;transition:width .4s ease}
+.progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-label span{font-size:.72rem;font-weight:600;color:var(--muted)}
+.progress-label strong{font-size:.72rem;font-weight:700;color:var(--navy)}
+
+/* Steps */
+.cstep{display:none;animation:qstepIn .35s ease}
+.cstep.active{display:block}
+@keyframes qstepIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.step-title{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.step-sub{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+
+/* Card wrapper */
+.calc-card{background:#fff;border-radius:var(--radius);border:1px solid var(--qborder);padding:14px 16px;margin-bottom:12px}
+.calc-card-title{font-size:.75rem;font-weight:800;color:var(--navy);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.calc-card-note{font-size:.72rem;color:var(--muted);margin-bottom:10px;font-style:italic}
+
+/* Fields */
+.field{margin-bottom:12px}
+.field label{display:block;font-size:.72rem;font-weight:700;color:var(--navy);letter-spacing:.04em;text-transform:uppercase;margin-bottom:5px}
+.field input,.field select{width:100%;padding:9px 12px;border:2px solid var(--qborder);border-radius:9px;font-size:.92rem;font-weight:500;color:var(--text-dark);background:var(--qcard);outline:none;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none;font-family:inherit}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,107,192,.12)}
+.field-hint{font-size:.72rem;color:var(--muted);margin-top:4px;font-style:italic}
+.select-wrap{position:relative}
+.select-wrap::after{content:'▾';position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:.85rem}
+
+/* Slider display */
+.slider-display{text-align:center;font-size:1.25rem;font-weight:900;color:var(--navy);margin-bottom:6px}
+.slider-display span{font-size:.78rem;font-weight:500;color:var(--muted)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:var(--qborder);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--navy);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--navy);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+.slider-row{display:flex;gap:12px;align-items:center;margin-top:6px}
+.slider-row input[type=range]{flex:1}
+.slider-row input[type=number]{width:72px;flex-shrink:0;padding:7px 8px;border:2px solid var(--qborder);border-radius:8px;font-size:.9rem;font-weight:700;text-align:center;font-family:inherit;outline:none}
+.slider-row input[type=number]:focus{border-color:var(--blue)}
+.slider-ends{display:flex;justify-content:space-between;margin-top:3px}
+.slider-ends span{font-size:.68rem;color:var(--muted)}
+
+/* Chips / YN */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.chip{padding:10px 18px;border-radius:10px;border:2px solid var(--qborder);background:var(--qcard);font-size:.85rem;font-weight:600;color:var(--text-dark);cursor:pointer;transition:all .2s;user-select:none}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip.selected{background:var(--navy);border-color:var(--navy);color:#fff}
+.yn-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.yn-chip{padding:12px 10px;border-radius:11px;border:2px solid var(--qborder);background:var(--qcard);font-size:.92rem;font-weight:700;text-align:center;cursor:pointer;transition:all .2s}
+.yn-chip.yes.selected{background:#edf7f2;border-color:var(--green);color:#1a7a4a}
+.yn-chip.no.selected{background:#fef2f2;border-color:var(--red);color:var(--red)}
+.yn-chip:hover{border-color:var(--blue)}
+
+/* Buttons */
+.qbtn{width:100%;padding:12px;border-radius:10px;font-size:.9rem;font-weight:800;cursor:pointer;border:none;transition:all .2s;text-align:center;font-family:inherit}
+.qbtn-primary{background:var(--navy);color:#fff}
+.qbtn-primary:hover{background:#1a3a5c;transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,33,66,.3)}
+.qbtn-primary:active{transform:translateY(0)}
+.qbtn-ghost{background:transparent;color:var(--muted);font-size:.88rem;padding:12px;margin-top:8px;text-decoration:underline;font-weight:500;cursor:pointer;border:none;width:100%;font-family:inherit}
+.qbtn-red{background:linear-gradient(135deg,var(--accent),#c0392b);color:#fff}
+.qbtn-red:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(230,57,70,.3)}
+.btn-nav-row{display:flex;gap:10px;margin-top:6px}
+.btn-nav-row .qbtn{flex:1}
+.btn-nav-row .qbtn-ghost{flex:0 0 auto;width:auto;padding:12px 20px}
+
+/* Error */
+.err-msg{color:var(--red);font-size:.8rem;text-align:center;margin-top:10px;display:none}
+
+/* Dynamic rows */
+.dyn-section{margin-bottom:14px}
+.dyn-table{width:100%;border-collapse:collapse}
+.dyn-table th{font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:5px 6px;border-bottom:2px solid var(--qborder);text-align:left;white-space:nowrap}
+.dyn-table td{padding:4px 4px;vertical-align:middle}
+.dyn-table input,.dyn-table select{padding:6px 8px;border:1px solid var(--qborder);border-radius:7px;font-size:.82rem;font-weight:500;color:var(--text-dark);background:#fff;outline:none;width:100%;transition:border-color .2s;font-family:inherit;min-width:0}
+.dyn-table input:focus,.dyn-table select:focus{border-color:var(--blue)}
+.dyn-table select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;padding-right:24px}
+.dyn-remove{background:none;border:none;color:#ccc;font-size:1.1rem;cursor:pointer;padding:4px 6px;border-radius:6px;transition:color .2s,background .2s;line-height:1;flex-shrink:0}
+.dyn-remove:hover{color:var(--red);background:#fef2f2}
+.add-row-btn{display:inline-flex;align-items:center;gap:6px;background:#f0f4ff;border:2px dashed #c0cfe8;color:var(--blue);border-radius:9px;padding:8px 16px;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;margin-top:10px;font-family:inherit}
+.add-row-btn:hover{background:#e4ecff;border-color:var(--blue)}
+.td-remove{width:32px;text-align:center}
+
+/* Info banner */
+.info-banner{background:#fff8e1;border-left:4px solid #f5a623;border-radius:0 10px 10px 0;padding:12px 16px;font-size:.82rem;color:#7a5f00;line-height:1.6;margin-bottom:16px}
+.info-banner strong{display:block;margin-bottom:3px;font-size:.85rem}
+
+/* Results */
+.result-summary-card{background:linear-gradient(135deg,var(--navy) 0%,#1a3a6b 100%);border-radius:20px;padding:28px 24px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
+.result-summary-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04)}
+.result-summary-card::after{content:'';position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;border-radius:50%;background:rgba(230,57,70,.08)}
+.res-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.res-inherit-label{font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:4px}
+.res-inherit-val{font-size:2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:12px}
+.res-inherit-val.negative{color:#ff8080}
+.res-rows{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+.res-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,255,255,.07);border-radius:10px}
+.res-row-label{font-size:.85rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px}
+.res-row-val{font-size:.95rem;font-weight:800;color:#fff}
+.res-row-val.neg{color:#ff9999}
+.res-row-val.pos{color:#7dffb0}
+.res-gap-banner{background:linear-gradient(135deg,var(--accent),#c0392b);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:12px;position:relative;z-index:1}
+.res-gap-label{font-size:.9rem;color:rgba(255,255,255,.85);font-weight:600}
+.res-gap-val{font-size:1.5rem;font-weight:900;color:#fff}
+.res-gap-banner.no-gap{background:rgba(76,175,125,.2);border:1px solid rgba(76,175,125,.4)}
+.res-gap-banner.no-gap .res-gap-label,.res-gap-banner.no-gap .res-gap-val{color:#7dffb0}
+
+/* Breakdown cards */
+.breakdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.breakdown-card{background:#fff;border-radius:14px;border:1px solid var(--qborder);padding:16px 18px}
+.bc-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.bc-main{font-size:1.3rem;font-weight:900;color:var(--navy);margin-bottom:4px}
+.bc-tax{font-size:.78rem;color:var(--red);font-weight:600;margin-bottom:8px}
+.bc-net{font-size:.82rem;color:var(--green);font-weight:700}
+.bc-bullets{list-style:none;padding:0;margin-top:8px;border-top:1px solid var(--qborder);padding-top:8px}
+.bc-bullets li{font-size:.75rem;color:var(--text-light);line-height:1.5;padding:2px 0;padding-left:14px;position:relative}
+.bc-bullets li::before{content:'•';position:absolute;left:0;color:var(--blue)}
+
+/* CTA card */
+.cta-card{background:linear-gradient(135deg,var(--accent) 0%,#c0392b 100%);border-radius:20px;padding:24px 22px;color:#fff;text-align:center;margin-bottom:16px}
+.cta-card h3{font-size:1.2rem;font-weight:900;margin-bottom:6px}
+.cta-card p{font-size:.83rem;opacity:.88;margin-bottom:20px;line-height:1.5}
+.btn-wa{background:#fff;color:var(--red);border:none;padding:13px 20px;border-radius:10px;font-weight:800;font-size:.9rem;cursor:pointer;width:100%;margin-bottom:10px;transition:all .2s;font-family:inherit}
+.btn-wa:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+
+.disclaimer-txt{font-size:.7rem;color:var(--muted);text-align:center;line-height:1.6;padding:0 8px 20px}
+.restart-link{display:block;text-align:center;font-size:.78rem;color:var(--muted);cursor:pointer;padding:8px;text-decoration:underline;margin-top:4px}
+
+/* Status badge for insurance */
+.status-ok{color:var(--green);font-size:.78rem;font-weight:700}
+.status-warn{color:#e67e22;font-size:.78rem;font-weight:700}
+.status-gone{color:var(--red);font-size:.78rem;font-weight:700}
+
+/* Computed status cell */
+.td-status{min-width:120px;font-size:.78rem;font-weight:600;white-space:normal;line-height:1.3}
+
+/* Province probate note */
+.probate-note{font-size:.78rem;color:var(--muted);margin-top:4px;font-style:italic}
+
+/* Mobile responsive */
+@media(max-width:860px){
+    .calc-wrap{max-width:100%}
+    .breakdown-grid{grid-template-columns:1fr !important}
+    .dyn-table{font-size:.82rem}
+    .dyn-table input,.dyn-table select{font-size:1rem !important}
+    .field input,.field select{font-size:1rem !important}
+    input[type=range]::-webkit-slider-thumb{width:34px !important;height:34px !important}
+    input[type=range]::-moz-range-thumb{width:34px !important;height:34px !important}
+    .slider-display{font-size:1.3rem !important}
+    .btn-nav-row{flex-direction:column}
+    .btn-nav-row .qbtn-ghost{width:100%}
+    .dyn-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:500px){
+    .result-summary-card{padding:18px 14px}
+    .res-inherit-val{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Mobile nav ── -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <div class="mobile-nav-body">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Shivang</a>
+        <a href="get-quotes.html">Get a Quote</a>
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+            <span class="mnav-cat-label">Visitor &amp; Travel</span>
+            <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+            <a href="supervisa.html"><span class="mnav-icon">&#x1F1E8;&#x1F1E6;</span>Super Visa Insurance</a>
+            <a href="visitors.html"><span class="mnav-icon">&#x2708;&#xFE0F;</span>Visitors to Canada</a>
+            <a href="travel.html"><span class="mnav-icon">&#x1F30D;</span>Travel Insurance</a>
+            <a href="student-insurance.html"><span class="mnav-icon">&#x1F393;</span>Student Insurance</a>
+        </div>
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+            <span class="mnav-cat-label">Life Insurance</span>
+            <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+            <a href="term-life.html"><span class="mnav-icon">&#x1F6E1;&#xFE0F;</span>Term Life</a>
+            <a href="whole-life.html"><span class="mnav-icon">&#x1F33F;</span>Whole Life</a>
+            <a href="universal-life.html"><span class="mnav-icon">&#x2699;&#xFE0F;</span>Universal Life</a>
+            <a href="mortgage-insurance.html"><span class="mnav-icon">&#x1F3E0;</span>Mortgage Insurance</a>
+        </div>
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+            <span class="mnav-cat-label">Living Benefits</span>
+            <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+            <a href="critical-illness.html"><span class="mnav-icon">&#x1FA7A;</span>Critical Illness</a>
+            <a href="disability.html"><span class="mnav-icon">&#x1F9BA;</span>Disability Insurance</a>
+            <a href="health-dental.html"><span class="mnav-icon">&#x1F48A;</span>Drug &amp; Dental</a>
+            <a href="estate-planning.html"><span class="mnav-icon">&#x1F4DC;</span>Estate Planning</a>
+            <a href="business-insurance.html"><span class="mnav-icon">&#x1F4BC;</span>Business Insurance</a>
+        </div>
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+            <span class="mnav-cat-label">Investments</span>
+            <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+            <a href="rrsp.html"><span class="mnav-icon">&#x1F4C8;</span>RRSP</a>
+            <a href="tfsa.html"><span class="mnav-icon">&#x1F4B0;</span>TFSA</a>
+            <a href="fhsa.html"><span class="mnav-icon">&#x1F3E1;</span>FHSA</a>
+            <a href="resp.html"><span class="mnav-icon">&#x1F393;</span>RESP</a>
+            <a href="rdsp.html"><span class="mnav-icon">&#x267F;</span>RDSP</a>
+            <a href="non-registered.html"><span class="mnav-icon">&#x1F4CA;</span>Non-Registered</a>
+            <a href="retirement-planning.html"><span class="mnav-icon">&#x1F305;</span>Retirement Planning</a>
+        </div>
+
+        <div class="mnav-cat-toggle" onclick="var i=this.nextElementSibling;this.classList.toggle('open');i.classList.toggle('open')">
+            <span class="mnav-cat-label">Calculators</span>
+            <span class="mnav-cat-arrow">&#x203A;</span>
+        </div>
+        <div class="mnav-cat-items">
+            <a href="financial-calculators.html"><span class="mnav-icon">&#x1F9EE;</span>Investment Calculators</a>
+            <a href="needs-analysis.html"><span class="mnav-icon">&#x1F4DD;</span>Needs Analysis</a>
+            <a href="investment-account-quiz.html"><span class="mnav-icon">&#x1F3E6;</span>TFSA vs RRSP vs FHSA Quiz</a>
+            <a href="estate-planning-calculator.html"><span class="mnav-icon">&#x1F4DC;</span>Estate Planning Calculator</a>
+        </div>
+        <a href="credit-cards.html">Credit Cards</a>
+        <a href="get-quotes.html#contact">Contact Me</a>
+    </div>
+    <div class="mobile-nav-cta">
+        <a href="tel:+16479955891" class="m-call">&#x1F4DE; Call</a>
+        <a href="https://wa.me/16479955891" target="_blank" class="m-wa">&#x1F4AC; WhatsApp</a>
+    </div>
+</div>
+
+<!-- ── Header ── -->
+<header>
+    <div class="header-top">
+        <div class="header-top-inner">
+            <div class="header-top-left">&#x1F1E8;&#x1F1E6; Licensed in Ontario, Canada</div>
+            <div class="header-top-right">
+                <a href="tel:+16479955891" class="top-contact-link">&#x1F4DE; (647) 995-5891</a>
+                <div class="top-strip-divider"></div>
+                <div class="social-icons">
+                    <a href="mailto:shivang.goyal.financial@gmail.com" class="social-icon si-email" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/shivugoyal99" target="_blank" rel="noopener" class="social-icon si-fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/thefinwiz.ca" target="_blank" rel="noopener" class="social-icon si-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank" rel="noopener" class="social-icon si-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://share.google/yatJv3R0fMkGAEQVH" target="_blank" rel="noopener" class="social-icon si-goog" title="Google Reviews"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></a>
+                    <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank" rel="noopener" class="social-icon si-yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/16479955891" target="_blank" rel="noopener" class="social-icon si-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-main">
+        <a href="index.html" class="logo">
+            <img src="finwiz-logo-cropped.png" alt="FinWiz Logo" style="height:42px;width:auto;object-fit:contain">
+            <span class="logo-text-wrap">
+                <span class="logo-name">Shivang Goyal</span>
+                <span class="logo-subtitle">INSURANCE ADVISOR &middot; CANADA</span>
+            </span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <div class="dropdown">
+                <a href="#insurance">Insurance <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Visitor &amp; Travel</div>
+                        <a href="visitors.html">&#x1F6C2; Visitor to Canada</a>
+                        <a href="supervisa.html">&#x1F4CB; SuperVisa Insurance</a>
+                        <a href="travel.html">&#x1F30D; Travel Insurance</a>
+                        <a href="student-insurance.html">&#x1F393; International Student</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Life Insurance</div>
+                        <a href="term-life.html">&#x1F6E1;&#xFE0F; Term Life Insurance</a>
+                        <a href="whole-life.html">&#x1F33F; Whole Life Insurance</a>
+                        <a href="universal-life.html">&#x2699;&#xFE0F; Universal Life</a>
+                        <a href="mortgage-insurance.html">&#x1F3E0; Mortgage Insurance</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Living Benefits</div>
+                        <a href="critical-illness.html">&#x1FA7A; Critical Illness</a>
+                        <a href="disability.html">&#x1F9BA; Disability Insurance</a>
+                        <a href="health-dental.html">&#x1F48A; Drug &amp; Dental</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Planning</div>
+                        <a href="estate-planning.html">&#x1F3ED; Estate Planning</a>
+                        <a href="business-insurance.html">&#x1F4BC; Business Insurance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown" id="dd-invest">
+                <a href="#">Investments <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Registered Accounts</div>
+                        <a href="rrsp.html">&#x1F4C8; RRSP</a>
+                        <a href="tfsa.html">&#x1F4B0; TFSA</a>
+                        <a href="fhsa.html">&#x1F3E1; FHSA</a>
+                        <a href="resp.html">&#x1F393; RESP</a>
+                        <a href="rdsp.html">&#x267F; RDSP</a>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-section-title">Other</div>
+                        <a href="non-registered.html">&#x1F4CA; Non-Registered</a>
+                        <a href="retirement-planning.html">&#x1F31E; Retirement Planning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown" id="dd-calc">
+                <a href="#">Calculators <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-section">
+                        <a href="financial-calculators.html">&#x1F9EE; Investment Calculators</a>
+                        <a href="needs-analysis.html">&#x1F4DD; Needs Analysis</a>
+                        <a href="investment-account-quiz.html">&#x1F3E6; TFSA vs RRSP vs FHSA Quiz</a>
+                        <a href="estate-planning-calculator.html">&#x1F4DC; Estate Planning Calculator</a>
+                    </div>
+                </div>
+            </div>
+            <a href="credit-cards.html">Credit Cards</a>
+            <a href="get-quotes.html">Get Quotes</a>
+            <a href="get-quotes.html#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+    <div class="hero-wiz">
+        <div class="hero-wiz-letter hero-wiz-w">W</div>
+        <div class="hero-wiz-letter hero-wiz-i">I</div>
+        <div class="hero-wiz-letter hero-wiz-z">Z</div>
+        <div class="hero-wiz-label">Wisdom &middot; Integrity &middot; Zeal</div>
+    </div>
+    <div class="hero-inner">
+        <div class="hero-left">
+            <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Free &middot; 5 Steps &middot; 2026 Canadian Rules</div>
+            <h1>What does your family <em>actually</em> inherit?</h1>
+            <p class="hero-tagline">
+                <span class="hero-tagline-l1">Answer a few questions &middot; See your estate in plain English</span>
+                <span class="hero-tagline-l2">Taxes, debts, insurance gap &mdash; projected to when it matters.</span>
+            </p>
+            <div class="hero-trust">
+                <span class="hero-trust-item">&#x1F1E8;&#x1F1E6; Built for Canada</span>
+                <span class="hero-trust-item">&#x1F4CA; 2026 Tax Rules</span>
+                <span class="hero-trust-item">&#x2705; No signup needed</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Calculator ── -->
+<section class="calc-section">
+    <div class="calc-wrap">
+
+        <div class="calc-disclaimer-top">
+            <strong>Educational illustration tool for insurance planning purposes only &mdash; not financial, tax, or legal advice.</strong>
+            Results are projections based on inputs you provide and simplified assumptions. Always consult a licensed advisor.
+        </div>
+
+        <!-- Progress -->
+        <div id="progress-wrap">
+            <div class="progress-label">
+                <span id="step-label">Step 1 of 5</span>
+                <strong id="step-pct">20%</strong>
+            </div>
+            <div class="progress-outer"><div class="progress-bar" id="progress-bar" style="width:20%"></div></div>
+        </div>
+
+        <!-- ════════════════ STEP 1: About You ════════════════ -->
+        <div class="cstep active" id="step-1">
+            <div class="step-title">&#x1F464; About You</div>
+            <div class="step-sub">Basic information that shapes how your estate is taxed and projected.</div>
+
+            <div class="calc-card">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <div class="field">
+                        <label>First name</label>
+                        <input type="text" id="s1-name" placeholder="e.g. Alex" autocomplete="given-name">
+                    </div>
+                    <div class="field">
+                        <label>Age</label>
+                        <input type="number" id="s1-age" placeholder="e.g. 45" min="18" max="90" inputmode="numeric">
+                    </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <div class="field">
+                        <label>Province</label>
+                        <div class="select-wrap">
+                            <select id="s1-province" onchange="updateProbateFromProvince()">
+                                <option value="">Select...</option>
+                                <option value="ON" selected>Ontario (ON)</option>
+                                <option value="AB">Alberta (AB)</option>
+                                <option value="BC">British Columbia (BC)</option>
+                                <option value="MB">Manitoba (MB)</option>
+                                <option value="SK">Saskatchewan (SK)</option>
+                                <option value="NB">New Brunswick (NB)</option>
+                                <option value="PEI">Prince Edward Island (PEI)</option>
+                                <option value="NS">Nova Scotia (NS)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Children / Heirs</label>
+                        <input type="number" id="s1-heirs" value="2" min="0" max="20" inputmode="numeric">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Years until estate settles</label>
+                    <div class="slider-display" id="s1-years-display">20 <span>years from now</span></div>
+                    <div class="slider-row">
+                        <input type="range" id="s1-years-slider" min="1" max="40" value="20" oninput="syncSlider('s1-years-slider','s1-years-num','s1-years-display',' years from now')">
+                        <input type="number" id="s1-years-num" value="20" min="1" max="40" inputmode="numeric" onchange="syncNum('s1-years-num','s1-years-slider','s1-years-display',' years from now')">
+                    </div>
+                    <div class="slider-ends"><span>1 yr</span><span>40 yrs</span></div>
+                    <div class="field-hint">This is how far ahead we project your assets, taxes, and debts.</div>
+                </div>
+
+                <div class="field">
+                    <label>Spouse or common-law partner?</label>
+                    <div class="yn-chips">
+                        <div class="yn-chip yes" id="spouse-yes" onclick="selectYN2('spouse','yes')">&#x2705; Yes</div>
+                        <div class="yn-chip no selected" id="spouse-no" onclick="selectYN2('spouse','no')">&#x274C; No</div>
+                    </div>
+                    <input type="hidden" id="s1-spouse" value="no">
+                    <div class="field-hint">If yes, RRSP/RRIF rolls over to spouse tax-free at death (tax deferred).</div>
+                </div>
+
+                <div class="field">
+                    <label>Marginal tax rate (combined federal + provincial)</label>
+                    <div class="slider-display" id="s1-tax-display">43 <span>%</span></div>
+                    <div class="slider-row">
+                        <input type="range" id="s1-tax-slider" min="20" max="55" value="43" step="1" oninput="syncSlider('s1-tax-slider','s1-tax-num','s1-tax-display','%')">
+                        <input type="number" id="s1-tax-num" value="43" min="20" max="55" inputmode="numeric" onchange="syncNum('s1-tax-num','s1-tax-slider','s1-tax-display','%')">
+                    </div>
+                    <div class="slider-ends"><span>20%</span><span>55%</span></div>
+                    <div class="field-hint">Most Canadians: 33&ndash;47%. Combined federal + provincial. Check your most recent tax return or use 43% if unsure.</div>
+                </div>
+
+                <div class="field">
+                    <label>Capital gains inclusion rate</label>
+                    <div class="select-wrap">
+                        <select id="s1-cg-inclusion">
+                            <option value="0.5" selected>50% &mdash; confirmed 2026 rate</option>
+                            <option value="0.333">33.3% &mdash; entrepreneurs&rsquo; incentive</option>
+                        </select>
+                    </div>
+                    <div class="field-hint">The portion of a capital gain that is added to taxable income. 50% applies to most Canadians in 2026.</div>
+                </div>
+            </div>
+
+            <button class="qbtn qbtn-primary" onclick="validateStep1()">Next: Your Assets &#x2192;</button>
+            <div class="err-msg" id="step1-err">Please fill in your name, age, and province before continuing.</div>
+        </div>
+
+        <!-- ════════════════ STEP 2: Assets ════════════════ -->
+        <div class="cstep" id="step-2">
+            <div class="step-title">&#x1F4B0; What You Own</div>
+            <div class="step-sub">Add all major assets. We project each one to your chosen horizon and estimate any tax owing.</div>
+
+            <!-- Real Estate -->
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F3E0; Real Estate</div>
+                <div class="calc-card-note">Main home is tax-free. Cottages and rentals are not &mdash; capital gains apply.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="re-table">
+                        <thead>
+                            <tr>
+                                <th>Property name</th>
+                                <th>Current value ($)</th>
+                                <th>What you paid / ACB ($)</th>
+                                <th>Growth %/yr</th>
+                                <th>Type</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="re-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('re')">&#x2B; Add property</button>
+                </div>
+            </div>
+
+            <!-- RRSP/RRIF -->
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F4C8; RRSP / RRIF</div>
+                <div class="calc-card-note">Fully taxed at death &mdash; the entire balance becomes taxable income (unless rolling over to spouse).</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="rrsp-table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Balance ($)</th>
+                                <th>Adding/yr ($)</th>
+                                <th>Growth %/yr</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="rrsp-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('rrsp')">&#x2B; Add account</button>
+                </div>
+            </div>
+
+            <!-- TFSA -->
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F4B0; TFSA</div>
+                <div class="calc-card-note">No tax at death &mdash; but only if you name a beneficiary. Without one, the growth after death is taxable.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="tfsa-table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Balance ($)</th>
+                                <th>Adding/yr ($)</th>
+                                <th>Growth %/yr</th>
+                                <th>Beneficiary named?</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tfsa-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('tfsa')">&#x2B; Add TFSA</button>
+                </div>
+            </div>
+
+            <!-- Other Investments -->
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F4CA; Other Investments</div>
+                <div class="calc-card-note">Stocks, seg funds, GICs. Seg funds with a named beneficiary skip probate entirely.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="inv-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Value ($)</th>
+                                <th>ACB ($)</th>
+                                <th>Growth %/yr</th>
+                                <th>Type</th>
+                                <th>Named bene?</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="inv-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('inv')">&#x2B; Add investment</button>
+                </div>
+            </div>
+
+            <!-- Business -->
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F3E2; Business Interests</div>
+                <div class="calc-card-note">Lifetime Capital Gains Exemption (LCGE): $1,275,000 in 2026 for qualifying small businesses.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="biz-table">
+                        <thead>
+                            <tr>
+                                <th>Business name</th>
+                                <th>Value ($)</th>
+                                <th>Your cost / ACB ($)</th>
+                                <th>Growth %/yr</th>
+                                <th>LCGE eligible?</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="biz-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('biz')">&#x2B; Add business</button>
+                </div>
+            </div>
+
+            <div class="btn-nav-row">
+                <button class="qbtn qbtn-ghost" onclick="goStep(1)">&#x2190; Back</button>
+                <button class="qbtn qbtn-primary" onclick="validateStep2()">Next: Debts &amp; Costs &#x2192;</button>
+            </div>
+            <div class="err-msg" id="step2-err">Please add at least one asset before continuing.</div>
+        </div>
+
+        <!-- ════════════════ STEP 3: Debts & Estate Costs ════════════════ -->
+        <div class="cstep" id="step-3">
+            <div class="step-title">&#x1F4B3; Debts &amp; Estate Costs</div>
+            <div class="step-sub">What gets paid out before your family sees a dollar.</div>
+
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F4B3; Debts</div>
+                <div class="calc-card-note">Debts are paid out of the estate before any inheritance is distributed.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="debt-table">
+                        <thead>
+                            <tr>
+                                <th>Debt</th>
+                                <th>Balance ($)</th>
+                                <th>Years left</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="debt-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('debt')">&#x2B; Add debt</button>
+                </div>
+            </div>
+
+            <div class="calc-card">
+                <div class="calc-card-title">&#x2696;&#xFE0F; Estate Costs</div>
+                <div class="calc-card-note">These are deducted from the estate value before distribution.</div>
+
+                <div class="field">
+                    <label>Funeral &amp; final expenses ($)</label>
+                    <input type="number" id="s3-funeral" value="15000" min="0" inputmode="numeric">
+                    <div class="field-hint" id="s3-funeral-hint">Will be doubled if you have a spouse (covers two funerals).</div>
+                </div>
+
+                <div class="field">
+                    <label>Legal &amp; executor fees</label>
+                    <div class="slider-display" id="s3-legal-display">1.5 <span>% of gross estate</span></div>
+                    <div class="slider-row">
+                        <input type="range" id="s3-legal-slider" min="0.5" max="3" step="0.1" value="1.5" oninput="syncSliderPct('s3-legal-slider','s3-legal-num','s3-legal-display','% of gross estate')">
+                        <input type="number" id="s3-legal-num" value="1.5" min="0.5" max="3" step="0.1" inputmode="decimal" onchange="syncNum('s3-legal-num','s3-legal-slider','s3-legal-display','% of gross estate')">
+                    </div>
+                    <div class="slider-ends"><span>0.5%</span><span>3%</span></div>
+                </div>
+
+                <div class="field">
+                    <label>Probate fee (auto-set from province)</label>
+                    <div id="s3-probate-display" class="probate-note">Select your province in Step 1 to auto-fill.</div>
+                    <input type="hidden" id="s3-probate-rate" value="0.015">
+                    <input type="hidden" id="s3-probate-flat" value="0">
+                </div>
+            </div>
+
+            <div class="btn-nav-row">
+                <button class="qbtn qbtn-ghost" onclick="goStep(2)">&#x2190; Back</button>
+                <button class="qbtn qbtn-primary" onclick="goStep(4)">Next: Insurance &#x2192;</button>
+            </div>
+        </div>
+
+        <!-- ════════════════ STEP 4: Insurance ════════════════ -->
+        <div class="cstep" id="step-4">
+            <div class="step-title">&#x1F6E1;&#xFE0F; Your Insurance</div>
+            <div class="step-sub">What life insurance will your estate actually receive?</div>
+
+            <div class="info-banner">
+                <strong>&#x26A0;&#xFE0F; Term insurance has an expiry date &mdash; most people forget this.</strong>
+                A 20-year term policy bought 10 years ago expires in 10 more years. If you die after it expires, your family gets nothing from it. Check your start year and term length carefully.
+            </div>
+
+            <div class="calc-card">
+                <div class="calc-card-title">&#x1F6E1;&#xFE0F; Life Insurance Policies</div>
+                <div class="calc-card-note">Add each policy. We calculate whether it&rsquo;s still active at your projected estate date.</div>
+                <div class="dyn-section">
+                    <div style="overflow-x:auto">
+                    <table class="dyn-table" id="ins-table">
+                        <thead>
+                            <tr>
+                                <th>Insured</th>
+                                <th>Type</th>
+                                <th>Payout ($)</th>
+                                <th>Term</th>
+                                <th>Year started</th>
+                                <th>Named bene?</th>
+                                <th>Status</th>
+                                <th class="td-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="ins-tbody"></tbody>
+                    </table>
+                    </div>
+                    <button class="add-row-btn" onclick="addRow('ins')">&#x2B; Add policy</button>
+                </div>
+            </div>
+
+            <div class="btn-nav-row">
+                <button class="qbtn qbtn-ghost" onclick="goStep(3)">&#x2190; Back</button>
+                <button class="qbtn qbtn-red" onclick="calcResults()">See My Results &#x1F4CA;</button>
+            </div>
+        </div>
+
+        <!-- ════════════════ STEP 5: Results ════════════════ -->
+        <div class="cstep" id="step-5">
+            <div class="step-title">&#x1F4CA; Your Estate Results</div>
+            <div class="step-sub" id="res-subtitle">Projected snapshot of what your family inherits.</div>
+
+            <div id="result-summary-card" class="result-summary-card">
+                <!-- filled by JS -->
+            </div>
+
+            <div class="breakdown-grid" id="breakdown-grid">
+                <!-- filled by JS -->
+            </div>
+
+            <div class="cta-card">
+                <h3>Want to close the gap? &#x1F91D;</h3>
+                <p>I&rsquo;m Shivang Goyal, a licensed insurance &amp; financial advisor in Ontario. Let&rsquo;s look at the right coverage to protect what you&rsquo;re building.</p>
+                <button class="btn-wa" onclick="window.open('https://wa.me/16479955891?text=Hi%20Shivang%2C%20I%20used%20the%20estate%20planning%20calculator%20and%20would%20like%20to%20discuss%20my%20coverage','_blank')">&#x1F4AC; WhatsApp Shivang</button>
+            </div>
+
+            <div class="disclaimer-txt">
+                Educational illustration tool for insurance planning purposes only &mdash; not financial, tax, or legal advice. Projections use simplified assumptions and may not reflect your actual tax situation. Consult a licensed advisor for personalized guidance.<br><br>
+                &copy; 2026 Shivang Goyal Insurance &mdash; Ontario Licensed Advisor
+            </div>
+            <span class="restart-link" onclick="restartCalc()">&#x2190; Start over with different numbers</span>
+        </div>
+
+    </div><!-- /calc-wrap -->
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-brand">Shivang Goyal</div>
+            <div class="footer-bio">Life Insurance Advisor<br>LLQP Certified &middot; Ontario</div>
+            <div class="footer-links">
+                <a href="tel:+16479955891">&#x1F4DE; (647) 995-5891</a>
+                <a href="mailto:shivang.goyal.financial@gmail.com">&#x2709;&#xFE0F; shivang.goyal.financial@gmail.com</a>
+                <a href="https://wa.me/16479955891" target="_blank">&#x1F4AC; WhatsApp</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Insurance</div>
+            <div class="footer-links">
+                <a href="term-life.html">Term Life Insurance</a>
+                <a href="visitors.html">Visitors to Canada</a>
+                <a href="supervisa.html">Super Visa Insurance</a>
+                <a href="critical-illness.html">Critical Illness</a>
+                <a href="disability.html">Disability Insurance</a>
+                <a href="health-dental.html">Drug &amp; Dental</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Investments</div>
+            <div class="footer-links">
+                <a href="rrsp.html">RRSP</a>
+                <a href="tfsa.html">TFSA</a>
+                <a href="fhsa.html">FHSA</a>
+                <a href="resp.html">RESP</a>
+                <a href="estate-planning.html">Estate Planning</a>
+                <a href="business-insurance.html">Business Insurance</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Connect</div>
+            <div class="footer-links">
+                <a href="about.html">About Shivang</a>
+                <a href="awards.html">Credentials &amp; Reviews</a>
+                <a href="get-quotes.html">Get a Quote</a>
+                <a href="https://www.instagram.com/thefinwiz.ca" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/@Thefinwiz.canada/shorts" target="_blank">YouTube</a>
+                <a href="https://www.linkedin.com/in/shivang-goyal/" target="_blank">LinkedIn</a>
+                <a href="https://finwiz.finlywealth.com" target="_blank">&#x1F4B3; FinlyWealth</a>
+            </div>
+        </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+        <p>&copy; 2026 Shivang Goyal | Insurance &amp; Financial Solutions | Ontario Licensed Advisor</p>
+        <div class="footer-disclaimer">
+            <strong style="color:rgba(255,255,255,.45)">DISCLAIMER:</strong> Shivang Goyal is a licensed insurance advisor (LLQP). Information on this website is for general educational purposes only and does not constitute financial, legal, or tax advice.
+            <a href="privacy-policy.html" style="color:rgba(255,255,255,.35)">Privacy Policy</a> | <a href="terms-of-service.html" style="color:rgba(255,255,255,.35)">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+// DROPDOWN JS
+// ═══════════════════════════════════════
+(function(){var t={};function pos(d){var m=d.querySelector('.dropdown-menu');if(!m)return;var r=d.getBoundingClientRect();m.style.top=(r.bottom+4)+'px';m.style.left=r.left+'px';m.style.maxHeight=(window.innerHeight-r.bottom-16)+'px';}function o(d){document.querySelectorAll('.dropdown.open').forEach(function(x){if(x!==d)x.classList.remove('open')});if(t[d.id])clearTimeout(t[d.id]);pos(d);d.classList.add('open')}function c(d){t[d.id]=setTimeout(function(){d.classList.remove('open')},250)}function k(d){if(t[d.id])clearTimeout(t[d.id])}document.querySelectorAll('.dropdown').forEach(function(d,i){if(!d.id)d.id='dd-'+i;var m=d.querySelector('.dropdown-menu');if(!m)return;d.addEventListener('mouseenter',function(){o(d)});d.addEventListener('mouseleave',function(){c(d)});m.addEventListener('mouseenter',function(){k(d)});m.addEventListener('mouseleave',function(){c(d)})});document.addEventListener('click',function(e){if(!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})});window.addEventListener('scroll',function(){document.querySelectorAll('.dropdown.open').forEach(function(d){d.classList.remove('open')})},true)})();
+
+// ═══════════════════════════════════════
+// HAMBURGER JS
+// ═══════════════════════════════════════
+(function(){var btn=document.getElementById('hamburger'),nav=document.getElementById('mobileNav'),ov=document.getElementById('mobileOverlay'),cls=document.getElementById('mobileNavClose');if(!btn)return;var _sy=0;function posNav(){var hdr=document.querySelector('header');var hh=hdr?hdr.getBoundingClientRect().bottom:0;nav.style.top=hh+'px';nav.style.height='calc(100vh - '+hh+'px)';ov.style.top=hh+'px';ov.style.height='calc(100vh - '+hh+'px)';}function open(){posNav();_sy=window.scrollY;var hdr=document.querySelector('header');if(hdr){hdr.style.position='fixed';hdr.style.top='0';hdr.style.left='0';hdr.style.right='0';hdr.style.zIndex='10001';}document.body.style.position='fixed';document.body.style.top='-'+_sy+'px';document.body.style.width='100%';document.body.classList.add('menu-open');btn.classList.add('active');btn.setAttribute('aria-expanded','true');nav.classList.add('active');ov.classList.add('active');}function close(){document.body.style.position='';document.body.style.top='';document.body.style.width='';var hdr=document.querySelector('header');if(hdr){hdr.style.position='';hdr.style.top='';hdr.style.left='';hdr.style.right='';hdr.style.zIndex='';}window.scrollTo(0,_sy);document.body.classList.remove('menu-open');btn.classList.remove('active');btn.setAttribute('aria-expanded','false');nav.classList.remove('active');ov.classList.remove('active');}btn.addEventListener('click',function(){nav.classList.contains('active')?close():open();});if(cls)cls.addEventListener('click',close);ov.addEventListener('click',close);nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('active'))close();});})();
+
+// ═══════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════
+function fmt(n){
+    if(isNaN(n)||n===null)return '$0';
+    var neg=n<0;
+    var abs=Math.abs(Math.round(n));
+    var s=abs.toLocaleString('en-CA');
+    return (neg?'-':'')+'$'+s;
+}
+function fmtPct(n){return Math.round(n*10)/10+'%';}
+function v(id){return document.getElementById(id);}
+function val(id){return parseFloat(v(id).value)||0;}
+function sval(id){return v(id).value.trim();}
+function fv(pv,pmt,r,n){
+    if(r===0) return pv+pmt*n;
+    return pv*Math.pow(1+r,n)+pmt*(Math.pow(1+r,n)-1)/r;
+}
+
+// Slider sync
+function syncSlider(sliderId,numId,displayId,suffix){
+    var val=parseFloat(v(sliderId).value);
+    v(numId).value=val;
+    v(displayId).innerHTML=val+' <span>'+suffix+'</span>';
+}
+function syncSliderPct(sliderId,numId,displayId,suffix){
+    var val=parseFloat(v(sliderId).value);
+    val=Math.round(val*10)/10;
+    v(numId).value=val;
+    v(displayId).innerHTML=val+' <span>'+suffix+'</span>';
+}
+function syncNum(numId,sliderId,displayId,suffix){
+    var n=parseFloat(v(numId).value);
+    var min=parseFloat(v(sliderId).min);
+    var max=parseFloat(v(sliderId).max);
+    if(isNaN(n))n=min;
+    n=Math.max(min,Math.min(max,n));
+    v(numId).value=n;
+    v(sliderId).value=n;
+    v(displayId).innerHTML=n+' <span>'+suffix+'</span>';
+}
+
+// YN chip
+function selectYN2(key,val){
+    v(key+'-yes').classList.toggle('selected',val==='yes');
+    v(key+'-no').classList.toggle('selected',val==='no');
+    v('s1-'+key).value=val;
+}
+
+// Province probate
+var PROBATE={
+    ON:{rate:0.015,flat:0,label:'Ontario: 1.5% of estate value'},
+    BC:{rate:0.014,flat:0,label:'British Columbia: 1.4% of estate value'},
+    AB:{rate:0,flat:525,label:'Alberta: capped ~$525 flat'},
+    MB:{rate:0.007,flat:0,label:'Manitoba: 0.7% of estate value'},
+    SK:{rate:0.007,flat:0,label:'Saskatchewan: 0.7% of estate value'},
+    NB:{rate:0.008,flat:0,label:'New Brunswick: 0.8% of estate value'},
+    PEI:{rate:0.004,flat:0,label:'Prince Edward Island: 0.4% of estate value'},
+    NS:{rate:0.017,flat:0,label:'Nova Scotia: 1.7% of estate value'}
+};
+function updateProbateFromProvince(){
+    var prov=sval('s1-province');
+    var info=PROBATE[prov]||{rate:0.015,flat:0,label:'Ontario: 1.5% of estate value'};
+    v('s3-probate-rate').value=info.rate;
+    v('s3-probate-flat').value=info.flat;
+    v('s3-probate-display').textContent=info.label;
+}
+
+// Step navigation
+var currentStep=1;
+function goStep(n){
+    v('step-'+currentStep).classList.remove('active');
+    currentStep=n;
+    v('step-'+n).classList.add('active');
+    var pct=Math.round((n/5)*100);
+    v('progress-bar').style.width=pct+'%';
+    v('step-pct').textContent=pct+'%';
+    v('step-label').textContent='Step '+n+' of 5';
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Validation
+function validateStep1(){
+    var name=sval('s1-name'),age=val('s1-age'),prov=sval('s1-province');
+    if(!name||!age||!prov){
+        v('step1-err').style.display='block';
+        return;
+    }
+    v('step1-err').style.display='none';
+    updateProbateFromProvince();
+    goStep(2);
+}
+function validateStep2(){
+    // at least one asset entered
+    var hasAsset=
+        v('re-tbody').rows.length>0||
+        v('rrsp-tbody').rows.length>0||
+        v('tfsa-tbody').rows.length>0||
+        v('inv-tbody').rows.length>0||
+        v('biz-tbody').rows.length>0;
+    if(!hasAsset){
+        v('step2-err').style.display='block';
+        return;
+    }
+    v('step2-err').style.display='none';
+    goStep(3);
+}
+
+// ═══════════════════════════════════════
+// DYNAMIC ROWS
+// ═══════════════════════════════════════
+var rowCounters={re:0,rrsp:0,tfsa:0,inv:0,biz:0,debt:0,ins:0};
+
+function addRow(type){
+    rowCounters[type]++;
+    var id=rowCounters[type];
+    var tbody=v(type+'-tbody');
+    var tr=document.createElement('tr');
+    tr.id=type+'-row-'+id;
+    tr.innerHTML=buildRowHTML(type,id);
+    tbody.appendChild(tr);
+    // For insurance rows, compute status immediately
+    if(type==='ins') updateInsStatus(id);
+}
+
+function removeRow(type,id){
+    var row=v(type+'-row-'+id);
+    if(row)row.parentNode.removeChild(row);
+}
+
+function buildRowHTML(type,id){
+    var rm='<button class="dyn-remove" onclick="removeRow(\''+type+'\','+id+')" title="Remove">&#x2715;</button>';
+    if(type==='re'){
+        return '<td><input type="text" placeholder="e.g. Primary home" value="Primary home"></td>'+
+               '<td><input type="number" placeholder="900000" value="900000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="400000" value="400000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="3.5" value="3.5" min="0" max="30" step="0.1" inputmode="decimal"></td>'+
+               '<td><select><option value="home">Main home (tax-free)</option><option value="cottage">Cottage</option><option value="rental">Rental</option></select></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='rrsp'){
+        return '<td><input type="text" placeholder="RRSP" value="RRSP"></td>'+
+               '<td><input type="number" placeholder="420000" value="420000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="18000" value="18000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="6" value="6" min="0" max="20" step="0.1" inputmode="decimal"></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='tfsa'){
+        return '<td><input type="text" placeholder="TFSA" value="TFSA"></td>'+
+               '<td><input type="number" placeholder="110000" value="110000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="7000" value="7000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="6" value="6" min="0" max="20" step="0.1" inputmode="decimal"></td>'+
+               '<td><select><option value="yes">Yes</option><option value="no">No</option></select></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='inv'){
+        return '<td><input type="text" placeholder="e.g. ETF portfolio"></td>'+
+               '<td><input type="number" placeholder="0" value="" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="0" value="" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="6" value="6" min="0" max="20" step="0.1" inputmode="decimal"></td>'+
+               '<td><select><option value="stocks">Stocks/ETFs</option><option value="seg">Seg fund</option><option value="gic">GIC</option><option value="mutual">Mutual fund</option></select></td>'+
+               '<td><select><option value="yes">Yes</option><option value="no">No</option></select></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='biz'){
+        return '<td><input type="text" placeholder="e.g. My Corp"></td>'+
+               '<td><input type="number" placeholder="0" value="" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="0" value="" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="5" value="5" min="0" max="30" step="0.1" inputmode="decimal"></td>'+
+               '<td><select><option value="yes">Yes &mdash; LCGE eligible</option><option value="no">No</option></select></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='debt'){
+        return '<td><input type="text" placeholder="e.g. Mortgage" value="Mortgage"></td>'+
+               '<td><input type="number" placeholder="340000" value="340000" min="0" inputmode="numeric"></td>'+
+               '<td><input type="number" placeholder="19" value="19" min="0" max="40" inputmode="numeric"></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    if(type==='ins'){
+        var curYear=new Date().getFullYear();
+        return '<td><select><option value="you">You</option><option value="partner">Partner</option></select></td>'+
+               '<td><select onchange="updateInsStatus('+id+')"><option value="term">Term</option><option value="whole">Whole life</option><option value="ul">Universal life</option><option value="group">Work group</option></select></td>'+
+               '<td><input type="number" placeholder="500000" value="500000" min="0" inputmode="numeric"></td>'+
+               '<td><select onchange="updateInsStatus('+id+')" id="ins-term-'+id+'"><option value="10">10-yr</option><option value="20" selected>20-yr</option><option value="25">25-yr</option><option value="30">30-yr</option><option value="40">40-yr</option><option value="65">To age 65</option><option value="75">To age 75</option><option value="perm">Permanent</option></select></td>'+
+               '<td><input type="number" id="ins-startyear-'+id+'" placeholder="'+curYear+'" value="2020" min="1950" max="'+curYear+'" inputmode="numeric" onchange="updateInsStatus('+id+')"></td>'+
+               '<td><select><option value="yes">Yes</option><option value="no">No</option></select></td>'+
+               '<td class="td-status" id="ins-status-'+id+'"></td>'+
+               '<td class="td-remove">'+rm+'</td>';
+    }
+    return '';
+}
+
+function updateInsStatus(id){
+    var row=v('ins-row-'+id);
+    if(!row)return;
+    var selects=row.querySelectorAll('select');
+    var inputs=row.querySelectorAll('input');
+    // selects: 0=insured, 1=type, 2=term, 3=named bene
+    var itype=selects[1].value;
+    var termSel=selects[2];
+    var termVal=termSel.value;
+    var startYear=parseInt(inputs[1].value)||2020;
+    var statusCell=v('ins-status-'+id);
+    var n=val('s1-years-num')||20;
+    var deathYear=new Date().getFullYear()+n;
+
+    if(itype==='whole'||itype==='ul'||itype==='group'||termVal==='perm'){
+        statusCell.innerHTML='<span class="status-ok">Permanent &#x2713;</span>';
+        return;
+    }
+    // term
+    var termYears=parseInt(termVal)||20;
+    var expiryYear=startYear+termYears;
+    var yearsLeft=expiryYear-new Date().getFullYear();
+    if(expiryYear<=deathYear){
+        statusCell.innerHTML='<span class="status-gone">Expires '+expiryYear+' ('+yearsLeft+' yr left) &#x26A0;</span>';
+    } else if(yearsLeft<15){
+        statusCell.innerHTML='<span class="status-warn">Expires '+expiryYear+' ('+yearsLeft+' yr left) &#x26A0;</span>';
+    } else {
+        statusCell.innerHTML='<span class="status-ok">Active to '+expiryYear+' &#x2713;</span>';
+    }
+}
+
+// ═══════════════════════════════════════
+// CALCULATIONS
+// ═══════════════════════════════════════
+function getRowData(type){
+    var rows=v(type+'-tbody').rows;
+    var result=[];
+    for(var i=0;i<rows.length;i++){
+        var tr=rows[i];
+        var inputs=tr.querySelectorAll('input[type=text],input[type=number]');
+        var selects=tr.querySelectorAll('select');
+        result.push({inputs:inputs,selects:selects});
+    }
+    return result;
+}
+
+function calcResults(){
+    goStep(5);
+
+    var name=sval('s1-name')||'You';
+    var n=val('s1-years-num')||20;
+    var spouse=sval('s1-spouse')==='yes';
+    var taxRate=val('s1-tax-num')/100;
+    var cgInclusion=parseFloat(v('s1-cg-inclusion').value)||0.5;
+    var deathYear=new Date().getFullYear()+n;
+
+    // ── Real estate
+    var reTax=0, reFV=0, reProbateBase=0;
+    var reInsights=[];
+    var reRows=v('re-tbody').rows;
+    for(var i=0;i<reRows.length;i++){
+        var inps=reRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var sels=reRows[i].querySelectorAll('select');
+        var name_=inps[0].value||'Property';
+        var curVal=parseFloat(inps[1].value)||0;
+        var acb=parseFloat(inps[2].value)||0;
+        var gr=(parseFloat(inps[3].value)||0)/100;
+        var retype=sels[0].value;
+        var future=curVal*Math.pow(1+gr,n);
+        reFV+=future;
+        if(retype==='home'){
+            reInsights.push(name_+': '+fmt(future)+' (tax-free – principal residence exemption)');
+        } else {
+            var gain=future-acb;
+            var tax=gain>0?gain*cgInclusion*taxRate:0;
+            reTax+=tax;
+            reProbateBase+=future;
+            reInsights.push(name_+': '+fmt(future)+' → capital gains tax ~'+fmt(tax));
+        }
+    }
+
+    // ── RRSP/RRIF
+    var rrspFV=0, rrspTax=0;
+    var rrspInsights=[];
+    var rrspRows=v('rrsp-tbody').rows;
+    for(var i=0;i<rrspRows.length;i++){
+        var inps=rrspRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var acctName=inps[0].value||'RRSP';
+        var bal=parseFloat(inps[1].value)||0;
+        var add=parseFloat(inps[2].value)||0;
+        var gr=(parseFloat(inps[3].value)||0)/100;
+        var future=fv(bal,add,gr,n);
+        rrspFV+=future;
+        if(spouse){
+            rrspInsights.push(acctName+': '+fmt(future)+' → rolls to spouse tax-free (deferred)');
+        } else {
+            var tax=future*taxRate;
+            rrspTax+=tax;
+            rrspInsights.push(acctName+': '+fmt(future)+' → income tax ~'+fmt(tax));
+        }
+    }
+    if(spouse&&rrspFV>0){
+        rrspInsights.push('Note: RRSP/RRIF rollovers to a surviving spouse are tax-deferred, not tax-free. Tax is paid when the surviving spouse withdraws or on their death.');
+    }
+
+    // ── TFSA
+    var tfsaFV=0;
+    var tfsaInsights=[];
+    var tfsaProbateBase=0;
+    var tfsaRows=v('tfsa-tbody').rows;
+    for(var i=0;i<tfsaRows.length;i++){
+        var inps=tfsaRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var sels=tfsaRows[i].querySelectorAll('select');
+        var acctName=inps[0].value||'TFSA';
+        var bal=parseFloat(inps[1].value)||0;
+        var add=parseFloat(inps[2].value)||0;
+        var gr=(parseFloat(inps[3].value)||0)/100;
+        var bene=sels[0].value==='yes';
+        var future=fv(bal,add,gr,n);
+        tfsaFV+=future;
+        if(!bene) tfsaProbateBase+=future;
+        tfsaInsights.push(acctName+': '+fmt(future)+' (no income tax'+(!bene?' — no named beneficiary, may face probate':'')+')');
+    }
+
+    // ── Other investments
+    var invFV=0, invTax=0;
+    var invInsights=[];
+    var invProbateBase=0;
+    var invRows=v('inv-tbody').rows;
+    for(var i=0;i<invRows.length;i++){
+        var inps=invRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var sels=invRows[i].querySelectorAll('select');
+        var descr=inps[0].value||'Investment';
+        var curVal=parseFloat(inps[1].value)||0;
+        var acb=parseFloat(inps[2].value)||0;
+        var gr=(parseFloat(inps[3].value)||0)/100;
+        var itype=sels[0].value;
+        var bene=sels[1].value==='yes';
+        var future=curVal*Math.pow(1+gr,n);
+        invFV+=future;
+        if(!bene) invProbateBase+=future;
+        if(itype==='seg'){
+            invInsights.push(descr+': '+fmt(future)+' (seg fund — capital gains taxable but named bene skips probate)');
+            // seg funds still have capital gains at death - use acb
+            var gain=future-acb;
+            if(gain>0) invTax+=gain*cgInclusion*taxRate;
+        } else {
+            var gain=future-acb;
+            var tax=gain>0?gain*cgInclusion*taxRate:0;
+            invTax+=tax;
+            invInsights.push(descr+': '+fmt(future)+' → capital gains tax ~'+fmt(tax));
+        }
+    }
+
+    // ── Business
+    var bizFV=0, bizTax=0;
+    var bizInsights=[];
+    var bizProbateBase=0;
+    var LCGE=1275000;
+    var bizRows=v('biz-tbody').rows;
+    for(var i=0;i<bizRows.length;i++){
+        var inps=bizRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var sels=bizRows[i].querySelectorAll('select');
+        var bname=inps[0].value||'Business';
+        var curVal=parseFloat(inps[1].value)||0;
+        var acb=parseFloat(inps[2].value)||0;
+        var gr=(parseFloat(inps[3].value)||0)/100;
+        var lcgeElig=sels[0].value==='yes';
+        var future=curVal*Math.pow(1+gr,n);
+        bizFV+=future;
+        bizProbateBase+=future;
+        var gain=future-acb;
+        if(gain>0){
+            var exemptGain=0;
+            if(lcgeElig) exemptGain=Math.min(gain,Math.max(0,LCGE-acb));
+            var taxableGain=Math.max(0,gain-exemptGain);
+            var tax=taxableGain*cgInclusion*taxRate;
+            bizTax+=tax;
+            bizInsights.push(bname+': '+fmt(future)+(lcgeElig?' (LCGE used → '+fmt(exemptGain)+' exempt)':'')+' → tax ~'+fmt(tax));
+        } else {
+            bizInsights.push(bname+': '+fmt(future)+' (no gain at current assumptions)');
+        }
+    }
+
+    // ── Debts
+    var totalDebt=0;
+    var debtRows=v('debt-tbody').rows;
+    for(var i=0;i<debtRows.length;i++){
+        var inps=debtRows[i].querySelectorAll('input[type=text],input[type=number]');
+        var bal=parseFloat(inps[1].value)||0;
+        var yrsLeft=parseFloat(inps[2].value)||1;
+        var remaining;
+        if(n>=yrsLeft){
+            remaining=0;
+        } else {
+            remaining=bal*(yrsLeft-n)/yrsLeft;
+        }
+        totalDebt+=remaining;
+    }
+
+    // ── Estate costs
+    var funeralBase=val('s3-funeral')||15000;
+    var funeralTotal=spouse?funeralBase*2:funeralBase;
+    var legalPct=val('s3-legal-num')/100;
+    var probateRate=parseFloat(v('s3-probate-rate').value)||0;
+    var probateFlat=parseFloat(v('s3-probate-flat').value)||0;
+
+    var grossFV=reFV+rrspFV+tfsaFV+invFV+bizFV;
+
+    // Probate base: real estate non-home + TFSA without bene + inv without bene + biz
+    var probateBase=reProbateBase+tfsaProbateBase+invProbateBase+bizProbateBase;
+    var probateFee;
+    if(probateFlat>0){
+        probateFee=probateFlat;
+    } else {
+        probateFee=probateBase*probateRate;
+    }
+
+    var legalFee=grossFV*legalPct;
+    var totalEstateCosts=funeralTotal+legalFee+probateFee;
+
+    // ── Insurance
+    var totalInsurance=0;
+    var insRows=v('ins-tbody').rows;
+    for(var i=0;i<insRows.length;i++){
+        var sels=insRows[i].querySelectorAll('select');
+        var inps=insRows[i].querySelectorAll('input[type=number],input[type=text]');
+        var itype=sels[1].value;
+        var payout=parseFloat(inps[1].value)||0;
+        var termSel=sels[2];
+        var termVal=termSel.value;
+        var startYear=parseInt(inps[2].value)||2020;
+        var bene=sels[3].value==='yes';
+
+        var active=false;
+        if(itype==='whole'||itype==='ul'||itype==='group'||termVal==='perm'){
+            active=true;
+        } else {
+            var termYears=parseInt(termVal)||20;
+            var expiryYear=startYear+termYears;
+            active=(expiryYear>deathYear);
+        }
+        if(active&&bene) totalInsurance+=payout;
+    }
+
+    // ── Totals
+    var totalTaxes=reTax+rrspTax+invTax+bizTax;
+    var netInheritance=grossFV-totalTaxes-totalDebt-totalEstateCosts+totalInsurance;
+    var insuranceGap=Math.max(0,totalTaxes+totalDebt+totalEstateCosts-totalInsurance);
+
+    // ── Render summary card
+    var negClass=netInheritance<0?' negative':'';
+    var summaryHTML='<div style="position:relative;z-index:1">'+
+        '<div class="res-eyebrow">Estate projection for '+name+' — '+n+' years from now</div>'+
+        '<div class="res-inherit-label">Your family actually inherits</div>'+
+        '<div class="res-inherit-val'+negClass+'">'+fmt(netInheritance)+'</div>'+
+        '<div class="res-rows">'+
+        '<div class="res-row"><span class="res-row-label">&#x1F4B0; Gross estate value</span><span class="res-row-val pos">'+fmt(grossFV)+'</span></div>'+
+        '<div class="res-row"><span class="res-row-label">&#x1F4C9; Total taxes owing</span><span class="res-row-val neg">-'+fmt(totalTaxes)+'</span></div>'+
+        '<div class="res-row"><span class="res-row-label">&#x1F4B3; Debts remaining at death</span><span class="res-row-val neg">-'+fmt(totalDebt)+'</span></div>'+
+        '<div class="res-row"><span class="res-row-label">&#x2696;&#xFE0F; Estate costs (probate, legal, funeral)</span><span class="res-row-val neg">-'+fmt(totalEstateCosts)+'</span></div>'+
+        '<div class="res-row"><span class="res-row-label">&#x1F6E1;&#xFE0F; Insurance payouts (active, named bene)</span><span class="res-row-val pos">+'+fmt(totalInsurance)+'</span></div>'+
+        '</div>';
+
+    if(insuranceGap>0){
+        summaryHTML+='<div class="res-gap-banner"><div><div class="res-gap-label">&#x26A0;&#xFE0F; Insurance gap — taxes + debts + costs not covered by insurance</div></div><div class="res-gap-val">'+fmt(insuranceGap)+'</div></div>';
+    } else {
+        summaryHTML+='<div class="res-gap-banner no-gap"><div class="res-gap-label">&#x2705; No insurance gap — your coverage covers taxes + debts + costs</div><div class="res-gap-val">Covered</div></div>';
+    }
+    summaryHTML+='</div>';
+    v('result-summary-card').innerHTML=summaryHTML;
+
+    // ── Render breakdown cards
+    var breakdowns=[];
+
+    if(rrspFV>0){
+        var net=spouse?rrspFV:rrspFV-rrspTax;
+        var taxNote=spouse?'Rolls to spouse (tax deferred)':'Income tax ~'+fmt(rrspTax);
+        var bullets=rrspInsights.slice(0,3);
+        breakdowns.push({title:'&#x1F4C8; RRSP / RRIF',fv:rrspFV,tax:rrspTax,net:net,taxNote:taxNote,bullets:bullets});
+    }
+    if(reFV>0){
+        var net=reFV-reTax;
+        var bullets=reInsights.slice(0,3);
+        breakdowns.push({title:'&#x1F3E0; Real Estate',fv:reFV,tax:reTax,net:net,taxNote:reTax>0?'Capital gains tax ~'+fmt(reTax):'All principal residence — no tax',bullets:bullets});
+    }
+    if(tfsaFV>0){
+        breakdowns.push({title:'&#x1F4B0; TFSA',fv:tfsaFV,tax:0,net:tfsaFV,taxNote:'No income tax at death',bullets:tfsaInsights.slice(0,3)});
+    }
+    if(invFV>0){
+        var net=invFV-invTax;
+        breakdowns.push({title:'&#x1F4CA; Other Investments',fv:invFV,tax:invTax,net:net,taxNote:'Capital gains tax ~'+fmt(invTax),bullets:invInsights.slice(0,3)});
+    }
+    if(bizFV>0){
+        var net=bizFV-bizTax;
+        breakdowns.push({title:'&#x1F3E2; Business Interests',fv:bizFV,tax:bizTax,net:net,taxNote:'Tax after LCGE ~'+fmt(bizTax),bullets:bizInsights.slice(0,3)});
+    }
+    // Estate costs breakdown
+    breakdowns.push({
+        title:'&#x2696;&#xFE0F; Estate Costs',
+        fv:totalEstateCosts,
+        tax:0,
+        net:0,
+        taxNote:'Funeral: '+fmt(funeralTotal)+' | Legal: '+fmt(legalFee)+' | Probate: '+fmt(probateFee),
+        bullets:['Funeral &amp; final expenses: '+fmt(funeralTotal)+(spouse?' (doubled for spouse)':''),'Legal &amp; executor fees: '+fmt(legalFee),'Probate: '+fmt(probateFee)]
+    });
+
+    var bHTML='';
+    for(var i=0;i<breakdowns.length;i++){
+        var b=breakdowns[i];
+        var blist='';
+        for(var j=0;j<b.bullets.length;j++) blist+='<li>'+b.bullets[j]+'</li>';
+        bHTML+='<div class="breakdown-card">'+
+            '<div class="bc-title">'+b.title+'</div>'+
+            '<div class="bc-main">'+fmt(b.fv)+'</div>'+
+            '<div class="bc-tax">'+b.taxNote+'</div>'+
+            (b.net>0?'<div class="bc-net">Net to estate: '+fmt(b.net)+'</div>':'')+
+            (blist?'<ul class="bc-bullets">'+blist+'</ul>':'')+
+            '</div>';
+    }
+    v('breakdown-grid').innerHTML=bHTML;
+
+    v('res-subtitle').textContent='Projected '+(n)+'-year snapshot — what '+name+'\'s family inherits.';
+}
+
+function restartCalc(){
+    goStep(1);
+    // Clear dynamic rows
+    ['re','rrsp','tfsa','inv','biz','debt','ins'].forEach(function(t){
+        v(t+'-tbody').innerHTML='';
+        rowCounters[t]=0;
+    });
+    // Reset results
+    v('result-summary-card').innerHTML='';
+    v('breakdown-grid').innerHTML='';
+}
+
+// ═══════════════════════════════════════
+// INIT: Add default rows
+// ═══════════════════════════════════════
+window.addEventListener('DOMContentLoaded',function(){
+    addRow('re');
+    addRow('rrsp');
+    addRow('tfsa');
+    addRow('debt');
+    addRow('ins');
+    updateProbateFromProvince();
+    // Set insurance status after row added
+    setTimeout(function(){updateInsStatus(1);},50);
+});
+</script>
+</body>
+</html>
