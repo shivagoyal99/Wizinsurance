@@ -6718,17 +6718,21 @@ function showToast(msg) {
     const endpoint = FORMSPREE_FORM_ID ? `https://formspree.io/f/${FORMSPREE_FORM_ID}` : null;
     if (!endpoint) return;
     try {
+      const fd = new FormData();
+      fd.append('name', name || '');
+      fd.append('email', email || '');
+      fd.append('phone', phone || '');
+      fd.append('age', age || '');
+      fd.append('coverage', '$' + parseInt(coverage).toLocaleString());
+      fd.append('days', days || '');
+      fd.append('preexisting', pre ? 'Yes' : 'No');
+      fd.append('_subject', `New Quote Request – ${name || 'Visitor'}`);
       await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name, email, phone, age,
-          coverage: '$' + parseInt(coverage).toLocaleString(),
-          days, preexisting: pre ? 'Yes' : 'No',
-          _subject: `New Quote – ${name || 'Visitor'}`
-        })
+        body: fd,
+        headers: { 'Accept': 'application/json' }
       });
-    } catch(e) { console.warn('Lead not sent'); }
+    } catch(e) { console.warn('Lead not sent', e); }
   }
 
   
