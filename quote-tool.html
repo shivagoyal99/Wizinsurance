@@ -6721,12 +6721,14 @@ function showToast(msg) {
       const fd = new FormData();
       fd.append('name', name || '');
       fd.append('email', email || '');
+      fd.append('_replyto', email || '');
       fd.append('phone', phone || '');
       fd.append('age', age || '');
       fd.append('coverage', '$' + parseInt(coverage).toLocaleString());
       fd.append('days', days || '');
       fd.append('preexisting', pre ? 'Yes' : 'No');
       fd.append('_subject', `New Quote Request – ${name || 'Visitor'}`);
+      fd.append('_gotcha', '');
       await fetch(endpoint, {
         method: 'POST',
         body: fd,
